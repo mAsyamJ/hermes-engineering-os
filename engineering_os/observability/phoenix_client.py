@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import json
+import os
 import urllib.error
 import urllib.request
 from typing import Any
 
-PHOENIX_BASE = "http://127.0.0.1:6006"
+PHOENIX_BASE = os.environ.get("PHOENIX_BASE", "http://127.0.0.1:6006")
 PROJECT_NAME = "hermes-agent"
 
 KANBAN_KEYS = (
@@ -24,6 +25,16 @@ INTEREST_KEYS = KANBAN_KEYS + (
     "tool.name",
     "gen_ai.tool.call.id",
     "openinference.project.name",
+    "llm.token_count.prompt",
+    "llm.token_count.completion",
+    "llm.token_count.total",
+    "gen_ai.usage.input_tokens",
+    "gen_ai.usage.output_tokens",
+    "gen_ai.usage.total_tokens",
+    "hermes.skill.name",
+    "skill.name",
+    "error.type",
+    "exception.type",
 )
 
 
@@ -175,6 +186,56 @@ def _rows_from_nodes(nodes: list[dict[str, Any]], project: str, limit: int) -> l
             attrs.update(span.get("attributes") or {})
         names = [str(span.get("name") or "") for span in spans]
         duration = max((span.get("latency_ms") or 0) for span in spans)
+        llm_ms = sum(
+            float(span.get("latency_ms") or 0)
+            for span, name in zip(spans, names)
+            if name.startswith("llm.") or name.startswith("api.")
+        )
+        tool_ms = sum(
+            float(span.get("latency_ms") or 0)
+            for span, name in zip(spans, names)
+            if name.startswith("tool.")
+        )
+        error_count = 0
+        token_prompt = 0
+        token_completion = 0
+        token_total = 0
+        models: list[tuple[str, str]] = []
+        skills: list[str] = []
+        for span in spans:
+            picked = span.get("attributes") or {}
+            raw = span.get("raw_attributes") or {}
+            status = str(span.get("status_code") or "")
+            if status.upper() == "ERROR" or picked.get("error.type") or raw.get("error.type"):
+                error_count += 1
+            prompt = picked.get("llm.token_count.prompt") or picked.get("gen_ai.usage.input_tokens")
+            completion = picked.get("llm.token_count.completion") or picked.get("gen_ai.usage.output_tokens")
+            total = picked.get("llm.token_count.total") or picked.get("gen_ai.usage.total_tokens")
+            token_prompt += int(prompt or 0)
+            token_completion += int(completion or 0)
+            token_total += int(total or 0)
+            model = picked.get("llm.model_name")
+            provider = picked.get("llm.provider") or ""
+            if model:
+                models.append((str(model), str(provider)))
+            skill = picked.get("hermes.skill.name") or picked.get("skill.name")
+            name = str(span.get("name") or "")
+            if skill:
+                skills.append(str(skill))
+            elif name.startswith("skill."):
+                skills.append(name.split(".", 1)[-1])
+        unique_models = []
+        seen = set()
+        for item in models:
+            if item not in seen:
+                seen.add(item)
+                unique_models.append({"model": item[0], "provider": item[1]})
+        unique_skills = []
+        seen_skills = set()
+        for skill in skills:
+            if skill not in seen_skills:
+                seen_skills.add(skill)
+                unique_skills.append(skill)
         rows.append(
             {
                 "trace_id": trace_id,
@@ -185,12 +246,22 @@ def _rows_from_nodes(nodes: list[dict[str, Any]], project: str, limit: int) -> l
                 "runtime_task_id": attrs.get("gen_ai.tool.call.id"),
                 "model": attrs.get("llm.model_name"),
                 "provider": attrs.get("llm.provider"),
+                "models": unique_models,
+                "skills": unique_skills,
                 "agent": "hermes-agent",
                 "duration_ms": duration,
+                "trace_wall_seconds": duration / 1000.0 if duration else 0,
+                "llm_total_seconds": llm_ms / 1000.0,
+                "tool_total_seconds": tool_ms / 1000.0,
                 "llm_calls": sum(
                     1 for name in names if name.startswith("llm.") or name.startswith("api.")
                 ),
                 "tool_calls": sum(1 for name in names if name.startswith("tool.")),
+                "error_count": error_count,
+                "token_prompt": token_prompt or None,
+                "token_completion": token_completion or None,
+                "token_total": token_total or None,
+                "cost_status": "UNKNOWN",
                 "span_count": len(spans),
                 "phoenix_url": f"{PHOENIX_BASE}/projects/{project}/traces/{trace_id}",
             }

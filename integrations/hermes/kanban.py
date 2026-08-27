@@ -7,7 +7,10 @@ from pathlib import Path
 import sqlite3
 from typing import Any, Iterator
 
-from hermes_cli import kanban_db
+def _kanban_db():
+    from hermes_cli import kanban_db as module
+
+    return module
 
 _DENIED = {
     sqlite3.SQLITE_INSERT,
@@ -43,7 +46,45 @@ def _authorizer(action: int, _arg1: str, _arg2: str, _db: str, _trigger: str) ->
 
 
 def database_path(board: str | None = None) -> Path:
-    return kanban_db.kanban_db_path(board=board).resolve()
+    return _kanban_db().kanban_db_path(board=board).resolve()
+
+
+def list_boards(hermes_home: Path | None = None) -> list[str]:
+    home = hermes_home or Path.home() / ".hermes"
+    names: list[str] = []
+    if (home / "kanban.db").is_file():
+        names.append("default")
+    boards_dir = home / "kanban" / "boards"
+    if boards_dir.is_dir():
+        for path in sorted(boards_dir.glob("*/kanban.db")):
+            names.append(path.parent.name)
+    return names
+
+
+def list_task_ids(path: Path | None = None, board: str | None = None, since: int | None = None) -> list[str]:
+    with connect_read_only(path=path, board=board) as connection:
+        if since is None:
+            rows = connection.execute("SELECT id FROM tasks ORDER BY created_at ASC").fetchall()
+        else:
+            rows = connection.execute(
+                "SELECT id FROM tasks WHERE created_at >= ? OR completed_at >= ? ORDER BY created_at ASC",
+                (since, since),
+            ).fetchall()
+        return [str(row["id"]) for row in rows]
+
+
+def list_comment_authors(task_id: str, path: Path | None = None, board: str | None = None) -> list[dict[str, Any]]:
+    with connect_read_only(path=path, board=board) as connection:
+        exists = connection.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='task_comments'"
+        ).fetchone()
+        if not exists:
+            return []
+        return _rows(
+            connection,
+            "SELECT id, task_id, author, created_at FROM task_comments WHERE task_id = ? ORDER BY id",
+            (task_id,),
+        )
 
 
 def connect_read_only(path: Path | None = None, board: str | None = None) -> sqlite3.Connection:
@@ -91,8 +132,8 @@ def list_tasks(limit: int = 200, board: str | None = None) -> list[dict[str, Any
         )
 
 
-def get_task(task_id: str, board: str | None = None) -> dict[str, Any] | None:
-    with connect_read_only(board=board) as connection:
+def get_task(task_id: str, board: str | None = None, path: Path | None = None) -> dict[str, Any] | None:
+    with connect_read_only(path=path, board=board) as connection:
         rows = _rows(connection, "SELECT * FROM tasks WHERE id = ?", (task_id,))
         if not rows:
             return None
@@ -104,8 +145,12 @@ def get_task(task_id: str, board: str | None = None) -> dict[str, Any] | None:
         )
         task["events"] = _rows(
             connection,
-            "SELECT * FROM task_events WHERE task_id = ? ORDER BY id DESC LIMIT 300",
+            "SELECT * FROM task_events WHERE task_id = ? ORDER BY id ASC LIMIT 10000",
             (task_id,),
+        )
+        task["runs"] = sorted(
+            task["runs"],
+            key=lambda item: (item.get("started_at") is None, item.get("started_at") or 0, item.get("id") or 0),
         )
         return task
 
@@ -149,7 +194,7 @@ def summary(board: str | None = None) -> dict[str, Any]:
             ).fetchall()
         }
     return {
-        "board": board or kanban_db.get_current_board(),
+        "board": board or _kanban_db().get_current_board(),
         "database": str(path),
         "tasks_by_status": statuses,
         "runs_by_status": run_statuses,

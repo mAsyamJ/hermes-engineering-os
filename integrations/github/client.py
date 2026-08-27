@@ -90,6 +90,115 @@ def github_status(slugs: list[str] | None = None) -> Evidence[dict[str, Any]]:
     )
 
 
+def pull_request_evidence(slug: str, branch: str) -> Evidence[dict[str, Any]]:
+    """PR/check/merge evidence. Unauthenticated sessions stay BLOCKED_AUTH."""
+    cli = GhCliTransport()
+    try:
+        authenticated = cli.authenticated()
+    except (OSError, subprocess.TimeoutExpired):
+        authenticated = False
+    if not authenticated:
+        return Evidence(
+            EvidenceStatus.BLOCKED_AUTH,
+            "github:pr",
+            {
+                "evidence_state": "BLOCKED_AUTH",
+                "slug": slug,
+                "branch": branch,
+                "pr_number": None,
+                "ci_conclusion": None,
+                "merged": None,
+            },
+            detail="GitHub CLI API authentication is not configured",
+        )
+    if not slug or not branch:
+        return Evidence(
+            EvidenceStatus.UNKNOWN,
+            "github:pr",
+            {
+                "evidence_state": "UNKNOWN",
+                "slug": slug,
+                "branch": branch,
+                "pr_number": None,
+                "ci_conclusion": None,
+                "merged": None,
+            },
+            detail="missing slug or branch",
+        )
+    try:
+        result = subprocess.run(
+            [
+                "gh",
+                "api",
+                "-X",
+                "GET",
+                "search/issues",
+                "-f",
+                f"q=repo:{slug} type:pr head:{branch}",
+            ],
+            capture_output=True,
+            text=True,
+            timeout=8,
+            env={"HOME": str(Path.home()), "PATH": os.environ.get("PATH", "/usr/bin:/bin")},
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return Evidence(
+            EvidenceStatus.DEGRADED,
+            "github:pr",
+            {"evidence_state": "UNKNOWN", "slug": slug, "branch": branch},
+            detail=type(exc).__name__,
+        )
+    if result.returncode != 0:
+        return Evidence(
+            EvidenceStatus.DEGRADED,
+            "github:pr",
+            {"evidence_state": "UNKNOWN", "slug": slug, "branch": branch},
+            detail="gh api search failed",
+        )
+    try:
+        payload = json.loads(result.stdout or "{}")
+    except json.JSONDecodeError:
+        return Evidence(
+            EvidenceStatus.DEGRADED,
+            "github:pr",
+            {"evidence_state": "UNKNOWN", "slug": slug, "branch": branch},
+            detail="invalid GitHub JSON",
+        )
+    items = payload.get("items") or []
+    if not items:
+        return Evidence(
+            EvidenceStatus.UNKNOWN,
+            "github:pr",
+            {
+                "evidence_state": "NOT_FOUND",
+                "slug": slug,
+                "branch": branch,
+                "pr_number": None,
+                "ci_conclusion": None,
+                "merged": None,
+            },
+            detail="no pull request for branch",
+        )
+    first = items[0]
+    number = first.get("number")
+    state = first.get("state")
+    return Evidence(
+        EvidenceStatus.AVAILABLE,
+        "github:pr",
+        {
+            "evidence_state": "AVAILABLE",
+            "slug": slug,
+            "branch": branch,
+            "pr_number": number,
+            "pr_state": state,
+            "ci_conclusion": None,
+            "merged": state == "closed" and bool(first.get("pull_request", {}).get("merged_at"))
+            if isinstance(first.get("pull_request"), dict)
+            else None,
+        },
+    )
+
+
 def public_repository(slug: str, transport: Transport | None = None) -> Evidence[dict[str, Any]]:
     try:
         data = (transport or PublicRestTransport()).repository(slug)
