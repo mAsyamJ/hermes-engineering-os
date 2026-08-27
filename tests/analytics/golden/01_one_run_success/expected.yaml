@@ -1,0 +1,11 @@
+final_outcome: VERIFIED_SUCCESS
+lifecycle_state: DONE
+verification_state: PASS
+first_pass_state: PASS
+retry_count: 0
+rework_status: NOT_DETECTED
+rework_count: 0
+human_intervention_state: UNKNOWN
+production_cohort: True
+github_evidence_state: AVAILABLE
+cost_status: UNKNOWN

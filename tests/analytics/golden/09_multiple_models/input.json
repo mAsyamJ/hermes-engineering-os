@@ -1,0 +1,62 @@
+{
+  "board": "retropick-markets-release",
+  "task": {
+    "id": "t_models",
+    "board": "retropick-markets-release",
+    "title": "one run success",
+    "status": "done",
+    "assignee": "rp-backend-markets",
+    "created_at": 100,
+    "started_at": 110,
+    "completed_at": 200,
+    "workspace_path": "/opt/retropick/.worktrees/t_one",
+    "branch_name": "agent/example"
+  },
+  "runs": [
+    {
+      "id": 1,
+      "task_id": "t_models",
+      "profile": "rp-backend-markets",
+      "status": "done",
+      "outcome": "completed",
+      "started_at": 110,
+      "ended_at": 190,
+      "worker_pid": null
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "run_id": 1,
+      "kind": "spawned",
+      "payload": {},
+      "created_at": 110
+    }
+  ],
+  "comments": [],
+  "traces": [
+    {
+      "trace_id": "m1",
+      "hermes_kanban_run_id": "1",
+      "llm_calls": 4,
+      "tool_calls": 0,
+      "models": [
+        {
+          "model": "gpt-a",
+          "provider": "openai"
+        },
+        {
+          "model": "gpt-b",
+          "provider": "openai"
+        }
+      ],
+      "skills": []
+    }
+  ],
+  "git": {
+    "evidence_quality": "UNKNOWN"
+  },
+  "github": {
+    "evidence_state": "BLOCKED_AUTH"
+  }
+}

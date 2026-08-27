@@ -1,0 +1,5 @@
+final_outcome: VERIFIED_SUCCESS
+first_pass_state: FAIL
+retry_count: 1
+lifecycle_state: DONE
+verification_state: PASS

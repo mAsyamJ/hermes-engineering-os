@@ -1,0 +1,70 @@
+{
+  "board": "retropick-markets-release",
+  "task": {
+    "id": "t_one",
+    "board": "retropick-markets-release",
+    "title": "one run success",
+    "status": "done",
+    "assignee": "rp-backend-markets",
+    "created_at": 100,
+    "started_at": 110,
+    "completed_at": 200,
+    "workspace_path": "/opt/retropick/.worktrees/t_one",
+    "branch_name": "agent/example"
+  },
+  "runs": [
+    {
+      "id": 1,
+      "task_id": "t_one",
+      "profile": "rp-backend-markets",
+      "status": "done",
+      "outcome": "completed",
+      "started_at": 110,
+      "ended_at": 190,
+      "worker_pid": null
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "run_id": 1,
+      "kind": "spawned",
+      "payload": {},
+      "created_at": 110
+    }
+  ],
+  "comments": [],
+  "traces": [
+    {
+      "trace_id": "abc",
+      "hermes_kanban_task_id": "t_one",
+      "hermes_kanban_run_id": "1",
+      "llm_calls": 2,
+      "tool_calls": 1,
+      "error_count": 0,
+      "trace_wall_seconds": 5,
+      "llm_total_seconds": 3,
+      "tool_total_seconds": 1,
+      "models": [
+        {
+          "model": "gpt-test",
+          "provider": "openai"
+        }
+      ],
+      "skills": [],
+      "phoenix_url": "http://127.0.0.1:6006/projects/x/traces/abc"
+    }
+  ],
+  "git": {
+    "evidence_quality": "AVAILABLE",
+    "commit_sha": "deadbeef",
+    "repository_id": "retropick",
+    "branch": "agent/example"
+  },
+  "github": {
+    "evidence_state": "AVAILABLE",
+    "ci_conclusion": "success",
+    "pr_number": 7,
+    "merged": true
+  }
+}

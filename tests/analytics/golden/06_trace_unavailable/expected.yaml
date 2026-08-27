@@ -1,0 +1,5 @@
+final_outcome: COMPLETED_UNVERIFIED
+llm_call_count: None
+tool_call_count: None
+skill_usage_status: UNKNOWN
+model_usage_status: UNKNOWN
