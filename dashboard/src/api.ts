@@ -12,6 +12,7 @@ export interface Endpoints {
   github: Record<string, unknown>;
   workspaces: Evidence<Record<string, unknown>>;
   observability: Record<string, unknown>;
+  analytics: Record<string, unknown>;
 }
 
 export function fetchView<T extends ViewId>(view: T): Promise<Endpoints[T]> {
@@ -24,5 +25,10 @@ export function fetchTask(taskId: string): Promise<Record<string, unknown>> {
 
 export function fetchRun(runId: number): Promise<Record<string, unknown>> {
   return sdk().fetchJSON(`${BASE}/runs/${runId}`);
+}
+
+export function fetchAnalyticsTask(taskId: string, board?: string): Promise<Record<string, unknown>> {
+  const query = board ? `?board=${encodeURIComponent(board)}` : "";
+  return sdk().fetchJSON(`${BASE}/analytics/tasks/${encodeURIComponent(taskId)}${query}`);
 }
 

@@ -40,5 +40,6 @@ export type ViewId =
   | "plugins"
   | "github"
   | "workspaces"
-  | "observability";
+  | "observability"
+  | "analytics";
 
