@@ -1,0 +1,10 @@
+{
+  "http_status": 200,
+  "data": {
+    "status": "AVAILABLE",
+    "plugin": "engineering-os",
+    "version": "1.0.0",
+    "mode": "read-only",
+    "canonical_task_authority": "Hermes Kanban"
+  }
+}

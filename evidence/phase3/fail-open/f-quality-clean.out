@@ -1,0 +1,11 @@
+=== schema ===
+0001_init
+=== quality ===
+{"violations": [], "coverage": {"eligible_production": 101, "materialized": 103, "excluded_or_fixture": 2, "with_trace_metrics": 0, "with_git": 0, "with_github": 0, "github_blocked_auth": 21, "with_objective_verification": 0, "unknown_first_pass": 10, "unknown_intervention": 42, "verified_success": 0, "completed_unverified": 78, "verified_failure": 0, "incomplete": 23, "unknown_outcome": 0}, "status": "PASS"}
+=== reader cannot write ===
+PASS: reader cannot write
+=== writer cannot connect phoenix ===
+PASS: writer cannot connect phoenix
+=== phoenix table count ===
+phoenix_user_tables=65
+PASS: verify-analytics-data

@@ -1,0 +1,1 @@
+{"materialization_id": "fa0c8660-7874-4fcd-a228-a2779687a300", "started_at": "2026-08-27T23:02:47.062341+00:00", "ruleset": "phase3-v1", "mode": "task", "tasks_scanned": 0, "tasks_changed": 0, "tasks_unchanged": 0, "errors": 0, "partial_source_failures": [], "status": "locked", "tasks": [], "detail": "another materializer holds the advisory lock"}

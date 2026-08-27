@@ -1,0 +1,108 @@
+{
+  "task": "t_d1c34420",
+  "board": "eos-phase2-obs",
+  "final_outcome": "COMPLETED_UNVERIFIED",
+  "reason": "Kanban lifecycle is DONE; GitHub is not applicable and no typed verifier was available.",
+  "lifecycle_state": "DONE",
+  "verification_state": "NOT_APPLICABLE",
+  "first_pass_state": "PASS",
+  "retry_count": 0,
+  "rework_status": "NOT_DETECTED",
+  "human_intervention_state": "UNKNOWN",
+  "ruleset": "phase3-v1",
+  "computed_at": "2026-08-27 22:48:23.779657+00:00",
+  "evidence": {
+    "runs": [
+      2
+    ],
+    "board": "eos-phase2-obs",
+    "ruleset": "phase3-v1",
+    "task_id": "t_d1c34420",
+    "trace_ids": [
+      "3c6a188a33999ef09cf0bc74c2cae76b"
+    ],
+    "commit_sha": null,
+    "github_state": "NOT_APPLICABLE"
+  },
+  "facts": {
+    "task": {
+      "board": "eos-phase2-obs",
+      "task_id": "t_d1c34420",
+      "title": "Phase 2 worker OTel smoke",
+      "status": "done",
+      "assignee": "rp-friend",
+      "created_at_source": 1787850185,
+      "started_at_source": 1787850187,
+      "completed_at_source": 1787850210,
+      "workspace_path": "/opt/hermes-engineering-os/.runtime/fixture-repo",
+      "branch_name": null,
+      "profile": "rp-friend",
+      "cohort": "fixture",
+      "source_hash": "2fd502afd7bbdc97444c9f33f5af56da7c81889b91da6aefef0db568c315095c",
+      "materialized_at": "2026-08-27 22:48:23.756455+00:00",
+      "ruleset_version": "phase3-v1"
+    },
+    "runs": [
+      {
+        "board": "eos-phase2-obs",
+        "run_id": 2,
+        "task_id": "t_d1c34420",
+        "profile": "rp-friend",
+        "status": "done",
+        "outcome": "completed",
+        "started_at_source": 1787850187,
+        "ended_at_source": 1787850210,
+        "qualifying": true,
+        "synthetic": false,
+        "source_hash": "6a30586f69fa13fc6d145fd3ed7ac7a681b722a7e8d729c3c02a96a607d8ce50",
+        "materialized_at": "2026-08-27 22:48:23.756455+00:00"
+      }
+    ],
+    "traces": [
+      {
+        "trace_id": "3c6a188a33999ef09cf0bc74c2cae76b",
+        "board": "eos-phase2-obs",
+        "task_id": "t_d1c34420",
+        "run_id": "2",
+        "session_id": "20260827_170441_968c90",
+        "llm_call_count": 3,
+        "tool_call_count": 1,
+        "error_count": 1,
+        "trace_wall_seconds": "8.7789",
+        "llm_total_seconds": "17.3851",
+        "tool_total_seconds": "0.0099",
+        "token_prompt": 106472,
+        "token_completion": 72,
+        "token_total": 106544,
+        "cost_status": "UNKNOWN",
+        "phoenix_url": "http://phoenix:6006/projects/UHJvamVjdDoy/traces/3c6a188a33999ef09cf0bc74c2cae76b",
+        "evidence_quality": "AVAILABLE",
+        "source_hash": "7978bc5a8b6cdf5b2255e4d2022ee852188c16e21be824ee2c117f932c64db1a",
+        "materialized_at": "2026-08-27 22:48:23.756455+00:00"
+      }
+    ],
+    "git": {
+      "board": "eos-phase2-obs",
+      "task_id": "t_d1c34420",
+      "repository_id": "fixture",
+      "branch": null,
+      "commit_sha": null,
+      "dirty_at_observation": null,
+      "evidence_quality": "NOT_APPLICABLE",
+      "source_hash": "065af402c614eda9bc9428335572c760fc4014a72c09d9022c572cb5e757e9a1",
+      "materialized_at": "2026-08-27 22:48:23.756455+00:00"
+    },
+    "github": {
+      "board": "eos-phase2-obs",
+      "task_id": "t_d1c34420",
+      "evidence_state": "NOT_APPLICABLE",
+      "pr_number": null,
+      "pr_state": null,
+      "ci_conclusion": null,
+      "merged": null,
+      "detail": null,
+      "source_hash": "087db56ed67a5d7b07612b85c494c4ef759049fc73147d4fe06df40e514cb4bf",
+      "materialized_at": "2026-08-27 22:48:23.756455+00:00"
+    }
+  }
+}

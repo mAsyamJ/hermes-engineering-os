@@ -1,0 +1,27 @@
+{
+  "task_id": "t_d1c34420",
+  "hermes": {
+    "id": "t_d1c34420",
+    "title": "Phase 2 worker OTel smoke",
+    "status": "done",
+    "current_run_id": null
+  },
+  "hermes_run": {
+    "id": 2,
+    "status": "done",
+    "outcome": "completed"
+  },
+  "analytics": {
+    "status": "done",
+    "title": "Phase 2 worker OTel smoke",
+    "final_outcome": "COMPLETED_UNVERIFIED",
+    "ruleset": "phase3-v1",
+    "trace_id": "3c6a188a33999ef09cf0bc74c2cae76b",
+    "session_id": "20260827_170441_968c90",
+    "run_id": "2"
+  },
+  "expected_trace": "3c6a188a33999ef09cf0bc74c2cae76b",
+  "expected_session": "20260827_170441_968c90",
+  "expected_run": "2",
+  "match": "PASS"
+}

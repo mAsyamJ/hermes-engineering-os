@@ -1,0 +1,84 @@
+{
+  "task": "t_d4cab17a",
+  "board": "retropick-markets-release",
+  "final_outcome": "COMPLETED_UNVERIFIED",
+  "reason": "Kanban lifecycle is DONE; GitHub API is BLOCKED_AUTH and no typed objective verifier was available.",
+  "lifecycle_state": "DONE",
+  "verification_state": "UNKNOWN",
+  "first_pass_state": "PASS",
+  "retry_count": 0,
+  "rework_status": "NOT_DETECTED",
+  "human_intervention_state": "DETECTED",
+  "ruleset": "phase3-v1",
+  "computed_at": "2026-08-27 22:48:24.112743+00:00",
+  "evidence": {
+    "runs": [
+      55
+    ],
+    "board": "retropick-markets-release",
+    "ruleset": "phase3-v1",
+    "task_id": "t_d4cab17a",
+    "trace_ids": [],
+    "commit_sha": null,
+    "github_state": "BLOCKED_AUTH"
+  },
+  "facts": {
+    "task": {
+      "board": "retropick-markets-release",
+      "task_id": "t_d4cab17a",
+      "title": "W3-008: Enrich durable position projections with Data API value and PnL",
+      "status": "done",
+      "assignee": "rp-backend-markets",
+      "created_at_source": 1786539548,
+      "started_at_source": 1786539552,
+      "completed_at_source": 1786540606,
+      "workspace_path": "/opt/retropick/.worktrees/t_d4cab17a",
+      "branch_name": "agent/w3-008-position-economics",
+      "profile": "rp-backend-markets",
+      "cohort": "production",
+      "source_hash": "9b157113737067584df6f0b0a1f868927adfec7b2b20db99e7a5febd3a2fd49a",
+      "materialized_at": "2026-08-27 22:48:24.108220+00:00",
+      "ruleset_version": "phase3-v1"
+    },
+    "runs": [
+      {
+        "board": "retropick-markets-release",
+        "run_id": 55,
+        "task_id": "t_d4cab17a",
+        "profile": "rp-backend-markets",
+        "status": "done",
+        "outcome": "completed",
+        "started_at_source": 1786539552,
+        "ended_at_source": 1786540606,
+        "qualifying": true,
+        "synthetic": false,
+        "source_hash": "6d4939ea9e5e00457b5260c5e121700cb1bc78a78e915fab6d37629d8a7dacfd",
+        "materialized_at": "2026-08-27 22:48:24.108220+00:00"
+      }
+    ],
+    "traces": [],
+    "git": {
+      "board": "retropick-markets-release",
+      "task_id": "t_d4cab17a",
+      "repository_id": "retropick",
+      "branch": "agent/w3-008-position-economics",
+      "commit_sha": null,
+      "dirty_at_observation": false,
+      "evidence_quality": "NOT_FOUND",
+      "source_hash": "ce8b0e2d1c03ed03b31072f707a217878c58dee304035a2b5278e9912708ac02",
+      "materialized_at": "2026-08-27 22:48:24.108220+00:00"
+    },
+    "github": {
+      "board": "retropick-markets-release",
+      "task_id": "t_d4cab17a",
+      "evidence_state": "BLOCKED_AUTH",
+      "pr_number": null,
+      "pr_state": null,
+      "ci_conclusion": null,
+      "merged": null,
+      "detail": null,
+      "source_hash": "876069463b8a22a1e0a8dc7d09a13c3303f067afc71186e84c43c89c4ac62647",
+      "materialized_at": "2026-08-27 22:48:24.108220+00:00"
+    }
+  }
+}

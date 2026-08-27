@@ -1,0 +1,1 @@
+Disposable Phase 2 observability fixture. Read README.md, run wc -l README.md, reply with the line count, then stop. Do not use production RetroPick repos. Do not modify files. Do not switch boards.

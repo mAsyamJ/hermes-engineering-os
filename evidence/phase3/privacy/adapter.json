@@ -1,0 +1,1 @@
+{"task": {"id": "t_ce5ca4b3", "board": "eos-phase2-obs", "title": "Phase 2 observability smoke: read README and count lines", "status": "done", "assignee": "rp-friend", "created_at": 1787849853, "started_at": 1787849860, "completed_at": 1787849879, "workspace_path": "/opt/hermes-engineering-os/.runtime/fixture-repo", "branch_name": null, "current_run_id": null}, "comments": []}
