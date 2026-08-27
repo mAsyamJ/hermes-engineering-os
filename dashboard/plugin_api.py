@@ -3,10 +3,13 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 import sys
 from typing import Any
 
 from fastapi import APIRouter, HTTPException, Query
+from urllib.error import URLError, HTTPError
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -149,4 +152,79 @@ def observability_run(run_id: str) -> dict[str, Any]:
             "traces": phoenix_client.traces_for_run(run_id),
         },
     )
+
+
+ANALYTICS_BASE = "http://127.0.0.1:9120"
+
+
+def _analytics_proxy(path: str) -> dict[str, Any]:
+    request = Request(ANALYTICS_BASE + path, method="GET")
+    try:
+        with urlopen(request, timeout=8) as response:
+            payload = json.loads(response.read().decode())
+        if isinstance(payload, dict):
+            return payload
+        return {"status": "AVAILABLE", "data": payload}
+    except HTTPError as exc:
+        body = exc.read().decode("utf-8", "replace")
+        try:
+            parsed = json.loads(body)
+        except json.JSONDecodeError:
+            parsed = {"body": body[:500]}
+        if exc.code == 404:
+            raise HTTPException(status_code=404, detail="analytics resource not found") from exc
+        return {
+            "status": "DEGRADED",
+            "source": "analytics:sidecar",
+            "detail": f"HTTP {exc.code}",
+            "data": parsed,
+        }
+    except (URLError, TimeoutError, OSError, json.JSONDecodeError) as exc:
+        return {
+            "status": "DEGRADED",
+            "source": "analytics:sidecar",
+            "mode": "read-only",
+            "detail": f"{type(exc).__name__}: {exc}",
+        }
+
+
+@router.get("/analytics")
+def analytics() -> dict[str, Any]:
+    return redact(_analytics_proxy("/summary"))
+
+
+@router.get("/analytics/health")
+def analytics_health() -> dict[str, Any]:
+    return redact(_analytics_proxy("/health"))
+
+
+@router.get("/analytics/coverage")
+def analytics_coverage() -> dict[str, Any]:
+    return redact(_analytics_proxy("/coverage"))
+
+
+@router.get("/analytics/summary")
+def analytics_summary() -> dict[str, Any]:
+    return redact(_analytics_proxy("/summary"))
+
+
+@router.get("/analytics/tasks")
+def analytics_tasks(limit: int = Query(default=50, ge=1, le=200), offset: int = Query(default=0, ge=0)) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/tasks?limit={limit}&offset={offset}"))
+
+
+@router.get("/analytics/tasks/{task_id}")
+def analytics_task(task_id: str, board: str = Query(default="retropick-markets-release")) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/tasks/{task_id}?board={board}"))
+
+
+@router.get("/analytics/runs/{run_id}")
+def analytics_run(run_id: int, board: str = Query(default="retropick-markets-release")) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/runs/{run_id}?board={board}"))
+
+
+@router.get("/analytics/materialization")
+def analytics_materialization() -> dict[str, Any]:
+    return redact(_analytics_proxy("/materialization"))
+
 

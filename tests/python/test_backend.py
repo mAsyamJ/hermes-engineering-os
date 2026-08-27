@@ -45,6 +45,9 @@ class BackendTests(unittest.TestCase):
         self.assertIn("/observability/traces", paths)
         self.assertIn("/observability/tasks/{task_id}", paths)
         self.assertIn("/observability/runs/{run_id}", paths)
+        self.assertIn("/analytics/health", paths)
+        self.assertIn("/analytics/tasks/{task_id}", paths)
+        self.assertIn("/analytics/runs/{run_id}", paths)
 
 
 if __name__ == "__main__":
