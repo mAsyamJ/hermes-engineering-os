@@ -21,7 +21,7 @@
     "observability"
   ],
   "final_service_pids": {
-    "hermes-dashboard.service": 3991060,
+    "hermes-dashboard.service": 4021289,
     "hermes-gateway.service": 2381797,
     "hermes-gateway-rp-friend.service": 924
   },
@@ -31,6 +31,6 @@
   ],
   "github_api": "BLOCKED_AUTH",
   "observability": "DEGRADED_FAIL_OPEN",
-  "completed_at": "2026-08-27T14:45:40Z"
+  "completed_at": "2026-08-27T15:11:09Z"
 }
 
