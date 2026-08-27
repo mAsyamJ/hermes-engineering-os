@@ -13,9 +13,14 @@
   cookie, and credential fields plus common token value formats.
 - Adapter failures and OTel/Phoenix/Postgres unavailability degrade
   observability evidence without affecting Hermes execution.
+- Analytics sidecar or `hermes_engineering` unavailability degrades
+  `/analytics*` to `DEGRADED` without affecting Hermes `/health`.
 - Phoenix UI and OTLP listen on `127.0.0.1:6006` only. Observability Postgres
-  has no host port. DB passwords stay in `deploy/observability/.env` mode `0600`
-  and are never returned by Engineering OS APIs.
+  has no host port. Analytics API listens on `127.0.0.1:9120` only. DB
+  passwords stay in `deploy/observability/.env` mode `0600` and are never
+  returned by Engineering OS APIs.
+- Analytics stores metadata and evidence references, not task bodies, comment
+  bodies, span `input.value`/`output.value`, tokens, or provider secrets.
 - hermes-otel production yaml sets `capture_previews`,
   `capture_conversation_history`, and `capture_full_prompts` to false.
   `HERMES_OTEL_DEBUG` is not left enabled.

@@ -12,6 +12,8 @@
   only then a dashboard-only restart.
 - Observability must fail open. Traces are derived from Hermes; Kanban remains
   the only task authority. Do not restart `rp-friend` to enable OTel.
+- Analytics must fail open. `hermes_engineering` is derived. Do not use the
+  Kanban dispatcher or Hermes Cron for refresh. Do not publish Postgres.
 - GitHub is read-first. Do not create branches, commits, PRs, checks, comments,
   or Kanban mutations from this plugin.
 - Keep upstream pins, licenses, and every vendored file's provenance current.

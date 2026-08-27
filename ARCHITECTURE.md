@@ -11,13 +11,22 @@ hermes-otel (pinned) --OTLP/HTTP--> Phoenix :6006 (loopback)
                                         │
                                         ▼
                               dedicated Postgres (no host port)
-                                 phoenix | hermes_engineering (empty)
+                                 phoenix | hermes_engineering (derived analytics)
 
 Hermes Kanban ──┐
 profiles/runs ──┼─> read-only adapters ─> GET-only FastAPI ─> SDK IIFE
 allowlisted Git ┤
 GitHub API ─────┤     BLOCKED_AUTH is a valid evidence state
 Phoenix GraphQL ┘     observability DEGRADED if Phoenix is down
+        │
+        ▼
+phase3-v1 materializer (Docker oneshot, writer role)
+        │
+        ▼
+hermes_engineering (derived; same unpublished Postgres)
+        │
+        ▼
+analytics sidecar :9120 (reader role) ─> Engineering OS Analytics UI
 ```
 
 ## Authority boundaries
@@ -42,9 +51,23 @@ Phoenix GraphQL ┘     observability DEGRADED if Phoenix is down
 
 `dashboard/dist/index.js` is a classic IIFE using the host's
 `window.__HERMES_PLUGIN_SDK__` React instance and `fetchJSON`. It provides
-Overview, Tasks, Runs, Agents, Plugins, GitHub, Workspaces, and Observability
-views plus a read-only footer slot.
+Overview, Tasks, Runs, Agents, Plugins, GitHub, Workspaces, Observability,
+and Analytics views plus a read-only footer slot.
 
-No React copy, backend server, database, daemon, WebSocket, PTY, or task control
-is bundled.
+## Analytics (Phase 3)
+
+- Kanban remains canonical. `hermes_engineering` is derived and may be dropped
+  without affecting Hermes.
+- Phoenix is queried only through the existing GraphQL client, never internal SQL.
+- Connectivity is Architecture B: analytics processes join Docker network
+  `hermes-eos-observability`. Postgres has no host port. The read API is
+  `hermes-eos-analytics-api` on `127.0.0.1:9120`. The materializer is a
+  `docker compose run` oneshot under systemd user timer
+  `hermes-eos-analytics.timer` (5 minutes).
+- Ruleset `phase3-v1` never coerces UNKNOWN to FALSE. Kanban DONE is not
+  verified success. GitHub `BLOCKED_AUTH` is not verification failure.
+- Cost is always UNKNOWN in Phase 3. Skill usage is taken only from Phoenix
+  skill spans.
+- Plugin analytics routes stay GET-only and proxy the sidecar; sidecar outage
+  returns DEGRADED without failing Hermes `/health`.
 

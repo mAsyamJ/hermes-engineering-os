@@ -45,12 +45,29 @@ run `hermes plugins remove engineering-os`.
 ./scripts/start-observability.sh
 ./scripts/verify-observability.sh
 ./scripts/observability-db-backup.sh
+./scripts/observability-db-verify.sh /var/backups/hermes-engineering-os/observability-<stamp>
 ./scripts/stop-observability.sh
 ```
 
 Phoenix: `http://127.0.0.1:6006`. Never attach this compose project to RetroPick
 networks or volumes. Restarting Phoenix or observability Postgres is allowed;
 never restart either Hermes gateway for OTel.
+
+## Analytics
+
+```bash
+./scripts/analytics-migrate.sh
+./scripts/analytics-db-roles.sh
+./scripts/analytics-materialize.sh --json
+./scripts/analytics-explain.sh <task_id> [board]
+./scripts/verify-analytics-data.sh
+systemctl --user enable --now hermes-eos-analytics.timer
+systemctl --user disable --now hermes-eos-analytics.timer
+```
+
+Analytics API: `http://127.0.0.1:9120` (loopback). Dashboard proxy:
+`/api/plugins/engineering-os/analytics*`. Manual refresh is the materialize
+script; disable the timer rather than the Kanban dispatcher.
 
 ## Evidence states
 

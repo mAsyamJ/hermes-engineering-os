@@ -30,9 +30,20 @@
 
 ## Deferred
 
-- Phase 3 analytics against `hermes_engineering` (currently empty).
 - Default-gateway-originated traces (`DEFAULT_GATEWAY_OTEL=DEFERRED`) until an
   operator-approved gateway restart is required.
 - Interactive terminals, diff rendering, canvas editing, and lifecycle
   controls are deliberately excluded.
+- Phase 4 structured evaluation (deterministic evaluators, optional LLM judges).
+
+## Analytics connectivity (Phase 3)
+
+- Dedicated `hermes_engineering` database on the observability Postgres.
+- Runtime roles: owner `hermes_engineering`, writer
+  `hermes_engineering_writer`, reader `hermes_engineering_reader`. Passwords
+  live in gitignored `deploy/observability/.env` mode `0600`.
+- Rejected: publishing Postgres, unix-socket trust from the dashboard,
+  `psycopg` in the Hermes venv, and dashboard docker.sock.
+- Materializer holds `pg_try_advisory_lock(320260827)`. Overlap returns
+  `locked`. Checkpoints advance only after a successful run ends.
 

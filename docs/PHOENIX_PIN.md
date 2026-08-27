@@ -22,7 +22,7 @@
 | Pulled digest | `sha256:f1c3376c26f2609ab9f29f71f824103fe2fcd8ee0346485cb6122a4f93df6f94` |
 | Host ports | none |
 | Volume | `hermes-eos-observability-pgdata` (new) |
-| Databases | `phoenix` (role `phoenix`), `hermes_engineering` (role `hermes_engineering`, empty Phase 3 substrate) |
+| Databases | `phoenix` (role `phoenix`), `hermes_engineering` (owner `hermes_engineering`; writer/reader roles for Phase 3 analytics) |
 | Superuser | container bootstrap `eos_admin` only; app roles are LOGIN without SUPERUSER |
 
 ## Collector
