@@ -22,7 +22,7 @@ echo "PASS: Engineering OS is enabled"
 
 "$ROOT/scripts/verify-plugins.sh"
 
-PYTHONDONTWRITEBYTECODE=1 "$HERMES_PY" \
+PYTHONPATH="$ROOT${PYTHONPATH:+:$PYTHONPATH}" PYTHONDONTWRITEBYTECODE=1 "$HERMES_PY" \
   -m unittest discover -s "$ROOT/tests/python" -v
 
 (
@@ -35,7 +35,7 @@ PYTHONDONTWRITEBYTECODE=1 "$HERMES_PY" \
     npx playwright test browser/live.spec.cjs
 )
 
-for view in health overview tasks runs agents plugins github workspaces observability; do
+for view in health overview tasks runs agents plugins github workspaces observability analytics; do
   "$ROOT/scripts/dashboard-request.py" \
     "/api/plugins/engineering-os/$view" \
     --expect-status 200 \
@@ -106,5 +106,5 @@ if rg -n \
   exit 1
 fi
 echo "PASS: no secret-like values in shipped output or evidence"
-echo "PASS: Phase 2 verification complete"
+echo "PASS: Phase 3 verification complete"
 

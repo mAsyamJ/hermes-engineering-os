@@ -1,0 +1,303 @@
+{
+  "captured_at": 1787872157,
+  "storage": {
+    "total_bytes": 76887154688,
+    "used_bytes": 52366708736,
+    "free_bytes": 24503668736,
+    "percent_used": 68.1
+  },
+  "services": {
+    "hermes-dashboard.service": {
+      "MainPID": "475347",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "hermes-gateway.service": {
+      "MainPID": "2381797",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "hermes-gateway-rp-friend.service": {
+      "MainPID": "924",
+      "ActiveState": "active",
+      "SubState": "running"
+    }
+  },
+  "production_git": {
+    "/opt/retropick": {
+      "head": "a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+      "porcelain_count": 8,
+      "porcelain_sha256": "99693428619084fcfe93c876dc4517e2ced759ae5ab6cda1cb7b6625618247e5"
+    },
+    "/opt/retropick-android": {
+      "head": "e962490dab3ac1072d9ee6371eb1077c0a05c0ac",
+      "porcelain_count": 39,
+      "porcelain_sha256": "7addaea2004cfeeab26da0c76be8bcf71e94522d49c04f8d9dca2a0bddbbf4e9"
+    }
+  },
+  "docker": [
+    {
+      "Command": "\"python -m engineeri\u2026\"",
+      "CreatedAt": "2026-08-27 22:47:56 +0000 UTC",
+      "HealthStatus": "none",
+      "ID": "d2d7c0967548",
+      "Image": "hermes-eos-analytics:phase3",
+      "Labels": "com.docker.compose.config-hash=1eb9c0b4d89599d3ad8bcc29dbd8b82ee54a8afdccd7a868a96ff041928aae49,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:55270cf26555de9a38267ca3dddb2ac4bfbca47b4f226f81276cd0671d04db37,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/hermes-engineering-os/deploy/observability/compose.yaml,com.docker.compose.project.environment_file=/opt/hermes-engineering-os/deploy/observability/.env,com.docker.compose.project.working_dir=/opt/hermes-engineering-os/deploy/observability,com.docker.compose.project=hermes-eos-observability,com.docker.compose.replace=hermes-eos-analytics-api,com.docker.compose.service=analytics-api,com.docker.compose.version=5.4.0",
+      "LocalVolumes": "0",
+      "Mounts": "/opt/hermes-en\u2026",
+      "Names": "hermes-eos-analytics-api",
+      "Networks": "hermes-eos-observability",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:9120->9120/tcp",
+      "RunningFor": "21 minutes ago",
+      "Size": "209kB (virtual 277MB)",
+      "State": "running",
+      "Status": "Up 6 minutes"
+    },
+    {
+      "Command": "\"/usr/bin/python3.13\u2026\"",
+      "CreatedAt": "2026-08-27 16:00:46 +0000 UTC",
+      "HealthStatus": "none",
+      "ID": "ce4a58e8fbd7",
+      "Image": "arizephoenix/phoenix:version-20.4.0",
+      "Labels": "com.docker.compose.config-hash=8fe7731482d22af9cc23c17d9242b4202bede7c4ede05329e1976a6474afbab4,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:95af6bf8af6b55fd63b6db01e8c07cee41117639b02de2a940dede440cc6d74a,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/hermes-engineering-os/deploy/observability/compose.yaml,com.docker.compose.project.environment_file=/opt/hermes-engineering-os/deploy/observability/.env,com.docker.compose.project.working_dir=/opt/hermes-engineering-os/deploy/observability,com.docker.compose.project=hermes-eos-observability,com.docker.compose.replace=hermes-eos-phoenix,com.docker.compose.service=phoenix,com.docker.compose.version=5.4.0,org.opencontainers.image.created=2026-08-26T03:46:18.801Z,org.opencontainers.image.description=AI Observability & Evaluation,org.opencontainers.image.licenses=NOASSERTION,org.opencontainers.image.revision=a015c6f69ccb23f1eb2d2a31a25097b42f9dba00,org.opencontainers.image.source=https://github.com/Arize-ai/phoenix,org.opencontainers.image.title=phoenix,org.opencontainers.image.url=https://github.com/Arize-ai/phoenix,org.opencontainers.image.version=arize-phoenix-v20.4.0",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Names": "hermes-eos-phoenix",
+      "Networks": "hermes-eos-observability",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "4317/tcp, 9090/tcp, 127.0.0.1:6006->6006/tcp",
+      "RunningFor": "7 hours ago",
+      "Size": "113MB (virtual 1.31GB)",
+      "State": "running",
+      "Status": "Up 6 hours"
+    },
+    {
+      "Command": "\"docker-entrypoint.s\u2026\"",
+      "CreatedAt": "2026-08-27 15:54:43 +0000 UTC",
+      "HealthStatus": "healthy",
+      "ID": "f97e703cb14d",
+      "Image": "postgres:16.15",
+      "Labels": "com.docker.compose.config-hash=401ddffdfef2361b0e5a3af52b73db513bd6de029498823ce30ab5c1aae9e25d,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:485935f94cc7165afa896978809c37b592dc07f0a37d2c8f645f12412d0212c8,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/hermes-engineering-os/deploy/observability/compose.yaml,com.docker.compose.project.environment_file=/opt/hermes-engineering-os/deploy/observability/.env,com.docker.compose.project.working_dir=/opt/hermes-engineering-os/deploy/observability,com.docker.compose.project=hermes-eos-observability,com.docker.compose.service=postgres,com.docker.compose.version=5.4.0",
+      "LocalVolumes": "1",
+      "Mounts": "/opt/hermes-en\u2026,hermes-eos-obs\u2026",
+      "Names": "hermes-eos-postgres",
+      "Networks": "hermes-eos-observability",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "5432/tcp",
+      "RunningFor": "7 hours ago",
+      "Size": "24.6kB (virtual 476MB)",
+      "State": "running",
+      "Status": "Up 6 hours (healthy)"
+    },
+    {
+      "Command": "\"caddy run --config \u2026\"",
+      "CreatedAt": "2026-08-14 06:44:02 +0000 UTC",
+      "HealthStatus": "healthy",
+      "ID": "97c7a37abcd7",
+      "Image": "caddy:2",
+      "Labels": "com.docker.compose.config-hash=630c3f5e6a72eed99c7b068c64500b25b4fccbce05197f0bf9fff0955d15ba50,com.docker.compose.container-number=1,com.docker.compose.depends_on=markets-web:service_healthy:false,markets-api:service_healthy:false,com.docker.compose.image=sha256:98eb57d882ccd5213d1688764db10c1ca2c58a1ca3a6717a3411ad798f7a423a,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/retropick/docker-compose.markets-rehearsal.yml,com.docker.compose.project.working_dir=/opt/retropick,com.docker.compose.project=retropick-markets-rehearsal,com.docker.compose.replace=caddy-1,com.docker.compose.service=caddy,com.docker.compose.version=5.4.0,org.opencontainers.image.description=a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go,org.opencontainers.image.documentation=https://caddyserver.com/docs,org.opencontainers.image.licenses=Apache-2.0,org.opencontainers.image.source=https://github.com/caddyserver/caddy-docker,org.opencontainers.image.title=Caddy,org.opencontainers.image.url=https://caddyserver.com,org.opencontainers.image.vendor=Light Code Labs,org.opencontainers.image.version=v2.11.4",
+      "LocalVolumes": "2",
+      "Mounts": "/opt/retropick\u2026,retropick-mark\u2026,retropick-mark\u2026",
+      "Names": "retropick-markets-rehearsal-caddy-1",
+      "Networks": "retropick-markets-rehearsal_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "80/tcp, 2019/tcp, 443/udp, 127.0.0.1:8443->443/tcp",
+      "RunningFor": "13 days ago",
+      "Size": "250kB (virtual 64.7MB)",
+      "State": "running",
+      "Status": "Up 13 days (healthy)"
+    },
+    {
+      "Command": "\"docker-entrypoint.s\u2026\"",
+      "CreatedAt": "2026-08-14 06:44:02 +0000 UTC",
+      "HealthStatus": "healthy",
+      "ID": "58bf8c31b780",
+      "Image": "retropick-markets-rehearsal-web:a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+      "Labels": "com.docker.compose.config-hash=db678680fcad1422a17a5f94807b2bc0beca7d293ca29724dcf2151827623d05,com.docker.compose.container-number=1,com.docker.compose.depends_on=markets-api:service_healthy:false,com.docker.compose.image=sha256:73b8a7e5189b8698d02916cb16e767f070521ba3518c44a92c931c5fae8a46bb,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/retropick/docker-compose.markets-rehearsal.yml,com.docker.compose.project.working_dir=/opt/retropick,com.docker.compose.project=retropick-markets-rehearsal,com.docker.compose.replace=markets-web-1,com.docker.compose.service=markets-web,com.docker.compose.version=5.4.0,org.opencontainers.image.revision=a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Names": "retropick-markets-rehearsal-markets-web-1",
+      "Networks": "retropick-markets-rehearsal_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:3002->3001/tcp",
+      "RunningFor": "13 days ago",
+      "Size": "81.9kB (virtual 179MB)",
+      "State": "running",
+      "Status": "Up 13 days (healthy)"
+    },
+    {
+      "Command": "\"/markets-api\"",
+      "CreatedAt": "2026-08-14 06:44:02 +0000 UTC",
+      "HealthStatus": "unhealthy",
+      "ID": "c58f70281243",
+      "Image": "retropick-markets-rehearsal-backend:a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+      "Labels": "com.docker.compose.config-hash=a2f6c2ab99dc46114af95894c7b76ab26be8421a4bbcfb8a46e8e12d6fa9136b,com.docker.compose.container-number=1,com.docker.compose.depends_on=postgres:service_healthy:false,markets-migrate:service_completed_successfully:false,com.docker.compose.image=sha256:14443fcd0824a3e6568f2b8db04ba91c556c1f03a5ad9e0fa3d2aae653c2fb68,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/retropick/docker-compose.markets-rehearsal.yml,com.docker.compose.project.working_dir=/opt/retropick,com.docker.compose.project=retropick-markets-rehearsal,com.docker.compose.replace=markets-api-1,com.docker.compose.service=markets-api,com.docker.compose.version=5.4.0,org.opencontainers.image.revision=a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Names": "retropick-markets-rehearsal-markets-api-1",
+      "Networks": "retropick-markets-rehearsal_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:8081->8080/tcp",
+      "RunningFor": "13 days ago",
+      "Size": "4.1kB (virtual 45.1MB)",
+      "State": "running",
+      "Status": "Up 13 days (unhealthy)"
+    },
+    {
+      "Command": "\"/migrator\"",
+      "CreatedAt": "2026-08-14 06:44:02 +0000 UTC",
+      "HealthStatus": "none",
+      "ID": "d924192011d3",
+      "Image": "retropick-markets-rehearsal-backend:a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+      "Labels": "com.docker.compose.config-hash=279591bca41282356ea6a967bfdd4f663703a6165dab70ca1261d071fac4c71f,com.docker.compose.container-number=1,com.docker.compose.depends_on=postgres:service_healthy:false,com.docker.compose.image=sha256:14443fcd0824a3e6568f2b8db04ba91c556c1f03a5ad9e0fa3d2aae653c2fb68,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/retropick/docker-compose.markets-rehearsal.yml,com.docker.compose.project.working_dir=/opt/retropick,com.docker.compose.project=retropick-markets-rehearsal,com.docker.compose.replace=markets-migrate-1,com.docker.compose.service=markets-migrate,com.docker.compose.version=5.4.0,org.opencontainers.image.revision=a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Names": "retropick-markets-rehearsal-markets-migrate-1",
+      "Networks": "retropick-markets-rehearsal_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "",
+      "RunningFor": "13 days ago",
+      "Size": "4.1kB (virtual 45.1MB)",
+      "State": "exited",
+      "Status": "Exited (0) 13 days ago"
+    },
+    {
+      "Command": "\"docker-entrypoint.s\u2026\"",
+      "CreatedAt": "2026-08-14 06:44:01 +0000 UTC",
+      "HealthStatus": "healthy",
+      "ID": "3afc56540f0c",
+      "Image": "postgres:16",
+      "Labels": "com.docker.compose.config-hash=4e229fc88fb9905fe858ae41b8ef27c09e2d48d5a989bc44cc7dc7a09e50160b,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:670391653713782e51974845b217c56fed4dd8729142299c43c919a8d3e15e00,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/retropick/docker-compose.markets-rehearsal.yml,com.docker.compose.project.working_dir=/opt/retropick,com.docker.compose.project=retropick-markets-rehearsal,com.docker.compose.replace=postgres-1,com.docker.compose.service=postgres,com.docker.compose.version=5.4.0",
+      "LocalVolumes": "1",
+      "Mounts": "retropick-mark\u2026",
+      "Names": "retropick-markets-rehearsal-postgres-1",
+      "Networks": "retropick-markets-rehearsal_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:5434->5432/tcp",
+      "RunningFor": "13 days ago",
+      "Size": "20.5kB (virtual 476MB)",
+      "State": "running",
+      "Status": "Up 13 days (healthy)"
+    },
+    {
+      "Command": "\"caddy run --config \u2026\"",
+      "CreatedAt": "2026-08-12 11:40:10 +0000 UTC",
+      "HealthStatus": "unhealthy",
+      "ID": "b06dda647262",
+      "Image": "caddy:2",
+      "Labels": "com.docker.compose.config-hash=f7eb4a7d01733c4d89aabe817697b80d60b5a1957112eb4c475922684217ab6a,com.docker.compose.container-number=1,com.docker.compose.depends_on=markets-api:service_healthy:false,com.docker.compose.image=sha256:98eb57d882ccd5213d1688764db10c1ca2c58a1ca3a6717a3411ad798f7a423a,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/retropick/.worktrees/t_8f0bce50/docker-compose.markets-dev.yml,/opt/retropick/.worktrees/t_8f0bce50/docker-compose.markets-staging-local.yml,com.docker.compose.project.working_dir=/opt/retropick/.worktrees/t_8f0bce50,com.docker.compose.project=retropick-markets-dev,com.docker.compose.service=caddy,com.docker.compose.version=5.4.0,org.opencontainers.image.description=a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go,org.opencontainers.image.documentation=https://caddyserver.com/docs,org.opencontainers.image.licenses=Apache-2.0,org.opencontainers.image.source=https://github.com/caddyserver/caddy-docker,org.opencontainers.image.title=Caddy,org.opencontainers.image.url=https://caddyserver.com,org.opencontainers.image.vendor=Light Code Labs,org.opencontainers.image.version=v2.11.4",
+      "LocalVolumes": "2",
+      "Mounts": "retropick-mark\u2026,retropick-mark\u2026,/opt/retropick\u2026",
+      "Names": "retropick-markets-caddy-staging-local",
+      "Networks": "retropick-markets-dev_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "",
+      "RunningFor": "2 weeks ago",
+      "Size": "262kB (virtual 64.7MB)",
+      "State": "exited",
+      "Status": "Exited (127) 13 days ago"
+    },
+    {
+      "Command": "\"docker-entrypoint.s\u2026\"",
+      "CreatedAt": "2026-08-12 11:40:10 +0000 UTC",
+      "HealthStatus": "healthy",
+      "ID": "bac5aa6ea982",
+      "Image": "retropick-markets-dev-markets-web",
+      "Labels": "com.docker.compose.config-hash=fb9a951ea4ddb8ff0e4eaecb3b0366a0ba867fb4a41990d38f291b6796c8c5d9,com.docker.compose.container-number=1,com.docker.compose.depends_on=markets-api:service_healthy:false,com.docker.compose.image=sha256:2ebdf717b33ae6356b43a5aa3035275469292f2d3b990f7c52dce94caa42d699,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/retropick/.worktrees/t_8f0bce50/docker-compose.markets-dev.yml,/opt/retropick/.worktrees/t_8f0bce50/docker-compose.markets-staging-local.yml,com.docker.compose.project.working_dir=/opt/retropick/.worktrees/t_8f0bce50,com.docker.compose.project=retropick-markets-dev,com.docker.compose.service=markets-web,com.docker.compose.version=5.4.0",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Names": "retropick-markets-web",
+      "Networks": "retropick-markets-dev_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:3001->3001/tcp",
+      "RunningFor": "2 weeks ago",
+      "Size": "4.1kB (virtual 179MB)",
+      "State": "running",
+      "Status": "Up 13 days (healthy)"
+    },
+    {
+      "Command": "\"/markets-api\"",
+      "CreatedAt": "2026-08-12 11:40:10 +0000 UTC",
+      "HealthStatus": "healthy",
+      "ID": "7c361bb5ba63",
+      "Image": "retropick-markets-dev-backend",
+      "Labels": "com.docker.compose.config-hash=f37cf3f6694a8851175cd9ede165b1a5673ca1ab9583a30255d43ac30e710522,com.docker.compose.container-number=1,com.docker.compose.depends_on=postgres:service_healthy:false,com.docker.compose.image=sha256:928e1361bd67853b6cfd4c7b9d428635a306f531e66c74ff92b22b02b842ad76,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/retropick/.worktrees/t_8f0bce50/docker-compose.markets-dev.yml,/opt/retropick/.worktrees/t_8f0bce50/docker-compose.markets-staging-local.yml,com.docker.compose.project.working_dir=/opt/retropick/.worktrees/t_8f0bce50,com.docker.compose.project=retropick-markets-dev,com.docker.compose.service=markets-api,com.docker.compose.version=5.4.0",
+      "LocalVolumes": "0",
+      "Mounts": "",
+      "Names": "retropick-markets-api",
+      "Networks": "retropick-markets-dev_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:8080->8080/tcp",
+      "RunningFor": "2 weeks ago",
+      "Size": "4.1kB (virtual 38.3MB)",
+      "State": "running",
+      "Status": "Up 13 days (healthy)"
+    },
+    {
+      "Command": "\"docker-entrypoint.s\u2026\"",
+      "CreatedAt": "2026-08-12 11:40:10 +0000 UTC",
+      "HealthStatus": "healthy",
+      "ID": "07bde0b63028",
+      "Image": "postgres:16",
+      "Labels": "com.docker.compose.config-hash=d1bead28ef8d72aa3b8ecb9ff7da6f5e795e4139cae8e789ebce072f86666c1a,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:670391653713782e51974845b217c56fed4dd8729142299c43c919a8d3e15e00,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/retropick/.worktrees/t_8f0bce50/docker-compose.markets-dev.yml,/opt/retropick/.worktrees/t_8f0bce50/docker-compose.markets-staging-local.yml,com.docker.compose.project.working_dir=/opt/retropick/.worktrees/t_8f0bce50,com.docker.compose.project=retropick-markets-dev,com.docker.compose.service=postgres,com.docker.compose.version=5.4.0",
+      "LocalVolumes": "1",
+      "Mounts": "retropick-mark\u2026",
+      "Names": "retropick-markets-postgres",
+      "Networks": "retropick-markets-dev_default",
+      "Platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      },
+      "Ports": "127.0.0.1:5433->5432/tcp",
+      "RunningFor": "2 weeks ago",
+      "Size": "20.5kB (virtual 476MB)",
+      "State": "running",
+      "Status": "Up 13 days (healthy)"
+    }
+  ],
+  "kanban": {
+    "path": "/home/ubuntu/.hermes/kanban/boards/retropick-markets-release/kanban.db",
+    "exists": true,
+    "task_count": 101,
+    "run_count": 122
+  },
+  "hermes_source": {
+    "head": "c0106e50e7ecedb3ce34e785d949725dc4e0e457",
+    "porcelain_count": 1,
+    "porcelain_sha256": "adc7db80685092f19748cb901174620403bd7f879437da2f146fc86b6ae45fba"
+  }
+}
