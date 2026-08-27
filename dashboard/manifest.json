@@ -1,0 +1,17 @@
+{
+  "name": "engineering-os",
+  "label": "Engineering OS",
+  "description": "Read-only Hermes runtime, workspace, Git, and GitHub evidence",
+  "icon": "Activity",
+  "version": "1.0.0",
+  "sdk": "1.1",
+  "tab": {
+    "path": "/engineering-os",
+    "position": "after:kanban"
+  },
+  "slots": ["footer-right"],
+  "entry": "dist/index.js",
+  "css": "dist/style.css",
+  "api": "plugin_api.py"
+}
+
