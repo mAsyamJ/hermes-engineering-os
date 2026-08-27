@@ -17,9 +17,10 @@ Do not upgrade Hermes source or its virtual environment from this repository.
 The existing Hermes checkout has preserved source drift and remains a separate
 operator-owned system.
 
-OTel repair in Phase 2 must compare the installed plugin to pinned upstream,
-snapshot the active Python environment again, and preserve fail-open behavior.
-Future analytics should use one dedicated Hermes Engineering PostgreSQL
-server/container with isolated databases and roles; never reuse RetroPick
-databases.
+Phase 2 OTel packages are pinned in `requirements/hermes-otel.constraints.txt`
+(OpenTelemetry 1.44.0, compatible with production `protobuf==7.35.1`). Do not
+install hermes-otel lockfile 1.41.0 into the Hermes venv.
+
+Future analytics should use the empty `hermes_engineering` database on the
+dedicated observability Postgres; never reuse RetroPick databases.
 

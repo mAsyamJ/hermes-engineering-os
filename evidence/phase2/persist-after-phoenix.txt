@@ -1,0 +1,12 @@
+{
+  "session_id": "persist-20260827T160042Z",
+  "span_count": 3,
+  "span_names": [
+    "api.gpt-4",
+    "llm.gpt-4",
+    "agent"
+  ],
+  "trace_ids": [
+    "ba6cc2d4d520b3a31008f282b95240ab"
+  ]
+}

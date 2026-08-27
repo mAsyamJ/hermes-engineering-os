@@ -77,10 +77,14 @@ export function DataTable(props: {
   );
 }
 
-function formatCell(value: unknown): string {
+function formatCell(value: unknown): unknown {
   if (value == null || value === "") return "—";
   if (typeof value === "boolean") return value ? "yes" : "no";
   if (typeof value === "object") return JSON.stringify(value);
-  return String(value);
+  const text = String(value);
+  if (/^https?:\/\/127\.0\.0\.1:6006\//.test(text)) {
+    return h("a", { href: text, className: "eos-link", target: "_blank", rel: "noreferrer" }, "Open in Phoenix");
+  }
+  return text;
 }
 

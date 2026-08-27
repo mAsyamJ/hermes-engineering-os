@@ -1,0 +1,2 @@
+hermes_cli /home/ubuntu/.hermes/hermes-agent/hermes_cli/__init__.py
+opentelemetry None

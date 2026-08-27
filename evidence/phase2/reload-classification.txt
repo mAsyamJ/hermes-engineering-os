@@ -1,0 +1,13 @@
+DISPOSABLE_RUNTIME_OTEL=PASS
+RP_FRIEND_WORKER_OTEL=PASS
+DEFAULT_GATEWAY_OTEL=DEFERRED
+RP_FRIEND_GATEWAY_RESTART=NOT_DONE
+DASHBOARD_ONLY_RESTART=PASS
+
+Notes:
+- Disposable CLI with HERMES_KANBAN_* exported correlated traces (LLM + tool.read_file + tool.terminal).
+- rp-friend PID 924 was not restarted. Dispatcher spawned child workers on disposable board eos-phase2-obs (per-board lock).
+- Profile plugin visibility: ~/.hermes/profiles/rp-friend/plugins -> ~/.hermes/plugins and plugins.enabled; yaml at profile hermes_otel.yaml.
+- Worker-equivalent CLI under HERMES_HOME=profile exported exact task t_d1c34420 / run_id 2.
+- Default gateway PID 2381797 unchanged; gateway-originated traces deferred.
+- Dashboard PID 4021289 -> 5715 after plugin_api/UI reload.

@@ -6,12 +6,14 @@
 - AI Agent Board event coalescing and Hivemind status replay are the only
   selectively modified donor logic.
 - Agent Kanban remains design-only under FSL-1.1-ALv2.
-- The installed `hermes_otel` plugin remains the Phase 2 repair target; no
-  second OTel implementation is introduced.
+- The installed `hermes_otel` plugin remains the only tracer. Engineering OS
+  only stamps explicit `HERMES_KANBAN_*` values onto `OTEL_RESOURCE_ATTRIBUTES`
+  and fail-open span attributes. No second exporter.
 
 ## Runtime integration
 
-- The product is a combined user plugin with no registered hooks or commands.
+- The product is a combined user plugin. `register()` stays hook-free unless
+  dispatcher Kanban env is present, in which case it stamps OTel identity.
 - Backend routes are GET-only and mounted by the existing dashboard process.
 - Installation uses one external symlink so repository and live bytes are
   identical.
@@ -28,8 +30,9 @@
 
 ## Deferred
 
-- OTel dependency repair, Phoenix, and the dedicated analytics PostgreSQL
-  server/databases/roles are Phase 2 or later.
+- Phase 3 analytics against `hermes_engineering` (currently empty).
+- Default-gateway-originated traces (`DEFAULT_GATEWAY_OTEL=DEFERRED`) until an
+  operator-approved gateway restart is required.
 - Interactive terminals, diff rendering, canvas editing, and lifecycle
   controls are deliberately excluded.
 

@@ -162,21 +162,30 @@ def main() -> int:
                 otel = qualify(
                     "hermes_otel",
                     Path("/home/ubuntu/.hermes/plugins/hermes_otel/__init__.py"),
-                    "external_dependency",
+                    "hook",
                 )
+            required = {
+                "on_session_start",
+                "pre_llm_call",
+                "pre_api_request",
+                "pre_tool_call",
+            }
+            missing = required - set(otel["hooks"])
+            assert not missing, missing
             otel_status = {
                 **otel,
-                "runtime": "VERIFIED_EXTERNAL_DEP",
-                "reason": "OpenTelemetry packages intentionally absent in Phase 1",
+                "runtime": "VERIFIED",
+                "reason": "OpenTelemetry SDK present; hooks registered; fail-open without backend",
             }
         except (ModuleNotFoundError, ImportError) as exc:
             otel_status = {
                 "name": "hermes_otel",
-                "import": "PASS",
+                "import": "FAIL",
                 "register": "DEGRADED",
-                "runtime": "VERIFIED_EXTERNAL_DEP",
+                "runtime": "FAIL",
                 "reason": type(exc).__name__,
             }
+            raise
         results.append(otel_status)
         print(json.dumps({"status": "PASS", "results": results}, indent=2))
     return 0

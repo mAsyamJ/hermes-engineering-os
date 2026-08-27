@@ -1,0 +1,5 @@
+# Rollback: uninstall only these packages if Stage 2.2 must be reverted
+uv pip uninstall --python /home/ubuntu/.hermes/hermes-agent/venv/bin/python \
+  opentelemetry-api opentelemetry-sdk opentelemetry-semantic-conventions \
+  opentelemetry-exporter-otlp-proto-http opentelemetry-exporter-otlp-proto-common \
+  opentelemetry-proto

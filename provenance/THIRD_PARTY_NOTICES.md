@@ -32,6 +32,12 @@ Copyright 2026 Brian Caffey. Licensed under Apache License 2.0.
 No source is vendored. The pinned upstream checkout is used only to compare and
 later qualify the already installed plugin.
 
+## Arize Phoenix
+
+Phoenix Docker image `arizephoenix/phoenix:version-20.4.0` is used under the
+Elastic License 2.0. Self-hosting is permitted. Source is not vendored and the
+image is not offered as a third-party managed service from this product.
+
 ## saltbo/agent-kanban
 
 Copyright 2026 Saltbo. Licensed under FSL-1.1-ALv2 with a version-specific

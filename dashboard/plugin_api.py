@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import importlib.util
 from pathlib import Path
 import sys
 from typing import Any
@@ -15,6 +14,8 @@ if str(ROOT) not in sys.path:
 
 from engineering_os.config import load_repositories  # noqa: E402
 from engineering_os.health import safely  # noqa: E402
+from engineering_os.observability import health as observability_health  # noqa: E402
+from engineering_os.observability import phoenix_client  # noqa: E402
 from engineering_os.redaction import redact  # noqa: E402
 from integrations.github.client import github_status  # noqa: E402
 from integrations.github.correlation import correlate_task  # noqa: E402
@@ -60,6 +61,10 @@ def task(task_id: str) -> dict[str, Any]:
     if value is None:
         raise HTTPException(status_code=404, detail="task not found")
     value["correlation"] = correlate_task(value).to_dict()
+    value["observability"] = _safe(
+        "phoenix:task",
+        lambda: phoenix_client.traces_for_task(task_id),
+    )
     return redact(value)
 
 
@@ -73,6 +78,10 @@ def run(run_id: int) -> dict[str, Any]:
     value = kanban.get_run(run_id)
     if value is None:
         raise HTTPException(status_code=404, detail="run not found")
+    value["observability"] = _safe(
+        "phoenix:run",
+        lambda: phoenix_client.traces_for_run(str(run_id)),
+    )
     return redact(value)
 
 
@@ -107,21 +116,37 @@ def workspace_inventory() -> dict[str, Any]:
 
 @router.get("/observability")
 def observability() -> dict[str, Any]:
-    try:
-        sdk = importlib.util.find_spec("opentelemetry.sdk")
-    except (ImportError, ModuleNotFoundError):
-        sdk = None
-    return {
-        "status": "DEGRADED" if sdk is None else "AVAILABLE",
-        "source": "existing:hermes_otel",
-        "plugin_installed": (Path.home() / ".hermes/plugins/hermes_otel").is_dir(),
-        "sdk_available": sdk is not None,
-        "detail": (
-            "OpenTelemetry dependencies intentionally deferred to Phase 2"
-            if sdk is None
-            else "OpenTelemetry SDK available"
-        ),
-        "phoenix": "NOT_DEPLOYED",
-        "fail_open": True,
-    }
+    return redact(observability_health.snapshot())
+
+
+@router.get("/observability/health")
+def observability_health_view() -> dict[str, Any]:
+    return observability()
+
+
+@router.get("/observability/traces")
+def observability_traces(limit: int = Query(default=20, ge=1, le=100)) -> dict[str, Any]:
+    return _safe("phoenix:traces", lambda: phoenix_client.summarize_traces(limit))
+
+
+@router.get("/observability/tasks/{task_id}")
+def observability_task(task_id: str) -> dict[str, Any]:
+    return _safe(
+        "phoenix:task",
+        lambda: {
+            "hermes_kanban_task_id": task_id,
+            "traces": phoenix_client.traces_for_task(task_id),
+        },
+    )
+
+
+@router.get("/observability/runs/{run_id}")
+def observability_run(run_id: str) -> dict[str, Any]:
+    return _safe(
+        "phoenix:run",
+        lambda: {
+            "hermes_kanban_run_id": run_id,
+            "traces": phoenix_client.traces_for_run(run_id),
+        },
+    )
 

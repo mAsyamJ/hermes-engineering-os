@@ -96,8 +96,8 @@ function renderView(view: ViewId, data: unknown): unknown {
   const object = data as Record<string, unknown>;
   switch (view) {
     case "overview": return OverviewView({ data: object });
-    case "tasks": return TasksView({ data: data as never });
-    case "runs": return RunsView({ data: data as never });
+    case "tasks": return h(TasksView, { data: data as never });
+    case "runs": return h(RunsView, { data: data as never });
     case "agents": return AgentsView({ data: object });
     case "plugins": return PluginsView({ data: object });
     case "github": return GitHubView({ data: object });

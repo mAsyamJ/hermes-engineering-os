@@ -194,6 +194,23 @@
   text-transform: uppercase;
 }
 
+.eos-table__selectable {
+  cursor: pointer;
+}
+
+.eos-table__selectable:hover {
+  background: color-mix(in srgb, var(--eos-accent) 8%, transparent);
+}
+
+.eos-status--healthy,
+.eos-status--active {
+  color: #34d399;
+}
+
+.eos-status--down {
+  color: #f87171;
+}
+
 .eos-loading,
 .eos-empty,
 .eos-error {

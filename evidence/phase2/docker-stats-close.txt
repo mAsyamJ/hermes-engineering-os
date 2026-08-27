@@ -1,0 +1,9 @@
+hermes-eos-phoenix 402MiB / 7.57GiB 0.85%
+hermes-eos-postgres 36.67MiB / 7.57GiB 0.00%
+retropick-markets-rehearsal-caddy-1 13.45MiB / 7.57GiB 0.00%
+retropick-markets-rehearsal-markets-web-1 36.86MiB / 7.57GiB 0.00%
+retropick-markets-rehearsal-markets-api-1 25.91MiB / 7.57GiB 0.25%
+retropick-markets-rehearsal-postgres-1 27.39MiB / 7.57GiB 0.71%
+retropick-markets-web 41.17MiB / 7.57GiB 0.00%
+retropick-markets-api 9.559MiB / 7.57GiB 0.10%
+retropick-markets-postgres 27.82MiB / 7.57GiB 0.08%

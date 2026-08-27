@@ -16,13 +16,22 @@
   function fetchView(view) {
     return sdk().fetchJSON(`${BASE}/${view}`);
   }
+  function fetchTask(taskId) {
+    return sdk().fetchJSON(`${BASE}/tasks/${encodeURIComponent(taskId)}`);
+  }
+  function fetchRun(runId) {
+    return sdk().fetchJSON(`${BASE}/runs/${runId}`);
+  }
 
   // src/components/status.ts
   var LABEL = {
     AVAILABLE: "Available",
     DEGRADED: "Degraded",
     UNKNOWN: "Unknown",
-    BLOCKED_AUTH: "Blocked auth"
+    BLOCKED_AUTH: "Blocked auth",
+    HEALTHY: "Healthy",
+    ACTIVE: "Active",
+    DOWN: "Down"
   };
   function StatusBadge({ status }) {
     return h(
@@ -117,7 +126,11 @@
     if (value == null || value === "") return "\u2014";
     if (typeof value === "boolean") return value ? "yes" : "no";
     if (typeof value === "object") return JSON.stringify(value);
-    return String(value);
+    const text = String(value);
+    if (/^https?:\/\/127\.0\.0\.1:6006\//.test(text)) {
+      return h("a", { href: text, className: "eos-link", target: "_blank", rel: "noreferrer" }, "Open in Phoenix");
+    }
+    return text;
   }
 
   // src/views/helpers.ts
@@ -219,18 +232,74 @@
 
   // src/views/observability.ts
   function ObservabilityView({ data }) {
+    const traces = arrayValue(data.recent_traces);
+    const hermesOtel = objectValue(data.hermes_otel);
+    const last = objectValue(data.last_trace);
     return h(
       "div",
       { className: "eos-stack" },
+      h(
+        "div",
+        { className: "eos-grid" },
+        Card({
+          title: "hermes-otel",
+          status: String(hermesOtel.status ?? data.status ?? "UNKNOWN"),
+          children: KeyValues({
+            value: {
+              installed: hermesOtel.installed,
+              version: hermesOtel.version,
+              sdk_available: hermesOtel.sdk_available,
+              fail_open: data.fail_open,
+              export: data.export
+            }
+          })
+        }),
+        Card({
+          title: "Phoenix",
+          status: String(data.phoenix ?? "UNKNOWN"),
+          children: KeyValues({
+            value: {
+              url: data.phoenix_url,
+              last_trace: last.trace_id,
+              detail: data.detail
+            }
+          })
+        }),
+        Card({
+          title: "PostgreSQL",
+          status: String(data.postgresql ?? "UNKNOWN"),
+          children: KeyValues({
+            value: {
+              container: "hermes-eos-postgres",
+              host_port: "none",
+              isolation: "dedicated observability volume"
+            }
+          })
+        })
+      ),
       Card({
-        title: "Existing Hermes OTel plugin",
+        title: "Recent runs",
         status: String(data.status ?? "UNKNOWN"),
-        children: KeyValues({ value: data })
+        children: DataTable({
+          rows: traces,
+          columns: [
+            { key: "hermes_kanban_task_id", label: "Task" },
+            { key: "hermes_kanban_run_id", label: "Run" },
+            { key: "agent", label: "Agent" },
+            { key: "model", label: "Model" },
+            { key: "duration_ms", label: "Duration" },
+            { key: "llm_calls", label: "LLM" },
+            { key: "tool_calls", label: "Tools" },
+            { key: "trace_id", label: "Trace" },
+            { key: "phoenix_url", label: "Open in Phoenix" }
+          ],
+          empty: "No traces reported by Phoenix yet."
+        })
       }),
       h(
         "p",
         { className: "eos-note" },
-        "Observability is fail-open. Phoenix and the dedicated analytics PostgreSQL service are not deployed in Phase 1."
+        "Observability is derived and fail-open. Hermes Kanban remains the only task authority. Phoenix is the detailed viewer."
       )
     );
   }
@@ -292,28 +361,100 @@
 
   // src/views/runs.ts
   function RunsView({ data }) {
+    const { useEffect, useState } = sdk().hooks;
     const rows = Array.isArray(data.data) ? data.data : [];
-    return Card({
-      title: `Runs \xB7 ${rows.length}`,
-      status: data.status,
-      children: DataTable({
-        rows,
-        columns: [
-          { key: "id", label: "Kanban run ID" },
-          { key: "task_id", label: "Kanban task ID" },
-          { key: "profile", label: "Profile" },
-          { key: "status", label: "Status" },
-          { key: "worker_pid", label: "PID" },
-          { key: "outcome", label: "Outcome" }
-        ],
-        empty: "No run history reported by Hermes Kanban."
-      })
-    });
+    const [selectedId, setSelectedId] = useState(null);
+    const [detail, setDetail] = useState(null);
+    const [detailError, setDetailError] = useState(null);
+    useEffect(() => {
+      if (selectedId == null) {
+        setDetail(null);
+        setDetailError(null);
+        return;
+      }
+      let active = true;
+      setDetail(null);
+      setDetailError(null);
+      fetchRun(selectedId).then((value) => {
+        if (active) setDetail(value);
+      }).catch((reason) => {
+        if (active) setDetailError(reason instanceof Error ? reason.message : String(reason));
+      });
+      return () => {
+        active = false;
+      };
+    }, [selectedId]);
+    const traces = arrayValue(objectValue(detail?.observability).data);
+    return h(
+      "div",
+      { className: "eos-stack" },
+      Card({
+        title: `Runs \xB7 ${rows.length}`,
+        status: data.status,
+        children: DataTable({
+          rows,
+          columns: [
+            { key: "id", label: "Kanban run ID" },
+            { key: "task_id", label: "Kanban task ID" },
+            { key: "profile", label: "Profile" },
+            { key: "status", label: "Status" },
+            { key: "worker_pid", label: "PID" },
+            { key: "outcome", label: "Outcome" }
+          ],
+          empty: "No run history reported by Hermes Kanban.",
+          onSelect: (row) => setSelectedId(Number(row.id))
+        })
+      }),
+      selectedId != null ? Card({
+        title: `TRACE \xB7 run ${selectedId}`,
+        status: String(objectValue(detail?.observability).status ?? (detailError ? "DEGRADED" : "UNKNOWN")),
+        children: traces.length ? DataTable({
+          rows: traces,
+          columns: [
+            { key: "trace_id", label: "Trace" },
+            { key: "hermes_kanban_task_id", label: "Task" },
+            { key: "session_id", label: "Session" },
+            { key: "model", label: "Model" },
+            { key: "llm_calls", label: "LLM" },
+            { key: "tool_calls", label: "Tools" },
+            { key: "phoenix_url", label: "Open in Phoenix" }
+          ],
+          empty: "No correlated traces."
+        }) : h(
+          "p",
+          { className: "eos-note" },
+          detailError || "No exact Kanban-to-trace match for this run."
+        )
+      }) : h("p", { className: "eos-note" }, "Select a run to load exact TRACE evidence.")
+    );
   }
 
   // src/views/tasks.ts
   function TasksView({ data }) {
+    const { useEffect, useState } = sdk().hooks;
     const rows = Array.isArray(data.data) ? data.data : [];
+    const [selectedId, setSelectedId] = useState(null);
+    const [detail, setDetail] = useState(null);
+    const [detailError, setDetailError] = useState(null);
+    useEffect(() => {
+      if (!selectedId) {
+        setDetail(null);
+        setDetailError(null);
+        return;
+      }
+      let active = true;
+      setDetail(null);
+      setDetailError(null);
+      fetchTask(selectedId).then((value) => {
+        if (active) setDetail(value);
+      }).catch((reason) => {
+        if (active) setDetailError(reason instanceof Error ? reason.message : String(reason));
+      });
+      return () => {
+        active = false;
+      };
+    }, [selectedId]);
+    const traces = arrayValue(objectValue(detail?.observability).data);
     return h(
       "div",
       { className: "eos-stack" },
@@ -336,9 +477,33 @@
             { key: "branch_name", label: "Branch" },
             { key: "current_run_id", label: "Run" }
           ],
-          empty: "No tasks reported by the active Hermes board."
+          empty: "No tasks reported by the active Hermes board.",
+          onSelect: (row) => setSelectedId(String(row.id ?? ""))
         })
-      })
+      }),
+      selectedId ? Card({
+        title: `TRACE \xB7 ${selectedId}`,
+        status: String(objectValue(detail?.observability).status ?? (detailError ? "DEGRADED" : "UNKNOWN")),
+        children: h(
+          "div",
+          { className: "eos-stack" },
+          detailError ? h("p", { className: "eos-note" }, detailError) : null,
+          traces.length ? DataTable({
+            rows: traces,
+            columns: [
+              { key: "trace_id", label: "Trace" },
+              { key: "hermes_kanban_run_id", label: "Run" },
+              { key: "session_id", label: "Session" },
+              { key: "model", label: "Model" },
+              { key: "llm_calls", label: "LLM" },
+              { key: "tool_calls", label: "Tools" },
+              { key: "phoenix_url", label: "Open in Phoenix" }
+            ],
+            empty: "No correlated traces."
+          }) : h("p", { className: "eos-note" }, "No exact Kanban-to-trace match for this task."),
+          detail ? KeyValues({ value: objectValue(detail.correlation) }) : null
+        )
+      }) : h("p", { className: "eos-note" }, "Select a task to load exact TRACE evidence.")
     );
   }
 
@@ -464,9 +629,9 @@
       case "overview":
         return OverviewView({ data: object });
       case "tasks":
-        return TasksView({ data });
+        return h(TasksView, { data });
       case "runs":
-        return RunsView({ data });
+        return h(RunsView, { data });
       case "agents":
         return AgentsView({ data: object });
       case "plugins":

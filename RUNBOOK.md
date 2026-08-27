@@ -39,6 +39,19 @@ The uninstall script disables first, confirms the backend runtime gate is 404,
 rescans, and unlinks only when the symlink resolves to this repository. Do not
 run `hermes plugins remove engineering-os`.
 
+## Observability stack
+
+```bash
+./scripts/start-observability.sh
+./scripts/verify-observability.sh
+./scripts/observability-db-backup.sh
+./scripts/stop-observability.sh
+```
+
+Phoenix: `http://127.0.0.1:6006`. Never attach this compose project to RetroPick
+networks or volumes. Restarting Phoenix or observability Postgres is allowed;
+never restart either Hermes gateway for OTel.
+
 ## Evidence states
 
 - `AVAILABLE`: authoritative read completed.

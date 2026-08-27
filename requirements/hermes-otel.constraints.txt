@@ -1,0 +1,12 @@
+# Production Hermes venv constraints for hermes-otel.
+# Upstream uv.lock pins OpenTelemetry 1.41.0 (protobuf<7). The active Hermes
+# venv already has protobuf==7.35.1 required by google-api-core /
+# googleapis-common-protos / proto-plus (protobuf>=6.33.5,<8).
+# OpenTelemetry 1.44.0 allows protobuf<8 and still satisfies hermes-otel's
+# declared opentelemetry-*<2 runtime bounds.
+opentelemetry-api==1.44.0
+opentelemetry-sdk==1.44.0
+opentelemetry-semantic-conventions==0.65b0
+opentelemetry-exporter-otlp-proto-http==1.44.0
+opentelemetry-exporter-otlp-proto-common==1.44.0
+opentelemetry-proto==1.44.0

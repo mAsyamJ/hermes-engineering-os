@@ -1,0 +1,8 @@
+enabled: true
+capture_previews: false
+capture_conversation_history: false
+capture_full_prompts: false
+project_name: hermes-agent
+backends:
+  - type: phoenix
+    endpoint: http://127.0.0.1:6006/v1/traces

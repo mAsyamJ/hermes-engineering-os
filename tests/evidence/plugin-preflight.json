@@ -43,11 +43,25 @@
       "name": "hermes_otel",
       "import": "PASS",
       "register": "PASS",
-      "hooks": [],
+      "hooks": [
+        "api_request_error",
+        "on_session_end",
+        "on_session_start",
+        "post_api_request",
+        "post_approval_response",
+        "post_llm_call",
+        "post_tool_call",
+        "pre_api_request",
+        "pre_approval_request",
+        "pre_llm_call",
+        "pre_tool_call",
+        "subagent_start",
+        "subagent_stop"
+      ],
       "commands": [],
-      "skills": 0,
-      "runtime": "VERIFIED_EXTERNAL_DEP",
-      "reason": "OpenTelemetry packages intentionally absent in Phase 1"
+      "skills": 1,
+      "runtime": "VERIFIED",
+      "reason": "OpenTelemetry SDK present; hooks registered; fail-open without backend"
     }
   ]
 }

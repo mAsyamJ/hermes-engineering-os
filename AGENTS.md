@@ -10,7 +10,8 @@
   singleton dispatcher lock.
 - Dashboard changes require all-plugin preflight, authenticated rescan, and
   only then a dashboard-only restart.
-- Observability must fail open. Do not repair `hermes_otel` before Phase 2.
+- Observability must fail open. Traces are derived from Hermes; Kanban remains
+  the only task authority. Do not restart `rp-friend` to enable OTel.
 - GitHub is read-first. Do not create branches, commits, PRs, checks, comments,
   or Kanban mutations from this plugin.
 - Keep upstream pins, licenses, and every vendored file's provenance current.

@@ -1,0 +1,2 @@
+readable /var/backups/hermes-engineering-os/observability-20260827T171916Z
+PASS: backup /var/backups/hermes-engineering-os/observability-20260827T171916Z

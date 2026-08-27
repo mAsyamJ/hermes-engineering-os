@@ -7,9 +7,10 @@
 | Hermes dashboard and Engineering OS | `127.0.0.1:9119` | existing user service |
 | Default Hermes gateway | existing configuration | no-touch |
 | `rp-friend` gateway/dispatcher | existing configuration | no-touch |
+| Phoenix UI + OTLP HTTP | `127.0.0.1:6006` | `hermes-eos-phoenix` |
+| Observability PostgreSQL | none on host | `hermes-eos-postgres` |
 
-Phase 1 adds no listener, daemon, container, PostgreSQL instance, or Phoenix
-service.
+Phase 2 adds only the isolated `hermes-eos-*` containers, network, and volume.
 
 ## Health
 
@@ -19,20 +20,21 @@ systemctl --user status hermes-dashboard.service
 ```
 
 The live dashboard should show GitHub API as `BLOCKED_AUTH` until `gh` is
-authenticated. Observability should show dependency-degraded, fail-open status
-until the existing OTel plugin is repaired in Phase 2.
+authenticated. Observability should show Phoenix/Postgres `HEALTHY` when the
+dedicated stack is up, and `DEGRADED` when it is not. Hermes itself must keep
+running.
 
 ## Capacity
 
-Keep root usage below 75%, free space at or above 25 GiB, and the complete
-product/upstream/build/browser footprint below 1 GiB. Upstream clones,
-`node_modules`, browser binaries, and runtime fixtures are ignored and can be
-recreated.
+Keep root usage below 80%, free space at or above 20 GiB. If free space drops
+under 20 GiB, block Phase 3. Phoenix default retention should stay operator-
+controlled; do not enable destructive auto-delete until the Phoenix-supported
+mechanism is proven.
 
 ## Backups
 
-Plugin mutations create `0700` timestamped directories under
-`/var/backups/hermes-engineering-os`. They contain config, plugin state,
-service PIDs, symlink state, and checksums. The Phase 0 checkpoint remains
-`/var/backups/hermes-engineering-os/20260827T120255Z`.
+Observability dumps are owner-only `pg_dump` files under
+`/var/backups/hermes-engineering-os/observability-*`. Restore is proven only
+against an isolated throwaway container via
+`scripts/observability-db-verify.sh`, never onto the live volume.
 

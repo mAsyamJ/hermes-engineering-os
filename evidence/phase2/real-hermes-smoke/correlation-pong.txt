@@ -1,0 +1,10 @@
+session_id: 20260827_165129_c464ce
+trace_id: 42991368a973efd768e279a5853f20e7
+hermes_kanban_task_id: t_phase2obs
+hermes_kanban_run_id: 9001
+hermes_kanban_board: eos-phase2-obs
+hermes_runtime_task_id: 97b677fa-e29f-4bcd-9824-ed72f755c75e
+model: gpt-5.6-sol
+phoenix_url: http://127.0.0.1:6006/projects/UHJvamVjdDoy/traces/42991368a973efd768e279a5853f20e7
+note: exact attribute equality via hermes.kanban.task_id / run_id resource+span stamp
+classification: DISPOSABLE_RUNTIME_OTEL=PASS

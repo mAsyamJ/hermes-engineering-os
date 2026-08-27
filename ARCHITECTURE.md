@@ -4,11 +4,20 @@ Hermes Engineering OS is one combined user plugin. Its gateway registration is
 side-effect-free; runtime behavior lives in authenticated dashboard routes.
 
 ```text
-Hermes runtime ─┐
-Hermes Kanban ──┼─> read-only adapters ─> GET-only FastAPI router ─> SDK IIFE
-profiles/runs ──┤
+Hermes runtime / Kanban workers
+        │ observer hooks (fail-open)
+        ▼
+hermes-otel (pinned) --OTLP/HTTP--> Phoenix :6006 (loopback)
+                                        │
+                                        ▼
+                              dedicated Postgres (no host port)
+                                 phoenix | hermes_engineering (empty)
+
+Hermes Kanban ──┐
+profiles/runs ──┼─> read-only adapters ─> GET-only FastAPI ─> SDK IIFE
 allowlisted Git ┤
-GitHub API ─────┘             BLOCKED_AUTH is a valid evidence state
+GitHub API ─────┤     BLOCKED_AUTH is a valid evidence state
+Phoenix GraphQL ┘     observability DEGRADED if Phoenix is down
 ```
 
 ## Authority boundaries

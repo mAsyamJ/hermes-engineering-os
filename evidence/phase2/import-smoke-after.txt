@@ -1,0 +1,6 @@
+hermes_cli OK
+otel sdk OK <class 'opentelemetry.sdk.trace.TracerProvider'> <class 'opentelemetry.exporter.otlp.proto.http.trace_exporter.OTLPSpanExporter'>
+hooks ['api_request_error', 'on_session_end', 'on_session_start', 'post_api_request', 'post_approval_response', 'post_llm_call', 'post_tool_call', 'pre_api_request', 'pre_approval_request', 'pre_llm_call', 'pre_tool_call', 'subagent_start', 'subagent_stop']
+hook_count 13
+skills ['observability']
+REGISTER_OK

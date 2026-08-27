@@ -1,0 +1,64 @@
+name: hermes-eos-observability
+
+networks:
+  observability:
+    name: hermes-eos-observability
+    driver: bridge
+
+volumes:
+  pgdata:
+    name: hermes-eos-observability-pgdata
+
+services:
+  postgres:
+    image: postgres:16.15@sha256:f1c3376c26f2609ab9f29f71f824103fe2fcd8ee0346485cb6122a4f93df6f94
+    container_name: hermes-eos-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PHOENIX_DB_PASSWORD: ${PHOENIX_DB_PASSWORD}
+      HERMES_ENGINEERING_DB_PASSWORD: ${HERMES_ENGINEERING_DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/01-init-db.sh:ro
+    networks:
+      - observability
+    # No host port. Phoenix reaches this service by compose DNS name.
+    expose:
+      - "5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  phoenix:
+    image: arizephoenix/phoenix:version-20.4.0@sha256:8af594ab0342cc32acc4167f472fb89b4e25f5eb8d5e26c353bf4e102fddb693
+    container_name: hermes-eos-phoenix
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PHOENIX_SQL_DATABASE_URL: postgresql://phoenix:${PHOENIX_DB_PASSWORD}@postgres:5432/phoenix
+      PHOENIX_PORT: "6006"
+      PHOENIX_WORKING_DIR: /mnt/data
+    ports:
+      - "127.0.0.1:6006:6006"
+    networks:
+      - observability
+    # Distroless image has no /bin/sh; host curl is the health signal.
+    healthcheck:
+      disable: true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

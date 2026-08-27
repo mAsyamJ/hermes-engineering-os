@@ -6,6 +6,9 @@ const LABEL: Record<string, string> = {
   DEGRADED: "Degraded",
   UNKNOWN: "Unknown",
   BLOCKED_AUTH: "Blocked auth",
+  HEALTHY: "Healthy",
+  ACTIVE: "Active",
+  DOWN: "Down",
 };
 
 export function StatusBadge({ status }: { status: EvidenceStatus | string }): unknown {

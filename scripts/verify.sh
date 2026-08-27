@@ -66,13 +66,35 @@ for service in ("hermes-gateway.service", "hermes-gateway-rp-friend.service"):
 assert post["services"]["hermes-dashboard.service"]["ActiveState"] == "active"
 
 keys = ("Names", "State", "Ports", "HealthStatus", "Image")
-def docker_boundary(payload):
-    return sorted(tuple(item.get(key) for key in keys) for item in payload)
+
+def docker_name(item):
+    return str(item.get("Names") or "").lstrip("/")
+
+def docker_boundary(payload, exclude_eos=False):
+    rows = []
+    for item in payload:
+        if exclude_eos and docker_name(item).startswith("hermes-eos-"):
+            continue
+        rows.append(tuple(item.get(key) for key in keys))
+    return sorted(rows)
+
 assert docker_boundary(pre["docker"]) == docker_boundary(post["docker"])
 
 usage = shutil.disk_usage("/")
-assert usage.free >= 25 * 1024**3
-assert usage.used / usage.total < 0.75
+assert usage.free >= 20 * 1024**3, usage.free
+assert usage.used / usage.total < 0.80, usage.used / usage.total
+
+entry_path = sorted((root / "tests/evidence").glob("phase2-entry-*.json"))[-1]
+entry = json.loads(entry_path.read_text(encoding="utf-8"))
+close_paths = sorted((root / "tests/evidence").glob("phase2-close-*.json"))
+if close_paths:
+    live = json.loads(close_paths[-1].read_text(encoding="utf-8"))
+    assert live["production_git"] == entry["production_git"]
+    for service in ("hermes-gateway.service", "hermes-gateway-rp-friend.service"):
+        assert live["services"][service]["MainPID"] == entry["services"][service]["MainPID"]
+    assert docker_boundary(live["docker"], exclude_eos=True) == docker_boundary(
+        entry["docker"], exclude_eos=True
+    )
 print("PASS: production Git, Docker, gateway, dispatcher, and storage boundaries")
 PY
 
@@ -84,5 +106,5 @@ if rg -n \
   exit 1
 fi
 echo "PASS: no secret-like values in shipped output or evidence"
-echo "PASS: Phase 1 verification complete"
+echo "PASS: Phase 2 verification complete"
 

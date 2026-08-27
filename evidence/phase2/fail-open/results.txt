@@ -1,0 +1,13 @@
+=== 2.12 stop Phoenix ===
+phoenix_down_exit=0
+phoenix_down_eos_status=DEGRADED
+phoenix_down_phoenix=DOWN
+=== restore Phoenix, stop Postgres ===
+postgres_down_exit=0
+postgres_down_eos_status=DEGRADED
+postgres_down_postgresql=DOWN
+=== 2.14 invalid OTLP ===
+invalid_otlp_exit=0
+restored_phoenix=HEALTHY
+restored_postgresql=HEALTHY
+GATE_2_12_2_14_PASS

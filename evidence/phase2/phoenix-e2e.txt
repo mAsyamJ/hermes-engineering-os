@@ -1,0 +1,17 @@
+container 662f8d185b284103df7913489425f203acebe34f2dab0f0dc1f1ae5848a236e8
+{
+  "session_id": "e2e-phase2-1787845922",
+  "span_count": 4,
+  "span_names": [
+    "tool.bash",
+    "api.gpt-4",
+    "llm.gpt-4",
+    "agent"
+  ],
+  "trace_ids": [
+    "62497f4a37826c88dc8433799c4cbe2d"
+  ],
+  "tool_parent": "49c057eece75fa2b"
+}
+GATE_2_4_PASS
+ephemeral phoenix removed

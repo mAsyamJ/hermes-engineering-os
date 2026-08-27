@@ -1,0 +1,3 @@
+CREATE DATABASE
+restored_user_tables=65
+PASS: isolated restore validation (live DB untouched)

@@ -36,6 +36,15 @@ class BackendTests(unittest.TestCase):
         value = self.api.observability()
         self.assertTrue(value["fail_open"])
         self.assertIn(value["status"], {"AVAILABLE", "DEGRADED"})
+        self.assertIn(value["phoenix"], {"HEALTHY", "DEGRADED", "DOWN"})
+        self.assertIn(value["postgresql"], {"HEALTHY", "DOWN"})
+
+    def test_observability_subroutes_are_get_only(self) -> None:
+        paths = {route.path for route in self.api.router.routes if hasattr(route, "methods")}
+        self.assertIn("/observability/health", paths)
+        self.assertIn("/observability/traces", paths)
+        self.assertIn("/observability/tasks/{task_id}", paths)
+        self.assertIn("/observability/runs/{run_id}", paths)
 
 
 if __name__ == "__main__":
