@@ -1,0 +1,26 @@
+{
+  "repositories": [
+    {
+      "id": "retropick",
+      "label": "RetroPick",
+      "path": "/opt/retropick",
+      "github": "RetroPick/monorepo-base",
+      "mode": "read-only-production"
+    },
+    {
+      "id": "retropick-android",
+      "label": "RetroPick Android",
+      "path": "/opt/retropick-android",
+      "github": "RetroPick/RetroPick-Android",
+      "mode": "read-only-production"
+    },
+    {
+      "id": "fixture",
+      "label": "Disposable Phase 1 Fixture",
+      "path": "/opt/hermes-engineering-os/.runtime/fixture-repo",
+      "github": null,
+      "mode": "disposable-fixture"
+    }
+  ]
+}
+
