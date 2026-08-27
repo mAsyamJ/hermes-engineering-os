@@ -15,7 +15,7 @@ mapped = set(re.findall(r"local_path: `([^`]+)`", text))
 actual = {
     str(path.relative_to(root))
     for path in (root / "vendor").rglob("*")
-    if path.is_file()
+    if path.is_file() and "__pycache__" not in path.parts and path.suffix != ".pyc"
 }
 missing = sorted(actual - mapped)
 stale = sorted(path for path in mapped if path.startswith("vendor/") and path not in actual)
