@@ -1,0 +1,15 @@
+upstream/
+.runtime/
+.cache/
+node_modules/
+dashboard/node_modules/
+dashboard/test-results/
+dashboard/playwright-report/
+__pycache__/
+*.py[cod]
+*.sqlite-wal
+*.sqlite-shm
+.env
+.env.*
+!.env.example
+

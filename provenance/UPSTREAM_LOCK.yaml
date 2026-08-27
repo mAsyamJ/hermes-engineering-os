@@ -1,0 +1,44 @@
+schema_version: 1
+retrieved_at: "2026-08-27T13:48:36Z"
+repositories:
+  - repository: NousResearch/hermes-example-plugins
+    url: https://github.com/NousResearch/hermes-example-plugins.git
+    default_branch: main
+    commit: 38fe0fb53eff98d477f807432e965429e665ca33
+    license: MIT
+    license_sha256: 5f79d321c17de8ef6e5f34967dc5b484afebeeefd87180890d9741941f6b815f
+    checkout_bytes: 110946
+    disposition: vendor_selected_examples
+  - repository: briancaffey/hermes-otel
+    url: https://github.com/briancaffey/hermes-otel.git
+    default_branch: main
+    commit: c76bea8434e6cc8b51c835bb57c514a5eb71e857
+    license: Apache-2.0
+    license_sha256: 43e9d7fc433a06ad130162fa77c108088fb04369a651a386eb2ff2b0cf85817f
+    checkout_bytes: 5656873
+    disposition: compare_existing_installation
+  - repository: DanWahlin/ai-agent-board
+    url: https://github.com/DanWahlin/ai-agent-board.git
+    default_branch: main
+    commit: 4f2965e72ad99e32e0375af837247cafb382f17c
+    license: MIT
+    license_sha256: e0d02de8fdef326696c5b24553f928a0693ae0befed2b8a10a42cf7a818354ef
+    checkout_bytes: 4098489
+    disposition: vendor_selected_pure_logic
+  - repository: dip497/hivemind
+    url: https://github.com/dip497/hivemind.git
+    default_branch: main
+    commit: f4209b905c54342073822409f1da1a9f56da4981
+    license: MIT
+    license_sha256: b43301b58b201527053021ba1f733d1ee1988d48c9551818ac43c7fdba5a0957
+    checkout_bytes: 5400802
+    disposition: vendor_selected_pure_logic
+  - repository: saltbo/agent-kanban
+    url: https://github.com/saltbo/agent-kanban.git
+    default_branch: main
+    commit: 82c082c5e3fcab75d33523e5b2b67df3716afc4a
+    license: FSL-1.1-ALv2
+    license_sha256: 7e8b01f7e1f09f4d61f3e77bc4430d70126a4d4468995fe151f9fa27f015f223
+    checkout_bytes: 7475565
+    disposition: design_only_no_source_adoption
+

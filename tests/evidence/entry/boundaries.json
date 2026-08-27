@@ -1,0 +1,47 @@
+{
+  "captured_at": "2026-08-27T13:41:00Z",
+  "phase0_backup": {
+    "path": "/var/backups/hermes-engineering-os/20260827T120255Z",
+    "checksum_result": "PASS"
+  },
+  "storage": {
+    "root_total_bytes": 76887154688,
+    "root_used_bytes": 48078381056,
+    "root_available_bytes": 28791996416,
+    "root_percent_used": 63
+  },
+  "hermes": {
+    "version": "0.20.0 (2026.8.3)",
+    "source_head": "c0106e50e7ecedb3ce34e785d949725dc4e0e457",
+    "source_status": "main...origin/main [ahead 1, behind 1]; M package-lock.json",
+    "enabled_user_plugins": ["hermes_otel", "superpowers"]
+  },
+  "services": {
+    "hermes-dashboard.service": {"pid": 732180, "state": "active"},
+    "hermes-gateway.service": {"pid": 2381797, "state": "active"},
+    "hermes-gateway-rp-friend.service": {"pid": 924, "state": "active"}
+  },
+  "production_git": {
+    "/opt/retropick": {
+      "head": "a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+      "porcelain_count": 8,
+      "porcelain_sha256": "87c5f6843c8a77227208dc77e15efe700a2c850bd283db57f4b5bcfdcb5b0f6e"
+    },
+    "/opt/retropick-android": {
+      "head": "e962490dab3ac1072d9ee6371eb1077c0a05c0ac",
+      "porcelain_count": 39,
+      "porcelain_sha256": "3fe4d8bd2555c1441af7e95779f369be4d50786657bb9c49d8e3db3856cbfb8e"
+    }
+  },
+  "docker": {
+    "total_containers": 9,
+    "running_containers": 7,
+    "pre_existing_unhealthy": ["retropick-markets-rehearsal-markets-api-1"]
+  },
+  "github": {
+    "ssh": "AUTHENTICATED",
+    "ssh_account": "mAsyamJ",
+    "api": "BLOCKED_AUTH"
+  }
+}
+
