@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "name": "plugin-llm-example",
+      "import": "PASS",
+      "register": "PASS",
+      "hooks": [],
+      "commands": [
+        "receipt-extract"
+      ],
+      "skills": 0
+    },
+    {
+      "name": "plugin-llm-async-example",
+      "import": "PASS",
+      "register": "PASS",
+      "hooks": [],
+      "commands": [
+        "translate"
+      ],
+      "skills": 0
+    },
+    {
+      "name": "superpowers",
+      "import": "PASS",
+      "register": "PASS",
+      "hooks": [
+        "pre_llm_call"
+      ],
+      "commands": [],
+      "skills": 14
+    },
+    {
+      "name": "engineering-os",
+      "import": "PASS",
+      "register": "PASS",
+      "hooks": [],
+      "commands": [],
+      "skills": 0
+    },
+    {
+      "name": "hermes_otel",
+      "import": "PASS",
+      "register": "PASS",
+      "hooks": [],
+      "commands": [],
+      "skills": 0,
+      "runtime": "VERIFIED_EXTERNAL_DEP",
+      "reason": "OpenTelemetry packages intentionally absent in Phase 1"
+    }
+  ]
+}
