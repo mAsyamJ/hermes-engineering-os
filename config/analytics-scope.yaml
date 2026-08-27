@@ -1,0 +1,25 @@
+# Derived analytics cohort. Not Hermes lifecycle configuration.
+ruleset_version: phase3-v1
+included_boards:
+  - retropick-markets-release
+excluded_boards:
+  - eos-phase2-obs
+  - default
+excluded_workspace_prefixes:
+  - /opt/hermes-engineering-os/.runtime/
+excluded_task_ids:
+  - t_phase2obs
+canary_boards:
+  - eos-phase2-obs
+canary_task_ids:
+  - t_d1c34420
+  - t_ce5ca4b3
+  - t_d4cab17a
+batch_size: 10
+production_repository_ids:
+  - retropick
+  - retropick-android
+disposable_repository_ids:
+  - fixture
+refresh_interval_seconds: 300
+advisory_lock_key: 320260827
