@@ -62,3 +62,55 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+  analytics-api:
+    build:
+      context: ../..
+      dockerfile: deploy/observability/analytics.Dockerfile
+    image: hermes-eos-analytics:phase3
+    container_name: hermes-eos-analytics-api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ANALYTICS_DATABASE_URL: postgresql://hermes_engineering_reader:${HERMES_ENGINEERING_READER_PASSWORD}@postgres:5432/hermes_engineering
+      PHOENIX_BASE: http://phoenix:6006
+    volumes:
+      - ../..:/app:ro
+    ports:
+      - "127.0.0.1:9120:9120"
+    networks:
+      - observability
+    command: ["python", "-m", "engineering_os.analytics.api"]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  analytics-materialize:
+    image: hermes-eos-analytics:phase3
+    profiles: ["materialize"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ANALYTICS_DATABASE_URL: postgresql://hermes_engineering_writer:${HERMES_ENGINEERING_WRITER_PASSWORD}@postgres:5432/hermes_engineering
+      ANALYTICS_MIGRATE_DSN: postgresql://hermes_engineering:${HERMES_ENGINEERING_DB_PASSWORD}@postgres:5432/hermes_engineering
+      PHOENIX_BASE: http://phoenix:6006
+      HERMES_HOME: /hermes-home
+    volumes:
+      - ../..:/app:ro
+      - /home/ubuntu/.hermes:/hermes-home:ro
+      - /opt/retropick:/opt/retropick:ro
+      - /opt/retropick-android:/opt/retropick-android:ro
+    networks:
+      - observability
+    entrypoint: ["python", "-m", "engineering_os.analytics.materialize"]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
