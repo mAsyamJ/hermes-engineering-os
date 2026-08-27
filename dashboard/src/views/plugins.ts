@@ -13,7 +13,7 @@ export function PluginsView({ data }: { data: Record<string, unknown> }): unknow
           columns: [
             { key: "name", label: "Plugin" },
             { key: "version", label: "Version" },
-            { key: "enabled", label: "Enabled" },
+            { key: "status", label: "Status" },
             { key: "dashboard_manifest", label: "Dashboard" },
             { key: "is_symlink", label: "Symlink" },
           ],

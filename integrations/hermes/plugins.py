@@ -13,8 +13,12 @@ PLUGIN_ROOT = Path.home() / ".hermes/plugins"
 
 def _manifest_state(plugin: dict[str, Any]) -> dict[str, Any]:
     raw_path = plugin.get("path")
+    if not raw_path and isinstance(plugin.get("name"), str):
+        candidate = PLUGIN_ROOT / plugin["name"]
+        if candidate.exists():
+            raw_path = str(candidate)
     if not raw_path:
-        return {}
+        return {"dashboard_manifest": False}
     path = Path(str(raw_path)).resolve(strict=False)
     dashboard = path / "dashboard/manifest.json"
     state: dict[str, Any] = {
