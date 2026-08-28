@@ -1,0 +1,47 @@
+profile_id: retropick
+profile_version: "1"
+repository_id: retropick
+contract_version: phase4-eval-v1
+status: BLOCKED_RESOURCE
+# Commands below are copied from /opt/retropick package.json and ci.yml.
+# They are not executed in Phase 4: no GOPROXY, no pnpm store, no production
+# Postgres, no Playwright, no in-place /opt/retropick mutation.
+sandbox:
+  image: hermes-eos-analytics:phase3
+  network: none
+  timeout_seconds: 60
+baseline:
+  strategy: merge_base_default_branch
+commands:
+  build:
+    - go
+    - -C
+    - apps/backend
+    - build
+    - ./...
+  tests:
+    - go
+    - -C
+    - apps/backend
+    - test
+    - ./...
+  lint:
+    - pnpm
+    - lint
+  typecheck:
+    - pnpm
+    - typecheck
+blocked_evaluators:
+  repo.build: BLOCKED_RESOURCE
+  repo.tests: BLOCKED_ENVIRONMENT
+  repo.lint: BLOCKED_RESOURCE
+  repo.typecheck: BLOCKED_RESOURCE
+policies:
+  forbidden_paths:
+    - .env
+    - node_modules/
+network: none
+notes:
+  - "Authoritative CI: pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  - "go -C apps/backend test ./... requires modules/network or vendor"
+  - "migration tests require disposable Postgres, never production"

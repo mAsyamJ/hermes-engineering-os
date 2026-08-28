@@ -1,0 +1,25 @@
+profile_id: retropick-android
+profile_version: "1"
+repository_id: retropick-android
+contract_version: phase4-eval-v1
+status: BLOCKED_RESOURCE
+sandbox:
+  image: hermes-eos-analytics:phase3
+  network: none
+commands:
+  lint:
+    - npm
+    - run
+    - lint
+blocked_evaluators:
+  repo.build: BLOCKED_RESOURCE
+  repo.tests: BLOCKED_RESOURCE
+  repo.lint: BLOCKED_RESOURCE
+  repo.typecheck: BLOCKED_RESOURCE
+policies:
+  forbidden_paths:
+    - .env
+network: none
+notes:
+  - "package.json: eslint . / next build; android/ Gradle 8.13"
+  - "No CI workflows in the Android repository"

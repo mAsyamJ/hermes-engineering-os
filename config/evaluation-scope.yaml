@@ -1,0 +1,17 @@
+# Derived evaluation cohort. Not Hermes lifecycle configuration.
+ruleset_version: phase4-eval-v1
+included_boards:
+  - retropick-markets-release
+excluded_boards:
+  - eos-phase2-obs
+  - default
+excluded_workspace_prefixes:
+  - /opt/hermes-engineering-os/.runtime/
+production_repository_ids:
+  - retropick
+  - retropick-android
+disposable_repository_ids:
+  - fixture
+never_score_historical_without_commit_sha: true
+advisory_lock_key: 420260827
+refresh_interval_seconds: 300

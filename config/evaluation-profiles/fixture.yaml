@@ -1,0 +1,48 @@
+profile_id: fixture
+profile_version: "1"
+repository_id: fixture
+contract_version: phase4-eval-v1
+status: SUPPORTED
+sandbox:
+  image: hermes-eos-analytics:phase3
+  image_id: sha256:6a01af80fa2d7147f5857dfe93ac2fd347fb091a6de051d2f5c689e768392702
+  network: none
+  user: "65534:65534"
+  memory: 512m
+  cpus: "1"
+  pids: 128
+  timeout_seconds: 60
+  read_only: true
+baseline:
+  strategy: parent_commit
+commands:
+  build:
+    - python3
+    - -m
+    - compileall
+    - -q
+    - src
+  tests:
+    - python3
+    - -m
+    - unittest
+    - discover
+    - -s
+    - tests
+    - -q
+  lint:
+    - python3
+    - scripts/lint.py
+  typecheck:
+    - python3
+    - scripts/typecheck.py
+policies:
+  forbidden_import_prefixes:
+    - forbidden_layer
+  forbidden_paths:
+    - vendor/
+    - .env
+  secret_path_globs:
+    - ".env"
+    - "*.pem"
+network: none
