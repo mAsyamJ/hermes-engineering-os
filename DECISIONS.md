@@ -34,7 +34,16 @@
   operator-approved gateway restart is required.
 - Interactive terminals, diff rendering, canvas editing, and lifecycle
   controls are deliberately excluded.
-- Phase 4 structured evaluation (deterministic evaluators, optional LLM judges).
+- Phase 4 structured evaluation (`phase4-eval-v1`): derived, sandboxed,
+  quality vectors, no live LLM judge, no model ranking.
+
+## Evaluation connectivity (Phase 4)
+
+- Same `hermes_engineering` database. Migration `0002_evaluation`.
+- Controller: compose profile `evaluate` (`evaluation-engine`).
+- Candidate containers: network none, no docker.sock, no host secrets.
+- Timer `hermes-eos-evaluate.timer` (advisory lock `420260827`).
+- Historical production without artifacts remains INSUFFICIENT_EVIDENCE.
 
 ## Analytics connectivity (Phase 3)
 

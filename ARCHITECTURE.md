@@ -70,4 +70,6 @@ and Analytics views plus a read-only footer slot.
   skill spans.
 - Plugin analytics routes stay GET-only and proxy the sidecar; sidecar outage
   returns DEGRADED without failing Hermes `/health`.
+- Evaluation (Phase 4) is another derived layer on `hermes_engineering`.
+  Candidate execution is sandboxed. Fail-open. No canonical quality score.
 
