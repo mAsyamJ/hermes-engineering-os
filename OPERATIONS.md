@@ -12,8 +12,8 @@
 | Observability PostgreSQL | none on host | `hermes-eos-postgres` |
 
 Phase 2 added the isolated `hermes-eos-*` containers, network, and volume.
-Phase 3 adds the analytics sidecar on the same network and a systemd user
-timer for derived materialization only.
+Phase 4 adds sandboxed evaluation on the same unpublished Postgres, a GET-only
+`/evaluations*` API, and `hermes-eos-evaluate.timer`.
 
 ## Health
 

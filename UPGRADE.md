@@ -21,7 +21,8 @@ Phase 2 OTel packages are pinned in `requirements/hermes-otel.constraints.txt`
 (OpenTelemetry 1.44.0, compatible with production `protobuf==7.35.1`). Do not
 install hermes-otel lockfile 1.41.0 into the Hermes venv.
 
-Future analytics must keep using the dedicated `hermes_engineering` database on
+Future evaluation must keep using the dedicated `hermes_engineering` database on
 the observability Postgres; never reuse RetroPick databases. Do not upgrade
-Phoenix merely to add analytics features.
+Phoenix merely to add evaluation features. Do not pull unbounded evaluation
+images; keep root free ≥20 GiB.
 
