@@ -114,3 +114,32 @@ services:
         max-size: "10m"
         max-file: "3"
 
+  evaluation-engine:
+    image: hermes-eos-analytics:phase3
+    profiles: ["evaluate"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ANALYTICS_DATABASE_URL: postgresql://hermes_engineering_writer:${HERMES_ENGINEERING_WRITER_PASSWORD}@postgres:5432/hermes_engineering
+      ANALYTICS_MIGRATE_DSN: postgresql://hermes_engineering:${HERMES_ENGINEERING_DB_PASSWORD}@postgres:5432/hermes_engineering
+      PHOENIX_BASE: http://phoenix:6006
+      HERMES_HOME: /hermes-home
+      EOS_EVAL_SANDBOX: docker
+    volumes:
+      - ../..:/app:ro
+      - /home/ubuntu/.hermes:/hermes-home:ro
+      - /opt/retropick:/opt/retropick:ro
+      - /opt/retropick-android:/opt/retropick-android:ro
+      - /var/lib/hermes-engineering-os/evaluation-artifacts:/var/lib/hermes-engineering-os/evaluation-artifacts
+      - /usr/bin/docker:/usr/bin/docker:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - observability
+    entrypoint: ["python"]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
