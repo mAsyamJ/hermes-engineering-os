@@ -1,0 +1,140 @@
+{
+  "captured_at": "20260828T035657Z",
+  "eos_head": "9a34f481bcd73b2a275f02cd535510b205b76cbd",
+  "eos_subject": "docs: publish Phase 4 implementation report",
+  "eos_author": "mAsyamJ <jayanegara.asyam@gmail.com>",
+  "origin_main": "9a34f481bcd73b2a275f02cd535510b205b76cbd",
+  "local_eq_origin": true,
+  "ahead": "",
+  "behind": "",
+  "eos_porcelain": [],
+  "eos_branch": "## main...origin/main",
+  "eos_remotes": [
+    "origin\tgit@github.com:mAsyamJ/hermes-engineering-os.git (fetch)",
+    "origin\tgit@github.com:mAsyamJ/hermes-engineering-os.git (push)"
+  ],
+  "disk": {
+    "free_gib": 22.7,
+    "used_pct": 68.3
+  },
+  "retropick": {
+    "head": "a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+    "porcelain_count": 8,
+    "ok": true
+  },
+  "android": {
+    "head": "e962490dab3ac1072d9ee6371eb1077c0a05c0ac",
+    "porcelain_count": 39,
+    "ok": true
+  },
+  "services": {
+    "hermes-gateway.service": {
+      "MainPID": "2381797",
+      "Id": "hermes-gateway.service",
+      "ActiveState": "active"
+    },
+    "hermes-gateway-rp-friend.service": {
+      "MainPID": "924",
+      "Id": "hermes-gateway-rp-friend.service",
+      "ActiveState": "active"
+    },
+    "hermes-dashboard.service": {
+      "MainPID": "622315",
+      "Id": "hermes-dashboard.service",
+      "ActiveState": "active"
+    }
+  },
+  "timers": {
+    "analytics": {
+      "NextElapseUSecRealtime": "",
+      "LastTriggerUSec": "Fri 2026-08-28 03:52:20 UTC",
+      "ActiveState": "active"
+    },
+    "evaluate": {
+      "NextElapseUSecRealtime": "",
+      "LastTriggerUSec": "Fri 2026-08-28 03:54:17 UTC",
+      "ActiveState": "active"
+    }
+  },
+  "analytics_health": {
+    "status_code": 200,
+    "json": {
+      "status": "AVAILABLE",
+      "source": "analytics",
+      "mode": "read-only",
+      "last_materialization": {
+        "materialization_id": "c2257324-0807-4af4-ae0f-82f37c585fba",
+        "ended_at": "2026-08-28 03:52:42.986256+00:00",
+        "status": "success",
+        "tasks_scanned": 101,
+        "tasks_changed": 0,
+        "errors": 0
+      },
+      "task_outcomes": 103
+    }
+  },
+  "analytics_coverage": {
+    "status_code": 200,
+    "json": {
+      "status": "PASS",
+      "coverage": {
+        "eligible_production": 101,
+        "materialized": 103,
+        "excluded_or_fixture": 2,
+        "with_trace_metrics": 0,
+        "with_git": 0,
+        "with_github": 0,
+        "github_blocked_auth": 21,
+        "with_objective_verification": 0,
+        "unknown_first_pass": 10,
+        "unknown_intervention": 42,
+        "verified_success": 0,
+        "completed_unverified": 78,
+        "verified_failure": 0,
+        "incomplete": 23,
+        "unknown_outcome": 0
+      },
+      "violations": []
+    }
+  },
+  "evaluations_health": {
+    "status_code": 200,
+    "json": {
+      "status": "AVAILABLE",
+      "source": "evaluation",
+      "mode": "read-only",
+      "contract_version": "phase4-eval-v1",
+      "last_evaluation": {
+        "evaluation_run_id": "6443f5ba-ce0b-4a8b-8788-02e32c0851c8",
+        "ended_at": "2026-08-28 03:34:05.648034+00:00",
+        "execution_status": "COMPLETE",
+        "eligibility": "TEST_ELIGIBLE"
+      },
+      "evaluation_runs": 112,
+      "canonical_store": "hermes_engineering"
+    }
+  },
+  "evaluations_coverage": {
+    "status_code": 200,
+    "json": {
+      "status": "PASS",
+      "coverage": {
+        "production_tasks_seen": 101,
+        "eligible": 0,
+        "evaluated": 0,
+        "insufficient_evidence": 103,
+        "unsupported": 0,
+        "verified_pass": 0,
+        "verified_fail": 3,
+        "partial": 4,
+        "error": 0
+      },
+      "violations": []
+    }
+  },
+  "phoenix_healthz": {
+    "status_code": 200,
+    "body": "OK"
+  },
+  "plugin_link": "/opt/hermes-engineering-os"
+}
