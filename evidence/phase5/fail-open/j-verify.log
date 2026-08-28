@@ -1,0 +1,16 @@
+=== schema ===
+0001_init
+0002_evaluation
+0003_performance
+=== performance quality ===
+{"status": "PASS", "violations": [], "coverage": {"production_tasks": 101, "current_aggregates": 275, "current_comparisons": 88, "quality_insufficient_rows": 104, "lifecycle_present": 1}, "contract_version": "phase5-perf-v1"}
+=== reader cannot write performance ===
+PASS: reader cannot write performance
+=== writer cannot connect phoenix ===
+PASS: writer cannot connect phoenix
+phoenix_user_tables=65
+=== fixture leakage ===
+PASS: no canary dimension in production aggregates
+=== quality not zero-rate with n=0 ===
+PASS: zero quality coverage is not a 0% rate
+PASS: verify-performance-data
