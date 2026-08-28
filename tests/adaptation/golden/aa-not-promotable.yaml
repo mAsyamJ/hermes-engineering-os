@@ -1,0 +1,6 @@
+case: aa-not-promotable
+source: phase6
+experiment_id: fixture-aa-v1
+conclusion: NO_CLEAR_EFFECT
+expected_classification: NOT_PROMOTABLE
+production_promotable: false

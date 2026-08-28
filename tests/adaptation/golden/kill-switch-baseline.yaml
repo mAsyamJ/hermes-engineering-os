@@ -1,0 +1,6 @@
+case: kill-switch-baseline
+kill_switch: true
+board: eos-phase6-exp
+task_class: fixture
+expected_resolution: BASELINE
+expected_reason: GLOBAL_KILL_SWITCH

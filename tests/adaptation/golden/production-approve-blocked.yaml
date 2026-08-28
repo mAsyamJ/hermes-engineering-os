@@ -1,0 +1,4 @@
+case: production-approve-blocked
+command: adapt approve
+expected_status: BLOCKED_APPROVAL_BOUNDARY
+granted: false

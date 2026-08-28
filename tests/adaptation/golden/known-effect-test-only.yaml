@@ -1,0 +1,10 @@
+case: known-effect-test-only
+source: phase6
+experiment_id: fixture-known-effect-v1
+conclusion: EVIDENCE_FOR_CANDIDATE
+expected_classification: TEST_ONLY
+expected_state: EVIDENCE_VALIDATED
+production_promotable: false
+auto_promote: false
+active_policy: false
+fixture_validation_only: true

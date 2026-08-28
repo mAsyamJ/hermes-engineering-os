@@ -1,0 +1,8 @@
+case: bad-canary-unhealthy
+guardrail_id: phase4.quality_vector.tests
+fail_on: FAIL
+critical: true
+candidate_outcome: FAIL
+expected_auto_disable: true
+expected_auto_promote: false
+expected_health: CANARY_UNHEALTHY

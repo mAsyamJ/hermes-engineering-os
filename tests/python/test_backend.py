@@ -54,6 +54,10 @@ class BackendTests(unittest.TestCase):
         self.assertIn("/experiments", paths)
         self.assertIn("/experiments/health", paths)
         self.assertIn("/experiments/{experiment_id}/explain", paths)
+        self.assertIn("/adaptation", paths)
+        self.assertIn("/adaptation/health", paths)
+        self.assertIn("/adaptation/readiness", paths)
+        self.assertIn("/adaptation/explain/{object_id}", paths)
 
 
 if __name__ == "__main__":

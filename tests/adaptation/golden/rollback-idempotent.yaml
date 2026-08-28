@@ -1,0 +1,5 @@
+case: rollback-idempotent
+interrupt_running: false
+expected_idempotent: true
+expected_already_baseline: true
+expected_future_resolution: BASELINE

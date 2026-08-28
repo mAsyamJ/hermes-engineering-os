@@ -1,0 +1,8 @@
+case: conflict-baseline
+policies:
+  - fixture-conflict-a-v1
+  - fixture-conflict-b-v1
+board: eos-phase6-exp
+task_class: fixture
+expected_result: CONFLICT
+expected_resolution: BASELINE
