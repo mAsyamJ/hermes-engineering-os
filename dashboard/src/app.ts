@@ -3,6 +3,7 @@ import { ErrorState } from "./components/status";
 import { h, sdk } from "./sdk";
 import type { ViewId } from "./types";
 import { AnalyticsView } from "./views/analytics";
+import { EvaluationsView } from "./views/evaluations";
 import { AgentsView } from "./views/agents";
 import { GitHubView } from "./views/github";
 import { ObservabilityView } from "./views/observability";
@@ -22,6 +23,7 @@ const VIEWS: Array<{ id: ViewId; label: string }> = [
   { id: "workspaces", label: "Workspaces" },
   { id: "observability", label: "Observability" },
   { id: "analytics", label: "Analytics" },
+  { id: "evaluations", label: "Evaluations" },
 ];
 
 export function EngineeringOSPage(): unknown {
@@ -61,7 +63,7 @@ export function EngineeringOSPage(): unknown {
         h(
           "p",
           { className: "eos-subtitle" },
-          "Live runtime, canonical Kanban, workspace, Git, GitHub, observability, and derived outcomes. Read-only by design.",
+          "Live runtime, canonical Kanban, workspace, Git, GitHub, observability, derived outcomes, and deterministic evaluations. Read-only by design.",
         ),
       ),
       h("span", { className: "eos-readonly" }, "READ ONLY"),
@@ -106,6 +108,7 @@ function renderView(view: ViewId, data: unknown): unknown {
     case "workspaces": return WorkspacesView({ data: object });
     case "observability": return ObservabilityView({ data: object });
     case "analytics": return h(AnalyticsView, { data: object });
+    case "evaluations": return h(EvaluationsView, { data: object });
   }
 }
 
