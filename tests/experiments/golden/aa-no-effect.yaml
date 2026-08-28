@@ -1,0 +1,6 @@
+case: aa-no-effect
+control_successes: 8
+candidate_successes: 8
+n: 8
+expected_conclusion: NO_CLEAR_EFFECT
+forbidden_conclusion: EVIDENCE_FOR_CANDIDATE

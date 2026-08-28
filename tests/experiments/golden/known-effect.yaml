@@ -1,0 +1,6 @@
+case: wilson-paired-known-effect
+control_successes: 0
+candidate_successes: 8
+n: 8
+expected_conclusion: EVIDENCE_FOR_CANDIDATE
+fixture_validation_only: true

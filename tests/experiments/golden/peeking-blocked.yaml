@@ -1,0 +1,4 @@
+case: peeking-blocked
+planned_n: 8
+collected_pairs: 1
+expected: BLOCKED_HORIZON
