@@ -1,0 +1,137 @@
+{
+  "captured_at": "20260827T234925Z",
+  "eos_head": "fc232b04c3636403f8bfdf5ee4ef1b07b9160619",
+  "eos_author": "mAsyamJ <jayanegara.asyam@gmail.com>\ndocs: publish Phase 3 implementation report",
+  "eos_porcelain": [],
+  "eos_branch": "## main...origin/main",
+  "eos_remotes": [
+    "origin\tgit@github.com:mAsyamJ/hermes-engineering-os.git (fetch)",
+    "origin\tgit@github.com:mAsyamJ/hermes-engineering-os.git (push)"
+  ],
+  "retropick": {
+    "head": "a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+    "porcelain_count": 8
+  },
+  "android": {
+    "head": "e962490dab3ac1072d9ee6371eb1077c0a05c0ac",
+    "porcelain_count": 39
+  },
+  "disk": {
+    "free_gib": 22.81,
+    "used_pct": 68.1
+  },
+  "services": {
+    "hermes-gateway.service": {
+      "MainPID": "2381797",
+      "Id": "hermes-gateway.service",
+      "ActiveState": "active"
+    },
+    "hermes-gateway-rp-friend.service": {
+      "MainPID": "924",
+      "Id": "hermes-gateway-rp-friend.service",
+      "ActiveState": "active"
+    },
+    "hermes-dashboard.service": {
+      "MainPID": "475347",
+      "Id": "hermes-dashboard.service",
+      "ActiveState": "active"
+    }
+  },
+  "analytics_timer": {
+    "NextElapseUSecRealtime": "",
+    "LastTriggerUSec": "Thu 2026-08-27 23:46:17 UTC",
+    "ActiveState": "active"
+  },
+  "analytics_service": {
+    "Result": "success",
+    "ExecMainExitTimestamp": "Thu 2026-08-27 23:46:40 UTC",
+    "ExecMainStatus": "0",
+    "ActiveState": "inactive"
+  },
+  "analytics_health": {
+    "status_code": 200,
+    "json": {
+      "status": "AVAILABLE",
+      "source": "analytics",
+      "mode": "read-only",
+      "last_materialization": {
+        "materialization_id": "e9fffb3c-c448-44dd-9c62-988dd591a89c",
+        "ended_at": "2026-08-27 23:46:39.963932+00:00",
+        "status": "success",
+        "tasks_scanned": 101,
+        "tasks_changed": 0,
+        "errors": 0
+      },
+      "task_outcomes": 103
+    }
+  },
+  "analytics_coverage": {
+    "status_code": 200,
+    "json": {
+      "status": "PASS",
+      "coverage": {
+        "eligible_production": 101,
+        "materialized": 103,
+        "excluded_or_fixture": 2,
+        "with_trace_metrics": 0,
+        "with_git": 0,
+        "with_github": 0,
+        "github_blocked_auth": 21,
+        "with_objective_verification": 0,
+        "unknown_first_pass": 10,
+        "unknown_intervention": 42,
+        "verified_success": 0,
+        "completed_unverified": 78,
+        "verified_failure": 0,
+        "incomplete": 23,
+        "unknown_outcome": 0
+      },
+      "violations": []
+    }
+  },
+  "phoenix_healthz": {
+    "status_code": 200,
+    "text": "OK"
+  },
+  "analytics_post": "405",
+  "kanban": {
+    "status": [
+      [
+        "blocked",
+        5
+      ],
+      [
+        "done",
+        78
+      ],
+      [
+        "todo",
+        17
+      ],
+      [
+        "triage",
+        1
+      ]
+    ],
+    "tasks": 101,
+    "runs": 122,
+    "running": 0
+  },
+  "docker_ps": [
+    "hermes-eos-analytics-api\thermes-eos-analytics:phase3\tUp 46 minutes\t127.0.0.1:9120->9120/tcp",
+    "hermes-eos-phoenix\tarizephoenix/phoenix:version-20.4.0\tUp 7 hours\t4317/tcp, 9090/tcp, 127.0.0.1:6006->6006/tcp",
+    "hermes-eos-postgres\tpostgres:16.15\tUp 7 hours (healthy)\t5432/tcp",
+    "retropick-markets-rehearsal-caddy-1\tcaddy:2\tUp 13 days (healthy)\t80/tcp, 2019/tcp, 443/udp, 127.0.0.1:8443->443/tcp",
+    "retropick-markets-rehearsal-markets-web-1\tretropick-markets-rehearsal-web:a8edf7dd3e7195aea6f1c826fcf2199ead525162\tUp 13 days (healthy)\t127.0.0.1:3002->3001/tcp",
+    "retropick-markets-rehearsal-markets-api-1\tretropick-markets-rehearsal-backend:a8edf7dd3e7195aea6f1c826fcf2199ead525162\tUp 13 days (unhealthy)\t127.0.0.1:8081->8080/tcp",
+    "retropick-markets-rehearsal-postgres-1\tpostgres:16\tUp 13 days (healthy)\t127.0.0.1:5434->5432/tcp",
+    "retropick-markets-web\tretropick-markets-dev-markets-web\tUp 13 days (healthy)\t127.0.0.1:3001->3001/tcp",
+    "retropick-markets-api\tretropick-markets-dev-backend\tUp 13 days (healthy)\t127.0.0.1:8080->8080/tcp",
+    "retropick-markets-postgres\tpostgres:16\tUp 13 days (healthy)\t127.0.0.1:5433->5432/tcp"
+  ],
+  "he_tables": "13",
+  "phoenix_tables": "65",
+  "postgres_ports": "{\"5432/tcp\":null}",
+  "plugin_link": "/opt/hermes-engineering-os",
+  "plugins_raw": "[\n  {\n    \"name\": \"engineering-os\",\n    \"status\": \"enabled\",\n    \"version\": \"1.0.0\",\n    \"description\": \"Read-only Engineering OS evidence dashboard for Hermes\",\n    \"source\": \"git\"\n  },\n  {\n    \"name\": \"hermes_otel\",\n    \"status\": \"enabled\",\n    \"version\": \"1.0\",\n    \"description\": \"OpenTelemetry integration - automatically export traces to OTLP endpoints (Phoenix, Langfuse, LangSmith, etc.)\",\n    \"source\": \"user\"\n  },\n  {\n    \"name\": \"superpowers\",\n    \"status\": \"enabled\",\n    \"version\": \"6.3.0\",\n    \"description\": \"Superpowers skills and workflow bootstrap for Hermes Agent\",\n    \"source\": \"user\"\n  }\n]"
+}
