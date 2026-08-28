@@ -29,3 +29,7 @@ images; keep root free ≥20 GiB.
 Phase 5 performance intelligence stays on the same unpublished
 `hermes_engineering` database. Do not add SciPy merely for Wilson intervals.
 
+Phase 6 experiment statistics reuse the same stdlib Wilson helpers. Do not
+add SciPy. Do not enable production experiment scope or paid LLM execution
+to “pass” Phase 6.
+

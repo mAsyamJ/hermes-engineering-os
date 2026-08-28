@@ -15,7 +15,9 @@ Phase 2 added the isolated `hermes-eos-*` containers, network, and volume.
 Phase 4 adds sandboxed evaluation on the same unpublished Postgres, a GET-only
 `/evaluations*` API, and `hermes-eos-evaluate.timer`. Phase 5 adds observational
 performance intelligence (`phase5-perf-v1`), GET-only `/performance*`, and
-`hermes-eos-performance.timer`.
+`hermes-eos-performance.timer`. Phase 6 adds controlled experiments
+(`phase6-exp-v1`), GET-only `/experiments*`, and
+`hermes-eos-experiments.timer`.
 
 ## Health
 

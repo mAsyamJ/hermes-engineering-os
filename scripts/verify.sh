@@ -35,7 +35,7 @@ PYTHONPATH="$ROOT${PYTHONPATH:+:$PYTHONPATH}" PYTHONDONTWRITEBYTECODE=1 "$HERMES
     npx playwright test browser/live.spec.cjs
 )
 
-for view in health overview tasks runs agents plugins github workspaces observability analytics evaluations performance; do
+for view in health overview tasks runs agents plugins github workspaces observability analytics evaluations performance experiments; do
   "$ROOT/scripts/dashboard-request.py" \
     "/api/plugins/engineering-os/$view" \
     --expect-status 200 \
@@ -106,5 +106,6 @@ if rg -n \
   exit 1
 fi
 echo "PASS: no secret-like values in shipped output or evidence"
-echo "PASS: Phase 5 verification complete"
+"$ROOT/scripts/verify-experiment-data.sh"
+echo "PASS: Phase 6 verification complete"
 

@@ -32,7 +32,7 @@ phase5-perf-v1 materializer (Docker oneshot, writer role)
 hermes_engineering (derived; same unpublished Postgres)
         │
         ▼
-analytics sidecar :9120 (reader role) ─> Analytics / Evaluations / Performance UI
+analytics sidecar :9120 (reader role) ─> Analytics / Evaluations / Performance / Experiments UI
 ```
 
 ## Authority boundaries
@@ -58,7 +58,7 @@ analytics sidecar :9120 (reader role) ─> Analytics / Evaluations / Performance
 `dashboard/dist/index.js` is a classic IIFE using the host's
 `window.__HERMES_PLUGIN_SDK__` React instance and `fetchJSON`. It provides
 Overview, Tasks, Runs, Agents, Plugins, GitHub, Workspaces, Observability,
-Analytics, Evaluations, and Performance views plus a read-only footer slot.
+Analytics, Evaluations, Performance, and Experiments views plus a read-only footer slot.
 
 ## Analytics (Phase 3)
 
@@ -80,4 +80,7 @@ Analytics, Evaluations, and Performance views plus a read-only footer slot.
   Candidate execution is sandboxed. Fail-open. No canonical quality score.
 - Performance (Phase 5) is another derived observational layer
   (`phase5-perf-v1`). Coverage-first. No ranking, routing, or causality.
+- Experiments (Phase 6) is a derived pre-registered experimentation layer
+  (`phase6-exp-v1`). GET-only `/experiments*`. No auto-routing. Fixture
+  qualification only; production scope disabled.
 

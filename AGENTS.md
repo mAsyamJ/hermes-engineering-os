@@ -19,6 +19,8 @@
   a live LLM judge.
 - Performance must fail open. Do not rank models, route traffic, or treat
   observational comparisons as causal. Do not restart `rp-friend`.
+- Experiments must fail open. Do not auto-route production, spend LLM budget,
+  or treat fixture A/A / known-effect results as production causal proof.
 - GitHub is read-first. Do not create branches, commits, PRs, checks, comments,
   or Kanban mutations from this plugin.
 - Keep upstream pins, licenses, and every vendored file's provenance current.

@@ -52,6 +52,13 @@
 - Timer `hermes-eos-performance.timer` (advisory lock `520260827`).
 - Zero production quality coverage is INSUFFICIENT_DATA, not 0%.
 
+## Controlled experimentation (Phase 6)
+
+- Same `hermes_engineering` database. Migration `0004_experiments`.
+- Contract `phase6-exp-v1`. Pre-registered, ITT, fixed-horizon.
+- Timer `hermes-eos-experiments.timer` (advisory lock `620260827`).
+- No automatic ranking, routing, or promotion. Default LLM budget 0.
+
 ## Analytics connectivity (Phase 3)
 
 - Dedicated `hermes_engineering` database on the observability Postgres.

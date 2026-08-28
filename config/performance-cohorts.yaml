@@ -11,6 +11,7 @@ excluded_task_ids:
   - t_eval_canary_c
 excluded_boards:
   - eos-phase2-obs
+  - eos-phase6-exp
   - default
 excluded_workspace_prefixes:
   - /opt/hermes-engineering-os/.runtime/
