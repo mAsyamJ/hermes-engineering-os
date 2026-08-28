@@ -273,3 +273,86 @@ def evaluations_artifact(artifact_id: str) -> dict[str, Any]:
     return redact(_analytics_proxy(f"/evaluations/artifacts/{artifact_id}"))
 
 
+@router.get("/performance")
+def performance() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/summary"))
+
+
+@router.get("/performance/health")
+def performance_health() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/health"))
+
+
+@router.get("/performance/coverage")
+def performance_coverage() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/coverage"))
+
+
+@router.get("/performance/summary")
+def performance_summary() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/summary"))
+
+
+@router.get("/performance/cohorts")
+def performance_cohorts() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/cohorts"))
+
+
+@router.get("/performance/metrics")
+def performance_metrics(limit: int = Query(default=50, ge=1, le=200), offset: int = Query(default=0, ge=0)) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/performance/metrics?limit={limit}&offset={offset}"))
+
+
+@router.get("/performance/models")
+def performance_models() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/models"))
+
+
+@router.get("/performance/profiles")
+def performance_profiles() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/profiles"))
+
+
+@router.get("/performance/skills")
+def performance_skills() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/skills"))
+
+
+@router.get("/performance/failures")
+def performance_failures() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/failures"))
+
+
+@router.get("/performance/trends")
+def performance_trends() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/trends"))
+
+
+@router.get("/performance/comparisons")
+def performance_comparisons() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/comparisons"))
+
+
+@router.get("/performance/insights")
+def performance_insights() -> dict[str, Any]:
+    return redact(_analytics_proxy("/performance/insights"))
+
+
+@router.get("/performance/why")
+def performance_why(
+    metric: str = Query(default="lifecycle_completion_rate"),
+    cohort: str = Query(default="production_all"),
+    dimension_type: str = Query(default="cohort"),
+    dimension_value: str | None = Query(default=None),
+) -> dict[str, Any]:
+    query = f"/performance/why?metric={metric}&cohort={cohort}&dimension_type={dimension_type}"
+    if dimension_value:
+        query += f"&dimension_value={dimension_value}"
+    return redact(_analytics_proxy(query))
+
+
+@router.get("/performance/tasks/{task_id}")
+def performance_task(task_id: str, board: str = Query(default="retropick-markets-release")) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/performance/tasks/{task_id}?board={board}"))
+
+

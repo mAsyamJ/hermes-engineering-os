@@ -8,6 +8,7 @@ import { AgentsView } from "./views/agents";
 import { GitHubView } from "./views/github";
 import { ObservabilityView } from "./views/observability";
 import { OverviewView } from "./views/overview";
+import { PerformanceView } from "./views/performance";
 import { PluginsView } from "./views/plugins";
 import { RunsView } from "./views/runs";
 import { TasksView } from "./views/tasks";
@@ -24,6 +25,7 @@ const VIEWS: Array<{ id: ViewId; label: string }> = [
   { id: "observability", label: "Observability" },
   { id: "analytics", label: "Analytics" },
   { id: "evaluations", label: "Evaluations" },
+  { id: "performance", label: "Performance" },
 ];
 
 export function EngineeringOSPage(): unknown {
@@ -63,7 +65,7 @@ export function EngineeringOSPage(): unknown {
         h(
           "p",
           { className: "eos-subtitle" },
-          "Live runtime, canonical Kanban, workspace, Git, GitHub, observability, derived outcomes, and deterministic evaluations. Read-only by design.",
+          "Live runtime, canonical Kanban, workspace, Git, GitHub, observability, derived outcomes, deterministic evaluations, and observational performance. Read-only by design.",
         ),
       ),
       h("span", { className: "eos-readonly" }, "READ ONLY"),
@@ -109,6 +111,7 @@ function renderView(view: ViewId, data: unknown): unknown {
     case "observability": return ObservabilityView({ data: object });
     case "analytics": return h(AnalyticsView, { data: object });
     case "evaluations": return h(EvaluationsView, { data: object });
+    case "performance": return h(PerformanceView, { data: object });
   }
 }
 

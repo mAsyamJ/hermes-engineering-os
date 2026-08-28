@@ -42,5 +42,6 @@ export type ViewId =
   | "workspaces"
   | "observability"
   | "analytics"
-  | "evaluations";
+  | "evaluations"
+  | "performance";
 
