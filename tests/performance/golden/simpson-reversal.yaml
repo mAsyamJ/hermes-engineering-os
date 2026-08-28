@@ -1,0 +1,4 @@
+# Global aggregate may reverse inside repository strata.
+simpson_reversal: true
+unsafe_global: true
+interpretation_forbidden: unlabeled_global_winner

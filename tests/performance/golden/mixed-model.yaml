@@ -1,0 +1,6 @@
+# Mixed providers are MIXED_MODEL even when the friendly model name matches.
+attribution: MIXED_MODEL
+provider_model_keys:
+  - openai-codex/gpt-5.6-sol
+  - cli/gpt-5.6-sol
+outcome_assignment: forbidden

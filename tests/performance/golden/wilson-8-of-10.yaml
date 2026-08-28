@@ -1,0 +1,8 @@
+# Independently calculated expected values for Wilson 8/10, z=1.96
+metric_id: first_pass_rate
+successes: 8
+known_n: 10
+value: 0.8
+interval_low: 0.4901568467
+interval_high: 0.9433190520
+evidence_tier: EXPLORATORY

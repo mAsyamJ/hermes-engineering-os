@@ -1,0 +1,7 @@
+# Zero quality coverage must not become 0%.
+metric_id: quality_tests_pass_rate
+evaluated_n: 0
+known_n: 0
+value: null
+interpretation: INSUFFICIENT_DATA
+evidence_tier: NO_DATA

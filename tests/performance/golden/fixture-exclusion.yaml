@@ -1,0 +1,8 @@
+# Fixture / canary identities never enter production_all.
+cohort_id: production_all
+excluded_task_ids:
+  - t_eval_canary_a
+  - t_eval_canary_b
+  - t_eval_canary_c
+  - t_d1c34420
+  - t_ce5ca4b3
