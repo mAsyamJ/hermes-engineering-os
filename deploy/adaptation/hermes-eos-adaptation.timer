@@ -1,0 +1,12 @@
+[Unit]
+Description=Hermes Engineering OS adaptation controller timer
+
+[Timer]
+OnBootSec=6min
+OnUnitActiveSec=5min
+AccuracySec=30s
+Persistent=true
+Unit=hermes-eos-adaptation.service
+
+[Install]
+WantedBy=timers.target

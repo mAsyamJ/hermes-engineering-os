@@ -22,6 +22,8 @@ from engineering_os.performance.quality import coverage_sql as performance_cover
 from engineering_os.performance.quality import run_checks as performance_run_checks
 from engineering_os.experiments import api as experiments_api
 from engineering_os.experiments.persist import health as experiments_health
+from engineering_os.adaptation import api as adaptation_api
+from engineering_os.adaptation.persist import health as adaptation_health
 
 
 def _json(handler: BaseHTTPRequestHandler, status: int, payload: Any) -> None:
@@ -654,6 +656,44 @@ class Handler(BaseHTTPRequestHandler):
                 return
             if path in {"/experiments", "/experiments/health"}:
                 _json(self, 200, experiments_health() if path.endswith("health") else experiments_api.summary())
+                return
+            if path in {"/adaptation", "/adaptation/health"}:
+                _json(self, 200, adaptation_health() if path.endswith("health") else adaptation_api.summary())
+                return
+            if path == "/adaptation/readiness":
+                _json(self, 200, adaptation_api.readiness())
+                return
+            if path == "/adaptation/recommendations":
+                _json(self, 200, adaptation_api.recommendations())
+                return
+            if path == "/adaptation/policies":
+                _json(self, 200, adaptation_api.policies())
+                return
+            if path == "/adaptation/shadow":
+                _json(self, 200, adaptation_api.shadow())
+                return
+            if path == "/adaptation/canaries":
+                _json(self, 200, adaptation_api.canaries())
+                return
+            if path == "/adaptation/guardrails":
+                _json(self, 200, adaptation_api.guardrails())
+                return
+            if path == "/adaptation/rollbacks":
+                _json(self, 200, adaptation_api.rollbacks())
+                return
+            if path == "/adaptation/audit":
+                _json(self, 200, adaptation_api.audit())
+                return
+            if path.startswith("/adaptation/recommendations/"):
+                _json(self, 200, adaptation_api.recommendation(path.rsplit("/", 1)[-1]))
+                return
+            if path.startswith("/adaptation/policies/"):
+                _json(self, 200, adaptation_api.policy(path.rsplit("/", 1)[-1]))
+                return
+            if path.startswith("/adaptation/explain/"):
+                payload = adaptation_api.why(path.rsplit("/", 1)[-1])
+                status = 404 if payload.get("status") == "NOT_FOUND" else 200
+                _json(self, status, payload)
                 return
             if path == "/experiments/coverage":
                 _json(self, 200, experiments_api.coverage())

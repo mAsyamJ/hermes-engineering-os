@@ -411,3 +411,68 @@ def experiment_explain(experiment_id: str) -> dict[str, Any]:
     return redact(_analytics_proxy(f"/experiments/{experiment_id}/explain"))
 
 
+@router.get("/adaptation")
+def adaptation() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation"))
+
+
+@router.get("/adaptation/health")
+def adaptation_health() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/health"))
+
+
+@router.get("/adaptation/readiness")
+def adaptation_readiness() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/readiness"))
+
+
+@router.get("/adaptation/recommendations")
+def adaptation_recommendations() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/recommendations"))
+
+
+@router.get("/adaptation/recommendations/{recommendation_id}")
+def adaptation_recommendation(recommendation_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/adaptation/recommendations/{recommendation_id}"))
+
+
+@router.get("/adaptation/policies")
+def adaptation_policies() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/policies"))
+
+
+@router.get("/adaptation/policies/{policy_id}")
+def adaptation_policy(policy_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/adaptation/policies/{policy_id}"))
+
+
+@router.get("/adaptation/shadow")
+def adaptation_shadow() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/shadow"))
+
+
+@router.get("/adaptation/canaries")
+def adaptation_canaries() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/canaries"))
+
+
+@router.get("/adaptation/guardrails")
+def adaptation_guardrails() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/guardrails"))
+
+
+@router.get("/adaptation/rollbacks")
+def adaptation_rollbacks() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/rollbacks"))
+
+
+@router.get("/adaptation/audit")
+def adaptation_audit() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/audit"))
+
+
+@router.get("/adaptation/explain/{object_id}")
+def adaptation_explain(object_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/adaptation/explain/{object_id}"))
+
+

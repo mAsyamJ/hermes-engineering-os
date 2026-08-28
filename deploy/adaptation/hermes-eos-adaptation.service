@@ -1,0 +1,9 @@
+[Unit]
+Description=Hermes Engineering OS adaptation controller (shadow/guardrail/audit)
+After=hermes-eos-experiments.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/hermes-engineering-os
+ExecStart=/opt/hermes-engineering-os/scripts/adaptation-materialize.sh
+Nice=10
