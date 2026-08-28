@@ -16,6 +16,7 @@ export interface Endpoints {
   evaluations: Record<string, unknown>;
   performance: Record<string, unknown>;
   experiments: Record<string, unknown>;
+  adaptation: Record<string, unknown>;
 }
 
 export function fetchView<T extends ViewId>(view: T): Promise<Endpoints[T]> {
@@ -52,5 +53,9 @@ export function fetchPerformanceTask(taskId: string, board?: string): Promise<Re
 
 export function fetchExperimentExplain(experimentId: string): Promise<Record<string, unknown>> {
   return sdk().fetchJSON(`${BASE}/experiments/${encodeURIComponent(experimentId)}/explain`);
+}
+
+export function fetchAdaptationExplain(objectId: string): Promise<Record<string, unknown>> {
+  return sdk().fetchJSON(`${BASE}/adaptation/explain/${encodeURIComponent(objectId)}`);
 }
 

@@ -10,6 +10,7 @@ import { ObservabilityView } from "./views/observability";
 import { OverviewView } from "./views/overview";
 import { PerformanceView } from "./views/performance";
 import { ExperimentsView } from "./views/experiments";
+import { AdaptationView } from "./views/adaptation";
 import { PluginsView } from "./views/plugins";
 import { RunsView } from "./views/runs";
 import { TasksView } from "./views/tasks";
@@ -28,6 +29,7 @@ const VIEWS: Array<{ id: ViewId; label: string }> = [
   { id: "evaluations", label: "Evaluations" },
   { id: "performance", label: "Performance" },
   { id: "experiments", label: "Experiments" },
+  { id: "adaptation", label: "Adaptation" },
 ];
 
 export function EngineeringOSPage(): unknown {
@@ -67,7 +69,7 @@ export function EngineeringOSPage(): unknown {
         h(
           "p",
           { className: "eos-subtitle" },
-          "Live runtime, canonical Kanban, workspace, Git, GitHub, observability, derived outcomes, deterministic evaluations, observational performance, and controlled experiments. Read-only by design.",
+          "Live runtime, canonical Kanban, workspace, Git, GitHub, observability, derived outcomes, deterministic evaluations, observational performance, controlled experiments, and controlled adaptation. Read-only by design.",
         ),
       ),
       h("span", { className: "eos-readonly" }, "READ ONLY"),
@@ -115,6 +117,7 @@ function renderView(view: ViewId, data: unknown): unknown {
     case "evaluations": return h(EvaluationsView, { data: object });
     case "performance": return h(PerformanceView, { data: object });
     case "experiments": return h(ExperimentsView, { data: object });
+    case "adaptation": return h(AdaptationView, { data: object });
   }
 }
 

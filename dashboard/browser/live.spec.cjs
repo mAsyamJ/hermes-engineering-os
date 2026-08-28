@@ -20,6 +20,7 @@ test("installed Engineering OS renders every live view", async ({ page }) => {
     "Evaluations",
     "Performance",
     "Experiments",
+    "Adaptation",
   ]) {
     await page.locator(".eos-nav").getByRole("button", { name: label, exact: true }).click();
     await expect(page.locator(".eos-main")).toHaveAttribute("data-view", label.toLowerCase());
