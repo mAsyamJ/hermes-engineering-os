@@ -1,0 +1,89 @@
+"""Phase 7 adaptation contract. Isolated control plane. Fail-open to Hermes."""
+
+from __future__ import annotations
+
+CONTRACT_VERSION = "phase7-adapt-v1"
+ADVISORY_LOCK_KEY = 720260827
+ANALYTICS_LOCK_KEY = 320260827
+EVALUATION_LOCK_KEY = 420260827
+PERFORMANCE_LOCK_KEY = 520260827
+EXPERIMENT_LOCK_KEY = 620260827
+PHASE3_CONTRACT = "phase3-v1"
+PHASE4_CONTRACT = "phase4-eval-v1"
+PHASE5_CONTRACT = "phase5-perf-v1"
+PHASE6_CONTRACT = "phase6-exp-v1"
+RUNTIME_ROOT = ".runtime/adaptation"
+CACHE_NAME = "bindings.json"
+KILL_NAME = "KILL"
+TEST_APPROVAL_ALG = "approve-hmac-sha256-v1-test"
+PRODUCTION_APPROVAL_ALG = "approve-hmac-sha256-v1"
+
+RECOMMENDATION_STATES = (
+    "DRAFT",
+    "EVIDENCE_VALIDATED",
+    "NOT_PROMOTABLE",
+    "APPROVAL_REQUIRED",
+    "APPROVED_FOR_SHADOW",
+    "REJECTED",
+    "SUPERSEDED",
+)
+
+RECOMMENDATION_CLASSES = ("TEST_ONLY", "NOT_PROMOTABLE", "PRODUCTION_CANDIDATE")
+
+SCOPES = (
+    "FIXTURE",
+    "BENCHMARK",
+    "NON_PRODUCTION",
+    "PRODUCTION_SHADOW",
+    "PRODUCTION_CANARY",
+    "PRODUCTION_BOUNDED",
+    "PRODUCTION_FULL",
+)
+TEST_SCOPES = ("FIXTURE", "BENCHMARK", "NON_PRODUCTION")
+PRODUCTION_SCOPES = (
+    "PRODUCTION_SHADOW",
+    "PRODUCTION_CANARY",
+    "PRODUCTION_BOUNDED",
+    "PRODUCTION_FULL",
+)
+V1_ACTUATION_SCOPES = ("FIXTURE", "BENCHMARK", "NON_PRODUCTION")
+
+PRECEDENCE = (
+    "GLOBAL_KILL_SWITCH",
+    "EXPLICIT_DENY",
+    "ROLLBACK_DISABLE",
+    "CANARY",
+    "APPROVED_POLICY",
+    "BASELINE",
+)
+
+RESOLUTIONS = ("BASELINE", "CANDIDATE", "CONFLICT", "NOT_ELIGIBLE")
+APPROVAL_STAGES = ("A", "B")
+APPROVAL_CLASSES = ("TEST", "PRODUCTION")
+BINDING_STATES = ("ACTIVE", "DISABLED", "ROLLED_BACK", "SUPERSEDED", "SHADOW")
+BINDING_MODES = ("SHADOW", "CANARY", "PROMOTED", "BASELINE", "DISABLED")
+SELECTOR_FIELDS = ("board", "repository_id", "profile", "task_label", "task_class", "environment", "scope")
+SELECTOR_OPS = ("EQ", "IN", "NOT_IN")
+FORBIDDEN_KEYS = frozenset(
+    {
+        "command",
+        "commands",
+        "cmd",
+        "exec",
+        "shell",
+        "bash",
+        "script",
+        "argv",
+        "entrypoint",
+        "eval",
+        "python",
+        "llm",
+        "prompt_decision",
+    }
+)
+
+PRODUCTION_ACTUATION = "DISABLED"
+PRODUCTION_APPROVAL = "BLOCKED_CAPABILITY"
+PRODUCTION_RECOMMENDATION = "BLOCKED_EVIDENCE"
+MEMORY_ISOLATION = "BLOCKED_CAPABILITY"
+RUNTIME_INTEGRATION = "BLOCKED_RUNTIME_INTEGRATION"

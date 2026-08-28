@@ -1,0 +1,55 @@
+policy_id: fixture-known-effect-policy-v1
+policy_version: "1"
+source_experiment: fixture-known-effect-v1
+treatment_dimension: FIXTURE_ARTIFACT
+scope: FIXTURE
+selectors:
+  match: ALL
+  conditions:
+    - field: board
+      op: EQ
+      values: ["eos-phase6-exp"]
+    - field: task_class
+      op: EQ
+      values: ["fixture"]
+    - field: environment
+      op: EQ
+      values: ["fixture"]
+candidate:
+  variant_id: artifact-clean
+  variant_name: clean
+  artifact: clean
+fallback:
+  variant_id: artifact-broken
+  variant_name: broken
+  artifact: broken
+shadow:
+  required: true
+canary:
+  max_units: 4
+  max_candidate_pct: 1.0
+  max_concurrent_candidate: 1
+  selection: assign-hmac-sha256-v1
+  seed: fixture-known-effect-policy-v1-canary
+  max_llm_calls: 0
+guardrails:
+  - id: phase4.quality_vector.tests
+    fail_on: FAIL
+    critical: true
+    min_n: 1
+    candidate_only: true
+  - id: llm_call_count
+    fail_on: ">0"
+    critical: true
+rollback:
+  target: artifact-broken
+approval:
+  class: TEST
+  stages: ["A", "B"]
+expiry: "2027-08-28T00:00:00Z"
+contracts:
+  phase3: phase3-v1
+  phase4: phase4-eval-v1
+  phase5: phase5-perf-v1
+  phase6: phase6-exp-v1
+  phase7: phase7-adapt-v1
