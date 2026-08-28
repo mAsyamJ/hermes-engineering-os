@@ -1,0 +1,52 @@
+experiment_id: fixture-aa-v1
+version: "1"
+scope: FIXTURE
+design: PAIRED
+treatment_dimension: NONE
+hypothesis: "Identical fixture artifacts produce no systematic candidate preference under the experiment machinery."
+expected_direction: NONE
+experimental_unit: benchmark_case_execution
+benchmark_suite: fixture-v1
+control:
+  variant_id: control-a
+  variant_name: control
+  artifact: clean
+candidate:
+  variant_id: control-a-prime
+  variant_name: control-prime
+  artifact: clean
+assignment:
+  algorithm: assign-hmac-sha256-v1
+  seed: fixture-aa-v1-seed
+  blocked_by: suite
+primary_metric:
+  id: phase4.quality_vector.tests
+  type: binary
+secondary_metrics:
+  - id: phase4.quality_vector.build
+    role: EXPLORATORY
+guardrails:
+  - id: phase4.quality_vector.security
+    fail_on: FAIL
+  - id: llm_call_count
+    fail_on: ">0"
+sample_plan:
+  planned_n: 8
+  alpha: 0.05
+  power: 0.80
+  mde: 0.50
+  baseline_rate: 0.50
+  allocation_ratio: 1.0
+  discordance: 0.20
+missingness:
+  threshold: 0.25
+  on_exceed: INSUFFICIENT_DATA
+analysis:
+  population: INTENTION_TO_TREAT
+  method: paired-binary-wilson-v1
+  horizon: FIXED
+budget:
+  max_units: 32
+  max_llm_calls: 0
+  max_external_cost: 0
+  max_wall_seconds: 600
