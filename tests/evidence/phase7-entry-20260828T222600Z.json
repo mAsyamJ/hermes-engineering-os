@@ -1,0 +1,32 @@
+{
+  "captured_at": "2026-08-28T22:26:00Z",
+  "engineering_os_head": "37531e1d5d78fb18ba3b8cd0a1d532a706b78642",
+  "origin_main": "37531e1d5d78fb18ba3b8cd0a1d532a706b78642",
+  "working_tree": "clean",
+  "subject": "docs: publish Phase 6 implementation report",
+  "phase6_status": "COMPLETE",
+  "phase6_contract": "phase6-exp-v1",
+  "phase5_status": "COMPLETE",
+  "phase4_status": "COMPLETE",
+  "phase3_status": "COMPLETE",
+  "phoenix_tables": 65,
+  "hermes_engineering_tables": 46,
+  "postgres_host_ports": {},
+  "rp_friend_pid": 924,
+  "default_gateway_pid": 2381797,
+  "dashboard_pid": 2124054,
+  "disk_free_gib": 22.3,
+  "disk_used_pct": 68.8,
+  "retropick_head": "a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+  "android_head": "e962490dab3ac1072d9ee6371eb1077c0a05c0ac",
+  "kanban_tasks": 101,
+  "kanban_running": 0,
+  "experiments": [
+    {"experiment_id": "fixture-aa-v1", "conclusion": "NO_CLEAR_EFFECT", "scope": "FIXTURE"},
+    {"experiment_id": "fixture-known-effect-v1", "conclusion": "EVIDENCE_FOR_CANDIDATE", "scope": "FIXTURE"},
+    {"experiment_id": "fixture-paired-v1", "conclusion": "EVIDENCE_FOR_CANDIDATE", "scope": "FIXTURE"}
+  ],
+  "production_protocols": 0,
+  "auto_route": false,
+  "promote": false
+}
