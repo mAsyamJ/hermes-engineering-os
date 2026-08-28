@@ -1,0 +1,10 @@
+[Unit]
+Description=Hermes Engineering OS evaluation one-shot engine
+After=hermes-eos-analytics.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/hermes-engineering-os
+ExecStart=/opt/hermes-engineering-os/scripts/evaluate.sh --incremental --json
+Nice=10
+TimeoutStartSec=300
