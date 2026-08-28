@@ -1,0 +1,3 @@
+id: process-crash
+exit_code_not: 0
+verdict: ERROR_OR_FAIL

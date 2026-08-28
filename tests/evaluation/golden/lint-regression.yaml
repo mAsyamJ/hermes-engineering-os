@@ -1,0 +1,3 @@
+id: lint-regression
+comparisons:
+  repo.lint: INTRODUCED_FAILURE

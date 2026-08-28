@@ -1,0 +1,7 @@
+id: introduced-regression
+summary_state: VERIFIED_FAIL
+comparisons:
+  repo.tests: INTRODUCED_FAILURE
+quality_vector:
+  tests: FAIL
+  correctness: FAIL

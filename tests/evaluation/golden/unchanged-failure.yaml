@@ -1,0 +1,7 @@
+id: unchanged-failure
+comparisons:
+  repo.tests: UNCHANGED_FAILURE
+quality_vector:
+  tests: FAIL
+  correctness: FAIL
+  summary_state: VERIFIED_FAIL

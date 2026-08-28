@@ -1,0 +1,3 @@
+id: duplicate-evaluation
+identity: candidate_hash + baseline_hash + profile_id@version + contract
+second_persist: unchanged

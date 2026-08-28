@@ -1,0 +1,11 @@
+id: clean-success
+summary_state: PARTIAL
+reason: acceptance remains UNKNOWN without structured criteria
+comparisons:
+  repo.tests: UNCHANGED_PASS
+  repo.build: UNCHANGED_PASS
+quality_vector:
+  tests: PASS
+  build: PASS
+  correctness: PASS
+  acceptance: UNKNOWN

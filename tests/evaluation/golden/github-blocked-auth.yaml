@@ -1,0 +1,5 @@
+id: github-blocked-auth
+quality_vector:
+  ci: BLOCKED_AUTH
+  tests: PASS
+summary_state_not: VERIFIED_FAIL

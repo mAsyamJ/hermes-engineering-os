@@ -1,0 +1,5 @@
+id: fixed-failure
+comparisons:
+  repo.tests: FIXED_FAILURE
+quality_vector:
+  tests: PASS

@@ -1,0 +1,5 @@
+id: build-failure
+quality_vector:
+  build: FAIL
+  correctness: FAIL
+summary_state: VERIFIED_FAIL

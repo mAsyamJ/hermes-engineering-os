@@ -1,0 +1,4 @@
+id: architecture-violation
+quality_vector:
+  architecture: FAIL
+summary_state: VERIFIED_FAIL

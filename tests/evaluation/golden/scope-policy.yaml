@@ -1,0 +1,4 @@
+id: scope-policy
+quality_vector:
+  scope: FAIL
+summary_state: VERIFIED_FAIL

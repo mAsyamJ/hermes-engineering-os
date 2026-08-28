@@ -1,0 +1,6 @@
+id: insufficient-evidence
+eligibility: INSUFFICIENT_EVIDENCE
+summary_state: INSUFFICIENT_EVIDENCE
+quality_vector:
+  tests: UNKNOWN
+scored: false

@@ -1,0 +1,3 @@
+id: timeout
+sandbox.timeout: true
+quality_vector_or_verdict: ERROR
