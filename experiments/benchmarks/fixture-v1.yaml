@@ -1,0 +1,14 @@
+suite_id: fixture-v1
+version: "1"
+repository: engineering-os-fixture
+reset: copytree
+evaluator_profile: fixture
+cases:
+  - case_id: fixture-v1-clean
+    artifact: clean
+    stratum: fixture-v1
+    difficulty: operator-defined-easy
+  - case_id: fixture-v1-broken
+    artifact: broken
+    stratum: fixture-v1
+    difficulty: operator-defined-easy
