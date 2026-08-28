@@ -20,6 +20,8 @@ from engineering_os.performance import CONTRACT_VERSION as PERF_CONTRACT
 from engineering_os.performance.explain import explain_aggregate, explain_task as explain_performance_task
 from engineering_os.performance.quality import coverage_sql as performance_coverage_sql
 from engineering_os.performance.quality import run_checks as performance_run_checks
+from engineering_os.experiments import api as experiments_api
+from engineering_os.experiments.persist import health as experiments_health
 
 
 def _json(handler: BaseHTTPRequestHandler, status: int, payload: Any) -> None:
@@ -650,6 +652,36 @@ class Handler(BaseHTTPRequestHandler):
                 )
                 _json(self, 200, payload)
                 return
+            if path in {"/experiments", "/experiments/health"}:
+                _json(self, 200, experiments_health() if path.endswith("health") else experiments_api.summary())
+                return
+            if path == "/experiments/coverage":
+                _json(self, 200, experiments_api.coverage())
+                return
+            if path.startswith("/experiments/"):
+                rest = path[len("/experiments/") :]
+                experiment_id, sep, suffix = rest.partition("/")
+                if not sep:
+                    payload = experiments_api.why(experiment_id)
+                    status = 404 if payload.get("status") == "NOT_FOUND" else 200
+                    _json(self, status, payload)
+                    return
+                mapping = {
+                    "protocol": experiments_api.protocol,
+                    "variants": experiments_api.variants,
+                    "assignments": experiments_api.assignments,
+                    "exposures": experiments_api.exposures,
+                    "progress": experiments_api.progress,
+                    "analysis": experiments_api.analysis,
+                    "guardrails": experiments_api.guardrails,
+                    "explain": experiments_api.why,
+                }
+                handler = mapping.get(suffix)
+                if handler:
+                    payload = handler(experiment_id)
+                    status = 404 if payload.get("status") == "NOT_FOUND" else 200
+                    _json(self, status, payload)
+                    return
             _json(self, 404, {"detail": "not found"})
         except Exception as exc:
             _json(self, 200, {"status": "DEGRADED", "detail": f"{type(exc).__name__}: {exc}"})
