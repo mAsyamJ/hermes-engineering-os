@@ -356,3 +356,58 @@ def performance_task(task_id: str, board: str = Query(default="retropick-markets
     return redact(_analytics_proxy(f"/performance/tasks/{task_id}?board={board}"))
 
 
+@router.get("/experiments")
+def experiments() -> dict[str, Any]:
+    return redact(_analytics_proxy("/experiments"))
+
+
+@router.get("/experiments/health")
+def experiments_health() -> dict[str, Any]:
+    return redact(_analytics_proxy("/experiments/health"))
+
+
+@router.get("/experiments/{experiment_id}")
+def experiment_detail(experiment_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/experiments/{experiment_id}/explain"))
+
+
+@router.get("/experiments/{experiment_id}/protocol")
+def experiment_protocol(experiment_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/experiments/{experiment_id}/protocol"))
+
+
+@router.get("/experiments/{experiment_id}/variants")
+def experiment_variants(experiment_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/experiments/{experiment_id}/variants"))
+
+
+@router.get("/experiments/{experiment_id}/assignments")
+def experiment_assignments(experiment_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/experiments/{experiment_id}/assignments"))
+
+
+@router.get("/experiments/{experiment_id}/exposures")
+def experiment_exposures(experiment_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/experiments/{experiment_id}/exposures"))
+
+
+@router.get("/experiments/{experiment_id}/progress")
+def experiment_progress(experiment_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/experiments/{experiment_id}/progress"))
+
+
+@router.get("/experiments/{experiment_id}/analysis")
+def experiment_analysis(experiment_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/experiments/{experiment_id}/analysis"))
+
+
+@router.get("/experiments/{experiment_id}/guardrails")
+def experiment_guardrails(experiment_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/experiments/{experiment_id}/guardrails"))
+
+
+@router.get("/experiments/{experiment_id}/explain")
+def experiment_explain(experiment_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/experiments/{experiment_id}/explain"))
+
+

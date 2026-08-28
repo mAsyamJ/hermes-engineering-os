@@ -43,5 +43,6 @@ export type ViewId =
   | "observability"
   | "analytics"
   | "evaluations"
-  | "performance";
+  | "performance"
+  | "experiments";
 
