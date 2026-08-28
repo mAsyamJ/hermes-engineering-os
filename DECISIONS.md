@@ -59,6 +59,15 @@
 - Timer `hermes-eos-experiments.timer` (advisory lock `620260827`).
 - No automatic ranking, routing, or promotion. Default LLM budget 0.
 
+## Controlled adaptation (Phase 7)
+
+- Isolated `hermes_control` database on the same unpublished Postgres.
+- Contract `phase7-adapt-v1`. Timer `hermes-eos-adaptation.timer` (advisory lock `720260827`).
+- TEST-only recommendations from fixture Phase 6 results. Production approval
+  is `BLOCKED_CAPABILITY`. No auto-promotion. Auto-disable on critical guardrail FAIL.
+- Resolver is a library + fixture executor. It does not patch Hermes core or
+  write Kanban rows.
+
 ## Analytics connectivity (Phase 3)
 
 - Dedicated `hermes_engineering` database on the observability Postgres.

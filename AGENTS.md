@@ -21,6 +21,9 @@
   observational comparisons as causal. Do not restart `rp-friend`.
 - Experiments must fail open. Do not auto-route production, spend LLM budget,
   or treat fixture A/A / known-effect results as production causal proof.
+- Adaptation must fail open to Hermes and fail closed for candidate policy.
+  Do not auto-promote. Do not treat TEST approval as production authorization.
+  Do not patch Hermes core or mutate Kanban to apply policy.
 - GitHub is read-first. Do not create branches, commits, PRs, checks, comments,
   or Kanban mutations from this plugin.
 - Keep upstream pins, licenses, and every vendored file's provenance current.

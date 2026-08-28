@@ -14,4 +14,5 @@ __pycache__/
 !.env.example
 evidence/phase5/privacy/*.sql
 evidence/phase6/privacy/*.sql
+evidence/phase7/privacy/*.sql
 

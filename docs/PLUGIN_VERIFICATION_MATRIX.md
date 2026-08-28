@@ -11,7 +11,7 @@ home with outbound sockets denied and deterministic fake LLM results.
 | plugin-llm-async-example | PASS | PASS | PASS | N/A | N/A | PASS fake async LLM | PASS isolated | VERIFIED |
 | superpowers 6.3.0 | PASS | PASS | PASS | N/A | N/A | PASS hook/skills | N/A enabled | VERIFIED |
 | hermes_otel 1.0 | PASS | PASS | PASS 13 hooks | PASS manifest | PASS read status | PASS fail-open OTLP | N/A enabled | VERIFIED |
-| engineering-os 1.0.0 | PASS | PASS | PASS side-effect-free | PASS | PASS GET-only including `/analytics*`, `/evaluations*`, `/performance*`, and `/experiments*` | PASS live (Observability + Analytics + Evaluations + Performance + Experiments) | PASS guarded | VERIFIED |
+| engineering-os 1.0.0 | PASS | PASS | PASS side-effect-free | PASS | PASS GET-only including `/analytics*`, `/evaluations*`, `/performance*`, `/experiments*`, and `/adaptation*` | PASS live (Observability + Analytics + Evaluations + Performance + Experiments + Adaptation) | PASS guarded | VERIFIED |
 
 `hermes_otel` is repaired in the active Hermes venv with OpenTelemetry 1.44.x.
 Missing Phoenix still fail-opens. Engineering OS `register()` stays hook-free

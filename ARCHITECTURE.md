@@ -11,7 +11,7 @@ hermes-otel (pinned) --OTLP/HTTP--> Phoenix :6006 (loopback)
                                         │
                                         ▼
                               dedicated Postgres (no host port)
-                                 phoenix | hermes_engineering (derived analytics)
+                                 phoenix | hermes_engineering (derived) | hermes_control (adaptation)
 
 Hermes Kanban ──┐
 profiles/runs ──┼─> read-only adapters ─> GET-only FastAPI ─> SDK IIFE
@@ -32,7 +32,7 @@ phase5-perf-v1 materializer (Docker oneshot, writer role)
 hermes_engineering (derived; same unpublished Postgres)
         │
         ▼
-analytics sidecar :9120 (reader role) ─> Analytics / Evaluations / Performance / Experiments UI
+analytics sidecar :9120 (reader role) ─> Analytics / Evaluations / Performance / Experiments / Adaptation UI
 ```
 
 ## Authority boundaries
@@ -58,7 +58,7 @@ analytics sidecar :9120 (reader role) ─> Analytics / Evaluations / Performance
 `dashboard/dist/index.js` is a classic IIFE using the host's
 `window.__HERMES_PLUGIN_SDK__` React instance and `fetchJSON`. It provides
 Overview, Tasks, Runs, Agents, Plugins, GitHub, Workspaces, Observability,
-Analytics, Evaluations, Performance, and Experiments views plus a read-only footer slot.
+Analytics, Evaluations, Performance, Experiments, and Adaptation views plus a read-only footer slot.
 
 ## Analytics (Phase 3)
 
@@ -83,4 +83,9 @@ Analytics, Evaluations, Performance, and Experiments views plus a read-only foot
 - Experiments (Phase 6) is a derived pre-registered experimentation layer
   (`phase6-exp-v1`). GET-only `/experiments*`. No auto-routing. Fixture
   qualification only; production scope disabled.
+- Adaptation (Phase 7) is an isolated control plane (`phase7-adapt-v1`) in
+  `hermes_control`. Recommendations, immutable policies, TEST-only approval,
+  shadow, fixture canary, auto-disable, and rollback. GET-only `/adaptation*`.
+  Production actuation remains DISABLED. Fail-open to Hermes; fail-closed for
+  candidate policy.
 

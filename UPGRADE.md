@@ -33,3 +33,7 @@ Phase 6 experiment statistics reuse the same stdlib Wilson helpers. Do not
 add SciPy. Do not enable production experiment scope or paid LLM execution
 to “pass” Phase 6.
 
+Phase 7 adaptation state lives in isolated `hermes_control`. Do not fold it
+into `hermes_engineering`. Do not enable production actuation or invent a
+local CLI human-approval boundary.
+

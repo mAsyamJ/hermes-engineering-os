@@ -17,7 +17,9 @@ Phase 4 adds sandboxed evaluation on the same unpublished Postgres, a GET-only
 performance intelligence (`phase5-perf-v1`), GET-only `/performance*`, and
 `hermes-eos-performance.timer`. Phase 6 adds controlled experiments
 (`phase6-exp-v1`), GET-only `/experiments*`, and
-`hermes-eos-experiments.timer`.
+`hermes-eos-experiments.timer`. Phase 7 adds controlled adaptation
+(`phase7-adapt-v1`) on isolated `hermes_control`, GET-only `/adaptation*`,
+and `hermes-eos-adaptation.timer`.
 
 ## Health
 
@@ -41,9 +43,12 @@ the Phoenix-supported mechanism is proven.
 ## Backups
 
 Observability dumps are owner-only `pg_dump` files under
-`/var/backups/hermes-engineering-os/observability-*` (`phoenix.sql` and
-`hermes_engineering.sql`). Restore is proven only against an isolated
-throwaway container via `scripts/observability-db-verify.sh`, never onto the
-live volume. Derived analytics can also be rebuilt with
-`scripts/analytics-materialize.sh --backfill --recompute`.
+`/var/backups/hermes-engineering-os/observability-*` (`phoenix.sql`,
+`hermes_engineering.sql`, and `hermes_control.sql` when the control database
+exists). Restore is proven only against an isolated throwaway container via
+`scripts/observability-db-verify.sh`, never onto the live volume. Derived
+analytics can also be rebuilt with
+`scripts/analytics-materialize.sh --backfill --recompute`. Adaptation control
+state is not derived; restore it from `hermes_control.sql` or re-qualify
+TEST-only policies. Never restore over live.
 

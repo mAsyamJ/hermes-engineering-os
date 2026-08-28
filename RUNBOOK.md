@@ -114,6 +114,25 @@ systemctl --user enable --now hermes-eos-experiments.timer
 Experiments API: `http://127.0.0.1:9120/experiments*`. GET-only. No auto-route.
 Never restart rp-friend.
 
+## Adaptation
+
+```bash
+./scripts/control-db-init.sh
+./scripts/control-db-roles.sh
+./scripts/adapt.sh recommend fixture-known-effect-v1
+./scripts/adapt.sh compile-policy <recommendation_id> --policy fixture-known-effect-policy-v1
+./scripts/adapt.sh approve-test fixture-known-effect-policy-v1 --stage A
+./scripts/adapt.sh shadow-start fixture-known-effect-policy-v1 --board retropick-markets-release
+./scripts/adapt.sh canary-start-fixture fixture-known-effect-policy-v1
+./scripts/adapt.sh disable-all --reason emergency
+./scripts/verify-adaptation-data.sh
+systemctl --user enable --now hermes-eos-adaptation.timer
+```
+
+`adapt approve` (production) returns `BLOCKED_APPROVAL_BOUNDARY`.
+Adaptation API: `http://127.0.0.1:9120/adaptation*`. GET-only. No auto-promote.
+Never restart rp-friend. Never mutate Kanban to apply policy.
+
 ## Evidence states
 
 - `AVAILABLE`: authoritative read completed.
