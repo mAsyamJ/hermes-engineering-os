@@ -1,0 +1,9 @@
+{
+  "http_status": 200,
+  "data": {
+    "status": "DEGRADED",
+    "source": "analytics:sidecar",
+    "mode": "read-only",
+    "detail": "URLError: <urlopen error [Errno 111] Connection refused>"
+  }
+}

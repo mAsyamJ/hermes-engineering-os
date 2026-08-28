@@ -1,0 +1,3 @@
+ Container eos-eval-kill-test Creating 
+ Container eos-eval-kill-test Created 
+{"status": "success", "tasks_scanned": 103, "tasks_evaluated": 0, "insufficient": 0, "unchanged": 103, "errors": 0, "contract_version": "phase4-eval-v1"}
