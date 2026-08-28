@@ -1,0 +1,161 @@
+{
+  "status": "success",
+  "contract_version": "phase5-perf-v1",
+  "coverage": {
+    "production_tasks": 100,
+    "outcome_covered": 100,
+    "first_pass_known": 73,
+    "trace_covered": 0,
+    "model_covered": 0,
+    "single_model": 0,
+    "mixed_model": 0,
+    "skill_covered": 0,
+    "quality_evaluated": 0,
+    "cost_known": 0,
+    "profile_name_known": 100,
+    "profile_config_version_known": 0,
+    "prompt_version_known": 0
+  },
+  "aggregates": 273,
+  "comparisons": 84,
+  "insights": 182,
+  "failures": 2,
+  "prompt_version_performance": {
+    "prompt_version_performance": "UNSUPPORTED_EVIDENCE",
+    "reason": "no immutable prompt/config/system-prompt hash was recorded at execution time"
+  },
+  "sample_metrics": [
+    {
+      "metric_id": "lifecycle_completion_rate",
+      "population_n": 100,
+      "known_n": 100,
+      "unknown_n": 0,
+      "na_n": 0,
+      "value": 0.77,
+      "evidence_tier": "SUPPORTED",
+      "interpretation": null,
+      "coverage": 1.0
+    },
+    {
+      "metric_id": "verified_success_rate",
+      "population_n": 100,
+      "known_n": 0,
+      "unknown_n": 20,
+      "na_n": 80,
+      "value": null,
+      "evidence_tier": "NO_DATA",
+      "interpretation": "INSUFFICIENT_DATA",
+      "coverage": 0.0
+    },
+    {
+      "metric_id": "first_pass_rate",
+      "population_n": 100,
+      "known_n": 73,
+      "unknown_n": 10,
+      "na_n": 17,
+      "value": 0.8356164383561644,
+      "evidence_tier": "PROVISIONAL",
+      "interpretation": null,
+      "coverage": 0.73
+    },
+    {
+      "metric_id": "retry_rate",
+      "population_n": 100,
+      "known_n": 90,
+      "unknown_n": 10,
+      "na_n": 0,
+      "value": 0.13333333333333333,
+      "evidence_tier": "PROVISIONAL",
+      "interpretation": null,
+      "coverage": 0.9
+    },
+    {
+      "metric_id": "rework_rate",
+      "population_n": 100,
+      "known_n": 100,
+      "unknown_n": 0,
+      "na_n": 0,
+      "value": 0.01,
+      "evidence_tier": "SUPPORTED",
+      "interpretation": null,
+      "coverage": 1.0
+    },
+    {
+      "metric_id": "human_intervention_detection_rate",
+      "population_n": 100,
+      "known_n": 58,
+      "unknown_n": 42,
+      "na_n": 0,
+      "value": 0.58,
+      "evidence_tier": "PROVISIONAL",
+      "interpretation": null,
+      "coverage": 0.58
+    },
+    {
+      "metric_id": "quality_build_pass_rate",
+      "population_n": 100,
+      "known_n": 0,
+      "unknown_n": 0,
+      "na_n": 0,
+      "value": null,
+      "evidence_tier": "NO_DATA",
+      "interpretation": "INSUFFICIENT_DATA",
+      "coverage": 0.0
+    },
+    {
+      "metric_id": "quality_tests_pass_rate",
+      "population_n": 100,
+      "known_n": 0,
+      "unknown_n": 0,
+      "na_n": 0,
+      "value": null,
+      "evidence_tier": "NO_DATA",
+      "interpretation": "INSUFFICIENT_DATA",
+      "coverage": 0.0
+    },
+    {
+      "metric_id": "quality_regression_introduced_rate",
+      "population_n": 100,
+      "known_n": 0,
+      "unknown_n": 0,
+      "na_n": 0,
+      "value": null,
+      "evidence_tier": "NO_DATA",
+      "interpretation": "INSUFFICIENT_DATA",
+      "coverage": 0.0
+    },
+    {
+      "metric_id": "quality_lint_pass_rate",
+      "population_n": 100,
+      "known_n": 0,
+      "unknown_n": 0,
+      "na_n": 0,
+      "value": null,
+      "evidence_tier": "NO_DATA",
+      "interpretation": "INSUFFICIENT_DATA",
+      "coverage": 0.0
+    },
+    {
+      "metric_id": "quality_typecheck_pass_rate",
+      "population_n": 100,
+      "known_n": 0,
+      "unknown_n": 0,
+      "na_n": 0,
+      "value": null,
+      "evidence_tier": "NO_DATA",
+      "interpretation": "INSUFFICIENT_DATA",
+      "coverage": 0.0
+    },
+    {
+      "metric_id": "quality_security_pass_rate",
+      "population_n": 100,
+      "known_n": 0,
+      "unknown_n": 0,
+      "na_n": 0,
+      "value": null,
+      "evidence_tier": "NO_DATA",
+      "interpretation": "INSUFFICIENT_DATA",
+      "coverage": 0.0
+    }
+  ]
+}

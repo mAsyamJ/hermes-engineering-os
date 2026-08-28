@@ -1,0 +1,36 @@
+# Operator-relevant pairwise sets. Not a cartesian hypothesis mill.
+version: phase5-comparisons-v1
+pairs:
+  - comparison_id: profiles_in_production
+    cohort_id: production_all
+    dimension: profile_name
+    metric_ids:
+      - lifecycle_completion_rate
+      - first_pass_rate
+      - rework_rate
+    stratifiers:
+      - repository_id
+  - comparison_id: models_in_single_model
+    cohort_id: production_single_model
+    dimension: model
+    metric_ids:
+      - lifecycle_completion_rate
+      - first_pass_rate
+    stratifiers:
+      - profile_name
+      - repository_id
+  - comparison_id: skills_in_single_skill
+    cohort_id: production_single_skill
+    dimension: skill
+    metric_ids:
+      - lifecycle_completion_rate
+      - first_pass_rate
+    stratifiers:
+      - profile_name
+trends:
+  calendar_days: 30
+  rolling_n: 30
+  metric_ids:
+    - lifecycle_completion_rate
+    - first_pass_rate
+  cohort_id: production_all

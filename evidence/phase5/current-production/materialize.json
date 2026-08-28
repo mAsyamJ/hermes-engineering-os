@@ -1,0 +1,31 @@
+{
+  "status": "success",
+  "mode": "incremental",
+  "contract_version": "phase5-perf-v1",
+  "materialization_id": "02b719d9-deff-4147-b36a-b5fa746953aa",
+  "coverage": {
+    "production_tasks": 100,
+    "outcome_covered": 100,
+    "first_pass_known": 73,
+    "trace_covered": 0,
+    "model_covered": 0,
+    "single_model": 0,
+    "mixed_model": 0,
+    "skill_covered": 0,
+    "quality_evaluated": 0,
+    "cost_known": 0,
+    "profile_name_known": 100,
+    "profile_config_version_known": 0,
+    "prompt_version_known": 0
+  },
+  "aggregates": 273,
+  "comparisons": 84,
+  "insights": 182,
+  "failures": 2,
+  "prompt_version_performance": {
+    "prompt_version_performance": "UNSUPPORTED_EVIDENCE",
+    "reason": "no immutable prompt/config/system-prompt hash was recorded at execution time"
+  },
+  "aggregates_written": 275,
+  "comparisons_written": 88
+}

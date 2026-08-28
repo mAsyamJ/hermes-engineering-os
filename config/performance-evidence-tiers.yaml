@@ -1,0 +1,29 @@
+# Operational presentation rules. Not scientific law.
+# Versioned: changing thresholds changes config_hash on every aggregate.
+version: phase5-tiers-v1
+z_wilson: 1.96
+# Classification uses known_n (denominator with known evidence), not raw cohort size.
+tiers:
+  NO_DATA:
+    max_known_n: 0
+  INSUFFICIENT:
+    min_known_n: 1
+    max_known_n: 9
+  EXPLORATORY:
+    min_known_n: 10
+    max_known_n: 29
+  PROVISIONAL:
+    min_known_n: 30
+    max_known_n: 99
+  SUPPORTED:
+    min_known_n: 100
+quantile_p90_min_n: 20
+quantile_p95_min_n: 40
+# Pairwise OBSERVED_DIFFERENCE requires both sides at least this tier.
+observed_difference_min_tier: EXPLORATORY
+comparison_floor_known_n: 10
+rationale: >
+  Thresholds follow common observational-reporting practice: n=0 is NO_DATA;
+  single-digit samples cannot support operational claims; tens are exploratory;
+  dozens are provisional; n>=100 is the minimum this deployment will label
+  SUPPORTED. They are presentation gates, not p-value cutoffs.

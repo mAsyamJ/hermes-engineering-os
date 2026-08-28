@@ -1,0 +1,128 @@
+# phase5-perf-v1 metric registry. Every metric has explicit denominator semantics.
+version: phase5-metrics-v1
+metrics:
+  - metric_id: lifecycle_completion_rate
+    kind: binary
+    unit: proportion
+    description: Share of cohort tasks whose lifecycle_state is DONE
+    source: phase3-v1 task_outcomes.lifecycle_state
+    known_states: [DONE, NOT_DONE]
+    success_states: [DONE]
+    unknown_states: [UNKNOWN]
+    na_states: []
+    causal: false
+  - metric_id: verified_success_rate
+    kind: binary
+    unit: proportion
+    description: VERIFIED_SUCCESS among tasks with PASS or FAIL verification
+    source: phase3-v1 verification_state / final_outcome
+    known_states: [PASS, FAIL]
+    success_field: final_outcome
+    success_states: [VERIFIED_SUCCESS]
+    eligibility_field: verification_state
+    unknown_states: [UNKNOWN]
+    na_states: [NOT_APPLICABLE]
+    causal: false
+  - metric_id: first_pass_rate
+    kind: binary
+    unit: proportion
+    description: First qualifying run classified PASS
+    source: phase3-v1 first_pass_state
+    known_states: [PASS, FAIL]
+    success_states: [PASS]
+    unknown_states: [UNKNOWN]
+    na_states: [NOT_APPLICABLE]
+    causal: false
+  - metric_id: retry_rate
+    kind: binary
+    unit: proportion
+    description: Share of tasks with retry_count > 0 among tasks with known retry
+    source: phase3-v1 retry_count
+    field: retry_count
+    unknown_null: true
+    causal: false
+  - metric_id: rework_rate
+    kind: binary
+    unit: proportion
+    description: DETECTED rework among tasks with known rework_status
+    source: phase3-v1 rework_status
+    known_states: [DETECTED, NOT_DETECTED]
+    success_states: [DETECTED]
+    unknown_states: [UNKNOWN]
+    na_states: []
+    causal: false
+  - metric_id: human_intervention_detection_rate
+    kind: detection
+    unit: proportion
+    description: DETECTED human intervention; UNKNOWN remains in total N
+    source: phase3-v1 human_intervention_state
+    success_states: [DETECTED]
+    unknown_states: [UNKNOWN]
+    never_false: true
+    causal: false
+  - metric_id: quality_build_pass_rate
+    kind: quality
+    unit: proportion
+    dimension: build
+    description: Build PASS among production-evaluated tasks with known build verdict
+    source: phase4-eval-v1 quality_vector.build
+  - metric_id: quality_tests_pass_rate
+    kind: quality
+    unit: proportion
+    dimension: tests
+  - metric_id: quality_regression_introduced_rate
+    kind: quality
+    unit: proportion
+    dimension: regression
+    success_states: [INTRODUCED_FAILURE]
+  - metric_id: quality_lint_pass_rate
+    kind: quality
+    unit: proportion
+    dimension: lint
+  - metric_id: quality_typecheck_pass_rate
+    kind: quality
+    unit: proportion
+    dimension: typecheck
+  - metric_id: quality_security_pass_rate
+    kind: quality
+    unit: proportion
+    dimension: security
+  - metric_id: quality_architecture_pass_rate
+    kind: quality
+    unit: proportion
+    dimension: architecture
+  - metric_id: quality_acceptance_pass_rate
+    kind: quality
+    unit: proportion
+    dimension: acceptance
+  - metric_id: task_wall_seconds
+    kind: continuous
+    unit: seconds
+    field: task_wall_seconds
+  - metric_id: run_wall_seconds
+    kind: continuous
+    unit: seconds
+    field: run_wall_seconds
+  - metric_id: trace_wall_seconds
+    kind: continuous
+    unit: seconds
+    field: trace_wall_seconds
+  - metric_id: llm_call_count
+    kind: continuous
+    unit: count
+    field: llm_call_count
+  - metric_id: tool_call_count
+    kind: continuous
+    unit: count
+    field: tool_call_count
+  - metric_id: token_total
+    kind: continuous
+    unit: tokens
+    field: token_total
+  - metric_id: cost_known_rate
+    kind: binary
+    unit: proportion
+    description: Share of tasks with actual cost evidence (never estimated)
+    field: cost_status
+    success_states: [AVAILABLE, KNOWN]
+    known_required: true

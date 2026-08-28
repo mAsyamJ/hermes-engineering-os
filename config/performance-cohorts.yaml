@@ -1,0 +1,67 @@
+# Trusted Phase 5 cohort definitions. Hashable, versioned, reproducible.
+# Do not parse task titles. Fixture data never populates production intelligence.
+version: phase5-cohorts-v1
+excluded_task_ids:
+  - t_phase2obs
+  - t_d1c34420
+  - t_ce5ca4b3
+  - t_d4cab17a
+  - t_eval_canary_a
+  - t_eval_canary_b
+  - t_eval_canary_c
+excluded_boards:
+  - eos-phase2-obs
+  - default
+excluded_workspace_prefixes:
+  - /opt/hermes-engineering-os/.runtime/
+canary_task_ids:
+  - t_eval_canary_a
+  - t_eval_canary_b
+  - t_eval_canary_c
+cohorts:
+  - cohort_id: production_all
+    version: v1
+    description: Production Kanban tasks on retropick-markets-release
+    production: true
+    boards:
+      - retropick-markets-release
+    exclude_fixture: true
+  - cohort_id: production_single_model
+    version: v1
+    description: Production tasks with exactly one qualifying model identity
+    production: true
+    boards:
+      - retropick-markets-release
+    exclude_fixture: true
+    model_attribution: SINGLE_MODEL
+  - cohort_id: production_mixed_model
+    version: v1
+    description: Production tasks with multiple qualifying model identities
+    production: true
+    boards:
+      - retropick-markets-release
+    exclude_fixture: true
+    model_attribution: MIXED_MODEL
+  - cohort_id: production_single_skill
+    version: v1
+    description: Production tasks with exactly one observed skill
+    production: true
+    boards:
+      - retropick-markets-release
+    exclude_fixture: true
+    skill_attribution: SINGLE_SKILL
+  - cohort_id: production_multi_skill
+    version: v1
+    description: Production tasks with multiple observed skills
+    production: true
+    boards:
+      - retropick-markets-release
+    exclude_fixture: true
+    skill_attribution: MULTI_SKILL
+  - cohort_id: math_fixtures
+    version: v1
+    description: Fixture and canary rows for statistical validation only
+    production: false
+    exclude_fixture: false
+    include_fixture: true
+    ui_default: false
