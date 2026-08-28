@@ -1,0 +1,12 @@
+[Unit]
+Description=Hermes Engineering OS incremental performance refresh
+
+[Timer]
+OnBootSec=4min
+OnUnitActiveSec=5min
+AccuracySec=30s
+Persistent=true
+Unit=hermes-eos-performance.service
+
+[Install]
+WantedBy=timers.target
