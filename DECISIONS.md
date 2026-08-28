@@ -45,6 +45,13 @@
 - Timer `hermes-eos-evaluate.timer` (advisory lock `420260827`).
 - Historical production without artifacts remains INSUFFICIENT_EVIDENCE.
 
+## Performance intelligence (Phase 5)
+
+- Same `hermes_engineering` database. Migration `0003_performance`.
+- Observational contract `phase5-perf-v1`. No automatic ranking or routing.
+- Timer `hermes-eos-performance.timer` (advisory lock `520260827`).
+- Zero production quality coverage is INSUFFICIENT_DATA, not 0%.
+
 ## Analytics connectivity (Phase 3)
 
 - Dedicated `hermes_engineering` database on the observability Postgres.

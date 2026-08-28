@@ -26,3 +26,6 @@ the observability Postgres; never reuse RetroPick databases. Do not upgrade
 Phoenix merely to add evaluation features. Do not pull unbounded evaluation
 images; keep root free ≥20 GiB.
 
+Phase 5 performance intelligence stays on the same unpublished
+`hermes_engineering` database. Do not add SciPy merely for Wilson intervals.
+

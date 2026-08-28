@@ -66,8 +66,9 @@ systemctl --user disable --now hermes-eos-analytics.timer
 ```
 
 Analytics API: `http://127.0.0.1:9120` (loopback). Dashboard proxy:
-`/api/plugins/engineering-os/analytics*` and `/evaluations*`. Manual refresh is the materialize
-script; disable the timer rather than the Kanban dispatcher.
+`/api/plugins/engineering-os/analytics*`, `/evaluations*`, and `/performance*`.
+Manual refresh is the materialize script; disable the timer rather than the
+Kanban dispatcher.
 
 ## Evaluation
 
@@ -82,6 +83,19 @@ systemctl --user enable --now hermes-eos-evaluate.timer
 
 Evaluation API: `http://127.0.0.1:9120/evaluations*`. Never restart rp-friend
 for evaluation work.
+
+## Performance
+
+```bash
+./scripts/analytics-migrate.sh
+./scripts/performance-materialize.sh --dry-run --json
+./scripts/performance-materialize.sh --json
+./scripts/verify-performance-data.sh
+systemctl --user enable --now hermes-eos-performance.timer
+```
+
+Performance API: `http://127.0.0.1:9120/performance*`. Observational only.
+Never restart rp-friend.
 
 ## Evidence states
 

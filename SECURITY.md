@@ -14,9 +14,12 @@
 - Adapter failures and OTel/Phoenix/Postgres unavailability degrade
   observability evidence without affecting Hermes execution.
 - Analytics sidecar or `hermes_engineering` unavailability degrades
-  `/analytics*` and `/evaluations*` to `DEGRADED` without affecting Hermes `/health`.
+  `/analytics*`, `/evaluations*`, and `/performance*` to `DEGRADED` without
+  affecting Hermes `/health`.
 - Candidate evaluation containers have network disabled, no Docker socket, and
   no host secrets. Planted `FAKE_PHASE4_SECRET_ABC123` must not leak.
+- Performance tables store IDs and aggregates only. The Phase 5 privacy plant
+  from `scripts/performance-privacy-test.sh` must not leak.
 - Phoenix UI and OTLP listen on `127.0.0.1:6006` only. Observability Postgres
   has no host port. Analytics API listens on `127.0.0.1:9120` only. DB
   passwords stay in `deploy/observability/.env` mode `0600` and are never

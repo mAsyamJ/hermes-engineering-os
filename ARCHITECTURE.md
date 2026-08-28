@@ -23,10 +23,16 @@ Phoenix GraphQL ┘     observability DEGRADED if Phoenix is down
 phase3-v1 materializer (Docker oneshot, writer role)
         │
         ▼
+phase4-eval-v1 evaluator (sandboxed, writer role)
+        │
+        ▼
+phase5-perf-v1 materializer (Docker oneshot, writer role)
+        │
+        ▼
 hermes_engineering (derived; same unpublished Postgres)
         │
         ▼
-analytics sidecar :9120 (reader role) ─> Engineering OS Analytics UI
+analytics sidecar :9120 (reader role) ─> Analytics / Evaluations / Performance UI
 ```
 
 ## Authority boundaries
@@ -52,7 +58,7 @@ analytics sidecar :9120 (reader role) ─> Engineering OS Analytics UI
 `dashboard/dist/index.js` is a classic IIFE using the host's
 `window.__HERMES_PLUGIN_SDK__` React instance and `fetchJSON`. It provides
 Overview, Tasks, Runs, Agents, Plugins, GitHub, Workspaces, Observability,
-and Analytics views plus a read-only footer slot.
+Analytics, Evaluations, and Performance views plus a read-only footer slot.
 
 ## Analytics (Phase 3)
 
@@ -72,4 +78,6 @@ and Analytics views plus a read-only footer slot.
   returns DEGRADED without failing Hermes `/health`.
 - Evaluation (Phase 4) is another derived layer on `hermes_engineering`.
   Candidate execution is sandboxed. Fail-open. No canonical quality score.
+- Performance (Phase 5) is another derived observational layer
+  (`phase5-perf-v1`). Coverage-first. No ranking, routing, or causality.
 
