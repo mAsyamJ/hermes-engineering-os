@@ -40,4 +40,16 @@ if [ -s "$DUMP_DIR/hermes_engineering.sql" ]; then
 fi
 COUNT="$(sudo -n docker exec -e PGPASSWORD=verify "$NAME" psql -U postgres -d phoenix -tAc "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema NOT IN ('pg_catalog','information_schema');")"
 echo "restored_user_tables=$COUNT"
+if [ -s "$DUMP_DIR/hermes_control.sql" ]; then
+  sudo -n docker exec -e PGPASSWORD=verify "$NAME" psql -U postgres -c "CREATE DATABASE hermes_control;" >/dev/null
+  sudo -n docker exec -i -e PGPASSWORD=verify "$NAME" \
+    psql -v ON_ERROR_STOP=1 -U postgres -d hermes_control \
+    < "$DUMP_DIR/hermes_control.sql" >/tmp/hermes-eos-restore-hc.log
+  if grep -q 'ERROR:' /tmp/hermes-eos-restore-hc.log; then
+    tail -n 20 /tmp/hermes-eos-restore-hc.log >&2
+    exit 1
+  fi
+  HC_COUNT="$(sudo -n docker exec -e PGPASSWORD=verify "$NAME" psql -U postgres -d hermes_control -tAc "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema NOT IN ('pg_catalog','information_schema');")"
+  echo "restored_hermes_control_tables=$HC_COUNT"
+fi
 echo "PASS: isolated restore validation (live DB untouched)"

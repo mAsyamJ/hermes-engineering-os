@@ -6,10 +6,14 @@ CREATE ROLE phoenix LOGIN PASSWORD '${PHOENIX_DB_PASSWORD}';
 CREATE DATABASE phoenix OWNER phoenix;
 CREATE ROLE hermes_engineering LOGIN PASSWORD '${HERMES_ENGINEERING_DB_PASSWORD}';
 CREATE DATABASE hermes_engineering OWNER hermes_engineering;
+CREATE ROLE hermes_control_owner LOGIN PASSWORD '${HERMES_CONTROL_OWNER_PASSWORD}';
+CREATE DATABASE hermes_control OWNER hermes_control_owner;
 REVOKE ALL ON DATABASE phoenix FROM PUBLIC;
 REVOKE ALL ON DATABASE hermes_engineering FROM PUBLIC;
+REVOKE ALL ON DATABASE hermes_control FROM PUBLIC;
 GRANT CONNECT ON DATABASE phoenix TO phoenix;
 GRANT CONNECT ON DATABASE hermes_engineering TO hermes_engineering;
+GRANT CONNECT ON DATABASE hermes_control TO hermes_control_owner;
 EOSQL
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname phoenix <<EOSQL
@@ -22,4 +26,10 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname hermes_engineering 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 GRANT ALL ON SCHEMA public TO hermes_engineering;
 ALTER SCHEMA public OWNER TO hermes_engineering;
+EOSQL
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname hermes_control <<EOSQL
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+GRANT ALL ON SCHEMA public TO hermes_control_owner;
+ALTER SCHEMA public OWNER TO hermes_control_owner;
 EOSQL

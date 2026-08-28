@@ -20,6 +20,7 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       PHOENIX_DB_PASSWORD: ${PHOENIX_DB_PASSWORD}
       HERMES_ENGINEERING_DB_PASSWORD: ${HERMES_ENGINEERING_DB_PASSWORD}
+      HERMES_CONTROL_OWNER_PASSWORD: ${HERMES_CONTROL_OWNER_PASSWORD:-${HERMES_CONTROL_DB_PASSWORD:-}}
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./init-db.sh:/docker-entrypoint-initdb.d/01-init-db.sh:ro
@@ -75,6 +76,7 @@ services:
         condition: service_healthy
     environment:
       ANALYTICS_DATABASE_URL: postgresql://hermes_engineering_reader:${HERMES_ENGINEERING_READER_PASSWORD}@postgres:5432/hermes_engineering
+      CONTROL_DATABASE_URL: postgresql://hermes_control_reader:${HERMES_CONTROL_READER_PASSWORD}@postgres:5432/hermes_control
       PHOENIX_BASE: http://phoenix:6006
     volumes:
       - ../..:/app:ro
@@ -187,6 +189,34 @@ services:
     networks:
       - observability
     entrypoint: ["python", "-m", "engineering_os.experiments"]
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  adaptation-engine:
+    image: hermes-eos-analytics:phase3
+    profiles: ["adaptation"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ANALYTICS_DATABASE_URL: postgresql://hermes_engineering_reader:${HERMES_ENGINEERING_READER_PASSWORD}@postgres:5432/hermes_engineering
+      CONTROL_DATABASE_URL: postgresql://hermes_control_operator:${HERMES_CONTROL_OPERATOR_PASSWORD}@postgres:5432/hermes_control
+      CONTROL_MIGRATE_DSN: postgresql://hermes_control_owner:${HERMES_CONTROL_OWNER_PASSWORD:-${HERMES_CONTROL_DB_PASSWORD}}@postgres:5432/hermes_control
+      CONTROL_RESOLVER_DATABASE_URL: postgresql://hermes_control_resolver:${HERMES_CONTROL_RESOLVER_PASSWORD}@postgres:5432/hermes_control
+      PHOENIX_BASE: http://phoenix:6006
+      HERMES_HOME: /hermes-home
+      EOS_EVAL_SANDBOX: inline
+      EOS_ADAPTATION_RUNTIME: /tmp/eos-adaptation
+    volumes:
+      - ../..:/app:ro
+      - /home/ubuntu/.hermes:/hermes-home:ro
+      - ../../.runtime/adaptation:/tmp/eos-adaptation
+    networks:
+      - observability
+    entrypoint: ["python", "-m", "engineering_os.adaptation"]
     logging:
       driver: json-file
       options:
