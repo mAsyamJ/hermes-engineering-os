@@ -228,3 +228,48 @@ def analytics_materialization() -> dict[str, Any]:
     return redact(_analytics_proxy("/materialization"))
 
 
+@router.get("/evaluations")
+def evaluations() -> dict[str, Any]:
+    return redact(_analytics_proxy("/evaluations"))
+
+
+@router.get("/evaluations/health")
+def evaluations_health() -> dict[str, Any]:
+    return redact(_analytics_proxy("/evaluations/health"))
+
+
+@router.get("/evaluations/coverage")
+def evaluations_coverage() -> dict[str, Any]:
+    return redact(_analytics_proxy("/evaluations/coverage"))
+
+
+@router.get("/evaluations/recent")
+def evaluations_recent() -> dict[str, Any]:
+    return redact(_analytics_proxy("/evaluations/recent"))
+
+
+@router.get("/evaluations/profiles")
+def evaluations_profiles() -> dict[str, Any]:
+    return redact(_analytics_proxy("/evaluations/profiles"))
+
+
+@router.get("/evaluations/evaluators")
+def evaluations_evaluators() -> dict[str, Any]:
+    return redact(_analytics_proxy("/evaluations/evaluators"))
+
+
+@router.get("/evaluations/tasks/{task_id}")
+def evaluations_task(task_id: str, board: str = Query(default="retropick-markets-release")) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/evaluations/tasks/{task_id}?board={board}"))
+
+
+@router.get("/evaluations/runs/{evaluation_run_id}")
+def evaluations_run(evaluation_run_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/evaluations/runs/{evaluation_run_id}"))
+
+
+@router.get("/evaluations/artifacts/{artifact_id}")
+def evaluations_artifact(artifact_id: str) -> dict[str, Any]:
+    return redact(_analytics_proxy(f"/evaluations/artifacts/{artifact_id}"))
+
+

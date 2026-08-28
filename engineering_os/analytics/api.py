@@ -10,6 +10,12 @@ from typing import Any
 from engineering_os.analytics.db import connect
 from engineering_os.analytics.explain import explain_task
 from engineering_os.analytics.quality import coverage_sql, run_checks
+from engineering_os.evaluation import CONTRACT_VERSION
+from engineering_os.evaluation.explain import explain_evaluation, explain_task as explain_evaluation_task
+from engineering_os.evaluation.profiles import list_profiles
+from engineering_os.evaluation.quality import coverage_sql as evaluation_coverage_sql
+from engineering_os.evaluation.quality import run_checks as evaluation_run_checks
+from engineering_os.evaluation.registry import definitions as evaluator_definitions
 
 
 def _json(handler: BaseHTTPRequestHandler, status: int, payload: Any) -> None:
@@ -174,6 +180,77 @@ def _materialization() -> dict[str, Any]:
     return {"status": "AVAILABLE", "data": rows}
 
 
+def _evaluations_health() -> dict[str, Any]:
+    try:
+        with connect() as connection:
+            last = connection.execute(
+                """
+                SELECT evaluation_run_id, ended_at, execution_status, eligibility
+                FROM evaluation_runs
+                WHERE is_current
+                ORDER BY ended_at DESC NULLS LAST
+                LIMIT 1
+                """
+            ).fetchone()
+            count = connection.execute("SELECT COUNT(*) AS n FROM evaluation_runs").fetchone()
+        return {
+            "status": "AVAILABLE",
+            "source": "evaluation",
+            "mode": "read-only",
+            "contract_version": CONTRACT_VERSION,
+            "last_evaluation": last,
+            "evaluation_runs": (count or {}).get("n"),
+            "canonical_store": "hermes_engineering",
+        }
+    except Exception as exc:
+        return {
+            "status": "DEGRADED",
+            "source": "evaluation",
+            "mode": "read-only",
+            "detail": f"{type(exc).__name__}: {exc}",
+        }
+
+
+def _evaluations_coverage() -> dict[str, Any]:
+    with connect() as connection:
+        row = connection.execute(evaluation_coverage_sql()).fetchone() or {}
+        quality = evaluation_run_checks(connection)
+    return {"status": quality["status"], "coverage": dict(row), "violations": quality["violations"]}
+
+
+def _evaluations_recent() -> dict[str, Any]:
+    with connect() as connection:
+        rows = list(
+            connection.execute(
+                """
+                SELECT r.evaluation_run_id, r.task_id, r.board, r.eligibility, r.execution_status,
+                       r.profile_id, r.candidate_artifact_hash, s.summary_state, s.quality_vector
+                FROM evaluation_runs r
+                LEFT JOIN evaluation_summaries s ON s.evaluation_run_id = r.evaluation_run_id
+                WHERE r.is_current
+                ORDER BY r.started_at DESC
+                LIMIT 25
+                """
+            ).fetchall()
+        )
+    return {"status": "AVAILABLE", "data": rows}
+
+
+def _evaluations_summary() -> dict[str, Any]:
+    health = _evaluations_health()
+    try:
+        coverage = _evaluations_coverage()
+        recent = _evaluations_recent()
+    except Exception as exc:
+        return {
+            **health,
+            "status": "DEGRADED",
+            "detail": f"{type(exc).__name__}: {exc}",
+            "recent": [],
+        }
+    return {**health, "coverage": coverage.get("coverage"), "quality": coverage.get("status"), "recent": recent.get("data")}
+
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, format: str, *args: Any) -> None:
         return
@@ -221,6 +298,52 @@ class Handler(BaseHTTPRequestHandler):
                 return
             if path == "/materialization":
                 _json(self, 200, _materialization())
+                return
+            if path in {"/evaluations", "/evaluations/health"}:
+                _json(self, 200, _evaluations_health() if path.endswith("health") else _evaluations_summary())
+                return
+            if path == "/evaluations/coverage":
+                _json(self, 200, _evaluations_coverage())
+                return
+            if path == "/evaluations/recent":
+                _json(self, 200, _evaluations_recent())
+                return
+            if path == "/evaluations/profiles":
+                _json(self, 200, {"status": "AVAILABLE", "data": list_profiles()})
+                return
+            if path == "/evaluations/evaluators":
+                _json(
+                    self,
+                    200,
+                    {
+                        "status": "AVAILABLE",
+                        "contract_version": CONTRACT_VERSION,
+                        "data": evaluator_definitions(),
+                    },
+                )
+                return
+            if path.startswith("/evaluations/tasks/"):
+                task_id = path.rsplit("/", 1)[-1]
+                board = (query.get("board") or ["retropick-markets-release"])[0]
+                payload = explain_evaluation_task(board, task_id)
+                status = 404 if payload.get("status") == "NOT_FOUND" else 200
+                _json(self, status, payload)
+                return
+            if path.startswith("/evaluations/runs/"):
+                run_id = path.rsplit("/", 1)[-1]
+                payload = explain_evaluation(run_id)
+                status = 404 if payload.get("status") == "NOT_FOUND" else 200
+                _json(self, status, payload)
+                return
+            if path.startswith("/evaluations/artifacts/"):
+                artifact_id = path.rsplit("/", 1)[-1]
+                with connect() as connection:
+                    row = connection.execute(
+                        "SELECT * FROM evaluation_artifacts WHERE artifact_id::text = %s OR content_hash = %s",
+                        (artifact_id, artifact_id),
+                    ).fetchone()
+                status = 404 if not row else 200
+                _json(self, status, {"status": "AVAILABLE" if row else "NOT_FOUND", "data": row})
                 return
             _json(self, 404, {"detail": "not found"})
         except Exception as exc:
