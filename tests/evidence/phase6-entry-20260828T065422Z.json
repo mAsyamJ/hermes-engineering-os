@@ -1,0 +1,75 @@
+{
+  "captured_at": "20260828T065422Z",
+  "gate": "6.0",
+  "result": "PASS",
+  "eos_head": "3da784370d37a61f12a2f007de5e6383ffc05d4b",
+  "eos_subject": "docs: publish Phase 5 implementation report",
+  "eos_author": "mAsyamJ <jayanegara.asyam@gmail.com>",
+  "origin_main": "3da784370d37a61f12a2f007de5e6383ffc05d4b",
+  "local_eq_origin": true,
+  "ahead": 0,
+  "behind": 0,
+  "eos_porcelain": [],
+  "eos_branch": "## main...origin/main",
+  "phase5_report": "COMPLETE",
+  "phase5_contract": "phase5-perf-v1",
+  "phase4_contract": "phase4-eval-v1",
+  "phase3_ruleset": "phase3-v1",
+  "disk": {
+    "free_gib": 22.6,
+    "used_pct": 68.4
+  },
+  "retropick": {
+    "head": "a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+    "porcelain_count": 8,
+    "ok": true
+  },
+  "android": {
+    "head": "e962490dab3ac1072d9ee6371eb1077c0a05c0ac",
+    "porcelain_count": 39,
+    "ok": true
+  },
+  "services": {
+    "hermes-gateway.service": {
+      "MainPID": "2381797",
+      "Id": "hermes-gateway.service",
+      "ActiveState": "active"
+    },
+    "hermes-gateway-rp-friend.service": {
+      "MainPID": "924",
+      "Id": "hermes-gateway-rp-friend.service",
+      "ActiveState": "active"
+    },
+    "hermes-dashboard.service": {
+      "MainPID": "1103545",
+      "Id": "hermes-dashboard.service",
+      "ActiveState": "active"
+    }
+  },
+  "timers": {
+    "analytics": {"ActiveState": "active"},
+    "evaluate": {"ActiveState": "active"},
+    "performance": {"ActiveState": "active"}
+  },
+  "kanban_current": "retropick-markets-release",
+  "kanban_tasks": 101,
+  "kanban_running": 0,
+  "phoenix_tables": 65,
+  "hermes_engineering_tables": 31,
+  "schema_migrations": ["0001_init", "0002_evaluation", "0003_performance"],
+  "postgres_port_bindings": {},
+  "plugin_symlink": "/opt/hermes-engineering-os",
+  "analytics_health_status": "AVAILABLE",
+  "performance_health": {
+    "status": "AVAILABLE",
+    "contract_version": "phase5-perf-v1",
+    "current_aggregates": 275,
+    "causal": false
+  },
+  "performance_coverage_status": "PASS",
+  "performance_violations": [],
+  "evaluations_health_status": "AVAILABLE",
+  "evaluations_contract": "phase4-eval-v1",
+  "post_health": 405,
+  "phase6_started": false
+}
