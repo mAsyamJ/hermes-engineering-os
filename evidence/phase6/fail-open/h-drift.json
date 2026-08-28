@@ -1,0 +1,1 @@
+H [{'dimension': 'environment', 'previous_hash': 'aaa', 'current_hash': 'bbb', 'state': 'CONFIG_DRIFT'}, {'dimension': 'candidate_variant', 'state': 'CONFIG_DRIFT', 'previous_hash': 'd1', 'current_hash': 'd2'}]

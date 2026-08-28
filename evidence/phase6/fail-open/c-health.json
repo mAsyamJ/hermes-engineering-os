@@ -1,0 +1,1 @@
+{"status": "AVAILABLE", "source": "experiments", "mode": "read-only", "contract_version": "phase6-exp-v1", "last_analysis": {"analysis_run_id": "0a045233-f69a-47a1-993b-4a8489280dd1", "computed_at": "2026-08-28 07:47:04.901101+00:00", "status": "success", "population": "INTENTION_TO_TREAT"}, "protocols": 3, "auto_route": false}

@@ -1,0 +1,1 @@
+M {'unit_id': 'u1', 'assigned_variant_id': 'cand', 'assigned_variant_role': 'CANDIDATE', 'observed_config_hash': 'ctrl', 'fidelity': 'NONCOMPLIANT', 'itt_variant_role': 'CANDIDATE', 'reassigned': False}

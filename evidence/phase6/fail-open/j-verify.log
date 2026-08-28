@@ -1,0 +1,15 @@
+=== schema ===
+=== experiment quality ===
+{"status": "PASS", "violations": [], "coverage": {"protocols": 3, "assignments": 40, "observations": 160, "current_results": 3, "production_protocols": 0}, "contract_version": "phase6-exp-v1"}
+=== reader cannot write experiments ===
+PASS: reader cannot write experiments
+=== writer cannot connect phoenix ===
+PASS: writer cannot connect phoenix
+phoenix_user_tables=65
+=== production protocols ===
+PASS: no production experiments
+=== fixture leakage into Phase 5 production ===
+PASS: no experiment fixture dimensions in production aggregates
+=== ITT reassignment ===
+PASS: no ITT reassignment
+PASS: verify-experiment-data

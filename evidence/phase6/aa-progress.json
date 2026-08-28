@@ -1,0 +1,1 @@
+{"status": "AVAILABLE", "data": {"assigned_n": 16, "started_n": 16, "collected_n": 16, "known_n": 16, "state": "COMPLETED", "sample_plan": {"mde": 0.5, "alpha": 0.05, "power": 0.8, "planned_n": 8, "discordance": 0.2, "baseline_rate": 0.5, "allocation_ratio": 1.0}}}
