@@ -81,6 +81,7 @@ protected_paths=(
   /etc/hermes-eos/actuator.env
   /usr/local/lib/hermes-eos/approval-verifier
   /usr/local/lib/hermes-eos/hermes-eos-deploy-tool.py
+  /usr/local/lib/hermes-eos/engineering_os/adaptation/actuator.py
   /usr/local/lib/hermes-eos/actuator.py
   /etc/systemd/system/hermes-eos-actuator.service
   /etc/systemd/system/hermes-gateway.service
@@ -149,6 +150,7 @@ fi
 # SO_PEERCRED must exist in the protected actuator, not only in the agent-writable repo.
 so_peercred=0
 for candidate in \
+  /usr/local/lib/hermes-eos/engineering_os/adaptation/actuator.py \
   /usr/local/lib/hermes-eos/actuator.py \
   /usr/lib/hermes-eos/actuator.py
 do

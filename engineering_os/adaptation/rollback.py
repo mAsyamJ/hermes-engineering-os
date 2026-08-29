@@ -48,6 +48,14 @@ def rollback_binding(
     }
 
 
+def apply_auto_disable(current: dict[str, Any], *, reason: str) -> dict[str, Any]:
+    """Guardrail FAIL disables future assignment only. Running workers stay up."""
+    payload = rollback_binding(current, reason=reason, trigger="auto-disable")
+    payload["auto_promote"] = False
+    payload["interrupt_running"] = False
+    return payload
+
+
 def next_binding(
     current: dict[str, Any] | None,
     *,

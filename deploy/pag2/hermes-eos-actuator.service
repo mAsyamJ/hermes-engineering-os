@@ -9,7 +9,8 @@ User=hermes-actuator
 Group=hermes-runtime
 RuntimeDirectory=hermes-eos
 RuntimeDirectoryMode=0750
-ExecStart=/usr/lib/hermes-runtime/venv/bin/python /usr/local/lib/hermes-eos/actuator.py
+ExecStart=/usr/lib/hermes-runtime/venv/bin/python -m engineering_os.adaptation.actuator
+Environment=PYTHONPATH=/usr/local/lib/hermes-eos
 Restart=on-failure
 RestartSec=2
 NoNewPrivileges=true

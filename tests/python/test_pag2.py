@@ -547,5 +547,74 @@ class ShadowCanaryAndDeployTests(unittest.TestCase):
         self.assertIn("ubuntu cannot invoke", (install.stderr + install.stdout).lower())
 
 
+class RuntimeIdentityAndDisableTests(unittest.TestCase):
+    def test_runtime_identity_mismatch_is_baseline(self) -> None:
+        os.environ["HERMES_EOS_RUNTIME_RELEASE_HASH"] = "live-sha"
+        state = _canary_state()
+        state["runtime_identity"] = {
+            "runtime_release_hash": "other-sha",
+            "actuator_contract_version": "pag2-actuator-v1",
+        }
+        result = handle_request(
+            {
+                "task_id": "t1",
+                "task_context": {"board": "retropick-markets-release", "task_id": "t1"},
+                "baseline": {"model": "gpt-5.6-sol"},
+            },
+            peer_uid=2000,
+            runtime_uid=2000,
+            state=state,
+        )
+        self.assertEqual(result["resolution"], "BASELINE")
+        self.assertIn("mismatch", result["reason"])
+        os.environ.pop("HERMES_EOS_RUNTIME_RELEASE_HASH", None)
+
+    def test_auto_disable_does_not_interrupt_running(self) -> None:
+        from engineering_os.adaptation.rollback import apply_auto_disable
+
+        payload = apply_auto_disable(
+            {"binding_version": 3, "state": "ACTIVE", "mode": "CANARY"},
+            reason="GUARDRAIL_FAIL",
+        )
+        self.assertEqual(payload["state"], "ROLLED_BACK")
+        self.assertFalse(payload["interrupt_running"])
+        self.assertFalse(payload["auto_promote"])
+        self.assertFalse(payload["mutate_git"])
+
+    def test_apply_artifact_roundtrip_in_isolated_git(self) -> None:
+        import json
+        import tempfile
+
+        import importlib.util
+
+        spec = importlib.util.spec_from_file_location(
+            "deploy_tool", ROOT / "scripts" / "hermes-eos-deploy-tool.py"
+        )
+        tool = importlib.util.module_from_spec(spec)
+        assert spec.loader is not None
+        spec.loader.exec_module(tool)
+        tmp = Path(tempfile.mkdtemp())
+        subprocess.run(["git", "init", str(tmp)], check=True, capture_output=True)
+        subprocess.run(["git", "-C", str(tmp), "config", "user.email", "pag2@example.test"], check=True)
+        subprocess.run(["git", "-C", str(tmp), "config", "user.name", "pag2"], check=True)
+        (tmp / "note.txt").write_text("base\n", encoding="utf-8")
+        subprocess.run(["git", "-C", str(tmp), "add", "note.txt"], check=True)
+        subprocess.run(["git", "-C", str(tmp), "commit", "-m", "base"], check=True, capture_output=True)
+        patch = tmp / "p.patch"
+        patch.write_text(
+            "diff --git a/note.txt b/note.txt\n"
+            "--- a/note.txt\n"
+            "+++ b/note.txt\n"
+            "@@ -1 +1 @@\n"
+            "-base\n"
+            "+cand\n",
+            encoding="utf-8",
+        )
+        tool.apply_artifact({}, patch, tmp)
+        self.assertEqual((tmp / "note.txt").read_text(encoding="utf-8"), "cand\n")
+        tool.reverse_artifact(patch, tmp)
+        self.assertEqual((tmp / "note.txt").read_text(encoding="utf-8"), "base\n")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -76,6 +76,45 @@ def require_hermes_op() -> None:
         raise SystemExit("install/rollback requires principal hermes-op")
 
 
+def apply_artifact(manifest: dict, artifact: Path, dest_root: Path) -> None:
+    """Apply a content-hashed patch inside dest_root. Caller must already be hermes-op."""
+    import subprocess
+
+    dest = dest_root.expanduser().resolve()
+    if not dest.is_dir():
+        raise SystemExit(f"runtime tree missing: {dest}")
+    check = subprocess.run(
+        ["git", "-C", str(dest), "apply", "--check", str(artifact)],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if check.returncode != 0:
+        raise SystemExit(check.stderr or "git apply --check failed")
+    applied = subprocess.run(
+        ["git", "-C", str(dest), "apply", str(artifact)],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if applied.returncode != 0:
+        raise SystemExit(applied.stderr or "git apply failed")
+
+
+def reverse_artifact(artifact: Path, dest_root: Path) -> None:
+    import subprocess
+
+    dest = dest_root.expanduser().resolve()
+    reversed_ = subprocess.run(
+        ["git", "-C", str(dest), "apply", "-R", str(artifact)],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if reversed_.returncode != 0:
+        raise SystemExit(reversed_.stderr or "git apply -R failed")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Hermes EOS hash-locked deploy tool")
     parser.add_argument("command", choices=("verify", "show", "install", "rollback"))
@@ -98,7 +137,14 @@ def main() -> int:
     require_hermes_op()
     if not args.signature:
         raise SystemExit("install/rollback requires a detached signature")
-    raise SystemExit("apply path is only enabled in the protected hermes-op copy after H1")
+    dest = Path(os.environ.get("HERMES_EOS_RUNTIME_ROOT") or "/usr/lib/hermes-runtime/hermes-agent")
+    if args.command == "install":
+        apply_artifact(manifest, Path(args.artifact), dest)
+        print("PASS: install applied")
+        return 0
+    reverse_artifact(Path(args.artifact), dest)
+    print("PASS: rollback applied")
+    return 0
 
 
 if __name__ == "__main__":

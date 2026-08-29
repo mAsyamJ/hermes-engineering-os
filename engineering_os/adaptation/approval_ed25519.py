@@ -250,6 +250,10 @@ def verify_bindings(request: dict[str, Any], expected: dict[str, Any]) -> dict[s
         "candidate_config_hash",
         "rollback_hash",
         "maximum_exposure",
+        "runtime_release_hash",
+        "live_patch_hash",
+        "actuator_contract_version",
+        "trust_fingerprint",
     ):
         if str(request.get(key) or "") != str(expected.get(key) or ""):
             return {"ok": False, "reason": f"{key} mismatch"}

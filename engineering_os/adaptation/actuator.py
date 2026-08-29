@@ -40,6 +40,9 @@ def handle_request(
     baseline_config = dict(payload.get("baseline") or {})
     if int(peer_uid) != int(runtime_uid):
         return baseline("PEER_REJECTED", baseline_config)
+    identity = bind_runtime_identity(state)
+    if not identity["ok"]:
+        return baseline(str(identity["reason"]), baseline_config)
     cleaned = strip_caller_authority(payload)
     # Re-check nested authority smuggling
     for key in CALLER_AUTHORITY_KEYS:
@@ -78,12 +81,54 @@ def handle_request(
     return decision
 
 
+def live_runtime_identity() -> dict[str, str]:
+    return {
+        "runtime_release_hash": os.environ.get("HERMES_EOS_RUNTIME_RELEASE_HASH") or "",
+        "live_patch_hash": os.environ.get("HERMES_EOS_LIVE_PATCH_HASH") or "",
+        "actuator_contract_version": ACTUATOR_CONTRACT,
+        "trust_fingerprint": os.environ.get("HERMES_EOS_TRUST_FINGERPRINT") or "",
+    }
+
+
+def bind_runtime_identity(state: dict[str, Any] | None) -> dict[str, Any]:
+    """If Approval A bound runtime identity, require an exact match. Unbound tests may omit it."""
+    expected = dict((state or {}).get("runtime_identity") or {})
+    keys = ("runtime_release_hash", "live_patch_hash", "actuator_contract_version", "trust_fingerprint")
+    if not any(str(expected.get(key) or "") for key in keys):
+        return {"ok": True, "reason": "unbound"}
+    live = live_runtime_identity()
+    for key in keys:
+        want = str(expected.get(key) or "")
+        if want and want != str(live.get(key) or ""):
+            return {"ok": False, "reason": f"{key} mismatch"}
+    return {"ok": True, "reason": "runtime identity bound"}
+
+
+def load_protected_state() -> dict[str, Any]:
+    path = os.environ.get("HERMES_EOS_ACTUATOR_STATE") or "/var/lib/hermes-actuator/state.json"
+    if not os.path.isfile(path):
+        return {"bindings": [], "maximum_exposure": 1}
+    with open(path, encoding="utf-8") as handle:
+        data = json.load(handle)
+    return data if isinstance(data, dict) else {"bindings": []}
+
+
+def resolve_runtime_uid() -> int:
+    override = os.environ.get("HERMES_EOS_RUNTIME_UID")
+    if override:
+        return int(override)
+    import pwd
+
+    return int(pwd.getpwnam("hermes-runtime").pw_uid)
+
+
 def serve_forever(
     socket_path: str,
     *,
     runtime_uid: int,
     state: dict[str, Any] | None = None,
     stop: threading.Event | None = None,
+    reserve_path: Any = None,
 ) -> None:
     if os.path.exists(socket_path):
         os.unlink(socket_path)
@@ -110,7 +155,13 @@ def serve_forever(
                     payload = json.loads(raw.decode("utf-8")) if raw else {}
                 except Exception:
                     payload = {}
-                result = handle_request(payload if isinstance(payload, dict) else {}, peer_uid=peer_uid, runtime_uid=runtime_uid, state=state)
+                result = handle_request(
+                    payload if isinstance(payload, dict) else {},
+                    peer_uid=peer_uid,
+                    runtime_uid=runtime_uid,
+                    state=state,
+                    reserve_path=reserve_path,
+                )
                 blob = json.dumps(result).encode("utf-8")
                 try:
                     conn.sendall(len(blob).to_bytes(4, "big") + blob)
@@ -120,3 +171,19 @@ def serve_forever(
         server.close()
         if os.path.exists(socket_path):
             os.unlink(socket_path)
+
+
+def main() -> int:
+    sock = os.environ.get("HERMES_EOS_ACTUATOR_SOCK") or "/run/hermes-eos/actuator.sock"
+    reserve = os.environ.get("HERMES_EOS_RESERVE_SQLITE") or "/var/lib/hermes-actuator/reservations.sqlite"
+    serve_forever(
+        sock,
+        runtime_uid=resolve_runtime_uid(),
+        state=load_protected_state(),
+        reserve_path=reserve,
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
