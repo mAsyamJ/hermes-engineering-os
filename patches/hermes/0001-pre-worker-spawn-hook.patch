@@ -1,0 +1,196 @@
+diff --git a/hermes_cli/kanban_db.py b/hermes_cli/kanban_db.py
+index 9a92b03..62190a6 100644
+--- a/hermes_cli/kanban_db.py
++++ b/hermes_cli/kanban_db.py
+@@ -10006,6 +10006,92 @@ def _retag_legacy_worker_sessions(workspaces_root_path: str) -> None:
+         _log.debug("kanban worker: legacy session retag skipped (%s)", exc)
+ 
+ 
++def _apply_pre_worker_spawn(task: Task, board: Optional[str], cmd: list, env: dict, profile_arg: str):
++    """Honor optional pre_worker_spawn overrides. Fail closed to baseline."""
++    from concurrent.futures import ThreadPoolExecutor
++
++    snapshot = {
++        "task_id": getattr(task, "id", None),
++        "assignee": getattr(task, "assignee", None),
++        "board": board,
++        "skills": list(task.skills or []) if getattr(task, "skills", None) else [],
++        "model_override": getattr(task, "model_override", None),
++        "provider_override": getattr(task, "provider_override", None),
++    }
++    try:
++        from hermes_cli.lifecycle import invoke_hook
++
++        with ThreadPoolExecutor(max_workers=1) as pool:
++            future = pool.submit(
++                invoke_hook,
++                "pre_worker_spawn",
++                task_id=snapshot["task_id"],
++                assignee=snapshot["assignee"],
++                board=board,
++                task_snapshot=dict(snapshot),
++            )
++            results = future.result(timeout=0.05)
++    except Exception:
++        return cmd, env, profile_arg
++    overrides: dict = {}
++    for item in results or []:
++        if isinstance(item, dict):
++            overrides.update(item)
++        elif item is not None:
++            return cmd, env, profile_arg
++    allowed = {"model", "provider", "skills", "profile"}
++    if any(key not in allowed for key in overrides):
++        return cmd, env, profile_arg
++    if not overrides:
++        return cmd, env, profile_arg
++
++    def _strip_flag(argv: list, flag: str) -> list:
++        out = []
++        skip = False
++        for part in argv:
++            if skip:
++                skip = False
++                continue
++            if part == flag:
++                skip = True
++                continue
++            out.append(part)
++        return out
++
++    if "profile" in overrides and overrides["profile"]:
++        profile_arg = str(overrides["profile"])
++        cmd = _strip_flag(cmd, "-p")
++        if "--cli" in cmd:
++            idx = cmd.index("--cli")
++            cmd[idx:idx] = ["-p", profile_arg]
++        else:
++            cmd.extend(["-p", profile_arg])
++        try:
++            from hermes_cli.profiles import resolve_profile_env
++
++            env["HERMES_HOME"] = resolve_profile_env(profile_arg)
++        except Exception:
++            pass
++        env["HERMES_PROFILE"] = profile_arg
++    if "skills" in overrides:
++        cmd = _strip_flag(cmd, "--skills")
++        skills = overrides["skills"]
++        if isinstance(skills, str):
++            skills = [skills]
++        for skill in skills or []:
++            if skill:
++                cmd.extend(["--skills", str(skill)])
++    if "model" in overrides:
++        cmd = _strip_flag(cmd, "-m")
++        if overrides["model"]:
++            cmd.extend(["-m", str(overrides["model"])])
++    if "provider" in overrides:
++        cmd = _strip_flag(cmd, "--provider")
++        if overrides["provider"]:
++            cmd.extend(["--provider", str(overrides["provider"])])
++    return cmd, env, profile_arg
++
++
+ def _default_spawn(
+     task: Task,
+     workspace: str,
+@@ -10184,6 +10270,7 @@ def _default_spawn(
+         # turn, prints text, exits rc=0, and the dispatcher records a
+         # protocol violation (incident 2026-06-09 t_d9cbe312).
+         cmd.append("-Q")
++    cmd, env, profile_arg = _apply_pre_worker_spawn(task, board, cmd, env, profile_arg)
+     # Redirect output to a per-task log under <board-root>/logs/.
+     # Anchored at the board root (not the shared kanban root), so
+     # `hermes kanban log` on a specific board reads its own file and
+diff --git a/hermes_cli/plugins.py b/hermes_cli/plugins.py
+index 13ea0a3..217014b 100644
+--- a/hermes_cli/plugins.py
++++ b/hermes_cli/plugins.py
+@@ -216,6 +216,12 @@ VALID_HOOKS: Set[str] = {
+     "kanban_task_claimed",
+     "kanban_task_completed",
+     "kanban_task_blocked",
++    # Directive hook: dispatcher process, immediately before worker Popen.
++    # Callbacks may return SpawnOverrides: model, provider, skills, profile.
++    # Timeout/exception/invalid return keeps baseline argv/env. Must not
++    # mutate Kanban or require network. Return values are honored only for
++    # those override keys.
++    "pre_worker_spawn",
+ }
+ 
+ ENTRY_POINTS_GROUP = "hermes_agent.plugins"
+diff --git a/tests/hermes_cli/test_pre_worker_spawn.py b/tests/hermes_cli/test_pre_worker_spawn.py
+new file mode 100644
+index 0000000..b28fb78
+--- /dev/null
++++ b/tests/hermes_cli/test_pre_worker_spawn.py
+@@ -0,0 +1,68 @@
++from __future__ import annotations
++
++import subprocess
++
++
++def _make_task(kb, *, assignee: str):
++    return kb.Task(
++        id="t_spawn_pre",
++        title="spawn pre",
++        body=None,
++        assignee=assignee,
++        status="running",
++        priority=0,
++        created_by="test",
++        created_at=1,
++        started_at=None,
++        completed_at=None,
++        workspace_kind="dir",
++        workspace_path=None,
++        claim_lock="lock",
++        claim_expires=None,
++        tenant=None,
++        current_run_id=7,
++    )
++
++
++def _capture_spawn(monkeypatch, tmp_path, hook):
++    root = tmp_path / ".hermes"
++    profile = root / "profiles" / "elias"
++    profile.mkdir(parents=True)
++    profile.joinpath("config.yaml").write_text("toolsets:\n  - hermes-cli\n", encoding="utf-8")
++    root.joinpath("config.yaml").write_text("toolsets:\n  - kanban\n", encoding="utf-8")
++    monkeypatch.setenv("HERMES_HOME", str(root))
++    from hermes_cli import kanban_db as kb
++
++    monkeypatch.setattr(kb, "_resolve_hermes_argv", lambda: ["hermes"])
++    captured = {}
++
++    class FakeProc:
++        pid = 4242
++
++    def fake_popen(cmd, *args, **kwargs):
++        captured["cmd"] = list(cmd)
++        captured["env"] = dict(kwargs.get("env") or {})
++        return FakeProc()
++
++    monkeypatch.setattr(subprocess, "Popen", fake_popen)
++    monkeypatch.setattr("hermes_cli.lifecycle.invoke_hook", hook)
++    workspace = tmp_path / "workspace"
++    workspace.mkdir()
++    task = _make_task(kb, assignee="elias")
++    kb._default_spawn(task, str(workspace), board="test")
++    return captured
++
++
++def test_pre_worker_spawn_can_override_model(monkeypatch, tmp_path):
++    captured = _capture_spawn(monkeypatch, tmp_path, lambda *a, **k: [{"model": "gpt-test", "provider": "openai-codex"}])
++    assert "-m" in captured["cmd"]
++    assert "gpt-test" in captured["cmd"]
++    assert "--provider" in captured["cmd"]
++
++
++def test_pre_worker_spawn_exception_keeps_baseline(monkeypatch, tmp_path):
++    def boom(*a, **k):
++        raise RuntimeError("hook failed")
++
++    captured = _capture_spawn(monkeypatch, tmp_path, boom)
++    assert "-m" not in captured["cmd"]
