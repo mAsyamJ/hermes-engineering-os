@@ -8,10 +8,16 @@ blockers. Do not collapse these cells.
 | Cell | Status |
 |---|---|
 | Secure human authority | READY_FOR_OPERATOR_BOOTSTRAP |
-| Runtime actuation | READY_PATCH_NOT_DEPLOYED |
+| Upstream actuation | READY_FOR_UPSTREAM_SUBMISSION |
+| Runtime actuation (live) | READY_PATCH_NOT_DEPLOYED |
 | Memory isolation harness | READY |
-| Real Phase 6 experiment | READY_FOR_LLM_BUDGET_AUTHORIZATION |
+| Real experiment preflight | READY |
+| Budget authorization | READY_FOR_BUDGET_AUTHORIZATION |
+| Real Phase 6 experiment | READY_FOR_BUDGET_AUTHORIZATION |
+| Treatment fidelity | BLOCKED_BUDGET |
 | Real causal evidence | BLOCKED_BUDGET |
+| Production recommendation | BLOCKED_EVIDENCE |
+| PAG-2 readiness | BLOCKED_EVIDENCE_AND_AUTHORITY |
 | Production shadow | BLOCKED_EVIDENCE |
 | Approval A | BLOCKED_SECURITY_BOUNDARY |
 | Canary package | BLOCKED_EVIDENCE (scaffold only) |

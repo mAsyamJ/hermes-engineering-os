@@ -1,6 +1,6 @@
 # Testing
 
-`scripts/verify.sh` is the Phase 7 acceptance command. It runs:
+`scripts/verify.sh` is the PAG-1 acceptance command. It runs:
 
 
 - Phase 0 backup checksum verification;
@@ -21,8 +21,9 @@
 - storage ≥20 GiB free and used < 80%;
 - live Phase 6 experiment data quality (`scripts/verify-experiment-data.sh`);
 - live Phase 7 adaptation data quality (`scripts/verify-adaptation-data.sh`);
-- PAR / `par-v1` unit tests for approval-ed25519-v1, spawn fail-closed,
-  memory isolation, real-v1 evaluator trees, budget gate, and readiness cells.
+- PAG-1 data-quality and chaos-safe branches (`scripts/verify-pag1-data.sh`);
+- PAG-1 unit tests for operator-boundary output, approval bindings, budget
+  gate, all five real-v1 evaluators, and independent readiness cells.
 
 Additional observability scripts: `scripts/otel-smoke-test.sh`,
 `scripts/otel-fail-open-test.sh`, `scripts/otel-privacy-test.sh`,

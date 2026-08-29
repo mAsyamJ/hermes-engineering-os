@@ -141,10 +141,12 @@ curl -fsS http://127.0.0.1:9120/adaptation/readiness
 curl -fsS http://127.0.0.1:9120/adaptation/readiness/authority
 ```
 
-Do not apply `patches/hermes/0001-pre-worker-spawn-hook.patch` to live Hermes.
+Do not apply `patches/hermes/0001-pre-worker-spawn-hook.patch` or
+`patches/hermes/upstream/0001-worker-spawn-transform.patch` to live Hermes.
 Do not create `.runtime/experiments/LLM_BUDGET_AUTHORIZATION` without a human
 budget grant. Do not generate a production signing private key on this VPS.
-See `docs/PRODUCTION_OPERATOR_HANDOFF.md`.
+See `docs/PRODUCTION_OPERATOR_HANDOFF.md` and `.runtime/operator-bootstrap/`.
+Read-only boundary check: `./scripts/verify-operator-boundary.sh`.
 
 ## Evidence states
 

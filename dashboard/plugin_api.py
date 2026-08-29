@@ -446,9 +446,19 @@ def adaptation_readiness_evidence() -> dict[str, Any]:
     return redact(_analytics_proxy("/adaptation/readiness/evidence"))
 
 
-@router.get("/adaptation/readiness/canary")
-def adaptation_readiness_canary() -> dict[str, Any]:
-    return redact(_analytics_proxy("/adaptation/readiness/canary"))
+@router.get("/adaptation/readiness/pag2")
+def adaptation_readiness_pag2() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/readiness/pag2"))
+
+
+@router.get("/adaptation/readiness/experiment")
+def adaptation_readiness_experiment() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/readiness/experiment"))
+
+
+@router.get("/adaptation/readiness/upstream")
+def adaptation_readiness_upstream() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/readiness/upstream"))
 
 
 @router.get("/adaptation/recommendations")

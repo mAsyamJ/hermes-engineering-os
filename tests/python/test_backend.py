@@ -57,6 +57,9 @@ class BackendTests(unittest.TestCase):
         self.assertIn("/adaptation", paths)
         self.assertIn("/adaptation/health", paths)
         self.assertIn("/adaptation/readiness", paths)
+        self.assertIn("/adaptation/readiness/pag2", paths)
+        self.assertIn("/adaptation/readiness/experiment", paths)
+        self.assertIn("/adaptation/readiness/upstream", paths)
         self.assertIn("/adaptation/explain/{object_id}", paths)
 
 

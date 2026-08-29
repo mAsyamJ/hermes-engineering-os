@@ -20,8 +20,9 @@ performance intelligence (`phase5-perf-v1`), GET-only `/performance*`, and
 `hermes-eos-experiments.timer`. Phase 7 adds controlled adaptation
 (`phase7-adapt-v1`) on isolated `hermes_control`, GET-only `/adaptation*`,
 and `hermes-eos-adaptation.timer`. PAR adds GET-only
-`/adaptation/readiness/{authority,runtime,memory,evidence,canary}` cells and
-does not add mutation APIs.
+`/adaptation/readiness/{authority,runtime,memory,evidence,canary}` cells.
+PAG-1 extends GET-only cells (`upstream`, `experiment`, `pag2`) and does not
+add mutation APIs, deploy buttons, or a new service.
 
 ## Health
 

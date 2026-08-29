@@ -79,6 +79,17 @@
 - Real MODEL protocol is prepared with `max_llm_calls=0` until an explicit
   budget authorization artifact exists.
 
+## Production Activation Gate 1 (PAG-1)
+
+- Not Phase 8 and not production enablement. Contract remains `par-v1`.
+- Operator bootstrap stays human-only. `scripts/verify-operator-boundary.sh`
+  reports `READY_FOR_HUMAN` while ubuntu has passwordless sudo.
+- Current Hermes upstream is pinned in `provenance/HERMES_PAG1_UPSTREAM.yaml`.
+  The new spawn transform is `transform_kanban_worker_spawn` on that pin.
+  Historical PAR `pre_worker_spawn` patch is preserved and not overwritten.
+- Real experiment stays unauthorized unless a human writes a bound JSON
+  artifact. PAG-1 must not write it.
+
 ## Analytics connectivity (Phase 3)
 
 - Dedicated `hermes_engineering` database on the observability Postgres.

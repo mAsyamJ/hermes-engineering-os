@@ -110,4 +110,6 @@ echo "PASS: no secret-like values in shipped output or evidence"
 echo "PASS: Phase 6 verification complete"
 "$ROOT/scripts/verify-adaptation-data.sh"
 echo "PASS: Phase 7 verification complete"
+"$ROOT/scripts/verify-pag1-data.sh"
+echo "PASS: PAG-1 verification complete"
 
