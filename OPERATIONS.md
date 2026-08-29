@@ -22,7 +22,9 @@ performance intelligence (`phase5-perf-v1`), GET-only `/performance*`, and
 and `hermes-eos-adaptation.timer`. PAR adds GET-only
 `/adaptation/readiness/{authority,runtime,memory,evidence,canary}` cells.
 PAG-1 extends GET-only cells (`upstream`, `experiment`, `pag2`) and does not
-add mutation APIs, deploy buttons, or a new service.
+add mutation APIs, deploy buttons, or a new service. PAG-2 adds protected
+system-unit **templates** under `deploy/pag2/`; they are not installed until
+H1 (human). Production gateways remain ubuntu user units until that gate.
 
 ## Health
 

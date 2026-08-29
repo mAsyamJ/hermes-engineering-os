@@ -26,6 +26,9 @@ PAR / par-v1 readiness (authority protocol, isolated spawn patch, memory harness
 PAG-1 (operator-boundary verifier, current-upstream spawn transform, real preflight)
         │
         ▼
+PAG-2 (four-principal TCB, same-SHA H1, confirmatory v2, hash-locked H3)
+        │
+        ▼
 phase3-v1 materializer (Docker oneshot, writer role)
         │
         ▼

@@ -28,6 +28,9 @@
   in memory snapshots, approval packages, or API output. `approval-ed25519-v1`
   is protocol scaffolding only. No production signing private key may exist on an
   agent-readable filesystem. Operator bootstrap is human-only.
+- PAG-2 plants `FAKE_PAG2_SECRET_ABC123` in tests only. Four-principal TCB and
+  SO_PEERCRED are required before any production grant. Ubuntu cannot run
+  deploy-tool `install`/`rollback`.
 - Phoenix UI and OTLP listen on `127.0.0.1:6006` only. Observability Postgres
   has no host port. Analytics API listens on `127.0.0.1:9120` only. DB
   passwords stay in `deploy/observability/.env` mode `0600` and are never

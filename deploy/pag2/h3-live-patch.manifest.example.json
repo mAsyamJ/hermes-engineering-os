@@ -1,0 +1,15 @@
+{
+  "base_runtime_hash": "c0106e50e7ecedb3ce34e785d949725dc4e0e457",
+  "artifact_sha256": "51d4dd4d003143cdfea07d53668e8079f6d5163dc0a2777b3d5c3efd0001ecd4",
+  "affected_files": [
+    "hermes_cli/kanban_db.py",
+    "hermes_cli/plugins.py"
+  ],
+  "affected_units": [
+    "hermes-gateway.service",
+    "hermes-gateway-rp-friend.service"
+  ],
+  "rollback_hash": "c0106e50e7ecedb3ce34e785d949725dc4e0e457",
+  "expiry": "2027-01-01T00:00:00+00:00",
+  "nonce": "pag2-h3-example-nonce-not-authorizing"
+}

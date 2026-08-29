@@ -1,0 +1,22 @@
+[Unit]
+Description=Hermes EOS protected adaptation actuator (SO_PEERCRED)
+After=network-online.target
+Requires=hermes-eos-actuator.socket
+
+[Service]
+Type=simple
+User=hermes-actuator
+Group=hermes-runtime
+RuntimeDirectory=hermes-eos
+RuntimeDirectoryMode=0750
+ExecStart=/usr/lib/hermes-runtime/venv/bin/python /usr/local/lib/hermes-eos/actuator.py
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/run/hermes-eos /var/lib/hermes-actuator
+
+[Install]
+WantedBy=multi-user.target

@@ -24,6 +24,11 @@
 - PAG-1 data-quality and chaos-safe branches (`scripts/verify-pag1-data.sh`);
 - PAG-1 unit tests for operator-boundary output, approval bindings, budget
   gate, all five real-v1 evaluators, and independent readiness cells.
+- PAG-2 unit tests (`tests/python/test_pag2.py`) for confirmatory freeze,
+  SO_PEERCRED reject, OS IPC timeout, atomic reservation, HARD budget
+  argv/timeout, protected-trust caller-key ignore, live patch hash, and
+  deploy-tool ubuntu install reject;
+- PAG-2 hardening script `scripts/verify-pag2-hardening.sh`.
 
 Additional observability scripts: `scripts/otel-smoke-test.sh`,
 `scripts/otel-fail-open-test.sh`, `scripts/otel-privacy-test.sh`,

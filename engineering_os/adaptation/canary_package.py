@@ -36,6 +36,10 @@ def generate_package(
     evidence: dict[str, Any] | None = None,
     shadow: dict[str, Any] | None = None,
     guardrails: dict[str, Any] | None = None,
+    runtime_release_hash: str = "",
+    live_patch_hash: str = "",
+    actuator_contract_version: str = "",
+    trust_fingerprint: str = "",
 ) -> dict[str, Any]:
     request = generate_approval_request(
         recommendation_id=recommendation_id,
@@ -49,6 +53,10 @@ def generate_package(
         fallback_hash=fallback_hash,
         rollback_hash=rollback_hash,
         expiry=expiry,
+        runtime_release_hash=runtime_release_hash,
+        live_patch_hash=live_patch_hash,
+        actuator_contract_version=actuator_contract_version,
+        trust_fingerprint=trust_fingerprint,
     )
     request_id = request["request_id"]
     dest = _runtime() / request_id

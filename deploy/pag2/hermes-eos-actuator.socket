@@ -1,0 +1,9 @@
+[Unit]
+Description=Hermes EOS actuator Unix socket
+[Socket]
+ListenStream=/run/hermes-eos/actuator.sock
+SocketUser=hermes-actuator
+SocketGroup=hermes-runtime
+SocketMode=0660
+[Install]
+WantedBy=sockets.target

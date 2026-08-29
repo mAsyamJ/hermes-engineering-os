@@ -2,40 +2,28 @@
 
 **Status: DISABLED for production actuation**
 
-Phase 7 framework remains complete. PAR (`par-v1`) decomposes the remaining
-blockers. Do not collapse these cells.
+PAG-2 autonomous scaffolding is present. H1 is not PASS. Do not collapse cells.
 
 | Cell | Status |
 |---|---|
 | Secure human authority | READY_FOR_OPERATOR_BOOTSTRAP |
-| Upstream actuation | READY_FOR_UPSTREAM_SUBMISSION |
-| Runtime actuation (live) | READY_PATCH_NOT_DEPLOYED |
+| Upstream actuation | READY_FOR_UPSTREAM_SUBMISSION (pin retained; Nous main has drifted) |
+| Runtime actuation (live) | READY_PATCH_NOT_DEPLOYED (isolated QUALIFIED) |
 | Memory isolation harness | READY |
 | Real experiment preflight | READY |
 | Budget authorization | READY_FOR_BUDGET_AUTHORIZATION |
-| Real Phase 6 experiment | READY_FOR_BUDGET_AUTHORIZATION |
+| Real Phase 6 experiment | READY_FOR_BUDGET_AUTHORIZATION (v2 frozen, not run) |
 | Treatment fidelity | BLOCKED_BUDGET |
 | Real causal evidence | BLOCKED_BUDGET |
 | Production recommendation | BLOCKED_EVIDENCE |
 | PAG-2 readiness | BLOCKED_EVIDENCE_AND_AUTHORITY |
 | Production shadow | BLOCKED_EVIDENCE |
 | Approval A | BLOCKED_SECURITY_BOUNDARY |
-| Canary package | BLOCKED_EVIDENCE (scaffold only) |
+| Canary package | BLOCKED_EVIDENCE (scaffold includes runtime identity fields) |
 | Approval B | NOT_EXECUTED |
 | Production adaptation | DISABLED |
+| Auto-promote | false |
 
-Required for production readiness (still unmet unless noted):
-
-1. Real qualified Phase 6 treatment experiment — protocol ready; execution unauthorized
-2. Required validity PASS with real treatment exposure fidelity — BLOCKED_BUDGET
-3. Memory isolation harness — READY (do not use production profile)
-4. Supported Hermes runtime actuation seam — isolated patch, not live
-5. Secure human Approval A — BLOCKED_SECURITY_BOUNDARY
-6. Successful production shadow after Approval A
-7. Explicitly authorized production canary — not granted
-8. Canary guardrails PASS
-9. Secure Approval B
-10. Rollback qualification for that production policy
-
-Do not treat fixture `EVIDENCE_FOR_CANDIDATE` as production evidence.
-Do not treat Phase 5 observational rankings as causal proof.
+`PRODUCTION_FULL` and `PRODUCTION_BOUNDED` stay disabled even after H1.
+`PRODUCTION_CANARY` / `PRODUCTION_SHADOW` may reach the protected actuator
+only after H1; they are not unrestricted adaptation.

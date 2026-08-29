@@ -7,7 +7,6 @@ from typing import Any
 
 from engineering_os.adaptation import (
     PRODUCTION_ACTUATION,
-    PRODUCTION_SCOPES,
 )
 from engineering_os.adaptation.resolver import resolve_policy
 
@@ -61,8 +60,13 @@ def resolve_spawn_configuration(
     try:
         scope = str(task_context.get("scope") or "")
         environment = str(task_context.get("environment") or "")
-        if scope in PRODUCTION_SCOPES or environment == "production":
-            if PRODUCTION_ACTUATION != "ENABLED":
+        # Unrestricted production stays disabled. Bounded shadow/canary may
+        # continue to the policy resolver; the actuator still requires
+        # SO_PEERCRED + signed reservation before any candidate argv.
+        if PRODUCTION_ACTUATION != "ENABLED":
+            if scope in {"PRODUCTION_BOUNDED", "PRODUCTION_FULL"}:
+                return _baseline("PRODUCTION_ACTUATION_DISABLED", baseline, started)
+            if environment == "production" and scope not in {"PRODUCTION_SHADOW", "PRODUCTION_CANARY"}:
                 return _baseline("PRODUCTION_ACTUATION_DISABLED", baseline, started)
         decision = resolve_policy(task_context, state)
         elapsed_ms = (time.perf_counter() - started) * 1000.0

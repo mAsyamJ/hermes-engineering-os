@@ -437,5 +437,115 @@ class LivePatchAndBoundaryTests(unittest.TestCase):
         self.assertNotIn(FAKE_SECRET, proc.stdout)
 
 
+class ShadowCanaryAndDeployTests(unittest.TestCase):
+    def test_shadow_does_not_consume_exposure(self) -> None:
+        reset_memory()
+        shadow = _canary_state()
+        shadow["bindings"][0]["mode"] = "SHADOW"
+        first = handle_request(
+            {
+                "task_id": "t1",
+                "task_context": {"board": "retropick-markets-release", "task_id": "t1"},
+                "baseline": {"model": "gpt-5.6-sol"},
+            },
+            peer_uid=2000,
+            runtime_uid=2000,
+            state=shadow,
+        )
+        second = handle_request(
+            {
+                "task_id": "t2",
+                "task_context": {"board": "retropick-markets-release", "task_id": "t2"},
+                "baseline": {"model": "gpt-5.6-sol"},
+            },
+            peer_uid=2000,
+            runtime_uid=2000,
+            state=shadow,
+        )
+        self.assertFalse(first.get("actuate"))
+        self.assertFalse(second.get("actuate"))
+        self.assertNotIn("reservation", first)
+
+    def test_canary_reserves_once_full_scope_stays_disabled(self) -> None:
+        from engineering_os.adaptation.spawn_resolve import resolve_spawn_configuration
+
+        reset_memory()
+        first = handle_request(
+            {
+                "task_id": "t1",
+                "task_context": {"board": "retropick-markets-release", "task_id": "t1"},
+                "baseline": {"model": "gpt-5.6-sol"},
+            },
+            peer_uid=2000,
+            runtime_uid=2000,
+            state=_canary_state(),
+        )
+        second = handle_request(
+            {
+                "task_id": "t2",
+                "task_context": {"board": "retropick-markets-release", "task_id": "t2"},
+                "baseline": {"model": "gpt-5.6-sol"},
+            },
+            peer_uid=2000,
+            runtime_uid=2000,
+            state=_canary_state(),
+        )
+        self.assertEqual(first["resolution"], "CANDIDATE")
+        self.assertTrue(first.get("actuate"))
+        self.assertTrue(first.get("reservation", {}).get("reserved"))
+        self.assertEqual(second["resolution"], "BASELINE")
+        blocked = resolve_spawn_configuration(
+            {"scope": "PRODUCTION_FULL", "environment": "production", "board": "retropick-markets-release"},
+            {"model": "gpt-5.6-sol"},
+            state=_canary_state(),
+        )
+        self.assertEqual(blocked["reason"], "PRODUCTION_ACTUATION_DISABLED")
+
+    def test_deploy_tool_rejects_git_ref_and_ubuntu_install(self) -> None:
+        import json
+        import tempfile
+
+        artifact = ROOT / "patches" / "hermes" / "live" / "0001-worker-spawn-transform-live.patch"
+        tmp = Path(tempfile.mkdtemp())
+        good = {
+            "base_runtime_hash": "c0106e50e7ecedb3ce34e785d949725dc4e0e457",
+            "artifact_sha256": LIVE_PATCH_SHA256,
+            "affected_files": ["hermes_cli/kanban_db.py"],
+            "affected_units": ["hermes-gateway.service"],
+            "rollback_hash": "c0106e50e7ecedb3ce34e785d949725dc4e0e457",
+            "expiry": "2027-01-01T00:00:00+00:00",
+            "nonce": "n1",
+        }
+        manifest = tmp / "m.json"
+        manifest.write_text(json.dumps(good), encoding="utf-8")
+        tool = str(ROOT / "scripts/hermes-eos-deploy-tool.py")
+        verify = subprocess.run(
+            [tool, "verify", "--manifest", str(manifest), "--artifact", str(artifact)],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(verify.returncode, 0, verify.stderr)
+        bad = dict(good)
+        bad["git_ref"] = "main"
+        bad_path = tmp / "bad.json"
+        bad_path.write_text(json.dumps(bad), encoding="utf-8")
+        gitref = subprocess.run(
+            [tool, "verify", "--manifest", str(bad_path), "--artifact", str(artifact)],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertNotEqual(gitref.returncode, 0)
+        install = subprocess.run(
+            [tool, "install", "--manifest", str(manifest), "--artifact", str(artifact), "--signature", "00"],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertNotEqual(install.returncode, 0)
+        self.assertIn("ubuntu cannot invoke", (install.stderr + install.stdout).lower())
+
+
 if __name__ == "__main__":
     unittest.main()

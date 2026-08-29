@@ -30,6 +30,10 @@
 - PAG-1 must not execute operator bootstrap, self-authorize LLM budget, push
   Engineering OS or upstream Hermes, or deploy the spawn transform to live
   Hermes. `scripts/verify-operator-boundary.sh` is read-only.
+- PAG-2 must not fake H1 PASS, create principals, cut over the live gateway,
+  self-authorize LLM budget, deploy spawn-transform, or push. Human gates
+  are H1 → H2 → experiment → H3. `scripts/verify-operator-boundary.sh` is
+  read-only and currently `READY_FOR_HUMAN`.
 - GitHub is read-first. Do not create branches, commits, PRs, checks, comments,
   or Kanban mutations from this plugin.
 - Keep upstream pins, licenses, and every vendored file's provenance current.

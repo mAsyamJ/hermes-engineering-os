@@ -147,6 +147,10 @@ Do not create `.runtime/experiments/LLM_BUDGET_AUTHORIZATION` without a human
 budget grant. Do not generate a production signing private key on this VPS.
 See `docs/PRODUCTION_OPERATOR_HANDOFF.md` and `.runtime/operator-bootstrap/`.
 Read-only boundary check: `./scripts/verify-operator-boundary.sh`.
+PAG-2 hardening check: `./scripts/verify-pag2-hardening.sh`.
+H1 baseline capture (read-only): `./scripts/capture-h1-baseline.sh`.
+System unit templates for hermes-op live in `deploy/pag2/` and must not be
+installed by ubuntu.
 
 ## Evidence states
 

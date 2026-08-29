@@ -90,6 +90,14 @@
 - Real experiment stays unauthorized unless a human writes a bound JSON
   artifact. PAG-1 must not write it.
 
+## Production Activation Gate 2 (PAG-2)
+
+- Four principals after H1: hermes-op / hermes-runtime / hermes-actuator / ubuntu.
+- Same-SHA cutover first (no spawn-transform). Hash-locked live patch is H3.
+- Confirmatory v2 freeze is 28 pairs; v1 is PILOT_ONLY.
+- `verify-operator-boundary.sh` PASS requires the full TCB. GitHub admin is
+  recorded, not a local PASS blocker. Do not fake PASS.
+
 ## Analytics connectivity (Phase 3)
 
 - Dedicated `hermes_engineering` database on the observability Postgres.
