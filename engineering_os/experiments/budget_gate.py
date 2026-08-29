@@ -100,8 +100,6 @@ def load_authorization_artifact() -> dict[str, Any]:
         return {"ok": False, "present": True, "status": "INVALID", "reason": "authorization budgets must be integers"}
     if max_units <= 0 or max_calls <= 0:
         return {"ok": False, "present": True, "status": "INVALID", "reason": "authorization budgets must be positive"}
-    if max_units > 10 or max_calls > 10:
-        return {"ok": False, "present": True, "status": "INVALID", "reason": "authorization exceeds registered PAG-1 ceiling"}
     return {
         "ok": True,
         "present": True,
@@ -129,6 +127,20 @@ def bind_protocol(artifact: dict[str, Any], protocol: dict[str, Any] | None) -> 
         return {"ok": False, "status": "INVALID", "reason": "authorization control model mismatch"}
     if candidate and str(data.get("candidate_model")) != candidate:
         return {"ok": False, "status": "INVALID", "reason": "authorization candidate model mismatch"}
+    planned_units = int((protocol.get("budget") or {}).get("planned_max_units") or 0)
+    planned_calls = int((protocol.get("budget") or {}).get("planned_max_llm_calls") or 0)
+    if planned_units <= 0:
+        planned_units = int((protocol.get("sample_plan") or {}).get("planned_n") or 0) * 2
+    if planned_calls <= 0:
+        planned_calls = planned_units
+    auth_units = int(data.get("max_units") or 0)
+    auth_calls = int(data.get("max_llm_calls") or 0)
+    if auth_units > planned_units or auth_calls > planned_calls:
+        return {
+            "ok": False,
+            "status": "INVALID",
+            "reason": "authorization exceeds registered protocol budget",
+        }
     return artifact
 
 

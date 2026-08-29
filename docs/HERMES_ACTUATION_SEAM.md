@@ -31,6 +31,12 @@ passes `spawn_fn`.
 Required. See `HERMES_ACTUATION_UPSTREAM_PATCH.md`.
 Live deploy: **not performed**. Status: `READY_PATCH_NOT_DEPLOYED`.
 
+## PAG-2 live isolated patch
+
+See `docs/HERMES_LIVE_PATCH.md`. QUALIFIED against exact live SHA
+`c0106e50`. **Not installed at H1.** Production install is H3 via the
+hash-locked deploy-tool.
+
 ## Rejected approaches
 
 - PATCH Kanban `model_override` / `skills` / `assignee`

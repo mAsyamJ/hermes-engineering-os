@@ -2,58 +2,145 @@
 
 Human-only. Autonomous agents must not execute these steps.
 
-Order is mandatory: create new human access first. Never remove current access first.
+Order is mandatory. Create new human access first. Never remove current
+access first. After PAG-2 H1 the production gateway identity is
+`hermes-runtime`, not `ubuntu`.
 
-## 1. Create new human administrator access
+Four principals (do not collapse):
 
-- Precondition: existing ubuntu SSH session works; you have a second key you control off-VPS.
-- Action: add a new administrator identity (new user or additional SSH key for a human-only account) using a process you can reverse.
-- Verification: open a **separate SSH session** as that identity. Confirm `sudo -n true` or an equivalent admin check succeeds in that session.
-- Rollback: remove only the new identity. Do not touch ubuntu.
-- Lockout prevention: keep the original ubuntu session open until the new session is proven.
+| Principal | Role | Login |
+|---|---|---|
+| `hermes-op` | human administrator (sudo, recovery) | yes |
+| `hermes-runtime` | production gateway process | **no** |
+| `hermes-actuator` | protected IPC actuator | **no** |
+| `ubuntu` | Engineering OS / Cursor agent | yes; SSH key kept |
 
-## 2. Verify admin capability in the new session
+H1 is a **same-SHA security cutover**. Live Hermes stays at
+`c0106e50e7ecedb3ce34e785d949725dc4e0e457` with **no**
+`transform_kanban_worker_spawn`. Spawn-transform deploy is H3.
 
-- Precondition: step 1 verification passed.
-- Action: from the new session, inspect sudoers, systemd, and Docker without changing ubuntu.
-- Verification: new session can read `/etc/sudoers` (via sudo) and restart a **non-production** test unit if you create one.
-- Rollback: none required.
-- Lockout prevention: ubuntu access unchanged.
+Exact copy-paste commands live in gitignored
+`.runtime/operator-bootstrap/` (PRECHECK, H1_COMMANDS, CHECKLIST,
+POSTCHECK, ROLLBACK). This file is the contract those commands must
+satisfy.
 
-## 3. Create protected actuation user/service
+## Lockout prevention (every step)
 
-- Precondition: step 2 passed; two working admin sessions.
-- Action: create an actuation identity whose files ubuntu cannot write **after** sudo is reduced. Do not place the production private key on this VPS.
-- Verification: ubuntu cannot write the actuation unit or trust file without sudo; after sudo reduction, ubuntu cannot write them at all.
-- Rollback: delete the new identity; ubuntu remains admin.
-- Lockout prevention: do not reduce ubuntu yet.
+- Keep the original ubuntu SSH session open until hermes-op sudo is proven
+  in a **second** session.
+- Never edit sudoers from the only remaining admin session.
+- Never delete ubuntu's authorized key.
+- If gateway cutover fails, restore previous user units from the snapshot
+  taken in PRECHECK.
 
-## 4. Verify operator access again
+## 1. Create `hermes-op` (human administrator)
 
-- Precondition: actuation identity exists.
-- Action: reconnect the separate admin session.
-- Verification: admin still works; ubuntu still works.
-- Rollback: restore any mistaken file modes.
-- Lockout prevention: both sessions still open.
+- Precondition: existing ubuntu SSH works; you have a second key off-VPS.
+- Action: create login user `hermes-op`, install **only** the human SSH
+  public key, grant sudo.
+- Verification: open a **separate SSH session** as hermes-op. Confirm
+  `sudo -n true` succeeds. ubuntu session still works.
+- Rollback: delete only `hermes-op`. Do not touch ubuntu.
+- Reply in chat is not required until the full H1 sequence finishes.
 
-## 5. Only then consider reducing agent privilege
+## 2. Create non-login `hermes-runtime` and `hermes-actuator`
 
-- Precondition: steps 1–4 verified twice.
-- Action: replace `NOPASSWD: ALL` with a narrow allowlist **or** remove ubuntu sudo.
-- Verification: new admin session still has sudo; ubuntu can still do required Engineering OS work; you can still log in.
-- Rollback: restore previous sudoers from a copy taken before the edit, using the new admin session.
-- Lockout prevention: never edit sudoers from the only remaining admin session.
+- Precondition: step 1 verified twice.
+- Action: `useradd --system --shell /usr/sbin/nologin` for both.
+- Verification: `getent passwd` shows four distinct uids; runtime/actuator
+  shells are nologin.
+
+## 3. Install public trust, protected verifier, actuator, deploy-tool
+
+- Precondition: four users exist.
+- Action: install **public** Ed25519 trust only at
+  `/etc/hermes-eos/approval-trust.pub`. Never place the production private
+  key on this VPS. Install protected copies of the verifier, SO_PEERCRED
+  actuator, and hash-locked deploy-tool under `/usr/local/lib/hermes-eos/`.
+  Socket dir `/run/hermes-eos` owned by hermes-actuator, mode 750, group
+  hermes-runtime so the runtime can connect and ubuntu cannot.
+- Verification: ubuntu cannot write those paths; `rg SO_PEERCRED` on the
+  protected actuator file; deploy-tool rejects git refs.
+- Rollback: remove `/etc/hermes-eos` and `/usr/local/lib/hermes-eos`.
+
+## 4. Same-SHA protected runtime copy (no spawn-transform)
+
+- Precondition: live SHA is still `c0106e50…`; live tree still lacks
+  `transform_kanban_worker_spawn`.
+- Action: copy live source into `/usr/lib/hermes-runtime/hermes-agent`
+  at that exact SHA. Create a **new** venv there (do not reuse the
+  ubuntu-writable venv). Do **not** apply
+  `patches/hermes/live/0001-worker-spawn-transform-live.patch`.
+- Verification: `git -C /usr/lib/hermes-runtime/hermes-agent rev-parse HEAD`
+  equals live SHA; `rg transform_kanban_worker_spawn` is empty; ubuntu
+  cannot write the tree.
+
+## 5. HUMAN ACTION REQUIRED — CREDENTIAL MIGRATION
+
+The current gateway reads `HERMES_HOME=/home/ubuntu/.hermes` including
+`.env`, `auth.json`, `config.yaml`, profiles, Memory, Skills. A process
+running as hermes-runtime cannot use those files without a copy, and
+leaving production `HERMES_HOME` agent-writable would fail H1.
+
+- Action: operator copies credential/home material into
+  `/var/lib/hermes-runtime/home` using root rsync (no `cat` of secrets,
+  no paste into chat, no git). `chown hermes-runtime` and `chmod 750`
+  on the tree; `chmod 600` on `.env` / `auth.json`. Do **not** copy
+  `plugins/engineering-os` into the production home on H1.
+- Verification: files exist, ownership is hermes-runtime, ubuntu cannot
+  write the directory; do not print contents.
+- If this cannot be done without exposing secrets in chat: stop and say
+  the gate name. Do not invent credentials.
+
+## 6. System gateway units as `hermes-runtime`
+
+- Precondition: protected tree + migrated home exist.
+- Capture before-cutover hashes/argv/env/board/Memory/Skills/Profiles/
+  dispatcher/task state (`scripts/capture-h1-baseline.sh`).
+- Action: install **system** units `hermes-gateway.service` and
+  `hermes-gateway-rp-friend.service` with `User=hermes-runtime`,
+  `ExecStart` pointing at the protected venv and tree, `HERMES_HOME`
+  pointing at `/var/lib/hermes-runtime/home` (rp-friend profile under
+  that home). `ExecReload=/bin/kill -USR1 $MAINPID` (in-band restart,
+  not Python reload). Mask/disable dispatcher-capable **user** units
+  after the system units are healthy. Drain with SIGUSR1.
+- Verification: `systemctl show hermes-gateway.service -p User` is
+  `hermes-runtime`; MainPID user is hermes-runtime; ubuntu user units
+  are masked; board/dispatcher behavior matches the baseline capture.
+
+## 7. Prove hermes-op recovery, then reduce ubuntu sudo
+
+- Precondition: production gateway already runs as hermes-runtime.
+- Action: from the hermes-op session, confirm sudo/recovery. Then
+  `visudo` and replace ubuntu `(ALL) NOPASSWD: ALL` with a narrow
+  allowlist **or** remove ubuntu sudo. Keep ubuntu SSH.
+- Verification: hermes-op still has sudo; ubuntu still logs in;
+  `scripts/verify-operator-boundary.sh` status=`PASS`.
+- Rollback: restore sudoers from the copy taken before the edit,
+  using the hermes-op session.
+
+## H1 PASS list (all required; do not fake)
+
+- ubuntu no longer has unrestricted root
+- ubuntu cannot modify production Hermes executable/runtime
+- ubuntu cannot modify gateway service definitions/drop-ins
+- ubuntu cannot modify production plugin discovery
+- ubuntu cannot replace the future IPC client path
+- ubuntu cannot replace the production trust root
+- ubuntu cannot replace the actuator
+- ubuntu cannot modify protected policy/binding state
+- ubuntu cannot invoke protected deployment with an unsigned artifact
+- ubuntu cannot connect to the actuator as hermes-runtime (`SO_PEERCRED`)
+- production private signing key absent from the VPS
+- hermes-runtime cannot replace actuator/trust root
+- hermes-actuator cannot rewrite arbitrary Hermes runtime files except
+  through the bounded deploy/rollback tool
+- hermes-op recovery still works
+- production gateway MainPID user is hermes-runtime
+- same-SHA cutover preserved baseline behavior
+- live production tree still has **no** spawn-transform (H3)
+
+Reply after machine verification: `OPERATOR BOOTSTRAP COMPLETE` plus
+the **public** key fingerprint only.
 
 Privilege-boundary change is outside autonomous execution scope.
-
-## Reconciliation with this VPS (PAG-1)
-
-As of PAG-1 entry, human bootstrap has **not** occurred:
-
-- only interactive user is `ubuntu` (uid 1000)
-- `sudo` is `(ALL) NOPASSWD: ALL` via cloud-init
-- one SSH authorized key (`retropick-ovh-prod`)
-- no protected actuation identity or production public trust file
-- `scripts/verify-operator-boundary.sh` reports `READY_FOR_HUMAN`
-
-Exact operator package (gitignored runtime): `.runtime/operator-bootstrap/`.

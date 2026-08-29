@@ -27,5 +27,7 @@ the hook may call later. Production actuation stays `DISABLED`.
 
 Historical: `git apply -R patches/hermes/0001-pre-worker-spawn-hook.patch` in a clone of `c0106e50`.
 PAG-1: `git apply -R patches/hermes/upstream/0001-worker-spawn-transform.patch` on `aff5125`.
-Do not apply either to live `/home/ubuntu/.hermes/hermes-agent` without a separate
-deployment gate.
+Live SHA patch: `patches/hermes/live/0001-worker-spawn-transform-live.patch`
+(see `docs/HERMES_LIVE_PATCH.md`). Do not apply any of these to live
+`/home/ubuntu/.hermes/hermes-agent` without H3. H1 copies the live SHA
+**without** the spawn-transform.

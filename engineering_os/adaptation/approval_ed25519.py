@@ -26,6 +26,9 @@ from engineering_os.adaptation import (
 from engineering_os.experiments.config_snapshot import canonical_dumps, sha256_text
 
 ROOT = Path(__file__).resolve().parents[2]
+PROTECTED_TRUST_PUB = Path("/etc/hermes-eos/approval-trust.pub")
+PROTECTED_VERIFIER = Path("/usr/local/lib/hermes-eos/approval-verifier")
+AGENT_UID = 1000
 CANONICAL_FIELDS = (
     "request_id",
     "recommendation_id",
@@ -42,6 +45,10 @@ CANONICAL_FIELDS = (
     "nonce",
     "created_at",
     "contract_version",
+    "runtime_release_hash",
+    "live_patch_hash",
+    "actuator_contract_version",
+    "trust_fingerprint",
 )
 
 try:
@@ -106,6 +113,10 @@ def generate_approval_request(
     fallback_hash: str,
     rollback_hash: str,
     expiry: str,
+    runtime_release_hash: str = "",
+    live_patch_hash: str = "",
+    actuator_contract_version: str = "",
+    trust_fingerprint: str = "",
 ) -> dict[str, Any]:
     created = _now().replace(microsecond=0).isoformat()
     request = canonical_request(
@@ -125,6 +136,10 @@ def generate_approval_request(
             "nonce": secrets.token_hex(16),
             "created_at": created,
             "contract_version": PAR_CONTRACT,
+            "runtime_release_hash": runtime_release_hash,
+            "live_patch_hash": live_patch_hash,
+            "actuator_contract_version": actuator_contract_version,
+            "trust_fingerprint": trust_fingerprint,
         }
     )
     request["algorithm"] = APPROVAL_ED25519_ALG
@@ -241,8 +256,57 @@ def verify_bindings(request: dict[str, Any], expected: dict[str, Any]) -> dict[s
     return {"ok": True, "reason": "bindings match"}
 
 
+def _owned_by_agent(path: Path) -> bool:
+    try:
+        return path.stat().st_uid == AGENT_UID
+    except OSError:
+        return True
+
+
+def _agent_can_write(path: Path) -> bool:
+    try:
+        if os.access(path, os.W_OK):
+            return True
+        if os.access(path.parent, os.W_OK):
+            return True
+    except OSError:
+        return True
+    return _owned_by_agent(path)
+
+
+def trust_paths_protected() -> bool:
+    """True only when ubuntu cannot replace the installed public trust or verifier."""
+    if not PROTECTED_TRUST_PUB.is_file() or not PROTECTED_VERIFIER.exists():
+        return False
+    if _agent_can_write(PROTECTED_TRUST_PUB) or _agent_can_write(PROTECTED_VERIFIER):
+        return False
+    return True
+
+
+def load_protected_public_key() -> bytes | None:
+    if not trust_paths_protected():
+        return None
+    try:
+        raw = PROTECTED_TRUST_PUB.read_bytes().strip()
+    except OSError:
+        return None
+    if len(raw) == 32:
+        return raw
+    text = raw.decode("ascii", errors="ignore").strip().replace("\n", "")
+    if len(text) == 64 and all(char in "0123456789abcdefABCDEF" for char in text):
+        return bytes.fromhex(text)
+    if _HAS_CRYPTO and (b"BEGIN" in raw):
+        from cryptography.hazmat.primitives.serialization import load_pem_public_key
+
+        try:
+            return load_pem_public_key(raw).public_bytes(Encoding.Raw, PublicFormat.Raw)
+        except Exception:
+            return None
+    return None
+
+
 def production_trust_anchor_status() -> dict[str, Any]:
-    """Honest classification. A local public key is agent-replaceable."""
+    """Honest classification. Agent-writable material is never a production grant."""
     if os.environ.get("HERMES_CONTROL_PRODUCTION_APPROVAL_KEY"):
         return {
             "status": "BLOCKED_SECURITY_BOUNDARY",
@@ -250,12 +314,21 @@ def production_trust_anchor_status() -> dict[str, Any]:
             "reason": "production key on autonomous worker is not a secure human boundary",
             "agent_replaceable": True,
         }
+    if not trust_paths_protected():
+        return {
+            "status": "BLOCKED_SECURITY_BOUNDARY",
+            "granted": False,
+            "reason": "no off-VPS operator trust anchor is registered; local verifiers are agent-replaceable",
+            "agent_replaceable": True,
+            "algorithm": APPROVAL_ED25519_ALG,
+        }
     return {
-        "status": "BLOCKED_SECURITY_BOUNDARY",
+        "status": "PROTECTED_TRUST_PRESENT",
         "granted": False,
-        "reason": "no off-VPS operator trust anchor is registered; local verifiers are agent-replaceable",
-        "agent_replaceable": True,
+        "reason": "protected public trust is installed; signatures still required",
+        "agent_replaceable": False,
         "algorithm": APPROVAL_ED25519_ALG,
+        "trust_fingerprint": fingerprint_public_key(load_protected_public_key() or b""),
     }
 
 
@@ -264,10 +337,30 @@ def verify_production_authorization(
     signature: str | None = None,
     public_key: bytes | None = None,
 ) -> dict[str, Any]:
-    """Never grants PRODUCTION_* on this VPS from agent-controlled material."""
-    _ = (fields, signature, public_key)
-    payload = production_trust_anchor_status()
+    """Never grants from caller-supplied or agent-replaceable keys.
+
+    The public_key argument is ignored. Only /etc/hermes-eos/approval-trust.pub
+    is used, and only when ubuntu cannot write that file or the protected verifier.
+    """
+    _ = public_key
+    payload = dict(production_trust_anchor_status())
     payload.update({"ok": False, "classification": "PRODUCTION", "algorithm": APPROVAL_ED25519_ALG})
+    if payload.get("agent_replaceable") or payload.get("status") != "PROTECTED_TRUST_PRESENT":
+        return payload
+    if not fields or not signature:
+        payload["reason"] = "protected trust present but request/signature missing"
+        return payload
+    key = load_protected_public_key()
+    if not key:
+        payload["status"] = "BLOCKED_SECURITY_BOUNDARY"
+        payload["reason"] = "protected trust file unreadable or not a public key"
+        payload["agent_replaceable"] = True
+        return payload
+    checked = verify_detached_signature(fields, signature, key, consume=True)
+    if not checked.get("ok"):
+        payload["reason"] = checked.get("reason") or "signature rejected"
+        return payload
+    payload.update({"ok": True, "granted": True, "reason": "protected detached signature valid"})
     return payload
 
 

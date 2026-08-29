@@ -1,0 +1,64 @@
+experiment_id: real-model-sol-vs-terra-v2
+version: "2"
+scope: BENCHMARK
+design: PAIRED
+treatment_dimension: MODEL
+hypothesis: "A paired non-fixture engineering benchmark will recover a model-only treatment difference between already-configured openai-codex models, if one exists, under ITT and a fixed confirmatory horizon frozen before any model output."
+expected_direction: UNKNOWN
+experimental_unit: benchmark_case_execution
+benchmark_suite: real-v1
+control:
+  variant_id: model-sol
+  variant_name: gpt-5.6-sol
+  model: gpt-5.6-sol
+candidate:
+  variant_id: model-terra
+  variant_name: gpt-5.6-terra
+  model: gpt-5.6-terra
+assignment:
+  algorithm: assign-hmac-sha256-v1
+  seed: real-model-sol-vs-terra-v2-seed
+  blocked_by: suite
+primary_metric:
+  id: phase4.quality_vector.tests
+  type: binary
+secondary_metrics:
+  - id: phase4.quality_vector.build
+    role: EXPLORATORY
+guardrails:
+  - id: phase4.quality_vector.security
+    fail_on: FAIL
+  - id: memory_isolation
+    fail_on: FAIL
+  - id: workspace_isolation
+    fail_on: FAIL
+sample_plan:
+  planned_n: 28
+  alpha: 0.05
+  power: 0.80
+  mde: 0.40
+  baseline_rate: 0.20
+  allocation_ratio: 1.0
+  discordance: 0.50
+  independent_connor_n: 23
+  independent_connor_continuity_n: 28
+  independent_exact_power_n: 25
+  eos_planner_n: 25
+  freeze_rule: max(EOS, Connor, Connor+CC, exact-power)
+  class: CONFIRMATORY
+missingness:
+  threshold: 0.25
+  on_exceed: INSUFFICIENT_DATA
+analysis:
+  population: INTENTION_TO_TREAT
+  method: paired-binary-wilson-v1
+  horizon: FIXED
+budget:
+  max_units: 56
+  max_llm_calls: 0
+  planned_max_units: 56
+  planned_max_llm_calls: 56
+  planned_max_turns_per_unit: 20
+  max_wall_seconds_per_unit: 720
+  max_wall_seconds: 40320
+  max_external_cost: 0

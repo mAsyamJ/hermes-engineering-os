@@ -36,9 +36,9 @@ AGENT PLANE (ubuntu / Engineering OS)
 OPERATOR AUTHORITY PLANE (off-VPS private key)
         │ detached approval-ed25519-v1 signature
         ▼
-PROTECTED ACTUATION GATE (identity ubuntu cannot mutate after bootstrap)
+PROTECTED ACTUATION GATE (hermes-actuator, SO_PEERCRED; ubuntu cannot mutate after H1)
         ▼
-future Hermes pre_worker_spawn (not live-deployed in PAR)
+hermes-runtime gateway (same-SHA at H1; spawn-transform only at H3)
 ```
 
 Do not remove sudo, create lockout risk, or apply account changes autonomously.

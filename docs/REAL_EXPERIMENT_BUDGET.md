@@ -4,29 +4,60 @@ Authorization default: **NONE**
 Status: `READY_FOR_BUDGET_AUTHORIZATION`  
 Report: `LLM_BUDGET_AUTHORIZATION_REQUIRED`
 
-PAG-1 request package (not authorization):
-`.runtime/experiments/real-model-sol-vs-terra-v1/`
-
 A generic `yes` file is rejected. The artifact must bind protocol hash, max
 units, max LLM calls, control/candidate models, expiry, and
-`scope=BENCHMARK|NON_PRODUCTION`. PAG-1 automation cannot be `created_by`.
+`scope=BENCHMARK|NON_PRODUCTION`. PAG-1/PAG-2 automation cannot be `created_by`.
+Authorization binds **HARD** fields only.
 
-## Planned (not authorized)
+v1 (`real-model-sol-vs-terra-v1`, 5 pairs) is **PILOT_ONLY**. Do not treat it
+as confirmatory.
 
-- Units: 10 (5 paired cases)
-- Expected max Hermes invocations: 10
-- Expected max turns: 20 per unit (upper bound, not measured)
-- Provider: `openai-codex` (existing OAuth; not a local model)
+## Confirmatory freeze (v2)
+
+Independent of `plan_binary` (see `engineering_os/experiments/paired_power.py`):
+
+| Method | Pairs |
+|---|---|
+| EOS planner (`plan_binary`, paired) | 25 |
+| Connor 1987 (no continuity correction) | 23 |
+| Connor + 2/MDE continuity | 28 |
+| Smallest n with exact McNemar power ≥ 0.80 | 25 |
+
+**Frozen confirmatory horizon:** `max(...) = 28 pairs / 56 units`.
+Protocol: `real-model-sol-vs-terra-v2`. No N change after observing outcomes.
+
+## HARD LIMITS (enforced)
+
+- Max units: 56 (runner will not start unit 57)
+- Max Hermes process invocations: 56 (runner will not spawn invocation 57)
+- Max wall per unit: 720 seconds (`subprocess.run` timeout on that process)
+- Max wall total: 40320 seconds (runner stop before the next unit)
+- Max turns per unit: 20 via isolated `hermes chat --max-turns 20` (CLI arg
+  beats config/env on live SHA `c0106e50`). Isolated `config.yaml`
+  `agent.max_turns: 20` is a second copy. `HERMES_MAX_ITERATIONS=20` is a
+  third copy and is **not sufficient alone** (CLI_CONFIG defaults
+  `agent.max_turns` to 500, which would win over env). Delegation toolset
+  disabled in the isolated home so subagent budgets cannot exceed the parent.
+- `-Q` does **not** cap turns.
 - Models: `gpt-5.6-sol` (control), `gpt-5.6-terra` (candidate)
-- `budget.max_llm_calls` in the checked-in protocol: **0**
-- `planned_max_llm_calls`: 10
-- Max wall time: 7200 seconds
+- Provider: `openai-codex` (existing OAuth)
+- Scope: `BENCHMARK`
+- `budget.max_llm_calls` in the checked-in protocol: **0** until H2
+- `planned_max_llm_calls`: 56
 
-Monetary cost cannot be reliably known for Codex OAuth / subscription usage.
-This document does not invent a dollar figure.
+## SOFT-MONITORED (not HARD)
 
-No local/zero-cost LLM is installed (no Ollama, no llama.cpp). Prepaid or
-cloud quota is not treated as zero cost.
+- Inner Codex/provider HTTP attempts
+- Provider SDK retries
+- Any turn count we cannot prove Hermes honors beyond `--max-turns`
+
+## UNAVAILABLE
+
+- Token totals
+- Dollar cost (Codex OAuth/subscription; this document does not invent a price)
+
+No local/zero-cost LLM is installed. Prepaid quota is not treated as zero cost.
 
 Do not execute until an explicit authorization artifact exists at
-`.runtime/experiments/LLM_BUDGET_AUTHORIZATION`.
+`.runtime/experiments/LLM_BUDGET_AUTHORIZATION` after
+`HUMAN ACTION REQUIRED — H2`.
