@@ -45,3 +45,15 @@ Order is mandatory: create new human access first. Never remove current access f
 - Lockout prevention: never edit sudoers from the only remaining admin session.
 
 Privilege-boundary change is outside autonomous execution scope.
+
+## Reconciliation with this VPS (PAG-1)
+
+As of PAG-1 entry, human bootstrap has **not** occurred:
+
+- only interactive user is `ubuntu` (uid 1000)
+- `sudo` is `(ALL) NOPASSWD: ALL` via cloud-init
+- one SSH authorized key (`retropick-ovh-prod`)
+- no protected actuation identity or production public trust file
+- `scripts/verify-operator-boundary.sh` reports `READY_FOR_HUMAN`
+
+Exact operator package (gitignored runtime): `.runtime/operator-bootstrap/`.
