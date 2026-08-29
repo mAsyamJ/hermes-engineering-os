@@ -231,6 +231,7 @@ def verify_bindings(request: dict[str, Any], expected: dict[str, Any]) -> dict[s
         "policy_hash",
         "scope",
         "approval_stage",
+        "recommendation_id",
         "candidate_config_hash",
         "rollback_hash",
         "maximum_exposure",
