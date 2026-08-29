@@ -16,6 +16,7 @@ REQUIRED_VALIDITY = (
     "OUTCOME_COVERAGE",
     "EVALUATOR_COMPATIBILITY",
 )
+PRODUCTION_VALIDITY = REQUIRED_VALIDITY + ("MEMORY_ISOLATION", "WORKSPACE_ISOLATION")
 
 BLOCKED_CONCLUSIONS = {
     "NO_CLEAR_EFFECT",
@@ -56,14 +57,21 @@ def recommend_from_result(result: dict[str, Any]) -> dict[str, Any]:
     missing = [name for name in REQUIRED_VALIDITY if (validity.get(name) or "FAIL") != "PASS"]
     if missing:
         return _not_promotable(result, f"required validity missing: {missing}")
-    fixture_only = _reason_has_fixture_only(reason) or scope in {"FIXTURE", "BENCHMARK"}
+    fixture_only = (
+        _reason_has_fixture_only(reason)
+        or scope == "FIXTURE"
+        or (scope == "BENCHMARK" and treatment not in REAL_TREATMENTS)
+    )
     if conclusion != "EVIDENCE_FOR_CANDIDATE":
         return _not_promotable(result, f"conclusion {conclusion} is not promotable")
+    prod_missing = [name for name in PRODUCTION_VALIDITY if (validity.get(name) or "FAIL") != "PASS"]
     production_ok = (
         not fixture_only
         and treatment in REAL_TREATMENTS
-        and scope not in {"FIXTURE", "BENCHMARK"}
+        and scope != "FIXTURE"
         and not _reason_has_fixture_only(reason)
+        and not prod_missing
+        and bool(result.get("real_hermes_inference"))
     )
     if not production_ok:
         payload = _base(result)

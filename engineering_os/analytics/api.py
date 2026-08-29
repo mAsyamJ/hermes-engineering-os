@@ -663,6 +663,9 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/adaptation/readiness":
                 _json(self, 200, adaptation_api.readiness())
                 return
+            if path.startswith("/adaptation/readiness/"):
+                _json(self, 200, adaptation_api.readiness_named(path.rsplit("/", 1)[-1]))
+                return
             if path == "/adaptation/recommendations":
                 _json(self, 200, adaptation_api.recommendations())
                 return

@@ -10,6 +10,9 @@ echo "=== schema ==="
 sudo -n docker exec hermes-eos-postgres \
   psql -U hermes_control_owner -d hermes_control -tAc \
   "SELECT version FROM schema_migrations ORDER BY 1;" | rg -q '0001_adaptation'
+sudo -n docker exec hermes-eos-postgres \
+  psql -U hermes_control_owner -d hermes_control -tAc \
+  "SELECT version FROM schema_migrations ORDER BY 1;" | rg -q '0002_par_readiness'
 echo "=== adaptation quality ==="
 sudo -n docker compose --env-file "$ENV" -f "$ROOT/deploy/observability/compose.yaml" \
   run --rm --no-deps \

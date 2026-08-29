@@ -1012,25 +1012,44 @@
           children: KeyValues({
             value: {
               contract: data.contract_version,
+              par_contract: data.par_contract || "par-v1",
               production_evidence: data.production_evidence || data.production_recommendation,
               human_approval_boundary: data.human_approval_boundary || data.production_approval,
               memory_isolation: data.memory_isolation,
               runtime_actuation: data.runtime_actuation || data.runtime_integration,
               production_adaptation: data.production_adaptation || "DISABLED",
               auto_promote: "forbidden",
-              kill_switch: data.kill_switch
+              kill_switch: data.kill_switch,
+              collapsed: "no"
+            }
+          })
+        }),
+        Card({
+          title: "PAR readiness cells",
+          status: "INDEPENDENT",
+          children: KeyValues({
+            value: {
+              secure_human_authority: objectValue(data.cells).secure_human_authority || "READY_FOR_OPERATOR_BOOTSTRAP",
+              runtime_actuation: objectValue(data.cells).runtime_actuation || data.runtime_actuation,
+              memory_isolation: objectValue(data.cells).memory_isolation || data.memory_isolation,
+              real_causal_evidence: objectValue(data.cells).real_causal_evidence || "BLOCKED_BUDGET",
+              production_shadow: objectValue(data.cells).production_shadow || "BLOCKED_EVIDENCE",
+              approval_a: objectValue(data.cells).approval_a || "BLOCKED_SECURITY_BOUNDARY",
+              canary_package: objectValue(data.cells).canary_package || "BLOCKED_EVIDENCE",
+              approval_b: objectValue(data.cells).approval_b || "NOT_EXECUTED",
+              production_adaptation: objectValue(data.cells).production_adaptation || "DISABLED"
             }
           })
         }),
         Card({
           title: "Production adaptation",
-          status: "BLOCKED",
+          status: "DISABLED",
           children: KeyValues({
             value: {
               evidence: "BLOCKED_EVIDENCE",
-              approval: "BLOCKED_CAPABILITY",
-              memory: "BLOCKED_CAPABILITY",
-              runtime: "BLOCKED_RUNTIME_INTEGRATION",
+              approval: "BLOCKED_SECURITY_BOUNDARY",
+              memory: data.memory_isolation || "READY",
+              runtime: data.runtime_actuation || "READY_PATCH_NOT_DEPLOYED",
               fixture_qualification: "separate from production"
             }
           })

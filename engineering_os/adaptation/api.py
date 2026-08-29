@@ -7,13 +7,17 @@ from typing import Any
 from engineering_os.adaptation import (
     CONTRACT_VERSION,
     MEMORY_ISOLATION,
+    PAR_CONTRACT,
     PRODUCTION_APPROVAL,
     PRODUCTION_RECOMMENDATION,
+    RUNTIME_ACTUATION,
     RUNTIME_INTEGRATION,
 )
 from engineering_os.adaptation.db import connect, fetch_all, fetch_one
 from engineering_os.adaptation.persist import health
 from engineering_os.adaptation.explain import explain as explain_object
+from engineering_os.adaptation.readiness import cell as readiness_cell
+from engineering_os.adaptation.readiness import cells as readiness_cells
 from engineering_os.redaction import redact
 
 
@@ -24,20 +28,39 @@ def _rows(sql: str, params: tuple[Any, ...] = ()) -> list[dict[str, Any]]:
 
 def readiness() -> dict[str, Any]:
     payload = health()
+    cells = readiness_cells()
     payload.update(
         {
             "contract_version": CONTRACT_VERSION,
+            "par_contract": PAR_CONTRACT,
             "production_evidence": PRODUCTION_RECOMMENDATION,
             "human_approval_boundary": PRODUCTION_APPROVAL,
             "memory_isolation": MEMORY_ISOLATION,
-            "runtime_actuation": RUNTIME_INTEGRATION,
+            "runtime_actuation": cells.get("runtime_actuation") or RUNTIME_ACTUATION,
+            "runtime_integration": RUNTIME_INTEGRATION,
             "production_adaptation": "DISABLED",
             "fixture_qualification": "SEPARATE",
             "auto_promote": False,
             "deploy_now": False,
+            "cells": {
+                "secure_human_authority": cells["secure_human_authority"],
+                "runtime_actuation": cells["runtime_actuation"],
+                "memory_isolation": cells["memory_isolation"],
+                "real_causal_evidence": cells["real_causal_evidence"],
+                "production_shadow": cells["production_shadow"],
+                "approval_a": cells["approval_a"],
+                "canary_package": cells["canary_package"],
+                "approval_b": cells["approval_b"],
+                "production_adaptation": cells["production_adaptation"],
+            },
+            "collapsed": False,
         }
     )
     return redact(payload)
+
+
+def readiness_named(name: str) -> dict[str, Any]:
+    return redact(readiness_cell(name))
 
 
 def recommendations() -> dict[str, Any]:

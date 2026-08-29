@@ -426,6 +426,31 @@ def adaptation_readiness() -> dict[str, Any]:
     return redact(_analytics_proxy("/adaptation/readiness"))
 
 
+@router.get("/adaptation/readiness/authority")
+def adaptation_readiness_authority() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/readiness/authority"))
+
+
+@router.get("/adaptation/readiness/runtime")
+def adaptation_readiness_runtime() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/readiness/runtime"))
+
+
+@router.get("/adaptation/readiness/memory")
+def adaptation_readiness_memory() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/readiness/memory"))
+
+
+@router.get("/adaptation/readiness/evidence")
+def adaptation_readiness_evidence() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/readiness/evidence"))
+
+
+@router.get("/adaptation/readiness/canary")
+def adaptation_readiness_canary() -> dict[str, Any]:
+    return redact(_analytics_proxy("/adaptation/readiness/canary"))
+
+
 @router.get("/adaptation/recommendations")
 def adaptation_recommendations() -> dict[str, Any]:
     return redact(_analytics_proxy("/adaptation/recommendations"))
