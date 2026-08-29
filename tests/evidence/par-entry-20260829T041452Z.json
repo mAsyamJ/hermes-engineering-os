@@ -1,0 +1,41 @@
+{
+  "captured_at": "20260829T041452Z",
+  "gate": "PAR-0",
+  "local_head": "e2035a4d6567c7d93f52073e84d465b1bfa38be3",
+  "origin_main": "e2035a4d6567c7d93f52073e84d465b1bfa38be3",
+  "working_tree_dirty_count": 0,
+  "branch": "## main...origin/main",
+  "hermes_head": "c0106e50e7ecedb3ce34e785d949725dc4e0e457",
+  "hermes_dirty_count": 1,
+  "hermes_dirty_files": " M package-lock.json",
+  "retropick_head": "a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+  "retropick_porcelain": 8,
+  "android_head": "e962490dab3ac1072d9ee6371eb1077c0a05c0ac",
+  "android_porcelain": 39,
+  "gateway_pid": "2381797",
+  "rp_friend_pid": "924",
+  "dashboard_pid": "2568401",
+  "gateway_state": "active",
+  "rp_friend_state": "active",
+  "dashboard_state": "active",
+  "disk_avail_kib": 22945048,
+  "disk_used_pct": "70%",
+  "mem_avail_bytes": 5306482688,
+  "id": "uid=1000(ubuntu) gid=1000(ubuntu) groups=1000(ubuntu),993(kvm)",
+  "sudo_nopasswd_all": true,
+  "http": {
+    "health_9120": "200",
+    "adaptation_readiness": "200",
+    "experiments": "200",
+    "phoenix_healthz": "200",
+    "adaptation_post": "405"
+  },
+  "tables": {
+    "phoenix": 65,
+    "hermes_engineering": 46,
+    "hermes_control": 14
+  },
+  "production_policy_bundles": 0,
+  "production_grants": 0,
+  "plugin_symlink": "/opt/hermes-engineering-os"
+}
