@@ -1,0 +1,449 @@
+diff --git a/hermes_cli/kanban_db.py b/hermes_cli/kanban_db.py
+index cb38634..1b6f062 100644
+--- a/hermes_cli/kanban_db.py
++++ b/hermes_cli/kanban_db.py
+@@ -10717,6 +10717,163 @@ def _retag_legacy_worker_sessions(workspaces_root_path: str) -> None:
+         _log.debug("kanban worker: legacy session retag skipped (%s)", exc)
+ 
+ 
++
++def _strip_spawn_flag(argv: list, flag: str) -> list:
++    out = []
++    skip = False
++    for part in argv:
++        if skip:
++            skip = False
++            continue
++        if part == flag:
++            skip = True
++            continue
++        out.append(part)
++    return out
++
++
++_SPAWN_OVERRIDE_KEYS = frozenset({"model", "provider", "skills", "profile"})
++_SPAWN_TRANSFORM_TIMEOUT_S = 0.05
++
++
++def _parse_spawn_overrides(item):
++    """Return a cleaned dict, None to skip, or False if invalid."""
++    if item is None or item == {} or item == "":
++        return None
++    if not isinstance(item, dict):
++        return False
++    if any(key not in _SPAWN_OVERRIDE_KEYS for key in item):
++        return False
++    cleaned = {}
++    if "model" in item:
++        value = item["model"]
++        if value in (None, ""):
++            return False
++        if not isinstance(value, str):
++            return False
++        cleaned["model"] = value
++    if "provider" in item:
++        value = item["provider"]
++        if value in (None, ""):
++            return False
++        if not isinstance(value, str):
++            return False
++        cleaned["provider"] = value
++    if "skills" in item:
++        skills = item["skills"]
++        if isinstance(skills, str):
++            skills = [skills]
++        if not isinstance(skills, (list, tuple)):
++            return False
++        names = []
++        for skill in skills:
++            if not isinstance(skill, str) or not skill or "/" in skill or "\\" in skill or "\x00" in skill:
++                return False
++            names.append(skill)
++        cleaned["skills"] = names
++    if "profile" in item:
++        value = item["profile"]
++        if value in (None, ""):
++            return False
++        if not isinstance(value, str) or "/" in value or "\x00" in value:
++            return False
++        cleaned["profile"] = value
++    return cleaned
++
++
++def _merge_spawn_overrides(items: list) -> dict | None:
++    """Merge agreeing SpawnOverrides. Conflict -> None (caller keeps baseline)."""
++    merged: dict = {}
++    for item in items:
++        for key, value in item.items():
++            if key in merged and merged[key] != value:
++                return None
++            merged[key] = value
++    return merged
++
++
++def _apply_transform_kanban_worker_spawn(task: Task, board: Optional[str], cmd: list, env: dict, profile_arg: str):
++    """Honor optional transform_kanban_worker_spawn overrides. Fail open to baseline."""
++    from concurrent.futures import ThreadPoolExecutor
++
++    try:
++        from hermes_cli.lifecycle import has_hook, invoke_hook
++    except Exception:
++        return cmd, env, profile_arg
++    try:
++        if not has_hook("transform_kanban_worker_spawn"):
++            return cmd, env, profile_arg
++    except Exception:
++        return cmd, env, profile_arg
++
++    snapshot = {
++        "task_id": getattr(task, "id", None),
++        "assignee": getattr(task, "assignee", None),
++        "board": board,
++        "skills": list(task.skills or []) if getattr(task, "skills", None) else [],
++        "model_override": getattr(task, "model_override", None),
++        "provider_override": getattr(task, "provider_override", None),
++    }
++    try:
++        with ThreadPoolExecutor(max_workers=1) as pool:
++            future = pool.submit(
++                invoke_hook,
++                "transform_kanban_worker_spawn",
++                task_id=snapshot["task_id"],
++                assignee=snapshot["assignee"],
++                board=board,
++                task_snapshot=dict(snapshot),
++            )
++            results = future.result(timeout=_SPAWN_TRANSFORM_TIMEOUT_S)
++    except Exception:
++        return cmd, env, profile_arg
++
++    parsed_items = []
++    for item in results or []:
++        parsed = _parse_spawn_overrides(item)
++        if parsed is False:
++            return cmd, env, profile_arg
++        if parsed:
++            parsed_items.append(parsed)
++    if not parsed_items:
++        return cmd, env, profile_arg
++    overrides = _merge_spawn_overrides(parsed_items)
++    if not overrides:
++        return cmd, env, profile_arg
++
++    cmd = list(cmd)
++    env = dict(env)
++    if "profile" in overrides:
++        try:
++            from hermes_cli.profiles import normalize_profile_name, resolve_profile_env
++
++            profile_arg = normalize_profile_name(str(overrides["profile"]))
++            cmd = _strip_spawn_flag(cmd, "-p")
++            if "--cli" in cmd:
++                idx = cmd.index("--cli")
++                cmd[idx:idx] = ["-p", profile_arg]
++            else:
++                cmd.extend(["-p", profile_arg])
++            try:
++                env["HERMES_HOME"] = resolve_profile_env(profile_arg)
++            except FileNotFoundError:
++                return list(cmd), dict(env), profile_arg
++            env["HERMES_PROFILE"] = profile_arg
++        except Exception:
++            return cmd, env, profile_arg
++    if "skills" in overrides:
++        cmd = _strip_spawn_flag(cmd, "--skills")
++        for skill in overrides["skills"]:
++            cmd.extend(["--skills", skill])
++    if "model" in overrides:
++        cmd = _strip_spawn_flag(cmd, "-m")
++        cmd.extend(["-m", overrides["model"]])
++    if "provider" in overrides:
++        cmd = _strip_spawn_flag(cmd, "--provider")
++        cmd.extend(["--provider", overrides["provider"]])
++    return cmd, env, profile_arg
++
++
+ def _default_spawn(
+     task: Task,
+     workspace: str,
+@@ -10895,6 +11052,7 @@ def _default_spawn(
+         # turn, prints text, exits rc=0, and the dispatcher records a
+         # protocol violation (incident 2026-06-09 t_d9cbe312).
+         cmd.append("-Q")
++    cmd, env, profile_arg = _apply_transform_kanban_worker_spawn(task, board, cmd, env, profile_arg)
+     # Redirect output to a per-task log under <board-root>/logs/.
+     # Anchored at the board root (not the shared kanban root), so
+     # `hermes kanban log` on a specific board reads its own file and
+diff --git a/hermes_cli/plugins.py b/hermes_cli/plugins.py
+index 9028e28..d73706d 100644
+--- a/hermes_cli/plugins.py
++++ b/hermes_cli/plugins.py
+@@ -285,6 +285,16 @@ VALID_HOOKS: Set[str] = {
+     "kanban_task_claimed",
+     "kanban_task_completed",
+     "kanban_task_blocked",
++    # Transform: dispatcher process, after baseline worker argv/env are fully
++    # constructed and immediately before Popen. Callbacks may return a
++    # SpawnOverrides dict (keys: model, provider, skills, profile) or None.
++    # No subscriber -> baseline (has_hook short-circuit). Timeout, exception,
++    # invalid return, or field conflict -> baseline. Must not mutate Kanban.
++    # Run-all then resolve: agreeing fields merge; any field disagreement
++    # keeps baseline. No argv/env/shell injection. Transform family, not an
++    # observer (on_kanban_worker_* remain return-ignored and fire after PID
++    # persist).
++    "transform_kanban_worker_spawn",
+     # Kanban worker-lifecycle, task-mutation, and dispatcher-tick observers
+     # (RFC #58548, accepted as the design basis in the #64231 batch
+     # disposition; on_kanban_dispatch_tick is the re-port of PR #56066).
+diff --git a/tests/hermes_cli/test_transform_kanban_worker_spawn.py b/tests/hermes_cli/test_transform_kanban_worker_spawn.py
+new file mode 100644
+index 0000000..c22776b
+--- /dev/null
++++ b/tests/hermes_cli/test_transform_kanban_worker_spawn.py
+@@ -0,0 +1,246 @@
++from __future__ import annotations
++
++import subprocess
++import time
++
++from pathlib import Path
++
++from hermes_cli.plugins import VALID_HOOKS, get_plugin_manager
++
++
++def _make_task(kb, *, assignee: str, **overrides):
++    fields = dict(
++        id="t_spawn_tx",
++        title="spawn transform",
++        body=None,
++        assignee=assignee,
++        status="running",
++        priority=0,
++        created_by="test",
++        created_at=1,
++        started_at=None,
++        completed_at=None,
++        workspace_kind="dir",
++        workspace_path=None,
++        claim_lock="lock",
++        claim_expires=None,
++        tenant=None,
++        current_run_id=7,
++    )
++    fields.update(overrides)
++    return kb.Task(**fields)
++
++
++def _capture_spawn(monkeypatch, tmp_path, hook, **task_kw):
++    root = tmp_path / ".hermes"
++    profile = root / "profiles" / "elias"
++    profile.mkdir(parents=True)
++    profile.joinpath("config.yaml").write_text("toolsets:\n  - hermes-cli\n", encoding="utf-8")
++    other = root / "profiles" / "other"
++    other.mkdir(parents=True)
++    other.joinpath("config.yaml").write_text("toolsets:\n  - hermes-cli\n", encoding="utf-8")
++    root.joinpath("config.yaml").write_text("toolsets:\n  - kanban\n", encoding="utf-8")
++    monkeypatch.setenv("HERMES_HOME", str(root))
++    from hermes_cli import kanban_db as kb
++
++    monkeypatch.setattr(kb, "_resolve_hermes_argv", lambda: ["hermes"])
++    captured = {}
++
++    class FakeProc:
++        pid = 4242
++
++    def fake_popen(cmd, *args, **kwargs):
++        captured["cmd"] = list(cmd)
++        captured["env"] = dict(kwargs.get("env") or {})
++        return FakeProc()
++
++    monkeypatch.setattr(subprocess, "Popen", fake_popen)
++    if hook is not None:
++        monkeypatch.setattr("hermes_cli.lifecycle.invoke_hook", hook)
++        monkeypatch.setattr("hermes_cli.lifecycle.has_hook", lambda name: name == "transform_kanban_worker_spawn")
++    else:
++        monkeypatch.setattr("hermes_cli.lifecycle.has_hook", lambda name: False)
++    workspace = tmp_path / "workspace"
++    workspace.mkdir()
++    task = _make_task(kb, assignee="elias", **task_kw)
++    pid = kb._default_spawn(task, str(workspace), board="test")
++    captured["pid"] = pid
++    captured["workspace"] = str(workspace)
++    return captured
++
++
++def test_hook_is_registered():
++    assert "transform_kanban_worker_spawn" in VALID_HOOKS
++    assert "on_kanban_worker_spawned" in VALID_HOOKS
++
++
++def test_no_subscriber_baseline_argv_unchanged(monkeypatch, tmp_path):
++    captured = _capture_spawn(monkeypatch, tmp_path, None)
++    assert captured["cmd"][:6] == ["hermes", "-p", "elias", "--cli", "--accept-hooks", "chat"] or (
++        captured["cmd"][0] == "hermes" and "-p" in captured["cmd"] and "-m" not in captured["cmd"]
++    )
++    assert "-m" not in captured["cmd"]
++    assert "--provider" not in captured["cmd"]
++    assert captured["pid"] == 4242
++
++
++def test_model_override_exact(monkeypatch, tmp_path):
++    captured = _capture_spawn(monkeypatch, tmp_path, lambda *a, **k: [{"model": "gpt-5.6-terra"}])
++    assert captured["cmd"][captured["cmd"].index("-m") + 1] == "gpt-5.6-terra"
++
++
++def test_provider_override_exact(monkeypatch, tmp_path):
++    captured = _capture_spawn(monkeypatch, tmp_path, lambda *a, **k: [{"provider": "openai-codex"}])
++    assert captured["cmd"][captured["cmd"].index("--provider") + 1] == "openai-codex"
++
++
++def test_model_and_provider_pair(monkeypatch, tmp_path):
++    captured = _capture_spawn(
++        monkeypatch,
++        tmp_path,
++        lambda *a, **k: [{"model": "gpt-5.6-terra", "provider": "openai-codex"}],
++    )
++    assert captured["cmd"][captured["cmd"].index("-m") + 1] == "gpt-5.6-terra"
++    assert captured["cmd"][captured["cmd"].index("--provider") + 1] == "openai-codex"
++
++
++def test_skill_override_structured(monkeypatch, tmp_path):
++    captured = _capture_spawn(monkeypatch, tmp_path, lambda *a, **k: [{"skills": ["hermes-agent"]}])
++    assert "--skills" in captured["cmd"]
++    assert captured["cmd"][captured["cmd"].index("--skills") + 1] == "hermes-agent"
++
++
++def test_profile_override_retained(monkeypatch, tmp_path):
++    captured = _capture_spawn(monkeypatch, tmp_path, lambda *a, **k: [{"profile": "other"}])
++    assert captured["cmd"][captured["cmd"].index("-p") + 1] == "other"
++    assert captured["env"]["HERMES_PROFILE"] == "other"
++
++
++def test_invalid_key_baseline(monkeypatch, tmp_path):
++    captured = _capture_spawn(monkeypatch, tmp_path, lambda *a, **k: [{"argv": ["rm", "-rf"]}])
++    assert "-m" not in captured["cmd"]
++    assert "rm" not in captured["cmd"]
++
++
++def test_invalid_type_baseline(monkeypatch, tmp_path):
++    captured = _capture_spawn(monkeypatch, tmp_path, lambda *a, **k: [{"model": ["not-a-string"]}])
++    assert "-m" not in captured["cmd"]
++
++
++def test_hook_exception_baseline(monkeypatch, tmp_path):
++    def boom(*a, **k):
++        raise RuntimeError("hook failed")
++
++    captured = _capture_spawn(monkeypatch, tmp_path, boom)
++    assert "-m" not in captured["cmd"]
++
++
++def test_hook_timeout_baseline(monkeypatch, tmp_path):
++    def slow(*a, **k):
++        time.sleep(0.2)
++        return [{"model": "too-late"}]
++
++    captured = _capture_spawn(monkeypatch, tmp_path, slow)
++    assert "-m" not in captured["cmd"]
++    assert "too-late" not in captured["cmd"]
++
++
++def test_multiple_callback_conflict_baseline(monkeypatch, tmp_path):
++    captured = _capture_spawn(
++        monkeypatch,
++        tmp_path,
++        lambda *a, **k: [{"model": "gpt-5.6-sol"}, {"model": "gpt-5.6-terra"}],
++    )
++    assert "-m" not in captured["cmd"]
++
++
++def test_multiple_callback_agree_applies(monkeypatch, tmp_path):
++    captured = _capture_spawn(
++        monkeypatch,
++        tmp_path,
++        lambda *a, **k: [{"model": "gpt-5.6-terra"}, {"model": "gpt-5.6-terra", "provider": "openai-codex"}],
++    )
++    assert captured["cmd"][captured["cmd"].index("-m") + 1] == "gpt-5.6-terra"
++    assert captured["cmd"][captured["cmd"].index("--provider") + 1] == "openai-codex"
++
++
++def test_no_kanban_write(monkeypatch, tmp_path):
++    from hermes_cli import kanban_db as kb
++
++    captured = _capture_spawn(monkeypatch, tmp_path, lambda *a, **k: [{"model": "gpt-x"}])
++    kb.init_db()
++    conn = kb.connect()
++    try:
++        tid = kb.create_task(conn, title="immutable", assignee="elias")
++        before = conn.execute(
++            "SELECT id, title, assignee, status, model_override, provider_override, skills FROM tasks WHERE id = ?",
++            (tid,),
++        ).fetchone()
++        kb._default_spawn(
++            _make_task(kb, assignee="elias", id="t_spawn_tx2"),
++            captured["workspace"],
++            board="test",
++        )
++        after = conn.execute(
++            "SELECT id, title, assignee, status, model_override, provider_override, skills FROM tasks WHERE id = ?",
++            (tid,),
++        ).fetchone()
++        assert after == before
++    finally:
++        conn.close()
++
++
++def test_pid_persistence_unchanged(monkeypatch, tmp_path):
++    captured = _capture_spawn(monkeypatch, tmp_path, lambda *a, **k: [{"model": "gpt-x"}])
++    assert captured["pid"] == 4242
++
++
++def test_existing_model_override_feature(monkeypatch, tmp_path):
++    captured = _capture_spawn(
++        monkeypatch,
++        tmp_path,
++        None,
++        model_override="gpt-5.6-sol",
++        provider_override="openai-codex",
++    )
++    assert captured["cmd"][captured["cmd"].index("-m") + 1] == "gpt-5.6-sol"
++    assert captured["cmd"][captured["cmd"].index("--provider") + 1] == "openai-codex"
++
++
++def test_session_source_unchanged(monkeypatch, tmp_path):
++    captured = _capture_spawn(monkeypatch, tmp_path, lambda *a, **k: [{"model": "gpt-x"}])
++    assert captured["env"]["HERMES_SESSION_SOURCE"] == "kanban"
++
++
++def test_observer_still_fires_after_transform(tmp_path, all_assignees_spawnable, monkeypatch):
++    home = tmp_path / ".hermes"
++    home.mkdir()
++    monkeypatch.setenv("HERMES_HOME", str(home))
++    monkeypatch.setenv("HERMES_KANBAN_CRASH_GRACE_SECONDS", "0")
++    monkeypatch.setattr(Path, "home", lambda: tmp_path)
++    from hermes_cli import kanban_db as kb
++
++    kb.init_db()
++
++    events = []
++    mgr = get_plugin_manager()
++    saved = {k: list(v) for k, v in mgr._hooks.items()}
++    mgr._hooks.setdefault("transform_kanban_worker_spawn", []).append(
++        lambda **kw: {"model": "gpt-observer"}
++    )
++    mgr._hooks.setdefault("on_kanban_worker_spawned", []).append(lambda **kw: events.append(kw))
++    try:
++        conn = kb.connect()
++        try:
++            tid = kb.create_task(conn, title="t", assignee="alice")
++            result = kb.dispatch_once(conn, spawn_fn=lambda *a, **k: 7777)
++            assert any(row[0] == tid for row in result.spawned)
++            row = conn.execute("SELECT worker_pid FROM tasks WHERE id = ?", (tid,)).fetchone()
++            assert row[0] == 7777
++        finally:
++            conn.close()
++        assert len(events) == 1
++        assert events[0]["worker_pid"] == 7777
++        assert events[0]["task_id"] == tid
++    finally:
++        mgr._hooks = saved

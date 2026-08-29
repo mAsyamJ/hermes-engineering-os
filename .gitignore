@@ -1,4 +1,5 @@
-upstream/
+# Root vendor clone only. Tracked patches live under patches/hermes/upstream/.
+/upstream/
 .runtime/
 .cache/
 node_modules/
