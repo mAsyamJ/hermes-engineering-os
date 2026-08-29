@@ -8,6 +8,7 @@ from typing import Any
 from engineering_os.experiments import (
     ACTIVATED_TREATMENTS,
     DESIGNS,
+    PREPARED_TREATMENTS,
     SCOPES,
     TREATMENT_DIMENSIONS,
     V1_ALLOWED_SCOPES,
@@ -136,8 +137,12 @@ def validate_raw(data: dict[str, Any], source: str = "") -> dict[str, Any]:
         raise DefinitionError("invalid treatment_dimension")
     if dim == "MULTI_FACTOR":
         raise DefinitionError("MULTI_FACTOR is not enabled in phase6-exp-v1")
+    prepared = False
     if dim not in ACTIVATED_TREATMENTS:
-        raise DefinitionError(f"treatment {dim} is documented but not activated in V1")
+        if dim in PREPARED_TREATMENTS and scope in V1_ALLOWED_SCOPES:
+            prepared = True
+        else:
+            raise DefinitionError(f"treatment {dim} is documented but not activated in V1")
     primary = data["primary_metric"]
     if not isinstance(primary, dict) or "id" not in primary:
         raise DefinitionError("primary_metric.id required")
@@ -170,6 +175,7 @@ def validate_raw(data: dict[str, Any], source: str = "") -> dict[str, Any]:
         raise DefinitionError("assignment.seed required")
     cleaned = strip_secrets(data)
     cleaned["_source"] = source
+    cleaned["_execution"] = "PREPARED" if prepared else "ACTIVATED"
     cleaned["_definition_hash"] = sha256_text(canonical_dumps({k: v for k, v in cleaned.items() if not str(k).startswith("_")}))
     return cleaned
 

@@ -1,0 +1,32 @@
+suite_id: real-v1
+version: "1"
+repository: engineering-os-real-v1
+reset: copytree
+evaluator_profile: real-v1
+source: real-v1
+cases:
+  - case_id: real-v1-bugfix
+    category: bug_fix
+    artifact: broken
+    stratum: real-v1
+    difficulty: operator-defined-small
+  - case_id: real-v1-feature
+    category: backend_feature
+    artifact: broken
+    stratum: real-v1
+    difficulty: operator-defined-small
+  - case_id: real-v1-refactor
+    category: refactor
+    artifact: broken
+    stratum: real-v1
+    difficulty: operator-defined-small
+  - case_id: real-v1-test-repair
+    category: test_repair
+    artifact: broken
+    stratum: real-v1
+    difficulty: operator-defined-small
+  - case_id: real-v1-config
+    category: configuration
+    artifact: broken
+    stratum: real-v1
+    difficulty: operator-defined-small
