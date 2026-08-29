@@ -97,6 +97,7 @@ class ApprovalProtocolTests(unittest.TestCase):
             "policy_hash": request["policy_hash"],
             "scope": request["scope"],
             "approval_stage": request["approval_stage"],
+            "recommendation_id": request["recommendation_id"],
             "candidate_config_hash": request["candidate_config_hash"],
             "rollback_hash": request["rollback_hash"],
             "maximum_exposure": request["maximum_exposure"],
@@ -217,7 +218,7 @@ class ExperimentReadinessTests(unittest.TestCase):
     def test_real_benchmark_evaluator(self) -> None:
         work = Path(os.environ["EOS_EXPERIMENT_RUNTIME"]) / "real-eval"
         profile = load_profile("real-v1")
-        for case_id in ("real-v1-bugfix", "real-v1-feature", "real-v1-test-repair", "real-v1-config"):
+        for case_id in ("real-v1-bugfix", "real-v1-feature", "real-v1-refactor", "real-v1-test-repair", "real-v1-config"):
             broken = materialize_real_case({"case_id": case_id, "tree": "broken"}, work / f"{case_id}-broken")
             golden = materialize_real_case({"case_id": case_id, "tree": "golden"}, work / f"{case_id}-golden")
             broken_eval = evaluate_trees(Path(broken["path"]), profile, baseline=Path(broken["path"]), eligibility="TEST_ELIGIBLE")

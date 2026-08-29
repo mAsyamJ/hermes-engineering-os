@@ -7,7 +7,8 @@ Disposable Python repositories, not RetroPick. Categories:
 
 - `real-v1-bugfix` — incorrect discount
 - `real-v1-feature` — missing multiply
-- `real-v1-refactor` — duplicated totals
+- `real-v1-refactor` — duplicated totals that drifted (broken `right.py`
+  omits the last addend so unittest FAIL; golden consolidates `sum`)
 - `real-v1-test-repair` — wrong assertion
 - `real-v1-config` — timeout 0 vs 30
 

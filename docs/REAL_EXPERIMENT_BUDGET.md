@@ -1,8 +1,15 @@
 # Real Experiment Budget
 
 Authorization default: **NONE**  
-Status: `READY_FOR_LLM_BUDGET_AUTHORIZATION`  
+Status: `READY_FOR_BUDGET_AUTHORIZATION`  
 Report: `LLM_BUDGET_AUTHORIZATION_REQUIRED`
+
+PAG-1 request package (not authorization):
+`.runtime/experiments/real-model-sol-vs-terra-v1/`
+
+A generic `yes` file is rejected. The artifact must bind protocol hash, max
+units, max LLM calls, control/candidate models, expiry, and
+`scope=BENCHMARK|NON_PRODUCTION`. PAG-1 automation cannot be `created_by`.
 
 ## Planned (not authorized)
 
