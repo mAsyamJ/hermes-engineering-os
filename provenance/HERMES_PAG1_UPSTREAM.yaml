@@ -1,0 +1,28 @@
+schema_version: 1
+retrieved_at: "2026-08-29T07:33:00Z"
+pinned_at: "2026-08-29T07:33:00Z"
+repository: NousResearch/hermes-agent
+url: https://github.com/NousResearch/hermes-agent.git
+default_branch: main
+commit: aff5125f8edf5095aef5d3d79bbbb101c95b9413
+commit_date: "2026-08-29T07:32:13Z"
+commit_subject: "fix(gateway): document turn-hold commit overshoot + route deferred-notice through i18n (#92318 review)"
+live_hermes:
+  path: /home/ubuntu/.hermes/hermes-agent
+  commit: c0106e50e7ecedb3ce34e785d949725dc4e0e457
+distance_live_to_upstream:
+  ahead_by: 4412
+  behind_by: 0
+previous_pag1_pins:
+  - 91608eb20ed1dbd733a84ef305533b4527e83b66
+  - 23bae43cfad6722b5a3b49e782ffc5faaf617c59
+stale_plan_sha: 1d8946b40b9333a7fda81be890be31771a312d4f
+official_pre_spawn_seam: NOT_FOUND
+historical_par_patch: patches/hermes/0001-pre-worker-spawn-hook.patch
+historical_par_patch_sha256: 35aebcf70c31c78f01479c69faadac7b170ce3614c4565ae9f9a38c73c7d3ef6
+upstream_ready_patch: patches/hermes/upstream/0001-worker-spawn-transform.patch
+upstream_ready_patch_sha256: 8400003f96942112ec3abfbf9b3d47c47d5bdff044a919fc8327b1f16f8e29de
+hook_name: transform_kanban_worker_spawn
+isolated_clone: .runtime/hermes-upstream-pag1
+disposition: pag1_pin_do_not_apply_to_live
+notes: "Main moved 91608eb→23bae43→aff5125 during qualification; kanban spawn files unchanged; patch re-applied and 30 isolated tests passed."
