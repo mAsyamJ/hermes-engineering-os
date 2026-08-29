@@ -23,6 +23,10 @@
 - Adaptation control state lives in `hermes_control`. The Phase 7 privacy plant
   `FAKE_PHASE7_SECRET_ABC123` must not leak. TEST approval signatures are not
   returned by `/adaptation/audit`. Production approval is BLOCKED_CAPABILITY.
+- PAR plants `FAKE_PAR_SECRET_ABC123`. It must not appear in memory snapshots,
+  approval packages, or API output. `approval-ed25519-v1` is protocol
+  scaffolding only. No production signing private key may exist on an
+  agent-readable filesystem. Operator bootstrap is human-only.
 - Phoenix UI and OTLP listen on `127.0.0.1:6006` only. Observability Postgres
   has no host port. Analytics API listens on `127.0.0.1:9120` only. DB
   passwords stay in `deploy/observability/.env` mode `0600` and are never

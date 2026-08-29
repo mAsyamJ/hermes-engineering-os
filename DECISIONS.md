@@ -68,6 +68,17 @@
 - Resolver is a library + fixture executor. It does not patch Hermes core or
   write Kanban rows.
 
+## Production Adaptation Readiness (PAR)
+
+- Not Phase 8. Contract `par-v1`.
+- Recommended authority: off-VPS Ed25519 signer (OPTION B). Local keys are
+  not a human boundary while ubuntu has passwordless sudo.
+- Official Hermes pre-spawn hook does not exist. An isolated upstream
+  `pre_worker_spawn` patch is qualified and not deployed live.
+- Memory isolation uses dedicated snapshot homes, not AgentMemory/Graphiti.
+- Real MODEL protocol is prepared with `max_llm_calls=0` until an explicit
+  budget authorization artifact exists.
+
 ## Analytics connectivity (Phase 3)
 
 - Dedicated `hermes_engineering` database on the observability Postgres.

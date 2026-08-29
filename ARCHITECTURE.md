@@ -20,6 +20,9 @@ GitHub API ─────┤     BLOCKED_AUTH is a valid evidence state
 Phoenix GraphQL ┘     observability DEGRADED if Phoenix is down
         │
         ▼
+PAR / par-v1 readiness (authority protocol, isolated spawn patch, memory harness)
+        │
+        ▼
 phase3-v1 materializer (Docker oneshot, writer role)
         │
         ▼
@@ -88,4 +91,9 @@ Analytics, Evaluations, Performance, Experiments, and Adaptation views plus a re
   shadow, fixture canary, auto-disable, and rollback. GET-only `/adaptation*`.
   Production actuation remains DISABLED. Fail-open to Hermes; fail-closed for
   candidate policy.
+- Production Adaptation Readiness (`par-v1`) adds an Ed25519 approval
+  protocol (not a live human boundary), an isolated Hermes `pre_worker_spawn`
+  patch that is not deployed live, a memory-snapshot harness, and a real
+  MODEL experiment protocol gated on LLM budget authorization. GET-only
+  `/adaptation/readiness/*` cells stay independent.
 

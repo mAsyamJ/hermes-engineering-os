@@ -133,6 +133,19 @@ systemctl --user enable --now hermes-eos-adaptation.timer
 Adaptation API: `http://127.0.0.1:9120/adaptation*`. GET-only. No auto-promote.
 Never restart rp-friend. Never mutate Kanban to apply policy.
 
+## Production Adaptation Readiness
+
+```bash
+./scripts/control-db-migrate.sh
+curl -fsS http://127.0.0.1:9120/adaptation/readiness
+curl -fsS http://127.0.0.1:9120/adaptation/readiness/authority
+```
+
+Do not apply `patches/hermes/0001-pre-worker-spawn-hook.patch` to live Hermes.
+Do not create `.runtime/experiments/LLM_BUDGET_AUTHORIZATION` without a human
+budget grant. Do not generate a production signing private key on this VPS.
+See `docs/PRODUCTION_OPERATOR_HANDOFF.md`.
+
 ## Evidence states
 
 - `AVAILABLE`: authoritative read completed.

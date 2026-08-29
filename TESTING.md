@@ -20,7 +20,9 @@
 - normalized Docker identity excluding new `hermes-eos-*` containers;
 - storage ≥20 GiB free and used < 80%;
 - live Phase 6 experiment data quality (`scripts/verify-experiment-data.sh`);
-- live Phase 7 adaptation data quality (`scripts/verify-adaptation-data.sh`).
+- live Phase 7 adaptation data quality (`scripts/verify-adaptation-data.sh`);
+- PAR / `par-v1` unit tests for approval-ed25519-v1, spawn fail-closed,
+  memory isolation, real-v1 evaluator trees, budget gate, and readiness cells.
 
 Additional observability scripts: `scripts/otel-smoke-test.sh`,
 `scripts/otel-fail-open-test.sh`, `scripts/otel-privacy-test.sh`,
