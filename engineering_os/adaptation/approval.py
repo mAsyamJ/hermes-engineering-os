@@ -17,14 +17,11 @@ from engineering_os.adaptation import (
     TEST_SCOPES,
 )
 from engineering_os.experiments.config_snapshot import sha256_text
-
-ROOT = Path(__file__).resolve().parents[2]
+from engineering_os.adaptation.paths import adaptation_runtime_dir
 
 
 def test_key_path() -> Path:
-    override = os.environ.get("EOS_ADAPTATION_RUNTIME")
-    base = Path(override) if override else ROOT / ".runtime" / "adaptation"
-    return base / "keys" / "test-approval.key"
+    return adaptation_runtime_dir(create=False) / "keys" / "test-approval.key"
 
 
 TEST_KEY_PATH = test_key_path()

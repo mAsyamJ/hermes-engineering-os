@@ -75,9 +75,9 @@ class ProtocolError(ValueError):
 
 
 def runtime_dir() -> Path:
-    override = os.environ.get("EOS_ADAPTATION_RUNTIME")
-    base = Path(override) if override else ROOT / ".runtime" / "adaptation"
-    path = base / "nonces"
+    from engineering_os.adaptation.paths import adaptation_runtime_dir
+
+    path = adaptation_runtime_dir(create=True) / "nonces"
     path.mkdir(parents=True, exist_ok=True)
     return path
 
@@ -340,11 +340,15 @@ def verify_production_authorization(
     fields: dict[str, Any] | None = None,
     signature: str | None = None,
     public_key: bytes | None = None,
+    *,
+    consume: bool = True,
 ) -> dict[str, Any]:
     """Never grants from caller-supplied or agent-replaceable keys.
 
     The public_key argument is ignored. Only /etc/hermes-eos/approval-trust.pub
     is used, and only when ubuntu cannot write that file or the protected verifier.
+    Standing grant files (Approval A) must pass consume=False so status reads
+    do not burn the nonce.
     """
     _ = public_key
     payload = dict(production_trust_anchor_status())
@@ -360,7 +364,7 @@ def verify_production_authorization(
         payload["reason"] = "protected trust file unreadable or not a public key"
         payload["agent_replaceable"] = True
         return payload
-    checked = verify_detached_signature(fields, signature, key, consume=True)
+    checked = verify_detached_signature(fields, signature, key, consume=consume)
     if not checked.get("ok"):
         payload["reason"] = checked.get("reason") or "signature rejected"
         return payload

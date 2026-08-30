@@ -7,6 +7,8 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
+# shellcheck source=pag2-inspect-ubuntu.sh
+source "$ROOT/scripts/pag2-inspect-ubuntu.sh"
 status="PASS"
 reasons=()
 
@@ -17,19 +19,25 @@ downgrade_ready() {
   fi
 }
 
-agent_uid="$(id -u)"
-agent_user="$(id -un)"
-if [[ "$agent_user" != "ubuntu" || "$agent_uid" != "1000" ]]; then
+# Always inspect ubuntu uid 1000. Caller identity is recorded separately so
+# hermes-op running this script cannot be mistaken for the agent, and cannot
+# be blocked by hermes-op's own recovery NOPASSWD ALL.
+invoked_user="$(id -un)"
+invoked_uid="$(id -u)"
+agent_user="ubuntu"
+agent_uid="$(getent passwd ubuntu | awk -F: '{print $3}')"
+if [[ "$agent_uid" != "1000" ]]; then
   note "AUTH_AGENT_UID_UNEXPECTED:${agent_user}:${agent_uid}"
+  downgrade_ready
 fi
 
-sudo_out="$(sudo -n -l 2>/dev/null || true)"
+sudo_out="$(pag2_ubuntu_sudo_list)"
 if echo "$sudo_out" | rg -q 'NOPASSWD: ALL'; then
   note "AUTH_AGENT_PASSWORDLESS_ROOT"
   downgrade_ready
 fi
 
-if groups | rg -qw docker; then
+if pag2_ubuntu_in_docker; then
   note "AUTH_AGENT_IN_DOCKER_GROUP"
   downgrade_ready
 fi
@@ -81,6 +89,10 @@ protected_paths=(
   /etc/hermes-eos/actuator.env
   /usr/local/lib/hermes-eos/approval-verifier
   /usr/local/lib/hermes-eos/hermes-eos-deploy-tool.py
+  /usr/local/lib/hermes-eos/scripts/verify-operator-boundary.sh
+  /usr/local/lib/hermes-eos/scripts/pag2-inspect-ubuntu.sh
+  /usr/local/lib/hermes-eos/deploy/pag2/eos-actuation-plugin/__init__.py
+  /usr/local/lib/hermes-eos/deploy/pag2/eos-actuation-plugin/plugin.yaml
   /usr/local/lib/hermes-eos/engineering_os/adaptation/actuator.py
   /usr/local/lib/hermes-eos/actuator.py
   /etc/systemd/system/hermes-eos-actuator.service
@@ -92,10 +104,12 @@ protected_paths=(
 )
 actuator_present=0
 writable_trust=0
+if [[ -e /usr/local/lib/hermes-eos/engineering_os/adaptation/actuator.py || -e /usr/local/lib/hermes-eos/actuator.py ]]; then
+  actuator_present=1
+fi
 for path in "${protected_paths[@]}"; do
   if [[ -e "$path" ]]; then
-    actuator_present=1
-    if [[ -w "$path" ]]; then
+    if pag2_ubuntu_writable "$path"; then
       note "AUTH_TRUST_ROOT_WRITABLE:${path}"
       writable_trust=1
       downgrade_ready
@@ -110,25 +124,49 @@ if [[ ! -e /usr/local/lib/hermes-eos/hermes-eos-deploy-tool.py ]]; then
   note "AUTH_NO_PROTECTED_DEPLOY_TOOL"
   downgrade_ready
 fi
+if [[ ! -e /usr/local/lib/hermes-eos/scripts/verify-operator-boundary.sh || ! -e /usr/local/lib/hermes-eos/scripts/pag2-inspect-ubuntu.sh ]]; then
+  note "AUTH_NO_PROTECTED_VERIFIER_SCRIPT"
+  downgrade_ready
+fi
+if [[ ! -e /usr/local/lib/hermes-eos/deploy/pag2/eos-actuation-plugin/__init__.py || ! -e /usr/local/lib/hermes-eos/deploy/pag2/eos-actuation-plugin/plugin.yaml ]]; then
+  note "AUTH_NO_PROTECTED_PLUGIN_SOURCE"
+  downgrade_ready
+fi
 if [[ ! -e /usr/lib/hermes-runtime/hermes-agent ]]; then
   note "AUTH_NO_PROTECTED_RUNTIME_TREE"
   downgrade_ready
 fi
 if [[ ! -e /etc/hermes-eos/approval-trust.pub ]]; then
   note "AUTH_PUBLIC_TRUST_IDENTITY_ABSENT"
+  downgrade_ready
+fi
+if [[ ! -e /etc/hermes-eos/actuator.env ]]; then
+  note "AUTH_NO_ACTUATOR_ENV"
+  downgrade_ready
 fi
 
 # Repo verifier is agent-owned by design. Only the protected copy counts for PASS.
-if [[ -w "$ROOT/engineering_os/adaptation/approval_ed25519.py" ]]; then
+if pag2_ubuntu_writable "$ROOT/engineering_os/adaptation/approval_ed25519.py"; then
   note "AUTH_VERIFIER_CODE_WRITABLE"
   if [[ ! -e /usr/local/lib/hermes-eos/approval-verifier ]]; then
     downgrade_ready
   fi
 fi
 
-user_unit="$HOME/.config/systemd/user/hermes-gateway-rp-friend.service"
-if [[ -w "$user_unit" ]]; then
+user_unit="/home/ubuntu/.config/systemd/user/hermes-gateway-rp-friend.service"
+user_enabled="$(pag2_ubuntu_unit_enabled hermes-gateway-rp-friend.service)"
+if [[ "$user_enabled" == "UNKNOWN" ]]; then
+  note "AUTH_USER_GATEWAY_STATE_UNREADABLE"
+  downgrade_ready
+elif [[ "$user_enabled" != "masked" && "$user_enabled" != "not-found" && -n "$user_enabled" ]]; then
+  note "AUTH_USER_GATEWAY_NOT_MASKED:${user_enabled}"
+  downgrade_ready
+fi
+if pag2_ubuntu_writable "$user_unit"; then
   note "AUTH_PROTECTED_UNIT_WRITABLE:${user_unit}"
+  if [[ "$user_enabled" != "masked" ]]; then
+    downgrade_ready
+  fi
 fi
 
 # Production gateway identity: after H1 must be hermes-runtime, not ubuntu.
@@ -144,6 +182,10 @@ if [[ "$gateway_user" == "ubuntu" || "$gateway_user" == "" || "$gateway_user" ==
 fi
 if [[ "$gateway_user" != "hermes-runtime" ]]; then
   note "AUTH_GATEWAY_RUNS_AS_AGENT:${gateway_user}"
+  downgrade_ready
+fi
+if pgrep -u ubuntu -f 'hermes_cli.main gateway run' >/dev/null 2>&1; then
+  note "AUTH_GATEWAY_RUNS_AS_AGENT:ubuntu-process"
   downgrade_ready
 fi
 
@@ -163,8 +205,13 @@ if [[ "$so_peercred" -eq 0 ]]; then
   downgrade_ready
 fi
 
-if [[ -d /var/lib/hermes-runtime/home && -w /var/lib/hermes-runtime/home ]]; then
+if [[ -d /var/lib/hermes-runtime/home ]] && pag2_ubuntu_writable /var/lib/hermes-runtime/home; then
   note "AUTH_CREDENTIAL_HOME_AGENT_WRITABLE"
+  downgrade_ready
+fi
+plugin_link="$(readlink -f /var/lib/hermes-runtime/home/profiles/rp-friend/plugins 2>/dev/null || true)"
+if [[ -n "$plugin_link" ]] && echo "$plugin_link" | rg -q '^/home/ubuntu|^/opt/hermes-engineering-os'; then
+  note "AUTH_PLUGIN_PATH_AGENT_WRITABLE:${plugin_link}"
   downgrade_ready
 fi
 
@@ -197,7 +244,7 @@ fi
 
 # PASS requires every TCB item. Do not collapse GitHub notes into a fake PASS.
 if [[ "$status" == "PASS" ]]; then
-  if printf '%s\n' "${reasons[@]}" | rg -q 'AUTH_AGENT_PASSWORDLESS_ROOT|AUTH_NO_PROTECTED_ACTUATOR|AUTH_NO_OPERATOR_PRINCIPAL|AUTH_NO_HERMES_OP|AUTH_NO_HERMES_RUNTIME|AUTH_NO_HERMES_ACTUATOR|AUTH_GATEWAY_RUNS_AS_AGENT|AUTH_NO_SO_PEERCRED_ACTUATOR|AUTH_NO_PROTECTED_DEPLOY_TOOL|AUTH_NO_PROTECTED_RUNTIME_TREE|AUTH_TRUST_ROOT_WRITABLE|AUTH_CREDENTIAL_HOME_AGENT_WRITABLE'; then
+  if printf '%s\n' "${reasons[@]}" | rg -q 'AUTH_AGENT_PASSWORDLESS_ROOT|AUTH_NO_PROTECTED_ACTUATOR|AUTH_NO_OPERATOR_PRINCIPAL|AUTH_NO_HERMES_OP|AUTH_NO_HERMES_RUNTIME|AUTH_NO_HERMES_ACTUATOR|AUTH_GATEWAY_RUNS_AS_AGENT|AUTH_NO_SO_PEERCRED_ACTUATOR|AUTH_NO_PROTECTED_DEPLOY_TOOL|AUTH_NO_PROTECTED_VERIFIER_SCRIPT|AUTH_NO_PROTECTED_PLUGIN_SOURCE|AUTH_NO_PROTECTED_RUNTIME_TREE|AUTH_TRUST_ROOT_WRITABLE|AUTH_CREDENTIAL_HOME_AGENT_WRITABLE|AUTH_PLUGIN_PATH_AGENT_WRITABLE|AUTH_PUBLIC_TRUST_IDENTITY_ABSENT|AUTH_NO_ACTUATOR_ENV|AUTH_USER_GATEWAY_NOT_MASKED|AUTH_USER_GATEWAY_STATE_UNREADABLE|AUTH_AGENT_UID_UNEXPECTED'; then
     status="READY_FOR_HUMAN"
   fi
   if [[ "$writable_trust" -eq 1 ]]; then
@@ -208,6 +255,8 @@ fi
 echo "status=${status}"
 echo "agent_uid=${agent_uid}"
 echo "agent_user=${agent_user}"
+echo "invoked_user=${invoked_user}"
+echo "invoked_uid=${invoked_uid}"
 echo "sudo_nopasswd_all=$(echo "$sudo_out" | rg -q 'NOPASSWD: ALL' && echo yes || echo no)"
 echo "protected_actuator_present=${actuator_present}"
 echo "hermes_op_present=$([[ -n "$hermes_op" ]] && echo yes || echo no)"

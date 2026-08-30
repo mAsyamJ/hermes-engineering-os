@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from typing import Any
 
@@ -61,6 +62,13 @@ def build_parser() -> argparse.ArgumentParser:
     p_res.add_argument("--task-class", default="fixture")
     p_res.add_argument("--environment", default="fixture")
     p_res.add_argument("--scope", default="FIXTURE")
+    sub.add_parser("pag2-shadow")
+    sub.add_parser("pag2-probe")
+    p_can = sub.add_parser("pag2-canary")
+    p_can.add_argument("--task-id")
+    sub.add_parser("pag2-bind")
+    p_rb2 = sub.add_parser("pag2-rollback")
+    p_rb2.add_argument("--reason", default="pag2 auto-disable")
     return parser
 
 
@@ -141,6 +149,71 @@ def main(argv: list[str] | None = None) -> int:
             from engineering_os.adaptation.persist import disable_all
 
             payload = disable_all(reason=args.reason)
+        elif args.command == "pag2-probe":
+            from engineering_os.adaptation.pag2_ops import production_ipc_probe
+
+            payload = production_ipc_probe()
+        elif args.command == "pag2-shadow":
+            from engineering_os.adaptation.pag2_ops import load_pag2_label, production_shadow, read_h1_status
+
+            payload = production_shadow(
+                h1_status=read_h1_status(),
+                pag2_label=load_pag2_label(),
+                transport="ipc",
+            )
+        elif args.command == "pag2-canary":
+            from engineering_os.adaptation.pag2_ops import (
+                approval_a_granted,
+                h3_live_seam_present,
+                load_pag2_label,
+                production_canary,
+                read_h1_status,
+            )
+
+            try:
+                from engineering_os.adaptation.actuator import resolve_runtime_uid
+
+                runtime_uid = resolve_runtime_uid()
+            except KeyError:
+                runtime_uid = -1
+            payload = production_canary(
+                h1_status=read_h1_status(),
+                pag2_label=load_pag2_label(),
+                h3_deployed=h3_live_seam_present(),
+                approval_ok=approval_a_granted(),
+                state={},
+                peer_uid=os.getuid(),
+                runtime_uid=runtime_uid,
+                natural_task_id=args.task_id,
+                transport="ipc",
+            )
+        elif args.command == "pag2-bind":
+            from engineering_os.adaptation.pag2_ops import (
+                approval_a_granted,
+                bind_production_canary,
+                h3_live_seam_present,
+                load_pag2_label,
+                read_h1_status,
+            )
+
+            persist = Path(os.environ.get("HERMES_EOS_ACTUATOR_STATE") or "/var/lib/hermes-actuator/state.json")
+            payload = bind_production_canary(
+                h1_status=read_h1_status(),
+                pag2_label=load_pag2_label(),
+                h3_deployed=h3_live_seam_present(),
+                approval_ok=approval_a_granted(),
+                persist_path=persist,
+            )
+        elif args.command == "pag2-rollback":
+            from engineering_os.adaptation.pag2_ops import production_rollback, read_h1_status
+
+            persist = Path(os.environ.get("HERMES_EOS_ACTUATOR_STATE") or "/var/lib/hermes-actuator/state.json")
+            payload = production_rollback(
+                {},
+                reason=args.reason,
+                h1_status=read_h1_status(),
+                persist_path=persist,
+            )
         else:
             payload = {"status": "error", "reason": "unknown command"}
     except Exception as exc:
@@ -150,8 +223,24 @@ def main(argv: list[str] | None = None) -> int:
     if not args.json and "status" in payload:
         pass
     print(json.dumps(payload, default=str))
-    if payload.get("status") in {"error", "rejected", "conflict", "not_found", "BLOCKED_APPROVAL_BOUNDARY"}:
-        return 1 if payload.get("status") == "error" else 0
+    if payload.get("status") in {
+        "error",
+        "rejected",
+        "conflict",
+        "not_found",
+        "BLOCKED_APPROVAL_BOUNDARY",
+        "BLOCKED_SECURITY_BOUNDARY",
+        "BLOCKED_EVIDENCE",
+        "BLOCKED_H3",
+        "BLOCKED_APPROVAL",
+        "BLOCKED_PEER",
+        "BLOCKED_WRITE",
+        "BLOCKED_IPC",
+        "FAIL",
+        "FAIL_EXPOSURE",
+        "FAIL_SHADOW_CONSUMED_EXPOSURE",
+    }:
+        return 1 if payload.get("ok") is False or payload.get("status") == "error" else 0
     return 0
 
 

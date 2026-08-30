@@ -142,17 +142,23 @@ def destroy_homes(root: Path) -> None:
 
 
 def production_memory_paths() -> list[Path]:
+    """Production memory trees. After H1 the live gateway home is protected."""
     return [
         Path("/home/ubuntu/.hermes/memories"),
         Path("/home/ubuntu/.hermes/profiles/rp-friend/memories"),
+        Path("/var/lib/hermes-runtime/home/memories"),
+        Path("/var/lib/hermes-runtime/home/profiles/rp-friend/memories"),
     ]
 
 
 def production_memory_fingerprint() -> dict[str, str]:
     result: dict[str, str] = {}
     for path in production_memory_paths():
-        if path.exists():
-            result[str(path)] = hash_tree(path)["tree_hash"]
-        else:
-            result[str(path)] = "ABSENT"
+        try:
+            if path.exists():
+                result[str(path)] = hash_tree(path)["tree_hash"]
+            else:
+                result[str(path)] = "ABSENT"
+        except OSError:
+            result[str(path)] = "UNREADABLE"
     return result

@@ -7,17 +7,21 @@ Requires=hermes-eos-actuator.socket
 Type=simple
 User=hermes-actuator
 Group=hermes-runtime
-RuntimeDirectory=hermes-eos
-RuntimeDirectoryMode=0750
 ExecStart=/usr/lib/hermes-runtime/venv/bin/python -m engineering_os.adaptation.actuator
-Environment=PYTHONPATH=/usr/local/lib/hermes-eos
+Environment=PYTHONPATH=/usr/local/lib/hermes-eos:/usr/lib/hermes-runtime/hermes-agent
+Environment=HERMES_EOS_ACTUATOR_SOCK=/run/hermes-eos/actuator.sock
+Environment=HERMES_EOS_RESERVE_SQLITE=/var/lib/hermes-actuator/reservations.sqlite
+Environment=EOS_ADAPTATION_RUNTIME=/var/lib/hermes-actuator/adaptation
+EnvironmentFile=-/etc/hermes-eos/actuator.env
 Restart=on-failure
 RestartSec=2
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
 PrivateTmp=true
-ReadWritePaths=/run/hermes-eos /var/lib/hermes-actuator
+RuntimeDirectory=hermes-eos
+RuntimeDirectoryMode=0750
+ReadWritePaths=/var/lib/hermes-actuator /run/hermes-eos
 
 [Install]
 WantedBy=multi-user.target

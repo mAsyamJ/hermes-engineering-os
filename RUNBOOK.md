@@ -149,8 +149,26 @@ See `docs/PRODUCTION_OPERATOR_HANDOFF.md` and `.runtime/operator-bootstrap/`.
 Read-only boundary check: `./scripts/verify-operator-boundary.sh`.
 PAG-2 hardening check: `./scripts/verify-pag2-hardening.sh`.
 H1 baseline capture (read-only): `./scripts/capture-h1-baseline.sh`.
+PAG-2 gate dashboard (read-only): `./scripts/pag2-status.sh`.
 System unit templates for hermes-op live in `deploy/pag2/` and must not be
 installed by ubuntu.
+H1 copy-paste: `.runtime/operator-bootstrap/H1_COMMANDS.md`.
+Mechanical H1 cutover (hermes-op only): `./scripts/h1-cutover.sh`.
+Read-only H1 preflight: `./scripts/h1-preflight.sh`.
+Post-H1 IPC probes as hermes-runtime (hermes-op only): `./scripts/pag2-as-runtime.sh pag2-probe`.
+Evidence-gated shadow remains `pag2-shadow` after `QUALIFIED_CANDIDATE`.
+H2 present: `./scripts/h2-present-budget.sh`. Persist only after H1 PASS and
+the exact phrase: `./scripts/h2-write-authorization.sh`.
+H3 present (does not apply): `./scripts/h3-present-deploy.sh`.
+Canary sequence (hermes-op): `.runtime/operator-bootstrap/CANARY_COMMANDS.md`
+and `./scripts/pag2-bind-canary.sh`. Persist auto-disable:
+`./scripts/pag2-rollback-persist.sh` (hermes-op; ubuntu/runtime cannot write
+actuator state).
+Secret-free backup: `./scripts/pag2-backup.sh`. Isolated restore rehearsal:
+`./scripts/pag2-restore-rehearsal.sh`.
+Fail-closed production probes: `./scripts/pag2-shadow.sh`,
+`./scripts/pag2-canary.sh`, `./scripts/pag2-rollback.sh`. ubuntu IPC is
+`BLOCKED_PEER`; use `pag2-as-runtime.sh` after H1.
 
 ## Evidence states
 

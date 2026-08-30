@@ -1,13 +1,13 @@
 # Production Canary Result
 
-**Status: NOT_EXECUTED.**
+**Status: NOT_EXECUTED** (BLOCKED_SECURITY_BOUNDARY until H1).
 
-Canary requires: H1 PASS, QUALIFIED_CANDIDATE or an explicit no-promotion
-record, H3 live seam, Approval A bound to runtime identity, atomic
-`maximum_exposure=1` with no refund.
+Operator: `scripts/pag2-bind-canary.sh` then `scripts/pag2-as-runtime.sh pag2-canary`
+(hermes-op). ubuntu `pag2-canary` is `BLOCKED_PEER`. Requires H1 PASS,
+`QUALIFIED_CANDIDATE`, H3 live seam, runtime-bound Approval A, and a
+persisted CANARY binding (`maximum_exposure=1`). Missing natural task
+uses canary-workload id `pag2-canary-workload-1`. A second unit is
+BASELINE; no refund.
 
 `PRODUCTION_FULL` / `PRODUCTION_BOUNDED` remain disabled.
-`PRODUCTION_CANARY` may reach the actuator after H1; ubuntu peer is
-rejected (`SO_PEERCRED`).
-
-No canary task has been reserved.
+No canary task has been reserved on this machine.

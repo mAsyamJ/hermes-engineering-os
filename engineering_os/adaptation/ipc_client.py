@@ -69,7 +69,14 @@ def request_spawn_resolution(
         if not isinstance(data, dict):
             return baseline("malformed response", baseline_config)
         if data.get("resolution") != "CANDIDATE" or not data.get("actuate"):
-            return baseline(str(data.get("reason") or "BASELINE"), baseline_config)
+            out = baseline(str(data.get("reason") or "BASELINE"), baseline_config)
+            if data.get("would_resolution"):
+                out["would_resolution"] = data.get("would_resolution")
+            if data.get("would_reason"):
+                out["would_reason"] = data.get("would_reason")
+            if data.get("reason"):
+                out["reason"] = data.get("reason")
+            return out
         return data
     except (TimeoutError, socket.timeout, OSError, json.JSONDecodeError, ValueError) as exc:
         return baseline(f"{type(exc).__name__}", baseline_config)

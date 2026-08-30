@@ -1,0 +1,3 @@
+# PAG-2 H1: human administrator. Install as /etc/sudoers.d/hermes-op
+# (no dots in the destination filename). Validate with visudo -c -f.
+hermes-op ALL=(ALL) NOPASSWD: ALL

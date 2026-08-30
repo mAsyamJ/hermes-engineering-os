@@ -61,3 +61,38 @@ No local/zero-cost LLM is installed. Prepaid quota is not treated as zero cost.
 Do not execute until an explicit authorization artifact exists at
 `.runtime/experiments/LLM_BUDGET_AUTHORIZATION` after
 `HUMAN ACTION REQUIRED — H2`.
+
+## Template reuse (28 pairs / 5 cases)
+
+`real-v1` has five workspace templates. Confirmatory v2 still runs **28
+independent pairs / 56 units**. `assignments_from_protocol` cycles the five
+templates under unique `pair_id`s (`real-v1-pair-01` … `real-v1-pair-28`).
+Each unit is a fresh copytree. That is ITT-on-executions, not 28 unique
+repositories.
+
+## CLI (blocked until authorization)
+
+```bash
+python -m engineering_os.experiments budget-limits real-model-sol-vs-terra-v2
+/opt/hermes-engineering-os/scripts/h2-present-budget.sh
+# After H1 PASS and the exact authorize phrase:
+/opt/hermes-engineering-os/scripts/h2-write-authorization.sh \
+  'YOUR_HUMAN_IDENTITY' '2027-01-01T00:00:00+00:00'
+python -m engineering_os.experiments run-real real-model-sol-vs-terra-v2
+python -m engineering_os.experiments analyze-real real-model-sol-vs-terra-v2
+```
+
+`run-real` is sequential, isolated, and fail-closed without the H2 artifact.
+It does not route production Kanban. After each unit the `real-v1` evaluator
+records `phase4.quality_vector.tests`. Hermes process status is not the
+primary outcome.
+
+```bash
+python -m engineering_os.experiments analyze-real real-model-sol-vs-terra-v2
+/opt/hermes-engineering-os/scripts/h2-present-budget.sh
+```
+
+`analyze-real` is `QUALIFIED_CANDIDATE` only when ITT evidence is for the
+candidate and production recommendation eligibility passes. Horizon-complete
+`NO_CLEAR_EFFECT` / `EVIDENCE_AGAINST_CANDIDATE` / `INSUFFICIENT_DATA` is
+`VALID_NO_PROMOTION`. Do not invent a winner.

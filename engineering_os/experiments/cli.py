@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -13,6 +14,10 @@ from engineering_os.experiments.definitions import DefinitionError, load_id, loa
 from engineering_os.experiments.explain import explain
 from engineering_os.experiments.plan import plan_binary
 from engineering_os.experiments.preregister import freeze
+
+
+def _ensure_experiment_runtime() -> None:
+    os.environ.setdefault("EOS_EXPERIMENT_RUNTIME", "/opt/hermes-engineering-os/.runtime/experiments")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -40,6 +45,17 @@ def build_parser() -> argparse.ArgumentParser:
     p_inv = sub.add_parser("invalidate")
     p_inv.add_argument("experiment")
     p_inv.add_argument("--reason", required=True)
+    p_limits = sub.add_parser("budget-limits")
+    p_limits.add_argument("experiment")
+    p_wb = sub.add_parser("write-budget")
+    p_wb.add_argument("--phrase", required=True)
+    p_wb.add_argument("--created-by", required=True)
+    p_wb.add_argument("--expiry", required=True)
+    p_real = sub.add_parser("run-real")
+    p_real.add_argument("experiment")
+    p_areal = sub.add_parser("analyze-real")
+    p_areal.add_argument("experiment")
+    p_areal.add_argument("--final", action="store_true")
     p_status = sub.add_parser("status")
     p_status.add_argument("experiment", nargs="?")
     return parser
@@ -110,6 +126,39 @@ def main(argv: list[str] | None = None) -> int:
             from engineering_os.experiments.persist import invalidate
 
             payload = invalidate(args.experiment, args.reason)
+        elif args.command == "budget-limits":
+            from engineering_os.experiments.budget_limits import classify_budget
+
+            definition = _definition(args.experiment)
+            payload = {"status": "success", **classify_budget(definition)}
+        elif args.command == "write-budget":
+            from engineering_os.adaptation.pag2_ops import read_h1_status
+            from engineering_os.experiments.budget_gate import write_h2_authorization
+
+            definition = load_id("real-model-sol-vs-terra-v2")
+            payload = write_h2_authorization(
+                phrase=args.phrase,
+                created_by=args.created_by,
+                expiry=args.expiry,
+                h1_status=read_h1_status(),
+                protocol=definition,
+            )
+        elif args.command == "run-real":
+            from engineering_os.experiments.hard_runner import (
+                assignments_from_protocol,
+                run_authorized_sequence,
+            )
+
+            _ensure_experiment_runtime()
+            definition = _definition(args.experiment)
+            assignments = assignments_from_protocol(definition)
+            payload = run_authorized_sequence(assignments, definition)
+        elif args.command == "analyze-real":
+            from engineering_os.experiments.real_analyze import analyze_persisted
+
+            _ensure_experiment_runtime()
+            definition = _definition(args.experiment)
+            payload = analyze_persisted(str(definition["experiment_id"]), definition, final=True)
         elif args.command == "status":
             from engineering_os.experiments.persist import status
 
@@ -122,7 +171,18 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     if args.json or True:
         print(json.dumps(payload, default=str, indent=2 if not args.json else None))
-    return 0 if payload.get("status") in {"success", "AVAILABLE", "unchanged", "FEASIBLE", "blocked"} or payload.get("conclusion") else 1
+    ok_status = {
+        "success",
+        "AVAILABLE",
+        "unchanged",
+        "FEASIBLE",
+        "blocked",
+        "COMPLETE",
+        "HARD_STOP_UNITS",
+        "HARD_STOP_INVOCATIONS",
+        "HARD_STOP_WALL_TOTAL",
+    }
+    return 0 if payload.get("status") in ok_status or payload.get("ok") is True or payload.get("conclusion") else 1
 
 
 if __name__ == "__main__":

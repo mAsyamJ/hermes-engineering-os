@@ -34,6 +34,18 @@
   self-authorize LLM budget, deploy spawn-transform, or push. Human gates
   are H1 → H2 → experiment → H3. `scripts/verify-operator-boundary.sh` is
   read-only and currently `READY_FOR_HUMAN`.
+- After H1 PASS, present H2 with `scripts/h2-present-budget.sh`. After the
+  exact authorize phrase, `python -m engineering_os.experiments run-real`
+  then `analyze-real`. H3 is hash-locked deploy-tool plus
+  `deploy/pag2/eos-actuation-plugin/` (not the ubuntu `/opt` symlink).
+  Fail-closed probes: `scripts/pag2-as-runtime.sh pag2-probe` after H1
+  (no confirmatory candidate). Evidence-gated: `scripts/pag2-shadow.sh`,
+  `scripts/pag2-canary.sh`, `scripts/pag2-rollback.sh`. Canary bind:
+  `scripts/pag2-bind-canary.sh` (hermes-op). Machine dashboard:
+  `scripts/pag2-status.sh`.
+- H1 copy-paste: `.runtime/operator-bootstrap/H1_COMMANDS.md`. Mechanical
+  cutover `scripts/h1-cutover.sh` refuses ubuntu. Do not apply the live
+  spawn-transform until H3.
 - GitHub is read-first. Do not create branches, commits, PRs, checks, comments,
   or Kanban mutations from this plugin.
 - Keep upstream pins, licenses, and every vendored file's provenance current.

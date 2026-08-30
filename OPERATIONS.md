@@ -25,6 +25,11 @@ PAG-1 extends GET-only cells (`upstream`, `experiment`, `pag2`) and does not
 add mutation APIs, deploy buttons, or a new service. PAG-2 adds protected
 system-unit **templates** under `deploy/pag2/`; they are not installed until
 H1 (human). Production gateways remain ubuntu user units until that gate.
+After H1 the production gateway identity is `hermes-runtime` and the
+hash-locked plugin source is in `/usr/local/lib/hermes-eos/deploy/pag2/`.
+H3 installs that copy into the protected runtime home, not the
+ubuntu `/opt` plugin symlink. Canary bind is `scripts/pag2-bind-canary.sh`
+(hermes-op). Read-only status: `scripts/pag2-status.sh`.
 
 ## Health
 

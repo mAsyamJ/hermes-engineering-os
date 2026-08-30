@@ -1,0 +1,4 @@
+# PAG-2 H1: replace /etc/sudoers.d/90-cloud-init-users with this file.
+# ubuntu remains a login agent. Unrestricted root is removed.
+# Original cloud-init rule:
+# ubuntu ALL=(ALL) NOPASSWD:ALL

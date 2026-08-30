@@ -1,13 +1,10 @@
 # Production Rollback Result
 
-**Status: NOT_EXECUTED** (no production binding to roll back).
+**Status: NOT_EXECUTED** (no production binding to roll back; H1 not PASS).
 
-Designed behavior (not yet live-qualified):
-
-- Guardrail FAIL → auto-disable future assignment; do not kill a running worker
-  unless a separate emergency path is used.
-- Deploy-tool rollback hash is the unpatched `c0106e50` tree.
-- Exposure is not refunded after a failed spawn.
-- Idempotent disable of a binding is allowed; a new artifact needs a new H3.
-
-Auto-promote is absent.
+Operator: `scripts/pag2-rollback-persist.sh` (hermes-op). ubuntu
+`pag2-rollback` cannot persist protected state (`BLOCKED_WRITE` after H1).
+Future-only auto-disable (`interrupt_running=false`, `auto_promote=false`).
+Does not kill a running worker. Reads live `state.json` so runtime identity
+is preserved. Deploy-tool rollback hash is the unpatched `c0106e50` tree.
+Exposure is not refunded.

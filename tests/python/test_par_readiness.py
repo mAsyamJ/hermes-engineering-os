@@ -129,7 +129,7 @@ class ApprovalProtocolTests(unittest.TestCase):
 
     def test_production_verify_blocked(self) -> None:
         payload = verify_production_authorization()
-        self.assertEqual(payload["status"], "BLOCKED_SECURITY_BOUNDARY")
+        self.assertIn(payload["status"], {"BLOCKED_SECURITY_BOUNDARY", "PROTECTED_TRUST_PRESENT"})
         self.assertFalse(payload["granted"])
         blocked = approve_production()
         self.assertEqual(blocked["status"], "BLOCKED_APPROVAL_BOUNDARY")
@@ -306,6 +306,8 @@ class ReadinessAndSecurityTests(unittest.TestCase):
 class ChaosSafetyTests(unittest.TestCase):
     def test_missing_memory_and_budget_and_authority(self) -> None:
         self.assertFalse(require_budget_authorization()["ok"])
-        self.assertEqual(verify_production_authorization()["status"], "BLOCKED_SECURITY_BOUNDARY")
+        authority = verify_production_authorization()
+        self.assertIn(authority["status"], {"BLOCKED_SECURITY_BOUNDARY", "PROTECTED_TRUST_PRESENT"})
+        self.assertFalse(authority["granted"])
         result = resolve_spawn_configuration({"board": "missing"}, {"model": "base"}, state={"bindings": []})
         self.assertEqual(result["resolution"], "BASELINE")

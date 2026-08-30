@@ -9,6 +9,12 @@
     "hermes-gateway.service",
     "hermes-gateway-rp-friend.service"
   ],
+  "plugin_files": {
+    "__init__.py": "14d0a8f63772c41a3c7e520f92cb6ad8775e7b3793ef767f13522af66097f9c9",
+    "plugin.yaml": "db8145b830178fcabd70c63bac40d938b6ef584c3ba3b7a38c94e1c0397d51e4"
+  },
+  "ipc_client_sha256": "8cfd21232ac3267a904dd6bd6ac39bd652668efba46240d7b17fd9bcf5412013",
+  "ipc_transport_sha256": "6cc0e2df7920c5c316a190aa3ab12ff0fd0bca582aa2c5590ec348feabf90d3d",
   "rollback_hash": "c0106e50e7ecedb3ce34e785d949725dc4e0e457",
   "expiry": "2027-01-01T00:00:00+00:00",
   "nonce": "pag2-h3-example-nonce-not-authorizing"

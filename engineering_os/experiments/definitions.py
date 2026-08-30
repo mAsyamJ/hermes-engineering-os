@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Any
 
@@ -22,7 +23,17 @@ except ImportError:  # pragma: no cover
     yaml = None
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFINITIONS = ROOT / "experiments" / "definitions"
+
+
+def definitions_dir() -> Path:
+    env = os.environ.get("EOS_DEFINITIONS")
+    if env:
+        return Path(env)
+    repo = Path("/opt/hermes-engineering-os/experiments/definitions")
+    if repo.is_dir():
+        return repo
+    return ROOT / "experiments" / "definitions"
+
 
 ALLOWED_TOP = frozenset(
     {
@@ -185,7 +196,7 @@ def load_path(path: Path) -> dict[str, Any]:
 
 
 def load_id(experiment_id: str) -> dict[str, Any]:
-    path = DEFINITIONS / f"{experiment_id}.yaml"
+    path = definitions_dir() / f"{experiment_id}.yaml"
     if not path.is_file():
         raise DefinitionError(f"definition not found: {path}")
     loaded = load_path(path)
@@ -195,6 +206,7 @@ def load_id(experiment_id: str) -> dict[str, Any]:
 
 
 def list_definitions() -> list[Path]:
-    if not DEFINITIONS.is_dir():
+    folder = definitions_dir()
+    if not folder.is_dir():
         return []
-    return sorted(DEFINITIONS.glob("*.yaml"))
+    return sorted(folder.glob("*.yaml"))

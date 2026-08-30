@@ -20,6 +20,10 @@ REQUIRED_FIELDS = (
     "expiry",
 )
 ALLOWED_SCOPES = {"BENCHMARK", "NON_PRODUCTION"}
+H2_AUTHORIZE_PHRASE = (
+    "AUTHORIZE EXPERIMENT fa1b83d8583f832ac8ed15f456f12f9856aca1b26689d8859f1d6e5a7e3a870a "
+    "WITH THE ABOVE HARD LIMITS"
+)
 FORBIDDEN_CREATORS = ("pag1", "pag-1", "automation", "engineering-os")
 
 
@@ -149,6 +153,61 @@ def budget_authorization_status(protocol: dict[str, Any] | None = None) -> dict[
     if not loaded.get("ok"):
         return loaded
     return bind_protocol(loaded, protocol)
+
+
+def write_h2_authorization(
+    *,
+    phrase: str,
+    created_by: str,
+    expiry: str,
+    h1_status: str,
+    protocol: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Persist the bound H2 artifact. Never self-authorizes: H1 PASS + exact phrase required."""
+    if h1_status != "PASS":
+        return {"ok": False, "status": "BLOCKED_SECURITY_BOUNDARY", "reason": "H1 verifier is not PASS"}
+    if str(phrase or "").strip() != H2_AUTHORIZE_PHRASE:
+        return {"ok": False, "status": "PHRASE_MISMATCH", "reason": "exact H2 authorize phrase required"}
+    creator = str(created_by or "").strip()
+    if not creator:
+        return {"ok": False, "status": "INVALID", "reason": "created_by must be a human identity"}
+    if any(token in creator.lower() for token in FORBIDDEN_CREATORS):
+        return {"ok": False, "status": "INVALID", "reason": "PAG-1 automation cannot authorize LLM budget"}
+    if protocol is None:
+        from engineering_os.experiments.definitions import load_id
+
+        protocol = load_id("real-model-sol-vs-terra-v2")
+    artifact = {
+        "protocol_id": protocol["experiment_id"],
+        "protocol_hash": protocol["_definition_hash"],
+        "max_units": int((protocol.get("budget") or {}).get("planned_max_units") or 56),
+        "max_llm_calls": int((protocol.get("budget") or {}).get("planned_max_llm_calls") or 56),
+        "control_model": str((protocol.get("control") or {}).get("model") or "gpt-5.6-sol"),
+        "candidate_model": str((protocol.get("candidate") or {}).get("model") or "gpt-5.6-terra"),
+        "scope": "BENCHMARK",
+        "expiry": expiry,
+        "created_by": creator,
+    }
+    loaded = {
+        "ok": True,
+        "present": True,
+        "status": "AUTHORIZED",
+        "artifact": artifact,
+        "max_units": artifact["max_units"],
+        "max_llm_calls": artifact["max_llm_calls"],
+    }
+    checked = bind_protocol(loaded, protocol)
+    if not checked.get("ok"):
+        return {"ok": False, "status": "INVALID", "reason": checked.get("reason")}
+    expires = _parse_expiry(expiry)
+    if expires is None or expires < _now():
+        return {"ok": False, "status": "INVALID", "reason": "authorization expired or expiry invalid"}
+    path = authorization_path()
+    if path.is_file():
+        return {"ok": False, "status": "EXISTS", "reason": "LLM_BUDGET_AUTHORIZATION already present; will not overwrite"}
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(artifact, indent=2) + "\n", encoding="utf-8")
+    return {"ok": True, "status": "AUTHORIZED", "path": str(path), "artifact": artifact}
 
 
 def require_budget_authorization(protocol: dict[str, Any] | None = None) -> dict[str, Any]:

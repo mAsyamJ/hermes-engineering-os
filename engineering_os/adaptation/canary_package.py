@@ -9,13 +9,11 @@ from typing import Any
 from engineering_os.adaptation.approval_ed25519 import generate_approval_request, request_hash
 from engineering_os.experiments.config_snapshot import canonical_dumps, sha256_text, strip_secrets
 
-ROOT = Path(__file__).resolve().parents[2]
-
 
 def _runtime() -> Path:
-    override = os.environ.get("EOS_ADAPTATION_RUNTIME")
-    base = Path(override) if override else ROOT / ".runtime" / "adaptation"
-    path = base / "requests"
+    from engineering_os.adaptation.paths import adaptation_runtime_dir
+
+    path = adaptation_runtime_dir(create=True) / "requests"
     path.mkdir(parents=True, exist_ok=True)
     return path
 

@@ -80,8 +80,11 @@ class AuthorityTests(unittest.TestCase):
             text=True,
         )
         self.assertEqual(proc.returncode, 0, proc.stderr)
-        self.assertIn("status=READY_FOR_HUMAN", proc.stdout)
-        self.assertIn("AUTH_AGENT_PASSWORDLESS_ROOT", proc.stdout)
+        if "status=PASS" in proc.stdout:
+            self.assertNotIn("AUTH_AGENT_PASSWORDLESS_ROOT", proc.stdout)
+        else:
+            self.assertIn("status=READY_FOR_HUMAN", proc.stdout)
+            self.assertIn("AUTH_AGENT_PASSWORDLESS_ROOT", proc.stdout)
         self.assertNotIn(FAKE_SECRET, proc.stdout)
         self.assertNotIn(FAKE_APPROVAL, proc.stdout)
 
@@ -122,7 +125,12 @@ class AuthorityTests(unittest.TestCase):
         request = _request()
         keys = generate_ephemeral_keypair()
         self.assertFalse(verify_detached_signature(request, hmac_sig, keys["public"], consume=False)["ok"])
-        self.assertEqual(verify_production_authorization()["status"], "BLOCKED_SECURITY_BOUNDARY")
+        standing = verify_production_authorization()
+        if standing["status"] == "PROTECTED_TRUST_PRESENT":
+            self.assertFalse(standing.get("ok"))
+            self.assertIn("request/signature missing", str(standing.get("reason") or ""))
+        else:
+            self.assertEqual(standing["status"], "BLOCKED_SECURITY_BOUNDARY")
 
 
 class BudgetAndExperimentTests(unittest.TestCase):

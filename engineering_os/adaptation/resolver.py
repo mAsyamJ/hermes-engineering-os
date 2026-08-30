@@ -10,16 +10,12 @@ from typing import Any
 from engineering_os.adaptation import (
     CACHE_NAME,
     KILL_NAME,
-    RUNTIME_ROOT,
 )
-
-ROOT = Path(__file__).resolve().parents[2]
+from engineering_os.adaptation.paths import adaptation_runtime_dir
 
 
 def runtime_dir() -> Path:
-    override = Path(str(__import__("os").environ.get("EOS_ADAPTATION_RUNTIME") or ROOT / RUNTIME_ROOT))
-    override.mkdir(parents=True, exist_ok=True)
-    return override
+    return adaptation_runtime_dir(create=True)
 
 
 def kill_path() -> Path:

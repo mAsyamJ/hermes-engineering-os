@@ -26,9 +26,15 @@
   gate, all five real-v1 evaluators, and independent readiness cells.
 - PAG-2 unit tests (`tests/python/test_pag2.py`) for confirmatory freeze,
   SO_PEERCRED reject, OS IPC timeout, atomic reservation, HARD budget
-  argv/timeout, protected-trust caller-key ignore, live patch hash, and
-  deploy-tool ubuntu install reject;
+  argv/timeout, protected-trust caller-key ignore, live patch hash,
+  deploy-tool ubuntu install reject, Phase-4 primary outcome, pag2 labels,
+  fail-closed shadow/canary/rollback, H2 write-budget gates, unsigned
+  Approval A reject, shadow scope no exposure consume, H3 live-patch
+  identity sync, hermes-op-only canary bind, IPC probe without a
+  confirmatory candidate, AUTH_NO_PROTECTED_VERIFIER_SCRIPT, and
+  AUTH_NO_PROTECTED_PLUGIN_SOURCE;
 - PAG-2 hardening script `scripts/verify-pag2-hardening.sh`.
+- PAG-2 gate dashboard `scripts/pag2-status.sh` (read-only).
 
 Additional observability scripts: `scripts/otel-smoke-test.sh`,
 `scripts/otel-fail-open-test.sh`, `scripts/otel-privacy-test.sh`,

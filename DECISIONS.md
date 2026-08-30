@@ -93,10 +93,21 @@
 ## Production Activation Gate 2 (PAG-2)
 
 - Four principals after H1: hermes-op / hermes-runtime / hermes-actuator / ubuntu.
-- Same-SHA cutover first (no spawn-transform). Hash-locked live patch is H3.
-- Confirmatory v2 freeze is 28 pairs; v1 is PILOT_ONLY.
+- Same-SHA cutover first (no spawn-transform). Hash-locked live patch **and**
+  protected `eos-actuation` IPC plugin are H3. H1 copies the plugin source
+  into `/usr/local/lib/hermes-eos/deploy/pag2/eos-actuation-plugin/` so
+  H3 install does not read agent-writable `/opt`. Repo `/opt` plugin must not
+  register the spawn hook. rp-friend `plugins` must not remain an absolute
+  symlink into ubuntu home.
+- Confirmatory v2 freeze is 28 pairs; v1 is PILOT_ONLY. Primary outcome is
+  Phase 4 `tests`, not Hermes process status.
 - `verify-operator-boundary.sh` PASS requires the full TCB. GitHub admin is
-  recorded, not a local PASS blocker. Do not fake PASS.
+  recorded, not a local PASS blocker. Do not fake PASS. The verifier
+  inspects ubuntu (uid 1000) even when hermes-op runs it: hermes-op
+  `NOPASSWD: ALL` is recovery, not `AUTH_AGENT_PASSWORDLESS_ROOT`.
+- Canary requires a hermes-op-persisted `maximum_exposure=1` CANARY binding
+  after signed runtime-bound Approval A. Empty actuator bindings are not a
+  canary. Auto-promote stays false. Git refs are not a deploy authority.
 
 ## Analytics connectivity (Phase 3)
 

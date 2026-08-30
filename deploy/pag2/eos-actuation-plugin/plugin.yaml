@@ -1,0 +1,3 @@
+name: eos-actuation
+version: "pag2-h3"
+description: Protected OS-timeout IPC client for transform_kanban_worker_spawn. No policy authority.

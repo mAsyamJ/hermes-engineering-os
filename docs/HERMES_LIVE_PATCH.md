@@ -4,7 +4,13 @@ Isolated qualification against exact live SHA
 `c0106e50e7ecedb3ce34e785d949725dc4e0e457`. **Not deployed.**
 
 H1 copies this SHA into a protected runtime **without** this patch.
-H3 is the first production introduction of the hook + IPC client.
+H3 is the first production introduction of the hook **and** the IPC
+client. The live patch only adds the generic hook. The production body is
+`engineering_os/adaptation/hermes_plugin.py` (50ms `socket.settimeout`),
+installed as a **protected** plugin at
+`/var/lib/hermes-runtime/home/plugins/eos-actuation` — not the ubuntu
+symlink `~/.hermes/plugins/engineering-os`. Repo `__init__.py` must not
+register the spawn hook.
 
 ## Artifact
 

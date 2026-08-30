@@ -1,7 +1,7 @@
 [Unit]
 Description=Hermes Agent Gateway rp-friend (hermes-runtime, same-SHA, no spawn-transform at H1)
-After=network-online.target
-Wants=network-online.target
+After=network-online.target hermes-eos-actuator.socket
+Wants=network-online.target hermes-eos-actuator.socket
 StartLimitIntervalSec=0
 
 [Service]
@@ -12,7 +12,8 @@ ExecStart=/usr/lib/hermes-runtime/venv/bin/python -m hermes_cli.main --profile r
 WorkingDirectory=/var/lib/hermes-runtime/home/profiles/rp-friend
 Environment=HERMES_HOME=/var/lib/hermes-runtime/home/profiles/rp-friend
 Environment=HERMES_EOS_ACTUATOR_SOCK=/run/hermes-eos/actuator.sock
-Environment=PATH=/usr/lib/hermes-runtime/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+Environment=PYTHONPATH=/usr/local/lib/hermes-eos:/usr/lib/hermes-runtime/hermes-agent
+Environment=PATH=/usr/lib/hermes-runtime/venv/bin:/usr/lib/hermes-runtime/hermes-agent/node_modules/.bin:/usr/lib/hermes-runtime/node/bin:/usr/lib/hermes-runtime/node:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 Environment=VIRTUAL_ENV=/usr/lib/hermes-runtime/venv
 Restart=always
 RestartSec=5
@@ -21,6 +22,7 @@ RestartPreventExitStatus=78
 KillMode=mixed
 KillSignal=SIGTERM
 ExecReload=/bin/kill -USR1 $MAINPID
+ExecStopPost=-/usr/lib/hermes-runtime/venv/bin/python -m gateway.cgroup_cleanup
 TimeoutStopSec=60
 NoNewPrivileges=true
 

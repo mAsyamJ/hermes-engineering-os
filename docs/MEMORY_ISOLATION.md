@@ -18,3 +18,13 @@ after evidence capture.
 
 Cognition isolation harness: **READY**. Production shared-profile use remains
 forbidden for actuation.
+
+The confirmatory runner fingerprints `/home/ubuntu/.hermes/memories`,
+the rp-friend memories tree, and after H1 the protected runtime homes
+`/var/lib/hermes-runtime/home/memories` and
+`/var/lib/hermes-runtime/home/profiles/rp-friend/memories` before and
+after each unit. A change is `MEMORY_ISOLATION` FAIL. Isolated arm homes
+are distinct writable trees under the experiment runtime, not production
+`HERMES_HOME` (ubuntu or protected). Isolated workspaces must not resolve
+under RetroPick, Android, ubuntu Hermes home, or `/var/lib/hermes-runtime`
+/ `/usr/lib/hermes-runtime`.

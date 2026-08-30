@@ -17,6 +17,25 @@ SO_PEERCRED = getattr(socket, "SO_PEERCRED", 17)
 UCRED_FMT = "3i"
 UCRED_SIZE = struct.calcsize(UCRED_FMT)
 ACTUATOR_CONTRACT = "pag2-actuator-v1"
+SD_LISTEN_FDS_START = 3
+
+
+def inherited_listen_socket() -> socket.socket | None:
+    """Use systemd socket activation when LISTEN_FDS is present. Never steal fd 3 otherwise."""
+    try:
+        count = int(os.environ.get("LISTEN_FDS") or 0)
+    except ValueError:
+        return None
+    if count < 1:
+        return None
+    pid_raw = os.environ.get("LISTEN_PID") or ""
+    if pid_raw:
+        try:
+            if int(pid_raw) not in {0, os.getpid()}:
+                return None
+        except ValueError:
+            return None
+    return socket.fromfd(SD_LISTEN_FDS_START, socket.AF_UNIX, socket.SOCK_STREAM)
 
 
 def peer_credentials(conn: socket.socket) -> tuple[int, int, int] | None:
@@ -52,6 +71,14 @@ def handle_request(
         context.pop(key, None)
     if not context.get("task_id") and cleaned.get("task_id"):
         context["task_id"] = cleaned["task_id"]
+    if str(context.get("scope") or "") == "PRODUCTION_SHADOW":
+        decision = resolve_spawn_configuration(context, baseline_config, state=state)
+        out = baseline("SHADOW_NO_ACTUATE", baseline_config)
+        out["would_resolution"] = decision.get("resolution")
+        out["would_reason"] = decision.get("reason")
+        out["reason"] = "SHADOW_NO_ACTUATE"
+        out["actuator_contract"] = ACTUATOR_CONTRACT
+        return out
     decision = resolve_spawn_configuration(context, baseline_config, state=state)
     if decision.get("resolution") != "CANDIDATE" or not decision.get("actuate"):
         return decision
@@ -129,13 +156,20 @@ def serve_forever(
     state: dict[str, Any] | None = None,
     stop: threading.Event | None = None,
     reserve_path: Any = None,
+    listen_socket: socket.socket | None = None,
+    reload_state: bool = False,
 ) -> None:
-    if os.path.exists(socket_path):
-        os.unlink(socket_path)
-    server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    server.bind(socket_path)
-    os.chmod(socket_path, 0o660)
-    server.listen(16)
+    systemd_sock = listen_socket if listen_socket is not None else inherited_listen_socket()
+    owned = systemd_sock is None
+    if systemd_sock is not None:
+        server = systemd_sock
+    else:
+        if os.path.exists(socket_path):
+            os.unlink(socket_path)
+        server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        server.bind(socket_path)
+        os.chmod(socket_path, 0o660)
+        server.listen(16)
     server.settimeout(0.2)
     try:
         while stop is None or not stop.is_set():
@@ -155,11 +189,12 @@ def serve_forever(
                     payload = json.loads(raw.decode("utf-8")) if raw else {}
                 except Exception:
                     payload = {}
+                live_state = load_protected_state() if reload_state else state
                 result = handle_request(
                     payload if isinstance(payload, dict) else {},
                     peer_uid=peer_uid,
                     runtime_uid=runtime_uid,
-                    state=state,
+                    state=live_state,
                     reserve_path=reserve_path,
                 )
                 blob = json.dumps(result).encode("utf-8")
@@ -169,7 +204,7 @@ def serve_forever(
                     pass
     finally:
         server.close()
-        if os.path.exists(socket_path):
+        if owned and os.path.exists(socket_path):
             os.unlink(socket_path)
 
 
@@ -179,7 +214,8 @@ def main() -> int:
     serve_forever(
         sock,
         runtime_uid=resolve_runtime_uid(),
-        state=load_protected_state(),
+        state=None,
+        reload_state=True,
         reserve_path=reserve,
     )
     return 0

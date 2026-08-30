@@ -30,7 +30,11 @@
   agent-readable filesystem. Operator bootstrap is human-only.
 - PAG-2 plants `FAKE_PAG2_SECRET_ABC123` in tests only. Four-principal TCB and
   SO_PEERCRED are required before any production grant. Ubuntu cannot run
-  deploy-tool `install`/`rollback`.
+  deploy-tool `install`/`rollback`. An agent-writable Approval A file is not
+  a grant. The spawn IPC client must load from the protected runtime plugin,
+  not `~/.hermes/plugins/engineering-os`. A signed Approval A grant must
+  bind runtime identity; unsigned or agent-writable files are not grants.
+  Canary bind is hermes-op only.
 - Phoenix UI and OTLP listen on `127.0.0.1:6006` only. Observability Postgres
   has no host port. Analytics API listens on `127.0.0.1:9120` only. DB
   passwords stay in `deploy/observability/.env` mode `0600` and are never

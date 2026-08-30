@@ -37,5 +37,14 @@ A correct signature over an agent-replaceable trust root is still not a
 secure human grant. After H1, verification uses the protected file only
 and fail-closes if that file is agent-writable.
 
+Standing Approval A grant files (`/var/lib/hermes-actuator/approval-a.granted`)
+are verified with `consume=False` so `pag2-status` / bind / canary reads do
+not burn the nonce. Present refuses until H3 has bound a non-empty
+`live_patch_hash` and `trust_fingerprint` in `/etc/hermes-eos/actuator.env`.
+A grant whose `live_patch_hash` is empty or does not match that file is not
+a grant. One-shot `verify_production_authorization()` still
+consumes by default. Sign `canonical_hex` from
+`scripts/pag2-present-approval-a.sh` (after H3), not pretty-printed JSON.
+
 No production signing private key may exist on an agent-readable filesystem.
 Ephemeral keys are allowed only in unit tests and must be TEST/rehearsal class.
