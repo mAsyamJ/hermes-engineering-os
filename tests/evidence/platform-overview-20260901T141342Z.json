@@ -1,0 +1,231 @@
+{
+    "captured_at": "20260901T141342Z",
+    "eos_git": {
+        "head": "432389ff3eb8d50fcf9d87d71f103358e2a4e6f8",
+        "subject": "feat: add PAG-2 H1-H3 operator scripts and hardened qualification",
+        "branch": "main",
+        "origin_main": "432389ff3eb8d50fcf9d87d71f103358e2a4e6f8",
+        "status_sb": "## main...origin/main",
+        "ahead_behind": "0\t0"
+    },
+    "hermes_git": {
+        "head": "c0106e50e7ecedb3ce34e785d949725dc4e0e457",
+        "subject": "fix(kimi): send Hermes attribution headers instead of claude-code/0.1.0",
+        "dirty": "M package-lock.json"
+    },
+    "retropick": {
+        "retropick": "a8edf7dd3e7195aea6f1c826fcf2199ead525162",
+        "android": "e962490dab3ac1072d9ee6371eb1077c0a05c0ac"
+    },
+    "units": {
+        "hermes-dashboard.service": {
+            "user": {
+                "MainPID": "456",
+                "Id": "hermes-dashboard.service",
+                "LoadState": "loaded",
+                "ActiveState": "active",
+                "SubState": "running",
+                "UnitFileState": "enabled"
+            },
+            "system": {
+                "MainPID": "0",
+                "Id": "hermes-dashboard.service",
+                "LoadState": "not-found",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": ""
+            }
+        },
+        "hermes-gateway.service": {
+            "user": {
+                "MainPID": "0",
+                "Id": "hermes-gateway.service",
+                "LoadState": "masked",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": "masked"
+            },
+            "system": {
+                "MainPID": "0",
+                "Id": "hermes-gateway.service",
+                "LoadState": "masked",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": "masked"
+            }
+        },
+        "hermes-gateway-rp-friend.service": {
+            "user": {
+                "MainPID": "0",
+                "Id": "hermes-gateway-rp-friend.service",
+                "LoadState": "masked",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": "masked"
+            },
+            "system": {
+                "MainPID": "0",
+                "Id": "hermes-gateway-rp-friend.service",
+                "LoadState": "masked",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": "masked"
+            }
+        },
+        "hermes-eos-analytics.timer": {
+            "user": {
+                "Id": "hermes-eos-analytics.timer",
+                "LoadState": "masked",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": "masked"
+            },
+            "system": {
+                "Id": "hermes-eos-analytics.timer",
+                "LoadState": "not-found",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": ""
+            }
+        },
+        "hermes-eos-evaluate.timer": {
+            "user": {
+                "Id": "hermes-eos-evaluate.timer",
+                "LoadState": "masked",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": "masked"
+            },
+            "system": {
+                "Id": "hermes-eos-evaluate.timer",
+                "LoadState": "not-found",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": ""
+            }
+        },
+        "hermes-eos-performance.timer": {
+            "user": {
+                "Id": "hermes-eos-performance.timer",
+                "LoadState": "masked",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": "masked"
+            },
+            "system": {
+                "Id": "hermes-eos-performance.timer",
+                "LoadState": "not-found",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": ""
+            }
+        },
+        "hermes-eos-experiments.timer": {
+            "user": {
+                "Id": "hermes-eos-experiments.timer",
+                "LoadState": "masked",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": "masked"
+            },
+            "system": {
+                "Id": "hermes-eos-experiments.timer",
+                "LoadState": "not-found",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": ""
+            }
+        },
+        "hermes-eos-adaptation.timer": {
+            "user": {
+                "Id": "hermes-eos-adaptation.timer",
+                "LoadState": "masked",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": "masked"
+            },
+            "system": {
+                "Id": "hermes-eos-adaptation.timer",
+                "LoadState": "not-found",
+                "ActiveState": "inactive",
+                "SubState": "dead",
+                "UnitFileState": ""
+            }
+        },
+        "_end": null
+    },
+    "http": {
+        "dashboard_9119": 200,
+        "sidecar_9120_adaptation_readiness": "ERR:URLError",
+        "sidecar_9120_post_adaptation": "ERR:URLError",
+        "phoenix_6006_healthz": "ERR:URLError"
+    },
+    "docker_eos": [
+        {
+            "Names": "hermes-eos-analytics-api",
+            "State": "exited",
+            "Status": "Exited (255) 12 minutes ago",
+            "Ports": "127.0.0.1:9120->9120/tcp"
+        },
+        {
+            "Names": "hermes-eos-postgres",
+            "State": "exited",
+            "Status": "Exited (255) 12 minutes ago",
+            "Ports": "5432/tcp"
+        },
+        {
+            "Names": "hermes-eos-phoenix",
+            "State": "exited",
+            "Status": "Exited (255) 12 minutes ago",
+            "Ports": "4317/tcp, 9090/tcp, 127.0.0.1:6006->6006/tcp"
+        }
+    ],
+    "plugin_symlink": {
+        "path": "/home/ubuntu/.hermes/plugins/engineering-os",
+        "is_symlink": true,
+        "target": "/opt/hermes-engineering-os"
+    },
+    "live_spawn_hook": "ABSENT",
+    "disk": {
+        "free_bytes": 960274190336,
+        "used_bytes": 65834631168,
+        "total_bytes": 1081101176832,
+        "free_gib": 894.33,
+        "used_pct": 6.1
+    },
+    "profiles": [
+        "rp-android",
+        "rp-api-contract",
+        "rp-backend-markets",
+        "rp-friend",
+        "rp-qa-e2e",
+        "rp-recovery-architect",
+        "rp-release-orchestrator",
+        "rp-review-security",
+        "rp-sre-release",
+        "rp-web"
+    ],
+    "plugins_enabled": {
+        "config_exists": true,
+        "has_engineering_os": true
+    },
+    "budget_auth_present": true,
+    "principals": {
+        "ubuntu": {
+            "uid": 1000,
+            "home": "/home/ubuntu"
+        },
+        "hermes-op": {
+            "uid": 1001,
+            "home": "/home/hermes-op"
+        },
+        "hermes-runtime": {
+            "uid": 999,
+            "home": "/var/lib/hermes-runtime"
+        },
+        "hermes-actuator": {
+            "uid": 997,
+            "home": "/var/lib/hermes-actuator"
+        }
+    }
+}

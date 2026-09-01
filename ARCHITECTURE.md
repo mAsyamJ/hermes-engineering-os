@@ -1,5 +1,8 @@
 # Architecture
 
+Canonical overview (C4, 5W+1H, live snapshot): [docs/HERMES_AGENT_OS.md](docs/HERMES_AGENT_OS.md).
+This page is the short ASCII pipeline.
+
 Hermes Engineering OS is one combined user plugin. Its gateway registration is
 side-effect-free; runtime behavior lives in authenticated dashboard routes.
 
