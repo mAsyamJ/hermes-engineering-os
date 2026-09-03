@@ -1,0 +1,38 @@
+[
+  {
+    "identifier": "mariano-aguero/solidity-security-audit-skill",
+    "meta": null,
+    "found": false
+  },
+  {
+    "identifier": "nimitbhargava/testing-business-ideas-skill",
+    "meta": null,
+    "found": false
+  },
+  {
+    "identifier": "lowwwbank/interview-to-jtbd",
+    "meta": null,
+    "found": false
+  },
+  {
+    "identifier": "hiDaDeng/grill-me",
+    "meta": {
+      "name": "grill-me",
+      "description": "Official optional skill (from live repo; run install to fetch)",
+      "source": "official",
+      "identifier": "official/software-development/grill-me",
+      "tags": []
+    },
+    "found": true
+  },
+  {
+    "identifier": "rohitg00/ai-engineering-from-scratch",
+    "meta": null,
+    "found": false
+  },
+  {
+    "identifier": "therealharpaljadeja/monskills",
+    "meta": null,
+    "found": false
+  }
+]

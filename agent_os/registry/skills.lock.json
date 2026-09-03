@@ -1,0 +1,2870 @@
+{
+  "entries": {
+    "0x70626a--monad-wingman": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "0x70626a/monad-wingman",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--analytics": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--brainstorm": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--branding": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--code-review": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--dev-workflow": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--devops-deploy": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--founder": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--improve-codebase-architecture": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--landing-page": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--legal-compliance": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--marketing": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--prd-to-issues": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--senior-backend": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--senior-qa": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--seo": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--software-architect": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--video-creator": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--video-editor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "EmersonBraun--skills--write-a-prd": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "agent-reach": {
+      "content_hash": "90b4081b3f9692071d241593cb198004fc9873b6da22db5d11fc092ce98f3abb",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "airtable": {
+      "content_hash": "016198b563b8f8c4441b002bce8ad0e0865f2f39f1da22476beb7a7daed482aa",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "aomi-labs--skills": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--.claude--skills--brian-api": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--.claude--skills--coinbase-agentkit": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--.claude--skills--crypto-skill-creator": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--.claude--skills--eliza": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--.claude--skills--goat": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--.claude--skills--manage-aomi-skill": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--.claude--skills--solana-agent-kit": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--.claude--skills--x402": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--aomi-build": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--aomi-transact": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--cryptoskill--aomi": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--plugins--aomi--skills--build": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "aomi-labs--skills--plugins--aomi--skills--transact": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "apple-notes": {
+      "content_hash": "1ba042cb17e3aca06a68415526e926ada464bf873c8592c3326125cd72cb397f",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "apple-reminders": {
+      "content_hash": "ee5084f2d7ec196488bef2c74248fb3d8328d1b2e3277ddda3f0de9da6fc7131",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "architecture-diagram": {
+      "content_hash": "0e7e2736aafe052e409c2ad27863d51ef3007c116711e584033787ccb5d99d3f",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "arxiv": {
+      "content_hash": "2a6073a1ad08823dbdf26be64440b54155298db38fdee52c7b0a5d1cd0cfb05d",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "ascii-art": {
+      "content_hash": "b69fdd300045a3e68b4886c5c5c714f904c9277ac40b2da371bf9e156fd9fa88",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "ascii-video": {
+      "content_hash": "3bd3f39985a52954e2693866608bd8105f4dc0efbca5b6baa3045c2b641bda26",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "baoyu-infographic": {
+      "content_hash": "89e25da6d8ea1cac79b18d9e6c4c3b8d7a522df2eef559f151f19c6ce5b2a002",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "blogwatcher": {
+      "content_hash": "b85be5a9b86b90287266dd142a0ae9740be926298fbcb772f56b8a4d6451bb12",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "capability:adversarial-review": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "hiDaDeng/grill-me",
+      "trust_tier": "T2"
+    },
+    "capability:agentic-web3": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "aomi-labs/skills",
+      "trust_tier": "T3"
+    },
+    "capability:ai-engineering": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "capability:architecture": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "capability:assumption-testing": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "nimitbhargava/testing-business-ideas-skill",
+      "trust_tier": "T2"
+    },
+    "capability:customer-discovery": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "lowwwbank/interview-to-jtbd",
+      "trust_tier": "T2"
+    },
+    "capability:interview-analysis": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "lowwwbank/interview-to-jtbd",
+      "trust_tier": "T2"
+    },
+    "capability:jtbd": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "lowwwbank/interview-to-jtbd",
+      "trust_tier": "T2"
+    },
+    "capability:judge-grill": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "hiDaDeng/grill-me",
+      "trust_tier": "T2"
+    },
+    "capability:math-foundations": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "capability:monad-development": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "portdeveloper/monad-development",
+      "trust_tier": "T3"
+    },
+    "capability:monad-execution": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "stakeme-team/monad-agent-kit",
+      "trust_tier": "T2"
+    },
+    "capability:monad-implementation": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "0x70626a/monad-wingman",
+      "trust_tier": "T2"
+    },
+    "capability:monad-knowledge": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "capability:monad-routing": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "capability:security-audit": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "mariano-aguero/solidity-security-audit-skill",
+      "trust_tier": "T2"
+    },
+    "capability:solidity-audit": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "mariano-aguero/solidity-security-audit-skill",
+      "trust_tier": "T2"
+    },
+    "capability:startup-review": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "ferdinandobons/startup-skill",
+      "trust_tier": "T3"
+    },
+    "capability:startup-validation": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "nimitbhargava/testing-business-ideas-skill",
+      "trust_tier": "T2"
+    },
+    "capability:web3-security": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "capability:web3-testing": {
+      "content_hash": "",
+      "install_state": "virtual",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "claude-code": {
+      "content_hash": "f04207897a5353add84a3b5839513e541d5c7eeb4dbcc7c8732dbf6240efc274",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "claude-design": {
+      "content_hash": "1582b0d49e48bdf937b2f555098484e0979cdfa285c6cc9fa329ba8e416d347a",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "codebase-inspection": {
+      "content_hash": "87ddc0578d9bcbc80addb34ca045e4263689873ce02b1b73e3d57275ec6315c6",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "codebase-memory": {
+      "content_hash": "8efe4aa10efa92b52148cce5840abac552b92e5dc3af567e5d167a5e33624db1",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "codex": {
+      "content_hash": "3ed457c2b8d5d9c33ab3817cea9753cbcf7f165105eb9da488633a624216d51f",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "comfyui": {
+      "content_hash": "c9c1e61f1dd2b452dec5f7e6d6e228d5b5d40bfdec0d771b56cd4627863e8108",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "competitor-news-monitor": {
+      "content_hash": "bcc92cdcb4811ec2a8b6b13527b952552fccfc2a749837dfee24a8b561415cef",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "computer-use": {
+      "content_hash": "03b2b58f6d60ec78505c388151891edec229b15abec16ed24ee69224aa74c139",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "concepts": {
+      "content_hash": "2a7807654d18f356b25d545ce71931be12afdd459f4ad8524a6747c60e2c88d2",
+      "install_state": "installed",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--acquisition-channel-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--agent-orchestration-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--ai-shaped-readiness-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--altitude-horizon-framework": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--ansoff-matrix": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--autonomous-investigation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--battle-card-builder": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--business-health-diagnostic": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--company-intel": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--company-research": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--competitive-analysis-process": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--competitive-intel-watch": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--competitive-research-snapshot": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--context-engineering-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--customer-journey-map": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--customer-journey-mapping-workshop": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--derisk-measurement-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--director-readiness-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--discovery-interview-prep": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--discovery-process": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--eol-checklist": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--eol-internal-enablement": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--eol-message": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--eol-process": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--eol-readiness-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--eol-stakeholder-sequence": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--epic-breakdown-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--epic-hypothesis": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--executive-onboarding-playbook": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--feature-investment-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--finance-based-pricing-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--finance-metrics-quickref": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--incoming-request-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--intel-discipline-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--intelligence-collection-disciplines": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--jobs-to-be-done": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--lean-ux-canvas": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--lifecycle-play-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--market-landscape-scan": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--opportunity-solution-tree": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--organic-growth-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--pestel-analysis": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--pestel-delta-monitor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--pm-skill-creator": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--pol-probe": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--pol-probe-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--porters-five-forces": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--positioning-statement": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--positioning-workshop": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--prd-development": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--press-release": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--pricing-packaging-tracker": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--prioritization-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--problem-framing-canvas": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--problem-statement": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--product-lifecycle-plays": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--product-sense-interview-answer": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--product-strategy-session": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--proto-persona": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--recommendation-canvas": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--roadmap-planning": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--saas-economics-efficiency-metrics": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--saas-revenue-growth-metrics": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--skill-authoring-workflow": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--stakeholder-engagement-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--stakeholder-identification": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--stakeholder-mapping": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--storyboard": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--swot-analysis": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--tam-sam-som-calculator": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--user-story": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--user-story-mapping": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--user-story-mapping-workshop": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--user-story-splitting": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--voice-of-customer-miner": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--vp-cpo-readiness-advisor": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--Product-Manager-Skills--skills--workshop-facilitation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "deanpeters--product-manager-skills": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "deanpeters/Product-Manager-Skills",
+      "trust_tier": "T2"
+    },
+    "defuddle": {
+      "content_hash": "0968cf3c23b5623efdd5d914db1d6eb4384534a77fa341722b41019a2b985ca3",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "design-md": {
+      "content_hash": "7ed56bba40ffc9573fa51b33b2424f37fb5f774e9ecb7e76e737797afd0b62ae",
+      "install_state": "installed",
+      "repository": "nolly-studio/design-md",
+      "trust_tier": "T3"
+    },
+    "document-to-action-items": {
+      "content_hash": "f114af652272b56c8736172eab8ee870bd8c1004965b698d4ae5c705d8b6e554",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "docx": {
+      "content_hash": "9678b14d5e7841d588b969f6a4696cd46bcc46c3e4ac1479edc7656a051aa5ff",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "dogfood": {
+      "content_hash": "1b2793734493dbc624a1d1f1c0667cb510e191fa79b1c740d866706550190560",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "email-inbox-triage": {
+      "content_hash": "cd57ccc9d563b5186012b41d6bbf52e96c2837c5b8e79d524e8e5e6a44af6021",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "emersonbraun--skills": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "evaluating-llms-harness": {
+      "content_hash": "d6f1d357a6561cfe42b7230b8bb449f720212038f180e74a33f9a22c67a963ff",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "excalidraw": {
+      "content_hash": "cb0558445251fc1087a99dd85b445b83565a98aef6d3e0874641000f7e89e253",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "ferdinandobons--startup-skill": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "ferdinandobons/startup-skill",
+      "trust_tier": "T3"
+    },
+    "ferdinandobons--startup-skill--startup-competitors": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "ferdinandobons/startup-skill",
+      "trust_tier": "T3"
+    },
+    "ferdinandobons--startup-skill--startup-design": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "ferdinandobons/startup-skill",
+      "trust_tier": "T3"
+    },
+    "ferdinandobons--startup-skill--startup-pitch": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "ferdinandobons/startup-skill",
+      "trust_tier": "T3"
+    },
+    "ferdinandobons--startup-skill--startup-positioning": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "ferdinandobons/startup-skill",
+      "trust_tier": "T3"
+    },
+    "findmy": {
+      "content_hash": "19ec56e3b7f9f0be13c26d99948ed5684d8fb1f9c478da078c19356b5df63f57",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "getagentseal--founder-playbook": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--100m-leads": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--100m-offers": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--blue-ocean-strategy": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--crossing-the-chasm": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--diagnose": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--four-steps": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--influence": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--lean-startup": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--mom-test": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--monetizing-innovation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--money-models": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--obviously-awesome": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--spin-selling": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "getagentseal--founder-playbook--traction": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "gif-search": {
+      "content_hash": "a8349043740a8805d4ebfeb3a21f67ec0e9a9733a84f96403ca142c88a312b5d",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "github-auth": {
+      "content_hash": "cceb00bfa8908c45976316321fb27d99f5a5ffb26cebf8cd6efe69c6ede9c544",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "github-code-review": {
+      "content_hash": "af1f8aea62ed1f7e0107f00bfeccb2ac68ce6646ee2326ae27a33765f5ace203",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "github-issue-to-pr": {
+      "content_hash": "d422963778ee3fadb182322aa65b742f47a73b456b00fd0935e8ab66caf118e0",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "github-issues": {
+      "content_hash": "3b0316d2598d391288b8b3ddffcd1429cb97153476bce99680cb78ea3d1b2c3c",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "github-pr-workflow": {
+      "content_hash": "f3a35d81e880ea73acde23ce080e1c047b745527eb713a93d40c3c379fb3954d",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "github-repo-management": {
+      "content_hash": "27362c86fd1dfcd58e7b65a19f96e438026149de6eaf7a39dc28320353835144",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "google-workspace": {
+      "content_hash": "5bdca0d898744fbf4d66df611116b5c776b1297b964fbcfd86b3004c20e46fd7",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "graphify": {
+      "content_hash": "3e4d30df5a936965acaa25117230a6f3ff44353c137e63030e85e3bc3a391fb7",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "grill-me": {
+      "content_hash": "6e3b3b81c1ad3a0b3ba3d36ec725e376d225e7867bfbf23a5129cf245e94bb0c",
+      "install_state": "installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T1"
+    },
+    "grounded-citations": {
+      "content_hash": "e244361021acc9d41efc230df739130c5545bb86dba5af37aa0d1a878c6c59ea",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "hermes-agent": {
+      "content_hash": "02724b6acd39770189e024bdf38990ea87382d1e125fb323188fd551a8d0db44",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "hermes-agent-skill-authoring": {
+      "content_hash": "c80e64013dda9913ad85182af2c211071f98f09733439123d13db6ea43cb68ab",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "hermes-kanban-fleet": {
+      "content_hash": "91d139b0befc91dc886f16115b86d4a356c4850620e13fcd0e4977509db7ad08",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "hidadeng--grill-me": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "hiDaDeng/grill-me",
+      "trust_tier": "T2"
+    },
+    "himalaya": {
+      "content_hash": "0f6c9bb4c0a5c4f4627e139b6beb2b1ba0addd7145895196528b8125929e3837",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "huggingface-hub": {
+      "content_hash": "68ee2e5ae17e0f2968f8550534f3fce1c7eae461b95cbe1dbc34b8d487665bc5",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "humanizer": {
+      "content_hash": "887d5e3467a682da9b166e5293007f8bbbc299f8a6718ae00f26161b7d062b04",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "idea-validation": {
+      "content_hash": "3f625a2bc4ffa1d701c9fdf0054092e587f02fc6697de47ce6aed6224d0e3b09",
+      "install_state": "installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "imessage": {
+      "content_hash": "bc68b1648e301409bc25b1084ec26766213ca9f3c1b2fd3d3d6ebe3dbde9e967",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "inspecting-hermes-desktop-dom": {
+      "content_hash": "a78a5f8d277a1d6d39fccd5ecf1e76ce519a1ace831f06078dfcc91cb54a3399",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "interview-to-jtbd": {
+      "content_hash": "6c3110250dfde15b7db51c6ecb7476bc173a145644f559730b80532dfdf6d3e1",
+      "install_state": "installed",
+      "repository": "lowwwbank/interview-to-jtbd",
+      "trust_tier": "T2"
+    },
+    "kanban-fleet-orchestration": {
+      "content_hash": "68ff36d34cab75d95a28ac6c6ebdb3da259a006b3c9708fc2c181785f05777d5",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "learn": {
+      "content_hash": "48595700a457f6652048c85cdd15b552ab26515354c567b40a81c9c140207eaa",
+      "install_state": "installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "llama-cpp": {
+      "content_hash": "9c1ef45f6197fbc08b643416d5f2c2e5469dbd45fb01e17cf48a0406ffacf8c2",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "llm-wiki": {
+      "content_hash": "0229e37c1783fcac5b77cfb3242703666cf4aa472d2ae85b6bd5279756b515b6",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "lowwwbank--interview-to-jtbd": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "lowwwbank/interview-to-jtbd",
+      "trust_tier": "T2"
+    },
+    "made-to-stick": {
+      "content_hash": "79076406b24fa7c534d7659cec603c05da9f948cc84177de2b7a41527d157265",
+      "install_state": "installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "manim-video": {
+      "content_hash": "467376469fc2043e2674a843509f8eea52660791e76fb2e142074ecd4abc7e69",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "maps": {
+      "content_hash": "8c961ecf662838e3ff287570d343db8b1587ca7a6d565ec53eeab13f89407b29",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "mariano-aguero--solidity-security-audit-skill": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "mariano-aguero/solidity-security-audit-skill",
+      "trust_tier": "T2"
+    },
+    "meeting-action-items": {
+      "content_hash": "1902f782551da96ee1f9b34d6f13af627f06150a498d874b0cc2a75d06d35aa8",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "merge-reconciler": {
+      "content_hash": "24ffd1be973b0e884876fe0db9f49783fffe6a2337a4e74a83cdd895cb6fce23",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "monad-wingman": {
+      "content_hash": "83c8e8aea1741bb4002baae515b898592201c4c6ca0acfe65c66b070f21a27de",
+      "install_state": "installed",
+      "repository": "0x70626a/monad-wingman",
+      "trust_tier": "T2"
+    },
+    "nano-pdf": {
+      "content_hash": "e0bdce5fe2d2c8f657f520337cc1cd8d26b13edb60decaafdd9865d4567289ea",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "nextjs-app-router-patterns": {
+      "content_hash": "8de4ab196350d6bb2d191260e13d1645822b7ec1bae205a2018a24cdc3f9b26c",
+      "install_state": "installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "nimitbhargava--testing-business-ideas-skill": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "nimitbhargava/testing-business-ideas-skill",
+      "trust_tier": "T2"
+    },
+    "node-inspect-debugger": {
+      "content_hash": "bc89942b76387834272b6bf3bbf99caad72400c41338ab0420a740b7abe77d02",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "notion": {
+      "content_hash": "798ad178ead72ad3056f5301e83b447fce3407de07d5ff8b0209b134b4eae866",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "obsidian": {
+      "content_hash": "7aea4e8f89f94ab2876d79898d10a5d4cdab31390c53f72ad6934b071179f826",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "ocr-and-documents": {
+      "content_hash": "4d1295d97f1793928713c5cde723ad87ee2dfa9a9acb684afadb9c0202c05384",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "omc-teams": {
+      "content_hash": "c0f6117852f59edc9052ffa80753dd2a8e1e112c11c652888a46b76769c7a7b6",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "opencode": {
+      "content_hash": "afb3ea1f1b4300705f4a44f41ef2bb6f36c45e474b677dcb3c0aa4e6b3740595",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "openhue": {
+      "content_hash": "65a27110487bf296285ac1730a81fd0b5be3451a7a9abac767588be2986e454c",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "openmontage": {
+      "content_hash": "26e0b4f591037edbf2f869d8c8f7c511a482706190d9a164970c5abdfa68cd2d",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "p5js": {
+      "content_hash": "f66792d8558a1397e0a83abbc313d89443423228731509bcca10ced38386fa62",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "pdf": {
+      "content_hash": "947e71440d0cdbaa4df717900d9e59e95762975b7a36930275312b589a23ceb9",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "plan": {
+      "content_hash": "7513da40fbbbf899bc94ffdf05921a8187866745e67e2d81a55790b70daca72c",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "popular-web-designs": {
+      "content_hash": "cd89bdb86008bb30b35d9bdd30e06587f75ee54055c54e1a79afb20418264b3d",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "portdeveloper--monad-development": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "portdeveloper/monad-development",
+      "trust_tier": "T3"
+    },
+    "powerpoint": {
+      "content_hash": "6a6c4ef12b188c2e3b0679643f533af29e30c2e767d0435f05ed300efc5910af",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "pretext": {
+      "content_hash": "7aaa3691739fe96dab4947ad5c59419af162bcca5cdea30dec2edf39ba2ecf05",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "product-price-monitor": {
+      "content_hash": "b87bf2102fed13d2c7c64759fa153f24f5e43a0afcf6f8ec5e13def92a6642ef",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "python-debugpy": {
+      "content_hash": "24258d93eb080e7bbf89a81ba3e614b09d5d09637cdceaafac487f4df07f3f53",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "repo-error:nolly-studio/design-md": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "nolly-studio/design-md",
+      "trust_tier": "T3"
+    },
+    "repo-error:portdeveloper/monad-development": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "portdeveloper/monad-development",
+      "trust_tier": "T3"
+    },
+    "requesting-code-review": {
+      "content_hash": "1126afb626b38f5b398afac61de1c2c5551913d020f7c745e5468a78f143bcfd",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "research-paper-writing": {
+      "content_hash": "52aec0edc55dbe73b6d7612cd2bdaffb5bf396643ce70e73ffc1b504fb96ba35",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "rohitg00--ai-engineering-from-scratch": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--.claude--skills--check-understanding": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--.claude--skills--claude-certification": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--.claude--skills--course-guide": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--.claude--skills--find-your-level": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--.claude--skills--learn-agent-skills": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--.claude--skills--learn-mcp": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--.claude--skills--start-learning": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--certifications--claude--lessons--19-claude-code-memory-rules-skills-and-ci--outputs--migration-review-skill": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--phases--13-tools-and-protocols--22-skills-and-agent-sdks--outputs--skill-contract-reviewer": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--phases--13-tools-and-protocols--24-skill-discovery-and-progressive-disclosure--outputs--skill-catalog-builder": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--phases--13-tools-and-protocols--25-skill-invocation-and-routing--outputs--skill-invocation-router": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--phases--13-tools-and-protocols--26-skill-permissions-sandboxes-and-trust--outputs--skill-safety-reviewer": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--phases--13-tools-and-protocols--27-skill-evals-packaging-and-portability--outputs--skill-release-gate": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--skills--check-understanding": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--skills--claude-certification": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--skills--course-guide": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--skills--find-your-level": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--skills--learn-agent-skills": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--skills--learn-mcp": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "rohitg00--ai-engineering-from-scratch--skills--start-learning": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "trust_tier": "T2"
+    },
+    "scaffold": {
+      "content_hash": "2a3d9fdefd20061b1b1ea311ddeedd95f8cd16342cae747533cc1cb223d1db67",
+      "install_state": "installed",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "sdlc-review": {
+      "content_hash": "ce90e8a3e145cce69c62880dc85921700110879f9290952d6cec28218503155f",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "senior-frontend": {
+      "content_hash": "f8f72112c2040faa5407306ed0aaa23ae5719fb7f33d5331d0745d953c40c61b",
+      "install_state": "installed",
+      "repository": "EmersonBraun/skills",
+      "trust_tier": "T2"
+    },
+    "serving-llms-vllm": {
+      "content_hash": "1c64cbeec7e77ffc682da5fcf06d03741f1ecd7055a8f5c2fa12408716644c17",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "simplify-code": {
+      "content_hash": "c259970bff23997a9b395f514af12723e33218fca97f529b5e0fa914ac72660e",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "sketch": {
+      "content_hash": "c9472691dbd91b31710d9ace3d05a81a5cedcf524a1707f8b3e410b27ed0a243",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "solidity-security": {
+      "content_hash": "ce1b1bce04f868cbe48b4a765839d3f589e5f15c2c47f52b4b1ca9a1306ae779",
+      "install_state": "installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "songsee": {
+      "content_hash": "d9d8d1394c630bd83329cd54cd8f18e0e3cd140debe31c3ccf5d9667f054de07",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "songwriting-and-ai-music": {
+      "content_hash": "5dbf92dc336e9b17be45c35c92a5bb307e4655e39a86617f07b7654678f92583",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "spike": {
+      "content_hash": "891bc0a6fbb7aa6cb4164e48e2d20aae56aad7bbd83d20d093ba89a8ed2b48ab",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "stakeme-team--monad-agent-kit": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "stakeme-team/monad-agent-kit",
+      "trust_tier": "T2"
+    },
+    "stakeme-team--monad-agent-kit--.claude--skills--deploy": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "stakeme-team/monad-agent-kit",
+      "trust_tier": "T2"
+    },
+    "stakeme-team--monad-agent-kit--.claude--skills--send": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "stakeme-team/monad-agent-kit",
+      "trust_tier": "T2"
+    },
+    "stakeme-team--monad-agent-kit--.claude--skills--wallet": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "stakeme-team/monad-agent-kit",
+      "trust_tier": "T2"
+    },
+    "storybrand": {
+      "content_hash": "909cac13072da00e609edece2790df5b7b1472c32514e6cc94b3eb88c4dccc52",
+      "install_state": "installed",
+      "repository": "getagentseal/founder-playbook",
+      "trust_tier": "T2"
+    },
+    "systematic-debugging": {
+      "content_hash": "ec6c97b1d5534a86328ded47e607a7cfb797629ddb1eb842b9a36b298c4b76d3",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "teams-meeting-pipeline": {
+      "content_hash": "0c0868dbc1efebe559b8584d4a52d5a29b4719867b6068177fdeb0cf9372843d",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "temporal-python-testing": {
+      "content_hash": "71810389b45511818642e75ae114f7cc4c9425920f2cdb67714a1137091f2267",
+      "install_state": "installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "test-driven-development": {
+      "content_hash": "39361054f58ecc8de9cac0f1364aee94e795a446030bb57595f7b7ca0c1ffbbe",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "testing-business-ideas": {
+      "content_hash": "b07b5cae91c7a3ce78e5f5ab3b77441c0debde9ab109d675431e392ddda13c4a",
+      "install_state": "installed",
+      "repository": "nimitbhargava/testing-business-ideas-skill",
+      "trust_tier": "T2"
+    },
+    "therealharpaljadeja--monskills": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "therealharpaljadeja--monskills--skills--addresses": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "therealharpaljadeja--monskills--skills--gas": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "therealharpaljadeja--monskills--skills--indexer": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "therealharpaljadeja--monskills--skills--monskill": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "therealharpaljadeja--monskills--skills--wallet": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "therealharpaljadeja--monskills--skills--wallet-integration": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "tooling-and-infra": {
+      "content_hash": "dc2a5dfe83c41c31e68674d33f2c72da1c35a637ee0b20a9e772dd2f70f393ad",
+      "install_state": "installed",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "touchdesigner-mcp": {
+      "content_hash": "925c387c16a3a0752e4670d48ab9bde94f930cd3dd27fe08cefda2e05c0765e9",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "web3-testing": {
+      "content_hash": "563c541469d9f23d7aa36c26ae39bfa5095f93c12ba52b3d2e2b8f226ac6776e",
+      "install_state": "installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "weekly-review-planning": {
+      "content_hash": "a689257facb937cfca9bc5507dd9e729f287f0cd3f6abbf73448eb25f73fbaab",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "weights-and-biases": {
+      "content_hash": "bc87d8c94c656ed76aaae6123b1f62c2f0341fcf8e44bb9556efc04c52a2cda1",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "why-monad": {
+      "content_hash": "a35d980d9613157dfd6047f2a061cba6fdaf95bd870e6f0dfb7c7a1041f53b42",
+      "install_state": "installed",
+      "repository": "therealharpaljadeja/monskills",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--accessibility-compliance--skills--screen-reader-testing": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--accessibility-compliance--skills--wcag-audit-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--agent-teams--skills--multi-reviewer-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--agent-teams--skills--parallel-debugging": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--agent-teams--skills--parallel-feature-development": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--agent-teams--skills--task-coordination-strategies": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--agent-teams--skills--team-communication-protocols": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--agent-teams--skills--team-composition-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--api-scaffolding--skills--fastapi-templates": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--avoid-ai-writing--skills--avoid-ai-writing": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--backend-development--skills--api-design-principles": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--backend-development--skills--architecture-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--backend-development--skills--cqrs-implementation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--backend-development--skills--event-store-design": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--backend-development--skills--microservices-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--backend-development--skills--projection-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--backend-development--skills--saga-orchestration": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--backend-development--skills--workflow-orchestration-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--before-you-build--skills--before-you-build": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--block-no-verify--skills--block-no-verify-hook": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--blockchain-web3--skills--defi-protocol-templates": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--blockchain-web3--skills--nft-standards": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--brand-landingpage--skills--brand-landingpage": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--business-analytics--skills--data-storytelling": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--business-analytics--skills--kpi-dashboard-design": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cicd-automation--skills--deployment-pipeline-design": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cicd-automation--skills--github-actions-templates": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cicd-automation--skills--gitlab-ci-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cicd-automation--skills--secrets-management": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cloud-infrastructure--skills--cost-optimization": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cloud-infrastructure--skills--hybrid-cloud-networking": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cloud-infrastructure--skills--istio-traffic-management": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cloud-infrastructure--skills--linkerd-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cloud-infrastructure--skills--mtls-configuration": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cloud-infrastructure--skills--multi-cloud-architecture": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cloud-infrastructure--skills--service-mesh-observability": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--cloud-infrastructure--skills--terraform-module-library": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--conductor--skills--context-driven-development": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--conductor--skills--track-management": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--conductor--skills--workflow-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--data-engineering--skills--airflow-dag-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--data-engineering--skills--data-quality-frameworks": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--data-engineering--skills--dbt-transformation-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--data-engineering--skills--spark-optimization": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--database-design--skills--postgresql-table-design": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--developer-essentials--skills--auth-implementation-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--developer-essentials--skills--bazel-build-optimization": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--developer-essentials--skills--code-review-excellence": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--developer-essentials--skills--debugging-strategies": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--developer-essentials--skills--e2e-testing-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--developer-essentials--skills--error-handling-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--developer-essentials--skills--git-advanced-workflows": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--developer-essentials--skills--monorepo-management": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--developer-essentials--skills--nx-workspace-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--developer-essentials--skills--sql-optimization-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--developer-essentials--skills--turborepo-caching": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--dgx-spark-ops--skills--spark-environment-setup": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--dgx-spark-ops--skills--spark-memory-thermal-ops": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--dgx-spark-ops--skills--spark-training-gotchas": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--documentation-generation--skills--architecture-decision-records": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--documentation-generation--skills--changelog-automation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--documentation-generation--skills--openapi-spec-generation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--documentation-standards--skills--grounded-vault": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--documentation-standards--skills--hads": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--dotnet-contribution--skills--dotnet-backend-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--file-conversion--skills--file-conversion": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--framework-migration--skills--angular-migration": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--framework-migration--skills--database-migration": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--framework-migration--skills--dependency-upgrade": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--framework-migration--skills--react-modernization": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--frontend-mobile-development--skills--react-native-architecture": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--frontend-mobile-development--skills--react-state-management": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--frontend-mobile-development--skills--tailwind-design-system": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--game-development--skills--godot-gdscript-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--game-development--skills--unity-ecs-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--hermes-tweet--skills--hermes-tweet": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--hr-legal-compliance--skills--employment-contract-templates": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--hr-legal-compliance--skills--gdpr-data-handling": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--incident-response--skills--incident-runbook-templates": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--incident-response--skills--on-call-handoff-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--incident-response--skills--postmortem-writing": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--javascript-typescript--skills--javascript-testing-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--javascript-typescript--skills--modern-javascript-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--javascript-typescript--skills--nodejs-backend-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--javascript-typescript--skills--typescript-advanced-types": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--kubernetes-operations--skills--gitops-workflow": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--kubernetes-operations--skills--helm-chart-scaffolding": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--kubernetes-operations--skills--k8s-manifest-generator": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--kubernetes-operations--skills--k8s-security-policies": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-application-dev--skills--embedding-strategies": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-application-dev--skills--hybrid-search-implementation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-application-dev--skills--langchain-architecture": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-application-dev--skills--llm-evaluation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-application-dev--skills--prompt-engineering-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-application-dev--skills--rag-implementation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-application-dev--skills--similarity-search-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-application-dev--skills--vector-index-tuning": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-finetuning--skills--checkpoint-promotion": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-finetuning--skills--dataset-curation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-finetuning--skills--eval-harness-first": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-finetuning--skills--finetuning-method-selection": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-finetuning--skills--grpo-rlvr-training": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-finetuning--skills--lora-qlora-recipes": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-finetuning--skills--preference-optimization": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-finetuning--skills--quantized-export": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-finetuning--skills--trace-to-training-data": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--llm-finetuning--skills--vision-sft": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--machine-learning-ops--skills--ml-pipeline-workflow": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--machine-learning-ops--skills--recsys-pipeline-architect": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--observability-monitoring--skills--distributed-tracing": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--observability-monitoring--skills--grafana-dashboards": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--observability-monitoring--skills--prometheus-configuration": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--observability-monitoring--skills--slo-implementation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--payment-processing--skills--billing-automation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--payment-processing--skills--paypal-integration": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--payment-processing--skills--pci-compliance": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--payment-processing--skills--stripe-integration": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--plugin-eval--skills--evaluation-methodology": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--pptx-deck-creation--skills--pptx-deck-context": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--pptx-deck-creation--skills--pptx-quality-gates": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--pptx-deck-creation--skills--pptx-reference-deck-analysis": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--pptx-deck-creation--skills--pptx-slide-specification": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--pptx-deck-creation--skills--pptx-visual-assets": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--protect-mcp--skills--protect-mcp-setup": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--async-python-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-anti-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-background-jobs": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-code-style": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-configuration": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-design-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-error-handling": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-observability": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-packaging": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-performance-optimization": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-project-structure": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-resilience": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-resource-management": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-testing-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--python-type-safety": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--python-development--skills--uv-package-manager": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--quantitative-trading--skills--backtesting-frameworks": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--quantitative-trading--skills--risk-metrics-calculation": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--reverse-engineering--skills--anti-reversing-techniques": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--reverse-engineering--skills--binary-analysis-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--reverse-engineering--skills--memory-forensics": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--reverse-engineering--skills--protocol-reverse-engineering": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--review-agent-governance--skills--review-agent-setup": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--security-scanning--skills--attack-tree-construction": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--security-scanning--skills--sast-configuration": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--security-scanning--skills--security-requirement-extraction": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--security-scanning--skills--stride-analysis-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--security-scanning--skills--threat-mitigation-mapping": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--shell-scripting--skills--bash-defensive-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--shell-scripting--skills--bats-testing-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--shell-scripting--skills--shellcheck-configuration": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--ship-mate--skills--scan": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--signed-audit-trails--skills--signed-audit-trails-recipe": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--skill-forge-essentials--skills--ai-debt-detector": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--skill-forge-essentials--skills--session-guard": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--skill-forge-essentials--skills--visual-edit-precision": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--social-publishing--skills--social-publishing": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--startup-business-analyst--skills--competitive-landscape": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--startup-business-analyst--skills--market-sizing-analysis": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--startup-business-analyst--skills--startup-financial-modeling": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--startup-business-analyst--skills--startup-metrics-framework": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--startup-business-analyst--skills--team-composition-analysis": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--superself--skills--superself": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--systems-programming--skills--go-concurrency-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--systems-programming--skills--memory-safety-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--systems-programming--skills--rust-async-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--ui-design--skills--accessibility-compliance": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--ui-design--skills--design-system-patterns": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--ui-design--skills--interaction-design": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--ui-design--skills--mobile-android-design": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--ui-design--skills--mobile-ios-design": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--ui-design--skills--react-native-design": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--ui-design--skills--responsive-design": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--ui-design--skills--visual-design-foundations": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "wshobson--agents--plugins--ui-design--skills--web-component-design": {
+      "content_hash": "",
+      "install_state": "not_installed",
+      "repository": "wshobson/agents",
+      "trust_tier": "T2"
+    },
+    "xlsx": {
+      "content_hash": "b302d7ac997843a757ab3c11513ea012889ebdae32f842edb44faa9a4485f19b",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "xurl": {
+      "content_hash": "5457319ee337284b1152dc9f60146c72685ade489299afed08e0b46ca5a97080",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    },
+    "youtube-content": {
+      "content_hash": "9d70f32d5bd543c6545213fd60955735e18c0e1fdabdb0fcde70595d1ac01297",
+      "install_state": "installed",
+      "repository": "",
+      "trust_tier": "T1"
+    }
+  },
+  "generated_at": "2026-09-03T07:42:07Z",
+  "hermes_home": "/home/ubuntu/.hermes",
+  "installed_count": 104,
+  "version": 1
+}

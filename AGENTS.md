@@ -2,6 +2,9 @@
 
 - Hermes Agent is the runtime. Do not add a second orchestrator, worker owner,
   scheduler, retry engine, or task database.
+- Agent OS (`agent-os-router`) is a capability index/router only — not a
+  Kanban owner, worker owner, or second skill database. Disable via
+  `scripts/rollback-agent-os.sh` without wiping Hermes state.
 - Hermes Kanban is the only lifecycle authority. This product is read-only.
 - Never conflate `hermes.kanban.task_id` with `hermes.runtime.task_id`.
 - Do not mutate `/opt/retropick`, `/opt/retropick-android`, production

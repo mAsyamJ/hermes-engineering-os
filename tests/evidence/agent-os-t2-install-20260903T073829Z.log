@@ -1,0 +1,296 @@
+==== INSTALL nimitbhargava/testing-business-ideas-skill/skills/testing-business-ideas 
+
+Fetching: 
+nimitbhargava/testing-business-ideas-skill/skills/testing-business-ideas
+Quarantined to .hub/quarantine/testing-business-ideas
+Running security scan...
+Scan: testing-business-ideas 
+(skills-sh/nimitbhargava/testing-business-ideas-skill/skills/testing-business-id
+eas/community)  Verdict: SAFE
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:907a3bfe7bde0710de319c2aff80d73b8341e3ef959a5f30cf0c108b09279ccf
+Source: 
+https://github.com/nimitbhargava/testing-business-ideas-skill/tree/7e9bec5c856e6
+39b01ec22415fcdfd6764923028/skills/testing-business-ideas; scanned 
+2026-09-03T07:38:34.265855+00:00; rules: none
+╭───────────────────────────── Upstream Metadata ──────────────────────────────╮
+│ Repo: https://github.com/nimitbhargava/testing-business-ideas-skill          │
+│ Detail Page:                                                                 │
+│ https://skills.sh/nimitbhargava/testing-business-ideas-skill/skills/testing- │
+│ business-ideas                                                               │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Installed: testing-business-ideas
+Files: SKILL.md, templates/learning-card.md, templates/test-card.md
+
+exit=0
+==== INSTALL https://raw.githubusercontent.com/lowwwbank/interview-to-jtbd/main/SKILL.md --name interview-to-jtbd
+
+Fetching: 
+https://raw.githubusercontent.com/lowwwbank/interview-to-jtbd/main/SKILL.md
+Quarantined to .hub/quarantine/interview-to-jtbd
+Running security scan...
+Scan: interview-to-jtbd 
+(https://raw.githubusercontent.com/lowwwbank/interview-to-jtbd/main/SKILL.md/com
+munity)  Verdict: SAFE
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:fe19e0f27889c25b334e52d0619d05956d71067f32787f7192db5cbd9afd95e2
+Source: 
+https://raw.githubusercontent.com/lowwwbank/interview-to-jtbd/main/SKILL.md; 
+scanned 2026-09-03T07:38:43.689660+00:00; rules: none
+Installed: interview-to-jtbd
+Files: SKILL.md
+
+exit=0
+==== INSTALL therealharpaljadeja/monskills/skills/monskill 
+
+Fetching: therealharpaljadeja/monskills/skills/monskill
+Error: Could not fetch 'therealharpaljadeja/monskills/skills/monskill' from any 
+source.
+
+exit=0
+==== INSTALL 0x70626a/monad-wingman/skills/monad-wingman 
+
+Fetching: 0x70626a/monad-wingman/skills/monad-wingman
+Quarantined to .hub/quarantine/monad-wingman
+Running security scan...
+Scan: monad-wingman 
+(skills-sh/0x70626a/monad-wingman/skills/monad-wingman/community)  Verdict: SAFE
+  MEDIUM   supply_chain   SKILL.md:128                   "git clone 
+https://github.com/monad-developers/scaffold-monad"
+
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:b2864b9862190174a3957bcdbb3667570775f357425cb5c64a816cb47f7f69dd
+Source: 
+https://github.com/0x70626a/monad-wingman/tree/52439fea09c5bd0b81928d37e57b95cd2
+8767aac/skills/monad-wingman; scanned 2026-09-03T07:38:58.252242+00:00; rules: 
+git_clone
+╭───────────────────────────── Upstream Metadata ──────────────────────────────╮
+│ Repo: https://github.com/0x70626a/monad-wingman                              │
+│ Detail Page: https://skills.sh/0x70626a/monad-wingman/skills/monad-wingman   │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Installed: monad-wingman
+Files: SKILL.md
+
+exit=0
+==== INSTALL EmersonBraun/skills/idea-validation 
+
+Fetching: EmersonBraun/skills/idea-validation
+Quarantined to .hub/quarantine/idea-validation
+Running security scan...
+Scan: idea-validation (skills-sh/EmersonBraun/skills/idea-validation/community) 
+Verdict: SAFE
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:60eb3badea78e54d2af79d85640d360e28aa6b9c7895a4143ba696e33d756dc2
+Source: 
+https://github.com/EmersonBraun/skills/tree/8d97ffc6eaa54a65ad85c069066eb66b95fe
+df82/idea-validation; scanned 2026-09-03T07:39:02.988795+00:00; rules: none
+╭───────────────────────────── Upstream Metadata ──────────────────────────────╮
+│ Repo: https://github.com/EmersonBraun/skills                                 │
+│ Detail Page: https://skills.sh/EmersonBraun/skills/idea-validation           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Installed: idea-validation
+Files: SKILL.md, references/validation-frameworks.md
+
+exit=0
+==== INSTALL EmersonBraun/skills/senior-frontend 
+
+Fetching: EmersonBraun/skills/senior-frontend
+Quarantined to .hub/quarantine/senior-frontend
+Running security scan...
+Scan: senior-frontend (skills-sh/EmersonBraun/skills/senior-frontend/community) 
+Verdict: SAFE
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:12e245d939df090fe8e634631a1035957f70c3455c4bf0ba8189c2be9968f24c
+Source: 
+https://github.com/EmersonBraun/skills/tree/8d97ffc6eaa54a65ad85c069066eb66b95fe
+df82/senior-frontend; scanned 2026-09-03T07:39:11.415630+00:00; rules: none
+╭───────────────────────────── Upstream Metadata ──────────────────────────────╮
+│ Repo: https://github.com/EmersonBraun/skills                                 │
+│ Detail Page: https://skills.sh/EmersonBraun/skills/senior-frontend           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Installed: senior-frontend
+Files: SKILL.md, references/animation-recipes.md, references/color-palettes.md, 
+references/component-patterns.md, references/design-excellence.md, 
+references/inspiration-patterns.md, references/layout-patterns.md, 
+references/templates.md
+
+exit=0
+==== INSTALL wshobson/agents/plugins/blockchain-web3/skills/solidity-security 
+
+Fetching: wshobson/agents/plugins/blockchain-web3/skills/solidity-security
+Quarantined to .hub/quarantine/solidity-security
+Running security scan...
+Scan: solidity-security 
+(skills-sh/wshobson/agents/plugins/blockchain-web3/skills/solidity-security/comm
+unity)  Verdict: SAFE
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:d10add7800d3af0dedb95354ff8100c176364cd7a523eb9f349a8f0c8d420c67
+Source: 
+https://github.com/wshobson/agents/tree/a30778f8c4e6b0a87567941b7cca4f534bf642b6
+/plugins/blockchain-web3/skills/solidity-security; scanned 
+2026-09-03T07:39:15.792006+00:00; rules: none
+╭───────────────────────────── Upstream Metadata ──────────────────────────────╮
+│ Repo: https://github.com/wshobson/agents                                     │
+│ Detail Page:                                                                 │
+│ https://skills.sh/wshobson/agents/plugins/blockchain-web3/skills/solidity-se │
+│ curity                                                                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Installed: solidity-security
+Files: SKILL.md, references/details.md
+
+exit=0
+==== INSTALL wshobson/agents/plugins/blockchain-web3/skills/web3-testing 
+
+Fetching: wshobson/agents/plugins/blockchain-web3/skills/web3-testing
+Quarantined to .hub/quarantine/web3-testing
+Running security scan...
+Scan: web3-testing 
+(skills-sh/wshobson/agents/plugins/blockchain-web3/skills/web3-testing/community
+)  Verdict: SAFE
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:72c57f0b6742d41d5266cd76899de8ab0526a3c75d80e73850d64d5e4a8a6699
+Source: 
+https://github.com/wshobson/agents/tree/a30778f8c4e6b0a87567941b7cca4f534bf642b6
+/plugins/blockchain-web3/skills/web3-testing; scanned 
+2026-09-03T07:39:20.585952+00:00; rules: none
+╭───────────────────────────── Upstream Metadata ──────────────────────────────╮
+│ Repo: https://github.com/wshobson/agents                                     │
+│ Detail Page:                                                                 │
+│ https://skills.sh/wshobson/agents/plugins/blockchain-web3/skills/web3-testin │
+│ g                                                                            │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Installed: web3-testing
+Files: SKILL.md, references/details.md
+
+exit=0
+==== INSTALL wshobson/agents/plugins/frontend-mobile-development/skills/nextjs-app-router-patterns 
+
+Fetching: 
+wshobson/agents/plugins/frontend-mobile-development/skills/nextjs-app-router-pat
+terns
+Quarantined to .hub/quarantine/nextjs-app-router-patterns
+Running security scan...
+Scan: nextjs-app-router-patterns 
+(skills-sh/wshobson/agents/plugins/frontend-mobile-development/skills/nextjs-app
+-router-patterns/community)  Verdict: SAFE
+  MEDIUM   supply_chain   SKILL.md:76                    "const res = await 
+fetch('https://api.example.com/products', "
+
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:a43a6ef592b7e1dbaa16f2a3b85687c2897b9e1642675c3da3c2cb1596c45aa9
+Source: 
+https://github.com/wshobson/agents/tree/a30778f8c4e6b0a87567941b7cca4f534bf642b6
+/plugins/frontend-mobile-development/skills/nextjs-app-router-patterns; scanned 
+2026-09-03T07:39:25.015565+00:00; rules: remote_fetch
+╭───────────────────────────── Upstream Metadata ──────────────────────────────╮
+│ Repo: https://github.com/wshobson/agents                                     │
+│ Detail Page:                                                                 │
+│ https://skills.sh/wshobson/agents/plugins/frontend-mobile-development/skills │
+│ /nextjs-app-router-patterns                                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Installed: nextjs-app-router-patterns
+Files: SKILL.md, references/details.md
+
+exit=0
+==== INSTALL wshobson/agents/plugins/backend-development/skills/temporal-python-testing 
+
+Fetching: 
+wshobson/agents/plugins/backend-development/skills/temporal-python-testing
+Quarantined to .hub/quarantine/temporal-python-testing
+Running security scan...
+Scan: temporal-python-testing 
+(skills-sh/wshobson/agents/plugins/backend-development/skills/temporal-python-te
+sting/community)  Verdict: SAFE
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:83c6568118fd4de8f8f11cca72f89657b1cb351bed66d76e8a1cddcf58e993eb
+Source: 
+https://github.com/wshobson/agents/tree/a30778f8c4e6b0a87567941b7cca4f534bf642b6
+/plugins/backend-development/skills/temporal-python-testing; scanned 
+2026-09-03T07:39:28.835132+00:00; rules: none
+╭───────────────────────────── Upstream Metadata ──────────────────────────────╮
+│ Repo: https://github.com/wshobson/agents                                     │
+│ Detail Page:                                                                 │
+│ https://skills.sh/wshobson/agents/plugins/backend-development/skills/tempora │
+│ l-python-testing                                                             │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Installed: temporal-python-testing
+Files: SKILL.md
+
+exit=0
+==== INSTALL rohitg00/ai-engineering-from-scratch/skills/learn --name ai-engineering-learn
+
+Fetching: rohitg00/ai-engineering-from-scratch/skills/learn
+Quarantined to .hub/quarantine/learn
+Running security scan...
+Scan: learn 
+(skills-sh/rohitg00/ai-engineering-from-scratch/skills/learn/community)  
+Verdict: SAFE
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:4f411c01a5c3cd7916bc41f11976beeeeb1010050729d283f2522cd251796565
+Source: 
+https://github.com/rohitg00/ai-engineering-from-scratch/tree/a56b4b8ad43a3767c77
+1953d217036813f697bc7/skills/learn; scanned 2026-09-03T07:39:32.895509+00:00; 
+rules: none
+╭───────────────────────────── Upstream Metadata ──────────────────────────────╮
+│ Repo: https://github.com/rohitg00/ai-engineering-from-scratch                │
+│ Detail Page:                                                                 │
+│ https://skills.sh/rohitg00/ai-engineering-from-scratch/skills/learn          │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Installed: learn
+Files: SKILL.md
+
+exit=0
+==== INSTALL getagentseal/founder-playbook/made-to-stick 
+
+Fetching: getagentseal/founder-playbook/made-to-stick
+Quarantined to .hub/quarantine/made-to-stick
+Running security scan...
+Scan: made-to-stick 
+(skills-sh/getagentseal/founder-playbook/made-to-stick/community)  Verdict: SAFE
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:7a7fbda4187dd3952b59b0ab6573b9f8c3145c6fedcc92936666efb3c9f59830
+Source: 
+https://github.com/getagentseal/founder-playbook/tree/05e29d2ea1f8bf3c7dd97351f8
+c71e9b3da2a2fd/made-to-stick; scanned 2026-09-03T07:39:37.144216+00:00; rules: 
+none
+╭───────────────────────────── Upstream Metadata ──────────────────────────────╮
+│ Repo: https://github.com/getagentseal/founder-playbook                       │
+│ Detail Page: https://skills.sh/getagentseal/founder-playbook/made-to-stick   │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Installed: made-to-stick
+Files: SKILL.md
+
+exit=0
+==== INSTALL getagentseal/founder-playbook/storybrand 
+
+Fetching: getagentseal/founder-playbook/storybrand
+Quarantined to .hub/quarantine/storybrand
+Running security scan...
+Scan: storybrand (skills-sh/getagentseal/founder-playbook/storybrand/community) 
+Verdict: SAFE
+Decision: ALLOWED — Allowed (community source, safe verdict)
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:036f0883c10ed10a8f50c952f85ef589cb3395ac542d36fe7b1ff04e973682b8
+Source: 
+https://github.com/getagentseal/founder-playbook/tree/05e29d2ea1f8bf3c7dd97351f8
+c71e9b3da2a2fd/storybrand; scanned 2026-09-03T07:39:41.000257+00:00; rules: none
+╭───────────────────────────── Upstream Metadata ──────────────────────────────╮
+│ Repo: https://github.com/getagentseal/founder-playbook                       │
+│ Detail Page: https://skills.sh/getagentseal/founder-playbook/storybrand      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+Installed: storybrand
+Files: SKILL.md
+
+exit=0
+100

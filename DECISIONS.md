@@ -1,5 +1,14 @@
 # Decisions
 
+## Agent OS capability control plane (2026-09-03)
+
+- Extend `/opt/hermes-engineering-os` with `agent_os/`; do not create a second OS repo.
+- Ship a **separate** Hermes plugin `agent-os-router` so Engineering OS stays
+  read-only and Agent OS remains independently disableable.
+- Registry is an index over native `~/.hermes/skills/` — not a replacement store.
+- Deterministic routing + trust tiers; never `--force`; no Hermes core patch.
+- Full ADR: [docs/ADR-HERMES-AGENT-OS.md](docs/ADR-HERMES-AGENT-OS.md).
+
 ## Upstream adoption
 
 - Official Hermes dashboard examples are copied as compatibility references.

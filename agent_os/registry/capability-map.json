@@ -1,0 +1,409 @@
+{
+  "capabilities": {
+    "adversarial-review": {
+      "capability": "adversarial-review",
+      "installed_skills": [
+        "grill-me"
+      ],
+      "skills": [
+        "capability:adversarial-review",
+        "grill-me",
+        "hidadeng--grill-me"
+      ],
+      "virtual_skills": [
+        "capability:adversarial-review"
+      ]
+    },
+    "agentic-web3": {
+      "capability": "agentic-web3",
+      "installed_skills": [],
+      "skills": [
+        "aomi-labs--skills",
+        "capability:agentic-web3"
+      ],
+      "virtual_skills": [
+        "capability:agentic-web3"
+      ]
+    },
+    "ai-engineering": {
+      "capability": "ai-engineering",
+      "installed_skills": [
+        "learn"
+      ],
+      "skills": [
+        "capability:ai-engineering",
+        "learn",
+        "rohitg00--ai-engineering-from-scratch"
+      ],
+      "virtual_skills": [
+        "capability:ai-engineering"
+      ]
+    },
+    "architecture": {
+      "capability": "architecture",
+      "installed_skills": [],
+      "skills": [
+        "capability:architecture",
+        "wshobson--agents"
+      ],
+      "virtual_skills": [
+        "capability:architecture"
+      ]
+    },
+    "assumption-testing": {
+      "capability": "assumption-testing",
+      "installed_skills": [
+        "idea-validation",
+        "testing-business-ideas"
+      ],
+      "skills": [
+        "capability:assumption-testing",
+        "idea-validation",
+        "nimitbhargava--testing-business-ideas-skill",
+        "testing-business-ideas"
+      ],
+      "virtual_skills": [
+        "capability:assumption-testing"
+      ]
+    },
+    "customer-discovery": {
+      "capability": "customer-discovery",
+      "installed_skills": [
+        "interview-to-jtbd"
+      ],
+      "skills": [
+        "capability:customer-discovery",
+        "interview-to-jtbd",
+        "lowwwbank--interview-to-jtbd"
+      ],
+      "virtual_skills": [
+        "capability:customer-discovery"
+      ]
+    },
+    "debugging": {
+      "capability": "debugging",
+      "installed_skills": [
+        "systematic-debugging"
+      ],
+      "skills": [
+        "systematic-debugging"
+      ],
+      "virtual_skills": []
+    },
+    "design-system": {
+      "capability": "design-system",
+      "installed_skills": [
+        "claude-design",
+        "design-md",
+        "popular-web-designs",
+        "touchdesigner-mcp"
+      ],
+      "skills": [
+        "claude-design",
+        "design-md",
+        "popular-web-designs",
+        "touchdesigner-mcp"
+      ],
+      "virtual_skills": []
+    },
+    "frontend-nextjs": {
+      "capability": "frontend-nextjs",
+      "installed_skills": [
+        "nextjs-app-router-patterns",
+        "senior-frontend"
+      ],
+      "skills": [
+        "nextjs-app-router-patterns",
+        "senior-frontend"
+      ],
+      "virtual_skills": []
+    },
+    "github-workflow": {
+      "capability": "github-workflow",
+      "installed_skills": [
+        "codebase-inspection",
+        "github-auth",
+        "github-code-review",
+        "github-issue-to-pr",
+        "github-issues",
+        "github-pr-workflow",
+        "github-repo-management"
+      ],
+      "skills": [
+        "codebase-inspection",
+        "github-auth",
+        "github-code-review",
+        "github-issue-to-pr",
+        "github-issues",
+        "github-pr-workflow",
+        "github-repo-management"
+      ],
+      "virtual_skills": []
+    },
+    "interview-analysis": {
+      "capability": "interview-analysis",
+      "installed_skills": [
+        "interview-to-jtbd"
+      ],
+      "skills": [
+        "capability:interview-analysis",
+        "interview-to-jtbd",
+        "lowwwbank--interview-to-jtbd"
+      ],
+      "virtual_skills": [
+        "capability:interview-analysis"
+      ]
+    },
+    "jtbd": {
+      "capability": "jtbd",
+      "installed_skills": [
+        "interview-to-jtbd"
+      ],
+      "skills": [
+        "capability:jtbd",
+        "interview-to-jtbd",
+        "lowwwbank--interview-to-jtbd"
+      ],
+      "virtual_skills": [
+        "capability:jtbd"
+      ]
+    },
+    "judge-grill": {
+      "capability": "judge-grill",
+      "installed_skills": [
+        "grill-me"
+      ],
+      "skills": [
+        "capability:judge-grill",
+        "grill-me",
+        "hidadeng--grill-me"
+      ],
+      "virtual_skills": [
+        "capability:judge-grill"
+      ]
+    },
+    "math-foundations": {
+      "capability": "math-foundations",
+      "installed_skills": [
+        "learn"
+      ],
+      "skills": [
+        "capability:math-foundations",
+        "learn",
+        "rohitg00--ai-engineering-from-scratch"
+      ],
+      "virtual_skills": [
+        "capability:math-foundations"
+      ]
+    },
+    "monad-development": {
+      "capability": "monad-development",
+      "installed_skills": [],
+      "skills": [
+        "capability:monad-development",
+        "portdeveloper--monad-development"
+      ],
+      "virtual_skills": [
+        "capability:monad-development"
+      ]
+    },
+    "monad-execution": {
+      "capability": "monad-execution",
+      "installed_skills": [],
+      "skills": [
+        "capability:monad-execution",
+        "stakeme-team--monad-agent-kit"
+      ],
+      "virtual_skills": [
+        "capability:monad-execution"
+      ]
+    },
+    "monad-implementation": {
+      "capability": "monad-implementation",
+      "installed_skills": [
+        "monad-wingman",
+        "scaffold",
+        "tooling-and-infra"
+      ],
+      "skills": [
+        "0x70626a--monad-wingman",
+        "capability:monad-implementation",
+        "monad-wingman",
+        "scaffold",
+        "tooling-and-infra"
+      ],
+      "virtual_skills": [
+        "capability:monad-implementation"
+      ]
+    },
+    "monad-knowledge": {
+      "capability": "monad-knowledge",
+      "installed_skills": [
+        "concepts",
+        "why-monad"
+      ],
+      "skills": [
+        "capability:monad-knowledge",
+        "concepts",
+        "therealharpaljadeja--monskills",
+        "why-monad"
+      ],
+      "virtual_skills": [
+        "capability:monad-knowledge"
+      ]
+    },
+    "monad-routing": {
+      "capability": "monad-routing",
+      "installed_skills": [
+        "concepts",
+        "monad-wingman",
+        "why-monad"
+      ],
+      "skills": [
+        "capability:monad-routing",
+        "concepts",
+        "monad-wingman",
+        "therealharpaljadeja--monskills",
+        "why-monad"
+      ],
+      "virtual_skills": [
+        "capability:monad-routing"
+      ]
+    },
+    "pitch-storytelling": {
+      "capability": "pitch-storytelling",
+      "installed_skills": [
+        "made-to-stick",
+        "storybrand"
+      ],
+      "skills": [
+        "made-to-stick",
+        "storybrand"
+      ],
+      "virtual_skills": []
+    },
+    "security-audit": {
+      "capability": "security-audit",
+      "installed_skills": [
+        "solidity-security"
+      ],
+      "skills": [
+        "capability:security-audit",
+        "mariano-aguero--solidity-security-audit-skill",
+        "solidity-security"
+      ],
+      "virtual_skills": [
+        "capability:security-audit"
+      ]
+    },
+    "software-testing": {
+      "capability": "software-testing",
+      "installed_skills": [
+        "systematic-debugging",
+        "test-driven-development"
+      ],
+      "skills": [
+        "systematic-debugging",
+        "test-driven-development"
+      ],
+      "virtual_skills": []
+    },
+    "solidity-audit": {
+      "capability": "solidity-audit",
+      "installed_skills": [
+        "solidity-security"
+      ],
+      "skills": [
+        "capability:solidity-audit",
+        "mariano-aguero--solidity-security-audit-skill",
+        "solidity-security"
+      ],
+      "virtual_skills": [
+        "capability:solidity-audit"
+      ]
+    },
+    "startup-review": {
+      "capability": "startup-review",
+      "installed_skills": [],
+      "skills": [
+        "capability:startup-review",
+        "ferdinandobons--startup-skill"
+      ],
+      "virtual_skills": [
+        "capability:startup-review"
+      ]
+    },
+    "startup-validation": {
+      "capability": "startup-validation",
+      "installed_skills": [
+        "idea-validation",
+        "testing-business-ideas"
+      ],
+      "skills": [
+        "capability:startup-validation",
+        "idea-validation",
+        "nimitbhargava--testing-business-ideas-skill",
+        "testing-business-ideas"
+      ],
+      "virtual_skills": [
+        "capability:startup-validation"
+      ]
+    },
+    "tdd": {
+      "capability": "tdd",
+      "installed_skills": [
+        "test-driven-development"
+      ],
+      "skills": [
+        "test-driven-development"
+      ],
+      "virtual_skills": []
+    },
+    "temporal-workflows": {
+      "capability": "temporal-workflows",
+      "installed_skills": [
+        "temporal-python-testing"
+      ],
+      "skills": [
+        "temporal-python-testing"
+      ],
+      "virtual_skills": []
+    },
+    "web-research": {
+      "capability": "web-research",
+      "installed_skills": [
+        "agent-reach"
+      ],
+      "skills": [
+        "agent-reach"
+      ],
+      "virtual_skills": []
+    },
+    "web3-security": {
+      "capability": "web3-security",
+      "installed_skills": [],
+      "skills": [
+        "capability:web3-security",
+        "wshobson--agents"
+      ],
+      "virtual_skills": [
+        "capability:web3-security"
+      ]
+    },
+    "web3-testing": {
+      "capability": "web3-testing",
+      "installed_skills": [
+        "web3-testing"
+      ],
+      "skills": [
+        "capability:web3-testing",
+        "web3-testing",
+        "wshobson--agents"
+      ],
+      "virtual_skills": [
+        "capability:web3-testing"
+      ]
+    }
+  },
+  "version": 1
+}

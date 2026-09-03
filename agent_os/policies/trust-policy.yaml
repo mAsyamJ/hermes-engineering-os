@@ -1,0 +1,52 @@
+# Agent OS trust policy — maps onto Hermes skills_guard (never pass --force).
+
+tiers:
+  T0:
+    label: LOCAL_SYSTEM
+    auto_discover: true
+    auto_inspect: true
+    auto_rank: true
+    auto_install: true
+    force: never
+  T1:
+    label: HERMES_BUNDLED_OFFICIAL
+    auto_discover: true
+    auto_inspect: true
+    auto_rank: true
+    auto_install: true
+    force: never
+  T2:
+    label: CURATED_ALLOWLISTED
+    auto_discover: true
+    auto_inspect: true
+    auto_rank: true
+    auto_install: only_if_allowlisted_and_scan_allows
+    force: never
+  T3:
+    label: COMMUNITY
+    auto_discover: true
+    auto_inspect: true
+    auto_rank: true
+    auto_install: false
+    force: never
+  T4:
+    label: REJECTED_DANGEROUS
+    auto_discover: false
+    auto_inspect: true
+    auto_rank: false
+    auto_install: false
+    force: never
+
+hermes_trust_map:
+  builtin: T1
+  trusted: T2
+  community: T3
+  local: T0
+  official: T1
+
+rules:
+  - never_pass_force: true
+  - dangerous_verdict_never_install: true
+  - ask_verdict_not_auto_install: true
+  - prefer_structured_hub_apis: true
+  - never_npx_skills_add_for_hermes: true

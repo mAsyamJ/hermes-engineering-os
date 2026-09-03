@@ -1,0 +1,1600 @@
+{
+  "allowlisted_repos": [
+    "0x70626a/monad-wingman",
+    "EmersonBraun/skills",
+    "deanpeters/Product-Manager-Skills",
+    "getagentseal/founder-playbook",
+    "hiDaDeng/grill-me",
+    "lowwwbank/interview-to-jtbd",
+    "mariano-aguero/solidity-security-audit-skill",
+    "nimitbhargava/testing-business-ideas-skill",
+    "rohitg00/ai-engineering-from-scratch",
+    "stakeme-team/monad-agent-kit",
+    "therealharpaljadeja/monskills",
+    "wshobson/agents"
+  ],
+  "inspect": [
+    {
+      "found": true,
+      "from_search": {
+        "allowlisted_repo_match": true,
+        "description": "Indexed by skills.sh from therealharpaljadeja/monskills",
+        "identifier": "skills-sh/therealharpaljadeja/monskills/monskill",
+        "name": "monskill",
+        "queries": [
+          "monskills"
+        ],
+        "source": "skills.sh",
+        "trust_level": "community"
+      },
+      "identifier": "skills-sh/therealharpaljadeja/monskills/monskill",
+      "meta": {
+        "description": "Indexed by skills.sh from therealharpaljadeja/monskills",
+        "identifier": "skills-sh/therealharpaljadeja/monskills/monskill",
+        "name": "monskill",
+        "source": "skills.sh",
+        "tags": []
+      }
+    },
+    {
+      "found": true,
+      "from_search": {
+        "allowlisted_repo_match": true,
+        "description": "Indexed by skills.sh from wshobson/agents",
+        "identifier": "skills-sh/wshobson/agents/solidity-security",
+        "name": "solidity-security",
+        "queries": [
+          "solidity"
+        ],
+        "source": "skills.sh",
+        "trust_level": "community"
+      },
+      "identifier": "skills-sh/wshobson/agents/solidity-security",
+      "meta": {
+        "description": "Indexed by skills.sh from wshobson/agents",
+        "identifier": "skills-sh/wshobson/agents/solidity-security",
+        "name": "solidity-security",
+        "source": "skills.sh",
+        "tags": []
+      }
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Register and manage ERC-8004 Identity NFTs on Monad. Use when the agent needs to mint an on-chain identity for CEO Protocol registration or other ERC-8004\u2013integrated protocols.",
+        "identifier": "8004-skill-monad",
+        "name": "8004 Harness For Monad",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "8004-skill-monad"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Blockchain security scanner for AI agents (testnet). Pay with Base Sepolia USDC via x402 protocol.",
+        "identifier": "aegis-security-hackathon",
+        "name": "Hackathon",
+        "queries": [
+          "hackathon"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "aegis-security-hackathon"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Expert AI agent specializing in product manager. From The Agency (github.com/msitarzewski/agency-agents).",
+        "identifier": "agency-product-manager",
+        "name": "Product Manager",
+        "queries": [
+          "product manager"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "agency-product-manager"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Cryptographic identity for AI agents. Register on-chain identity, sign messages, verify other agents, link platform accounts. Stake USDC to prove you're real. Built by g1itchbot for the USDC Hackathon.",
+        "identifier": "agent-identity",
+        "name": "Agent Identity Protocol",
+        "queries": [
+          "hackathon"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "agent-identity"
+    },
+    {
+      "found": true,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "AgentXPay Skill \u2014 \u8ba9 AI Agent \u5728 Monad \u94fe\u4e0a\u901a\u8fc7 x402 \u534f\u8bae\u81ea\u4e3b\u53d1\u73b0\u3001\u4ed8\u8d39\u3001\u8ba2\u9605 AI \u670d\u52a1\u3002\u652f\u6301\u94fe\u4e0a\u652f\u4ed8\u3001Agent \u94b1\u5305\u7ba1\u7406\u3001\u670d\u52a1\u8ba2\u9605\u548c\u8d44\u91d1\u6258\u7ba1\u3002",
+        "identifier": "agentxpay",
+        "name": "AgentXPay",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "agentxpay",
+      "meta": {
+        "description": "AgentXPay Skill \u2014 \u8ba9 AI Agent \u5728 Monad \u94fe\u4e0a\u901a\u8fc7 x402 \u534f\u8bae\u81ea\u4e3b\u53d1\u73b0\u3001\u4ed8\u8d39\u3001\u8ba2\u9605 AI \u670d\u52a1\u3002\u652f\u6301\u94fe\u4e0a\u652f\u4ed8\u3001Agent \u94b1\u5305\u7ba1\u7406\u3001\u670d\u52a1\u8ba2\u9605\u548c\u8d44\u91d1\u6258\u7ba1\u3002",
+        "identifier": "agentxpay",
+        "name": "AgentXPay",
+        "source": "clawhub",
+        "tags": []
+      }
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "AI \u6bd4\u8d5b/\u9ed1\u5ba2\u677e/hackathon \u9898\u76ee\u5b9e\u6218\u52a9\u624b\u2014\u2014\u628a\u9650\u65f6\uff0830\u201390 \u5206\u949f\uff09AI \u6311\u6218\u8d5b\u9898\u76ee\u8f6c\u6210\u4e00\u4efd\u53ef\u8bc4\u5206\u7684\u4f5c\u6218\u5305\uff1a\u9898\u76ee\u89e3\u6790\u3001\u5206\u6b65\u6267\u884c\u5de5\u4f5c\u6d41\u3001\u53ef\u8fd0\u884c\u5355\u6587\u4ef6 HTML \u539f\u578b\u3001UX \u8d70\u67e5\u3001\u8bc4\u59d4\u6a21\u62df\u6253\u5206\u3001\u8def\u6f14\u7a3f\u3002\u53ea\u8981\u7528\u6237\u8d34\u51fa\u6bd4\u8d5b\u9898\u76ee\u3001\u8d5b\u9898\u6d77\u62a5\u622a\u56fe\uff0c\u6216\u63d0\u5230\"\u5f00\u53d1\u63d0\u6548/\u6d4b\u8bd5\u81ea\u52a8\u5316/\u8fd0\u7ef4\u76d1\u63a7/\u6570\u636e\u5206\u6790/\u4ea7\u54c1\u9879\u76ee\u7ba1\u7406/\u5185\u90e8\u7ba1\u7406\u63d0\u6548\"\u4efb\u4e00\u573a\u666f\uff0c\u6216\u7d22\u53d6\"\u8bc4\u5206\u8868\u3001\u8def\u6f14\u7a3f\u3001\u8bc4\u59d4\u89c6\u89d2\u8bc4\u5ba1\u3001Vibe Coding \u9875\u9762\u3001\u9650\u65f6 AI \u4ea4\u4ed8\u7269\"\uff0c\u5373\u4f7f\u6ca1\u6709\u660e\u8bf4\"\u7528\u8fd9\u4e2a skill\"\u4e5f\u5e94\u89e6\u53d1\u3002\u4e0d\u9002\u7528\u4e8e\u4e0e\u7ade\u8d5b/\u9650\u65f6\u4ea4\u4ed8\u7269\u65e0\u5173\u7684\u666e\u901a\u7f16\u7801\u8bf7\u6c42\u6216\u7eaf\u7406\u8bba\u95ee\u7b54\u3002",
+        "identifier": "ai-challenge-topic-analysis-assistant",
+        "name": "Ai Challenge Assistant",
+        "queries": [
+          "hackathon"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "ai-challenge-topic-analysis-assistant"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "AI Product Manager daily intelligence digest. Fetches news from 16+ curated RSS sources across tech media, AI labs, research papers, developer communities, a...",
+        "identifier": "ai-deepnews",
+        "name": "AI DeepNews",
+        "queries": [
+          "product manager"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "ai-deepnews"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Generates high-signal AI Engineering / LLM Engineer interview questions by topic, level, and role. Covers LLM fundamentals, prompt engineering, RAG, vector D...",
+        "identifier": "ai-engineering-interview",
+        "name": "Ai Engineering Interview",
+        "queries": [
+          "ai engineering"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "ai-engineering-interview"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "\u57fa\u4e8e\u300cAI\u5de5\u7a0b\u9020\u4ef7+\u6cd5\u5f8b\u77e5\u8bc6\u5e93\u300d\uff081394\u4eba\u8ba2\u9605\uff0c3149\u4e2a\u5185\u5bb9\uff09\u7684\u9020\u4ef7+\u6cd5\u5f8b\u4ea4\u53c9\u9886\u57dfAI\u6280\u80fd\u3002\u5f53\u7528\u6237\u9700\u8981\u8fdb\u884c\u5de5\u7a0b\u9020\u4ef7\u53f8\u6cd5\u9274\u5b9a\u3001\u5408\u540c\u98ce\u9669\u5ba1\u67e5\u3001\u53d8\u66f4\u7d22\u8d54\u5206\u6790\u3001\u7ed3\u7b97\u7ea0\u7eb7\u8bca\u65ad\u65f6\u4f7f\u7528\u3002\u89e6\u53d1\u8bcd\u5305\u62ec\u4f46\u4e0d\u9650\u4e8e\uff1a\u9020\u4ef7+\u6cd5\u5f8b\u3001\u5de5\u7a0b\u53f8\u6cd5\u9274\u8bc1\u3001\u5408\u540c\u98ce\u63a7\u3001\u53d8\u66f4\u7d22\u8d54\u3001\u7ed3\u7b97\u7ea0\u7eb7\u3001\u9274\u5b9a\u610f\u89c1\u3001\u8bc1\u636e\u94fe\u3001\u5de5\u671f\u7d22\u8d54\u3001\u8d39\u7528\u7d22\u8d54\u3002\u4e5f\u9002\u7528\u4e8e\u7528\u6237\u9700\u8981\u57fa\u4e8e\u77e5\u8bc6...",
+        "identifier": "ai-engineering-legal",
+        "name": "Ai Engineering Legal",
+        "queries": [
+          "ai engineering"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "ai-engineering-legal"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "AI Product Manager daily intelligence digest. Fetches news from 16+ curated RSS sources across tech media, AI labs, research papers, developer communities, a...",
+        "identifier": "ai-intel-daily",
+        "name": "AI Intel Daily",
+        "queries": [
+          "product manager"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "ai-intel-daily"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Apply a bilingual, vendor-neutral AI-native startup operating playbook for Claude Code, Codex, Cursor, Trae, OpenClaw, hermers-agent, and other agents. Use f...",
+        "identifier": "ai-native-founder-playbook",
+        "name": "AI-Native Founder Playbook",
+        "queries": [
+          "founder playbook"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "ai-native-founder-playbook"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "AI PM Super Workbench \u2014 International Edition. Full-stack intelligent workbench for AI Product Managers worldwide.",
+        "identifier": "ai-pm-workbench-international",
+        "name": "Ai Pm Workbench International",
+        "queries": [
+          "product manager"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "ai-pm-workbench-international"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "AI Product Manager daily intelligence digest. Fetches news from 16+ curated RSS sources across tech media, AI labs, research papers, developer communities, a...",
+        "identifier": "aipm-deepnews-daily",
+        "name": "AIPM DeepNews Daily",
+        "queries": [
+          "product manager"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "aipm-deepnews-daily"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Interact with AIT Community (aitcommunity.org) - an AI engineering community platform. Use when asked to post forum threads, reply to discussions, read commu...",
+        "identifier": "ait-community",
+        "name": "AIT Community",
+        "queries": [
+          "ai engineering"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "ait-community"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Create and edit macOS hackathon demo clips via terminal commands to record, crop, trim, and apply presets using ffmpeg/ffprobe locally.",
+        "identifier": "aoi-demo-clip-maker",
+        "name": "AOI Demo Clip Maker",
+        "queries": [
+          "hackathon"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "aoi-demo-clip-maker"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Public-safe hackathon source registry + filtering output (no crawling, no submissions).",
+        "identifier": "aoi-hackathon-scout-lite",
+        "name": "AOI Hackathon Scout (Lite)",
+        "queries": [
+          "hackathon"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "aoi-hackathon-scout-lite"
+    },
+    {
+      "found": true,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Participate in ArtWar AI art battles on Monad. Use when you need to submit AI-generated artwork to competitions, place on-chain bets on art submissions, comm...",
+        "identifier": "artwar",
+        "name": "Artwar",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "artwar",
+      "meta": {
+        "description": "Participate in ArtWar AI art battles on Monad. Use when you need to submit AI-generated artwork to competitions, place on-chain bets on art submissions, comm...",
+        "identifier": "artwar",
+        "name": "Artwar",
+        "source": "clawhub",
+        "tags": [
+          "ai-art",
+          "betting",
+          "competition",
+          "monad"
+        ]
+      }
+    },
+    {
+      "found": true,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "AI-powered project execution platform. Non-technical product managers can drive complex software projects with 3-6x efficiency. 10-day case study: education platform with 71 tasks (99% success). One-click install.\nAI\u9a71\u52a8\u7684\u9879\u76ee\u6267\u884c\u5e73\u53f0\u3002\u4e0d\u61c2\u4ee3\u7801\u4e5f\u80fd\u9a71\u52a8\u590d\u6742\u8f6f\u4ef6\u5f00\u53d1\uff0c\u6548\u7387\u63d0\u53473-6\u500d\u300210\u5929\u6848\u4f8b\uff1a71\u4e2a\u4efb\u52a1\uff0c99%\u6210\u529f\u7387\u3002\u4e00\u952e\u5b89\u88c5\uff0c\u81ea\u52a8\u90e8\u7f72\u3002",
+        "identifier": "autocraft",
+        "name": "AutoCraft",
+        "queries": [
+          "product manager"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "autocraft",
+      "meta": {
+        "description": "AI-powered project execution platform. Non-technical product managers can drive complex software projects with 3-6x efficiency. 10-day case study: education platform with 71 tasks (99% success). One-click install.\nAI\u9a71\u52a8\u7684\u9879\u76ee\u6267\u884c\u5e73\u53f0\u3002\u4e0d\u61c2\u4ee3\u7801\u4e5f\u80fd\u9a71\u52a8\u590d\u6742\u8f6f\u4ef6\u5f00\u53d1\uff0c\u6548\u7387\u63d0\u53473-6\u500d\u300210\u5929\u6848\u4f8b\uff1a71\u4e2a\u4efb\u52a1\uff0c99%\u6210\u529f\u7387\u3002\u4e00\u952e\u5b89\u88c5\uff0c\u81ea\u52a8\u90e8\u7f72\u3002",
+        "identifier": "autocraft",
+        "name": "AutoCraft",
+        "source": "clawhub",
+        "tags": []
+      }
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Implement secure Solidity smart contracts with tests and safety patterns.",
+        "identifier": "axodus-solidity-dev",
+        "name": "Solidity Developer",
+        "queries": [
+          "solidity"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "axodus-solidity-dev"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "\u3010B2B PM Super Workbench\u3011 \u2014\u2014 A full-stack intelligent workbench for B2B (enterprise) product managers. Integrates 50+ methodology frameworks, 30+ standard del...",
+        "identifier": "b2b-pm-workbench-international",
+        "name": "B2b Pm Workbench International",
+        "queries": [
+          "product manager"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "b2b-pm-workbench-international"
+    },
+    {
+      "found": true,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Use before building or changing a product, feature, SaaS, AI app, side project, or startup idea to run a short demand, distribution, and failure-pattern real...",
+        "identifier": "before-you-build",
+        "name": "Before You Build Skill",
+        "queries": [
+          "startup validation"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "before-you-build",
+      "meta": {
+        "description": "Indexed by skills.sh from wshobson/agents",
+        "identifier": "skills-sh/wshobson/agents/before-you-build",
+        "name": "before-you-build",
+        "source": "skills.sh",
+        "tags": []
+      }
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Interact with The CEO Protocol \u2014 a permissionless DeFi vault on Monad governed by AI agents. Use when the agent needs to register, propose strategies, vote,...",
+        "identifier": "ceo-protocol-skill",
+        "name": "Ceo Protocol Skill",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "ceo-protocol-skill"
+    },
+    {
+      "found": true,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Autonomous wallet operations for AI agents on Monad \u2014 swap, stake, deploy wallets, trade memecoins, and manage spending policies via natural language.",
+        "identifier": "clankerkit",
+        "name": "ClankerKit",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "clankerkit",
+      "meta": {
+        "description": "Autonomous wallet operations for AI agents on Monad \u2014 swap, stake, deploy wallets, trade memecoins, and manage spending policies via natural language.",
+        "identifier": "clankerkit",
+        "name": "ClankerKit",
+        "source": "clawhub",
+        "tags": []
+      }
+    },
+    {
+      "found": true,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Checks MCP skills for multi-tier trust scores, staking, sybil resistance, and attestation to guide secure skill usage decisions.",
+        "identifier": "clawmon",
+        "name": "ClawMon",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "clawmon",
+      "meta": {
+        "description": "Checks MCP skills for multi-tier trust scores, staking, sybil resistance, and attestation to guide secure skill usage decisions.",
+        "identifier": "clawmon",
+        "name": "ClawMon",
+        "source": "clawhub",
+        "tags": [
+          "erc-8004",
+          "mcp",
+          "monad",
+          "reputation",
+          "security",
+          "trust"
+        ]
+      }
+    },
+    {
+      "found": true,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Register with Clawnads to get a Privy wallet on Monad, trade tokens, and collaborate with other agents. Use when asked to check wallet, swap tokens, send tra...",
+        "identifier": "clawnads",
+        "name": "Clawnads",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "clawnads",
+      "meta": {
+        "description": "Register with Clawnads to get a Privy wallet on Monad, trade tokens, and collaborate with other agents. Use when asked to check wallet, swap tokens, send tra...",
+        "identifier": "clawnads",
+        "name": "Clawnads",
+        "source": "clawhub",
+        "tags": []
+      }
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Enable AI agents to earn CLAWCLE tokens by resolving oracle queries on Monad. Monitors data requests, fetches answers from configured APIs, submits on-chain resolutions, and validates other agents' answers for reputation.",
+        "identifier": "clawracle-resolver",
+        "name": "Clawracle Oracle Resolver",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "clawracle-resolver"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Turn rough product, feature, or repo-change requests into a PM-grade plan plus agent-ready execution context. Use whenever the user has a vague idea, wants a...",
+        "identifier": "context-product-manager",
+        "name": "Context Product Manager",
+        "queries": [
+          "product manager"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "context-product-manager"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "\u9762\u5411\u96f6\u6280\u672f\u7528\u6237\uff0c\u628a\u7f51\u7ad9 / \u5c0f\u7a0b\u5e8f demo \u9700\u6c42\u62c6\u6210\u4ea7\u54c1\u9700\u6c42\u3001\u8bbe\u8ba1\u9700\u6c42\u3001\u6280\u672f\u9700\u6c42\u4e09\u4efd\u6587\u6863\uff0c\u5e76\u914d\u5408 GitHub \u4e0e Vercel / \u5fae\u4fe1\u5c0f\u7a0b\u5e8f\u5f00\u53d1\u5de5\u5177 \u76f4\u63a5\u4e0a\u7ebf\u90e8\u7f72",
+        "identifier": "demo-website-pm",
+        "name": "Demo Website Product Manager \u5c0f\u767d\u5efa\u7ad9",
+        "queries": [
+          "product manager"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "demo-website-pm"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Engineers don't click your ads, ignore your webinars, and can smell a \"growth hack\" from a commit away. Marketing to developers means earning trust in the ch...",
+        "identifier": "developer-marketing-playbook",
+        "name": "Developer Marketing Playbook",
+        "queries": [
+          "hackathon"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "developer-marketing-playbook"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Store and retrieve encrypted files permanently on Monad blockchain via DropClaw x402 gateway",
+        "identifier": "dropclaw-store",
+        "name": "DropClaw Store",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "dropclaw-store"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Register AI agents on-chain, update metadata, validate registrations, and auto-fix broken profiles via the ERC-8004 Identity Registry. Supports Base, Ethereum, Polygon, Monad, BNB.",
+        "identifier": "erc8004-register",
+        "name": "Erc8004 Register",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "erc8004-register"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "On-chain reputation for AI agents. Give feedback, check scores, view leaderboards, and build trust via the ERC-8004 Reputation Registry. Supports Base, Ethereum, Polygon, Monad, BNB.",
+        "identifier": "erc8004-reputation",
+        "name": "Erc8004 Reputation",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "erc8004-reputation"
+    },
+    {
+      "found": true,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Search 50,000+ merchants for products with cryptocurrency cashback, calculate effective prices, and provide affiliate links earning crypto rewards on Monad b...",
+        "identifier": "fiberagent",
+        "name": "FiberAgent",
+        "queries": [
+          "monad"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "fiberagent",
+      "meta": {
+        "description": "Search 50,000+ merchants for products with cryptocurrency cashback, calculate effective prices, and provide affiliate links earning crypto rewards on Monad b...",
+        "identifier": "fiberagent",
+        "name": "FiberAgent",
+        "source": "clawhub",
+        "tags": [
+          "agent-commerce",
+          "cashback",
+          "crypto",
+          "deals",
+          "erc-8004",
+          "monad",
+          "shopping",
+          "wildfire"
+        ]
+      }
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Search the Karma Funding Map for funding programs (grants, hackathons, bounties, accelerators, VC funds, RFPs) via the public API. Use when user says \"find g...",
+        "identifier": "find-funding-opportunities",
+        "name": "Find Funding Opportunities",
+        "queries": [
+          "hackathon"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "find-funding-opportunities"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Decision validation and thinking frameworks for startup founders. Use when you need to pressure-test a decision, validate your next steps, think through stra...",
+        "identifier": "founder-playbook",
+        "name": "Founder Playbook",
+        "queries": [
+          "founder playbook"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "founder-playbook"
+    },
+    {
+      "found": true,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "Build and test Solidity smart contracts with Foundry toolkit. Use when developing Ethereum contracts, writing Forge tests, deploying with scripts, or debuggi...",
+        "identifier": "foundry-solidity",
+        "name": "foundry-solidity",
+        "queries": [
+          "solidity"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "foundry-solidity",
+      "meta": {
+        "description": "Build and test Solidity smart contracts with Foundry toolkit. Use when developing Ethereum contracts, writing Forge tests, deploying with scripts, or debuggi...",
+        "identifier": "foundry-solidity",
+        "name": "foundry-solidity",
+        "source": "clawhub",
+        "tags": []
+      }
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "\ud83c\uddfa\ud83c\uddf8 ASO & Mobile App Growth Playbook 2026 \u2014 Complete App Store Optimization guide. ASO keyword ranking, App Store & Google Play listing optimization, app co...",
+        "identifier": "gingiris-aso-growth",
+        "name": "Gingiris Aso Growth",
+        "queries": [
+          "interview jtbd"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "gingiris-aso-growth"
+    },
+    {
+      "found": false,
+      "from_search": {
+        "allowlisted_repo_match": false,
+        "description": "\ud83c\uddfa\ud83c\uddf8 User Interview & Cold-Start Operations Playbook \u2014 Battle-tested framework from HeyGen's 937 interviews to PMF. Complete SOP for user screening, intervie...",
+        "identifier": "gingiris-user-interview",
+        "name": "Gingiris User Interview",
+        "queries": [
+          "interview jtbd"
+        ],
+        "source": "clawhub",
+        "trust_level": "community"
+      },
+      "identifier": "gingiris-user-interview"
+    }
+  ],
+  "inspect_import_error": null,
+  "search_hit_count": 80,
+  "search_hits": [
+    {
+      "allowlisted_repo_match": false,
+      "description": "Register and manage ERC-8004 Identity NFTs on Monad. Use when the agent needs to mint an on-chain identity for CEO Protocol registration or other ERC-8004\u2013integrated protocols.",
+      "identifier": "8004-skill-monad",
+      "name": "8004 Harness For Monad",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Blockchain security scanner for AI agents (testnet). Pay with Base Sepolia USDC via x402 protocol.",
+      "identifier": "aegis-security-hackathon",
+      "name": "Hackathon",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Expert AI agent specializing in product manager. From The Agency (github.com/msitarzewski/agency-agents).",
+      "identifier": "agency-product-manager",
+      "name": "Product Manager",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Cryptographic identity for AI agents. Register on-chain identity, sign messages, verify other agents, link platform accounts. Stake USDC to prove you're real. Built by g1itchbot for the USDC Hackathon.",
+      "identifier": "agent-identity",
+      "name": "Agent Identity Protocol",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "AgentXPay Skill \u2014 \u8ba9 AI Agent \u5728 Monad \u94fe\u4e0a\u901a\u8fc7 x402 \u534f\u8bae\u81ea\u4e3b\u53d1\u73b0\u3001\u4ed8\u8d39\u3001\u8ba2\u9605 AI \u670d\u52a1\u3002\u652f\u6301\u94fe\u4e0a\u652f\u4ed8\u3001Agent \u94b1\u5305\u7ba1\u7406\u3001\u670d\u52a1\u8ba2\u9605\u548c\u8d44\u91d1\u6258\u7ba1\u3002",
+      "identifier": "agentxpay",
+      "name": "AgentXPay",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "AI \u6bd4\u8d5b/\u9ed1\u5ba2\u677e/hackathon \u9898\u76ee\u5b9e\u6218\u52a9\u624b\u2014\u2014\u628a\u9650\u65f6\uff0830\u201390 \u5206\u949f\uff09AI \u6311\u6218\u8d5b\u9898\u76ee\u8f6c\u6210\u4e00\u4efd\u53ef\u8bc4\u5206\u7684\u4f5c\u6218\u5305\uff1a\u9898\u76ee\u89e3\u6790\u3001\u5206\u6b65\u6267\u884c\u5de5\u4f5c\u6d41\u3001\u53ef\u8fd0\u884c\u5355\u6587\u4ef6 HTML \u539f\u578b\u3001UX \u8d70\u67e5\u3001\u8bc4\u59d4\u6a21\u62df\u6253\u5206\u3001\u8def\u6f14\u7a3f\u3002\u53ea\u8981\u7528\u6237\u8d34\u51fa\u6bd4\u8d5b\u9898\u76ee\u3001\u8d5b\u9898\u6d77\u62a5\u622a\u56fe\uff0c\u6216\u63d0\u5230\"\u5f00\u53d1\u63d0\u6548/\u6d4b\u8bd5\u81ea\u52a8\u5316/\u8fd0\u7ef4\u76d1\u63a7/\u6570\u636e\u5206\u6790/\u4ea7\u54c1\u9879\u76ee\u7ba1\u7406/\u5185\u90e8\u7ba1\u7406\u63d0\u6548\"\u4efb\u4e00\u573a\u666f\uff0c\u6216\u7d22\u53d6\"\u8bc4\u5206\u8868\u3001\u8def\u6f14\u7a3f\u3001\u8bc4\u59d4\u89c6\u89d2\u8bc4\u5ba1\u3001Vibe Coding \u9875\u9762\u3001\u9650\u65f6 AI \u4ea4\u4ed8\u7269\"\uff0c\u5373\u4f7f\u6ca1\u6709\u660e\u8bf4\"\u7528\u8fd9\u4e2a skill\"\u4e5f\u5e94\u89e6\u53d1\u3002\u4e0d\u9002\u7528\u4e8e\u4e0e\u7ade\u8d5b/\u9650\u65f6\u4ea4\u4ed8\u7269\u65e0\u5173\u7684\u666e\u901a\u7f16\u7801\u8bf7\u6c42\u6216\u7eaf\u7406\u8bba\u95ee\u7b54\u3002",
+      "identifier": "ai-challenge-topic-analysis-assistant",
+      "name": "Ai Challenge Assistant",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "AI Product Manager daily intelligence digest. Fetches news from 16+ curated RSS sources across tech media, AI labs, research papers, developer communities, a...",
+      "identifier": "ai-deepnews",
+      "name": "AI DeepNews",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Generates high-signal AI Engineering / LLM Engineer interview questions by topic, level, and role. Covers LLM fundamentals, prompt engineering, RAG, vector D...",
+      "identifier": "ai-engineering-interview",
+      "name": "Ai Engineering Interview",
+      "queries": [
+        "ai engineering"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "\u57fa\u4e8e\u300cAI\u5de5\u7a0b\u9020\u4ef7+\u6cd5\u5f8b\u77e5\u8bc6\u5e93\u300d\uff081394\u4eba\u8ba2\u9605\uff0c3149\u4e2a\u5185\u5bb9\uff09\u7684\u9020\u4ef7+\u6cd5\u5f8b\u4ea4\u53c9\u9886\u57dfAI\u6280\u80fd\u3002\u5f53\u7528\u6237\u9700\u8981\u8fdb\u884c\u5de5\u7a0b\u9020\u4ef7\u53f8\u6cd5\u9274\u5b9a\u3001\u5408\u540c\u98ce\u9669\u5ba1\u67e5\u3001\u53d8\u66f4\u7d22\u8d54\u5206\u6790\u3001\u7ed3\u7b97\u7ea0\u7eb7\u8bca\u65ad\u65f6\u4f7f\u7528\u3002\u89e6\u53d1\u8bcd\u5305\u62ec\u4f46\u4e0d\u9650\u4e8e\uff1a\u9020\u4ef7+\u6cd5\u5f8b\u3001\u5de5\u7a0b\u53f8\u6cd5\u9274\u8bc1\u3001\u5408\u540c\u98ce\u63a7\u3001\u53d8\u66f4\u7d22\u8d54\u3001\u7ed3\u7b97\u7ea0\u7eb7\u3001\u9274\u5b9a\u610f\u89c1\u3001\u8bc1\u636e\u94fe\u3001\u5de5\u671f\u7d22\u8d54\u3001\u8d39\u7528\u7d22\u8d54\u3002\u4e5f\u9002\u7528\u4e8e\u7528\u6237\u9700\u8981\u57fa\u4e8e\u77e5\u8bc6...",
+      "identifier": "ai-engineering-legal",
+      "name": "Ai Engineering Legal",
+      "queries": [
+        "ai engineering"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "AI Product Manager daily intelligence digest. Fetches news from 16+ curated RSS sources across tech media, AI labs, research papers, developer communities, a...",
+      "identifier": "ai-intel-daily",
+      "name": "AI Intel Daily",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Apply a bilingual, vendor-neutral AI-native startup operating playbook for Claude Code, Codex, Cursor, Trae, OpenClaw, hermers-agent, and other agents. Use f...",
+      "identifier": "ai-native-founder-playbook",
+      "name": "AI-Native Founder Playbook",
+      "queries": [
+        "founder playbook"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "AI PM Super Workbench \u2014 International Edition. Full-stack intelligent workbench for AI Product Managers worldwide.",
+      "identifier": "ai-pm-workbench-international",
+      "name": "Ai Pm Workbench International",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "AI Product Manager daily intelligence digest. Fetches news from 16+ curated RSS sources across tech media, AI labs, research papers, developer communities, a...",
+      "identifier": "aipm-deepnews-daily",
+      "name": "AIPM DeepNews Daily",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Interact with AIT Community (aitcommunity.org) - an AI engineering community platform. Use when asked to post forum threads, reply to discussions, read commu...",
+      "identifier": "ait-community",
+      "name": "AIT Community",
+      "queries": [
+        "ai engineering"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Create and edit macOS hackathon demo clips via terminal commands to record, crop, trim, and apply presets using ffmpeg/ffprobe locally.",
+      "identifier": "aoi-demo-clip-maker",
+      "name": "AOI Demo Clip Maker",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Public-safe hackathon source registry + filtering output (no crawling, no submissions).",
+      "identifier": "aoi-hackathon-scout-lite",
+      "name": "AOI Hackathon Scout (Lite)",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Participate in ArtWar AI art battles on Monad. Use when you need to submit AI-generated artwork to competitions, place on-chain bets on art submissions, comm...",
+      "identifier": "artwar",
+      "name": "Artwar",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "AI-powered project execution platform. Non-technical product managers can drive complex software projects with 3-6x efficiency. 10-day case study: education platform with 71 tasks (99% success). One-click install.\nAI\u9a71\u52a8\u7684\u9879\u76ee\u6267\u884c\u5e73\u53f0\u3002\u4e0d\u61c2\u4ee3\u7801\u4e5f\u80fd\u9a71\u52a8\u590d\u6742\u8f6f\u4ef6\u5f00\u53d1\uff0c\u6548\u7387\u63d0\u53473-6\u500d\u300210\u5929\u6848\u4f8b\uff1a71\u4e2a\u4efb\u52a1\uff0c99%\u6210\u529f\u7387\u3002\u4e00\u952e\u5b89\u88c5\uff0c\u81ea\u52a8\u90e8\u7f72\u3002",
+      "identifier": "autocraft",
+      "name": "AutoCraft",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Implement secure Solidity smart contracts with tests and safety patterns.",
+      "identifier": "axodus-solidity-dev",
+      "name": "Solidity Developer",
+      "queries": [
+        "solidity"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "\u3010B2B PM Super Workbench\u3011 \u2014\u2014 A full-stack intelligent workbench for B2B (enterprise) product managers. Integrates 50+ methodology frameworks, 30+ standard del...",
+      "identifier": "b2b-pm-workbench-international",
+      "name": "B2b Pm Workbench International",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Use before building or changing a product, feature, SaaS, AI app, side project, or startup idea to run a short demand, distribution, and failure-pattern real...",
+      "identifier": "before-you-build",
+      "name": "Before You Build Skill",
+      "queries": [
+        "startup validation"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Interact with The CEO Protocol \u2014 a permissionless DeFi vault on Monad governed by AI agents. Use when the agent needs to register, propose strategies, vote,...",
+      "identifier": "ceo-protocol-skill",
+      "name": "Ceo Protocol Skill",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Autonomous wallet operations for AI agents on Monad \u2014 swap, stake, deploy wallets, trade memecoins, and manage spending policies via natural language.",
+      "identifier": "clankerkit",
+      "name": "ClankerKit",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Checks MCP skills for multi-tier trust scores, staking, sybil resistance, and attestation to guide secure skill usage decisions.",
+      "identifier": "clawmon",
+      "name": "ClawMon",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Register with Clawnads to get a Privy wallet on Monad, trade tokens, and collaborate with other agents. Use when asked to check wallet, swap tokens, send tra...",
+      "identifier": "clawnads",
+      "name": "Clawnads",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Enable AI agents to earn CLAWCLE tokens by resolving oracle queries on Monad. Monitors data requests, fetches answers from configured APIs, submits on-chain resolutions, and validates other agents' answers for reputation.",
+      "identifier": "clawracle-resolver",
+      "name": "Clawracle Oracle Resolver",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Turn rough product, feature, or repo-change requests into a PM-grade plan plus agent-ready execution context. Use whenever the user has a vague idea, wants a...",
+      "identifier": "context-product-manager",
+      "name": "Context Product Manager",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "\u9762\u5411\u96f6\u6280\u672f\u7528\u6237\uff0c\u628a\u7f51\u7ad9 / \u5c0f\u7a0b\u5e8f demo \u9700\u6c42\u62c6\u6210\u4ea7\u54c1\u9700\u6c42\u3001\u8bbe\u8ba1\u9700\u6c42\u3001\u6280\u672f\u9700\u6c42\u4e09\u4efd\u6587\u6863\uff0c\u5e76\u914d\u5408 GitHub \u4e0e Vercel / \u5fae\u4fe1\u5c0f\u7a0b\u5e8f\u5f00\u53d1\u5de5\u5177 \u76f4\u63a5\u4e0a\u7ebf\u90e8\u7f72",
+      "identifier": "demo-website-pm",
+      "name": "Demo Website Product Manager \u5c0f\u767d\u5efa\u7ad9",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Engineers don't click your ads, ignore your webinars, and can smell a \"growth hack\" from a commit away. Marketing to developers means earning trust in the ch...",
+      "identifier": "developer-marketing-playbook",
+      "name": "Developer Marketing Playbook",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Store and retrieve encrypted files permanently on Monad blockchain via DropClaw x402 gateway",
+      "identifier": "dropclaw-store",
+      "name": "DropClaw Store",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Register AI agents on-chain, update metadata, validate registrations, and auto-fix broken profiles via the ERC-8004 Identity Registry. Supports Base, Ethereum, Polygon, Monad, BNB.",
+      "identifier": "erc8004-register",
+      "name": "Erc8004 Register",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "On-chain reputation for AI agents. Give feedback, check scores, view leaderboards, and build trust via the ERC-8004 Reputation Registry. Supports Base, Ethereum, Polygon, Monad, BNB.",
+      "identifier": "erc8004-reputation",
+      "name": "Erc8004 Reputation",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Search 50,000+ merchants for products with cryptocurrency cashback, calculate effective prices, and provide affiliate links earning crypto rewards on Monad b...",
+      "identifier": "fiberagent",
+      "name": "FiberAgent",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Search the Karma Funding Map for funding programs (grants, hackathons, bounties, accelerators, VC funds, RFPs) via the public API. Use when user says \"find g...",
+      "identifier": "find-funding-opportunities",
+      "name": "Find Funding Opportunities",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Decision validation and thinking frameworks for startup founders. Use when you need to pressure-test a decision, validate your next steps, think through stra...",
+      "identifier": "founder-playbook",
+      "name": "Founder Playbook",
+      "queries": [
+        "founder playbook"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Build and test Solidity smart contracts with Foundry toolkit. Use when developing Ethereum contracts, writing Forge tests, deploying with scripts, or debuggi...",
+      "identifier": "foundry-solidity",
+      "name": "foundry-solidity",
+      "queries": [
+        "solidity"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "\ud83c\uddfa\ud83c\uddf8 ASO & Mobile App Growth Playbook 2026 \u2014 Complete App Store Optimization guide. ASO keyword ranking, App Store & Google Play listing optimization, app co...",
+      "identifier": "gingiris-aso-growth",
+      "name": "Gingiris Aso Growth",
+      "queries": [
+        "interview jtbd"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "\ud83c\uddfa\ud83c\uddf8 User Interview & Cold-Start Operations Playbook \u2014 Battle-tested framework from HeyGen's 937 interviews to PMF. Complete SOP for user screening, intervie...",
+      "identifier": "gingiris-user-interview",
+      "name": "Gingiris User Interview",
+      "queries": [
+        "interview jtbd"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Use when participating in the USDC Hackathon, submitting projects, or voting. 3 tracks: SmartContract, Skill, AgenticCommerce. Submit to m/usdc on Moltbook.",
+      "identifier": "hackathon",
+      "name": "Hackathon",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Track hackathon deadlines, manage submission checklists, and monitor progress. Use when managing multiple hackathons, checking what's due soon, marking requirements complete, or extracting hackathon information from URLs to auto-populate deadlines and requirements.",
+      "identifier": "hackathon-manager",
+      "name": "Hackathon Manager",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Use when building features, fixing complex bugs, or doing major refactoring. Transforms your agent into a structured engineering team: Plan \u2192 Build (via ACP)...",
+      "identifier": "harness-factory",
+      "name": "Harness Factory \u2014 AI Engineering Team",
+      "queries": [
+        "ai engineering"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Activate when: user says 'customers aren't switching to us even though we're better,' 'our churn surveys aren't predicting who actually leaves,' 'we're debat...",
+      "identifier": "jobs-to-be-done",
+      "name": "Jobs to Be Done (JTBD)",
+      "queries": [
+        "jobs to be done"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Uncover the real \"job\" customers hire your product to do. Goes beyond features to understand functional, emotional, and social motivations. Use when user says \"jobs to be done\", \"jtbd\", \"why do customers\", \"what job\", \"customer motivation\", \"what problem\", \"user needs\", \"why do people buy\".",
+      "identifier": "jtbd-analyzer",
+      "name": "Jobs To Be Done Analyzer",
+      "queries": [
+        "jobs to be done"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Lean Proof To Solidity Smart Contract Generator: The tool allows you to validate Lean, generate Solidity from it, compile the. Use when an agent needs lean p...",
+      "identifier": "lean-proof-to-solidity-smart-contract-generator",
+      "name": "Lean Proof To Solidity Smart Contract Generator",
+      "queries": [
+        "solidity"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Manage Lemonade Servers natively. Use when checking system info, health status, listing available models, pulling or loading new models, completing LLM chats...",
+      "identifier": "lemonade-server-manager",
+      "name": "Lemonade Server Manager",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Experienced needs analyst specializing in the \"Jobs to be Done\" principle to help users understand customer needs.",
+      "identifier": "lobehub/jtbd",
+      "name": "jtbd",
+      "queries": [
+        "jobs to be done"
+      ],
+      "source": "lobehub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Use this skill when a product manager, engineering lead, or localization PM needs to audit a product surface for i18n / l10n readiness before engaging a tran...",
+      "identifier": "localization-readiness-audit",
+      "name": "Localization Readiness Audit",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Helps OpenClaw Clinical Hackathon participants get started quickly building clinical and healthcare apps with Lovable. Use when the user is building a clinic...",
+      "identifier": "lovable",
+      "name": "Hackathon Lovable",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Builds dapps on Monad blockchain. Use when deploying contracts, setting up frontends with viem/wagmi, or verifying contracts on Monad testnet or mainnet.",
+      "identifier": "monad-development",
+      "name": "Monad Development",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Play a 5-letter Wordle game on the Monad blockchain using $WORDLE tokens. Start games, submit guesses, and retrieve game state via HTTP API.",
+      "identifier": "monad-wordle-game",
+      "name": "Monad Wordle Skill",
+      "queries": [
+        "monad"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Nola \u2014 your AI engineering squad lead. Dispatches 14 specialist agents to build, test, review, and ship code. Use when the user needs software built, bugs fi...",
+      "identifier": "nola",
+      "name": "Nola Squad",
+      "queries": [
+        "ai engineering"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Product spec generation for solo entrepreneurs. Turns a one-sentence idea into a build-ready spec that AI coding agents (Claude Code, etc.) can execute direc...",
+      "identifier": "opc-product-manager",
+      "name": "OPC Product Manager",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Use when a user proposes a product idea, feature concept, or product plan that needs logical stress-testing. Trigger phrases: challenge this idea, stress tes...",
+      "identifier": "pm-chief-naysayer",
+      "name": "Product Manager's Chief Naysayer",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Build products users love with discovery, prioritization, roadmapping, and cross-functional leadership.",
+      "identifier": "product-manager",
+      "name": "Product Manager",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "You are the Product Manager. Use this skill whenever someone needs a PM \u2014 a business stakeholder submitting a requirement, an engineer waiting for priority d...",
+      "identifier": "product-manager-proactive",
+      "name": "PM \u2014 AI Product Manager Skill",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "PM skill for Claude Code, Codex, Cursor, and Windsurf. Diagnoses SaaS metrics, critiques PRDs, plans roadmaps, runs discovery, coaches PM career transitions,...",
+      "identifier": "product-manager-skills",
+      "name": "Product Manager Skills",
+      "queries": [
+        "product manager"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "A comprehensive AI agent skill for writing prompts that get consistently excellent results from AI models. Teaches the principles behind effective prompting,...",
+      "identifier": "prompt",
+      "name": "Prompt",
+      "queries": [
+        "ai engineering"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Enables building and deploying quantum computing applications with Quantinuum, Guppy, Selene, and Fly.io. Use for the OpenClaw Clinical Hackathon, clinical o...",
+      "identifier": "quantum",
+      "name": "Hackathon Quantinuum",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "The ultimate Web3 & OpenClaw security layer. Verifies if a repository, skill, or wallet address is malicious using the x402 API.",
+      "identifier": "scamshield-verifier",
+      "name": "ScamShield Verifier (Web3 Security)",
+      "queries": [
+        "web3 security"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Set up a Solidity smart contract project with OpenZeppelin Contracts. Use when users need to: (1) create a new Hardhat or Foundry project, (2) install OpenZe...",
+      "identifier": "setup-solidity-contracts",
+      "name": "Setup Solidity Contracts",
+      "queries": [
+        "solidity"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Indexed by skills.sh from mindrally/skills",
+      "identifier": "skills-sh/mindrally/skills/solidity",
+      "name": "solidity",
+      "queries": [
+        "solidity"
+      ],
+      "source": "skills.sh",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Indexed by skills.sh from openzeppelin/openzeppelin-skills",
+      "identifier": "skills-sh/openzeppelin/openzeppelin-skills/setup-solidity-contracts",
+      "name": "setup-solidity-contracts",
+      "queries": [
+        "solidity"
+      ],
+      "source": "skills.sh",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Indexed by skills.sh from openzeppelin/openzeppelin-skills",
+      "identifier": "skills-sh/openzeppelin/openzeppelin-skills/upgrade-solidity-contracts",
+      "name": "upgrade-solidity-contracts",
+      "queries": [
+        "solidity"
+      ],
+      "source": "skills.sh",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Indexed by skills.sh from pashov/skills",
+      "identifier": "skills-sh/pashov/skills/solidity-auditor",
+      "name": "solidity-auditor",
+      "queries": [
+        "solidity"
+      ],
+      "source": "skills.sh",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Indexed by skills.sh from sickn33/antigravity-awesome-skills",
+      "identifier": "skills-sh/sickn33/antigravity-awesome-skills/solidity-security",
+      "name": "solidity-security",
+      "queries": [
+        "solidity"
+      ],
+      "source": "skills.sh",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": true,
+      "description": "Indexed by skills.sh from therealharpaljadeja/monskills",
+      "identifier": "skills-sh/therealharpaljadeja/monskills/monskill",
+      "name": "monskill",
+      "queries": [
+        "monskills"
+      ],
+      "source": "skills.sh",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": true,
+      "description": "Indexed by skills.sh from wshobson/agents",
+      "identifier": "skills-sh/wshobson/agents/solidity-security",
+      "name": "solidity-security",
+      "queries": [
+        "solidity"
+      ],
+      "source": "skills.sh",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Avoid common Solidity mistakes \u2014 reentrancy, gas traps, storage collisions, and security pitfalls.",
+      "identifier": "solidity",
+      "name": "Solidity",
+      "queries": [
+        "solidity"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Solidity smart contract security audit assistant following EEA EthTrust V3 specification. Performs structured audit workflow: vulnerability scanning, securit...",
+      "identifier": "solidity-audit",
+      "name": "solidity-audit",
+      "queries": [
+        "solidity"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Automated pre-audit checklist for Solidity smart contracts. Runs SWC registry scan, OpenZeppelin pattern validation, gas optimization suggestions, and common...",
+      "identifier": "solidity-audit-precheck",
+      "name": "Solidity Audit Precheck",
+      "queries": [
+        "solidity"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Smart contract security analysis skill. Detect vulnerabilities, suggest fixes, generate audit reports. Supports Hardhat/Foundry projects. Uses pattern matchi...",
+      "identifier": "solidity-guardian",
+      "name": "Solidity Guardian",
+      "queries": [
+        "solidity"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Structures early startup validation with commands for idea, competitive analysis, and MVP planning plus a standardized reporting template.",
+      "identifier": "startup-validator",
+      "name": "Startup Validator",
+      "queries": [
+        "startup validation"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Autonomously plans, develops, tests, and delivers full software projects from plain-English prompts using coordinated multi-agent roles and automated quality...",
+      "identifier": "swarm-coding-skill",
+      "name": "Hackathon Swarm Coding",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "A unified AI Engineering Operating System that orchestrates the full lifecycle of agent creation - extracting tacit knowledge, structuring the Agent OS, and...",
+      "identifier": "the-tacit-worker",
+      "name": "tacit-knowledge-worker",
+      "queries": [
+        "ai engineering"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Upgrade Solidity smart contracts using OpenZeppelin proxy patterns. Use when users need to: (1) make contracts upgradeable with UUPS, Transparent, or Beacon...",
+      "identifier": "upgrade-solidity-contracts",
+      "name": "Upgrade Solidity Contracts",
+      "queries": [
+        "solidity"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Use when participating in the USDC Hackathon, submitting projects, or voting. 3 tracks: SmartContract, Skill, AgenticCommerce. Submit to m/usdc on Moltbook.",
+      "identifier": "usdc",
+      "name": "Usdc Hackathon",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Use when participating in the USDC Hackathon, submitting projects, or voting. 3 tracks: SmartContract, Skill, AgenticCommerce. Submit to m/usdc on Moltbook.",
+      "identifier": "usdc-hackathon",
+      "name": "Usdc Hackathon",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Automation skill for Web3 Security Auditor.",
+      "identifier": "web3-security-auditor",
+      "name": "Web3 Security Auditor",
+      "queries": [
+        "web3 security"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Plan and execute fair GitLab hackathon participation, including Quarterly and Transcend Hackathons, by analyzing rules, selecting qualifying issues/MRs, trac...",
+      "identifier": "xrowgmbh-gitlab-hackathon",
+      "name": "GitLab Hackathon",
+      "queries": [
+        "hackathon"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    },
+    {
+      "allowlisted_repo_match": false,
+      "description": "Apply Y Combinator\u2019s \u201cNew Way to Build a Startup\u201d playbook to ship fast, validate with real distribution, and iterate using data. Use when the user asks to f...",
+      "identifier": "yc-new-way",
+      "name": "YC New Way",
+      "queries": [
+        "startup validation"
+      ],
+      "source": "clawhub",
+      "trust_level": "community"
+    }
+  ]
+}

@@ -1,0 +1,1554 @@
+{
+  "auth": "token",
+  "repos": [
+    {
+      "repository": "EmersonBraun/skills",
+      "skills": [
+        {
+          "path": "analytics/SKILL.md",
+          "skill_id_guess": "analytics"
+        },
+        {
+          "path": "brainstorm/SKILL.md",
+          "skill_id_guess": "brainstorm"
+        },
+        {
+          "path": "branding/SKILL.md",
+          "skill_id_guess": "branding"
+        },
+        {
+          "path": "code-review/SKILL.md",
+          "skill_id_guess": "code-review"
+        },
+        {
+          "path": "dev-workflow/SKILL.md",
+          "skill_id_guess": "dev-workflow"
+        },
+        {
+          "path": "devops-deploy/SKILL.md",
+          "skill_id_guess": "devops-deploy"
+        },
+        {
+          "path": "founder/SKILL.md",
+          "skill_id_guess": "founder"
+        },
+        {
+          "path": "grill-me/SKILL.md",
+          "skill_id_guess": "grill-me"
+        },
+        {
+          "path": "idea-validation/SKILL.md",
+          "skill_id_guess": "idea-validation"
+        },
+        {
+          "path": "improve-codebase-architecture/SKILL.md",
+          "skill_id_guess": "improve-codebase-architecture"
+        },
+        {
+          "path": "landing-page/SKILL.md",
+          "skill_id_guess": "landing-page"
+        },
+        {
+          "path": "legal-compliance/SKILL.md",
+          "skill_id_guess": "legal-compliance"
+        },
+        {
+          "path": "marketing/SKILL.md",
+          "skill_id_guess": "marketing"
+        },
+        {
+          "path": "prd-to-issues/SKILL.md",
+          "skill_id_guess": "prd-to-issues"
+        },
+        {
+          "path": "senior-backend/SKILL.md",
+          "skill_id_guess": "senior-backend"
+        },
+        {
+          "path": "senior-frontend/SKILL.md",
+          "skill_id_guess": "senior-frontend"
+        },
+        {
+          "path": "senior-qa/SKILL.md",
+          "skill_id_guess": "senior-qa"
+        },
+        {
+          "path": "seo/SKILL.md",
+          "skill_id_guess": "seo"
+        },
+        {
+          "path": "software-architect/SKILL.md",
+          "skill_id_guess": "software-architect"
+        },
+        {
+          "path": "video-creator/SKILL.md",
+          "skill_id_guess": "video-creator"
+        },
+        {
+          "path": "video-editor/SKILL.md",
+          "skill_id_guess": "video-editor"
+        },
+        {
+          "path": "write-a-prd/SKILL.md",
+          "skill_id_guess": "write-a-prd"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 22
+    },
+    {
+      "repository": "getagentseal/founder-playbook",
+      "skills": [
+        {
+          "path": "100m-leads/SKILL.md",
+          "skill_id_guess": "100m-leads"
+        },
+        {
+          "path": "100m-offers/SKILL.md",
+          "skill_id_guess": "100m-offers"
+        },
+        {
+          "path": "blue-ocean-strategy/SKILL.md",
+          "skill_id_guess": "blue-ocean-strategy"
+        },
+        {
+          "path": "crossing-the-chasm/SKILL.md",
+          "skill_id_guess": "crossing-the-chasm"
+        },
+        {
+          "path": "diagnose/SKILL.md",
+          "skill_id_guess": "diagnose"
+        },
+        {
+          "path": "four-steps/SKILL.md",
+          "skill_id_guess": "four-steps"
+        },
+        {
+          "path": "influence/SKILL.md",
+          "skill_id_guess": "influence"
+        },
+        {
+          "path": "lean-startup/SKILL.md",
+          "skill_id_guess": "lean-startup"
+        },
+        {
+          "path": "made-to-stick/SKILL.md",
+          "skill_id_guess": "made-to-stick"
+        },
+        {
+          "path": "mom-test/SKILL.md",
+          "skill_id_guess": "mom-test"
+        },
+        {
+          "path": "monetizing-innovation/SKILL.md",
+          "skill_id_guess": "monetizing-innovation"
+        },
+        {
+          "path": "money-models/SKILL.md",
+          "skill_id_guess": "money-models"
+        },
+        {
+          "path": "obviously-awesome/SKILL.md",
+          "skill_id_guess": "obviously-awesome"
+        },
+        {
+          "path": "spin-selling/SKILL.md",
+          "skill_id_guess": "spin-selling"
+        },
+        {
+          "path": "storybrand/SKILL.md",
+          "skill_id_guess": "storybrand"
+        },
+        {
+          "path": "traction/SKILL.md",
+          "skill_id_guess": "traction"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 16
+    },
+    {
+      "repository": "nimitbhargava/testing-business-ideas-skill",
+      "skills": [
+        {
+          "path": "skills/testing-business-ideas/SKILL.md",
+          "skill_id_guess": "testing-business-ideas"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 1
+    },
+    {
+      "repository": "deanpeters/Product-Manager-Skills",
+      "skills": [
+        {
+          "path": "skills/acquisition-channel-advisor/SKILL.md",
+          "skill_id_guess": "acquisition-channel-advisor"
+        },
+        {
+          "path": "skills/agent-orchestration-advisor/SKILL.md",
+          "skill_id_guess": "agent-orchestration-advisor"
+        },
+        {
+          "path": "skills/ai-shaped-readiness-advisor/SKILL.md",
+          "skill_id_guess": "ai-shaped-readiness-advisor"
+        },
+        {
+          "path": "skills/altitude-horizon-framework/SKILL.md",
+          "skill_id_guess": "altitude-horizon-framework"
+        },
+        {
+          "path": "skills/ansoff-matrix/SKILL.md",
+          "skill_id_guess": "ansoff-matrix"
+        },
+        {
+          "path": "skills/autonomous-investigation/SKILL.md",
+          "skill_id_guess": "autonomous-investigation"
+        },
+        {
+          "path": "skills/battle-card-builder/SKILL.md",
+          "skill_id_guess": "battle-card-builder"
+        },
+        {
+          "path": "skills/business-health-diagnostic/SKILL.md",
+          "skill_id_guess": "business-health-diagnostic"
+        },
+        {
+          "path": "skills/company-intel/SKILL.md",
+          "skill_id_guess": "company-intel"
+        },
+        {
+          "path": "skills/company-research/SKILL.md",
+          "skill_id_guess": "company-research"
+        },
+        {
+          "path": "skills/competitive-analysis-process/SKILL.md",
+          "skill_id_guess": "competitive-analysis-process"
+        },
+        {
+          "path": "skills/competitive-intel-watch/SKILL.md",
+          "skill_id_guess": "competitive-intel-watch"
+        },
+        {
+          "path": "skills/competitive-research-snapshot/SKILL.md",
+          "skill_id_guess": "competitive-research-snapshot"
+        },
+        {
+          "path": "skills/context-engineering-advisor/SKILL.md",
+          "skill_id_guess": "context-engineering-advisor"
+        },
+        {
+          "path": "skills/customer-journey-map/SKILL.md",
+          "skill_id_guess": "customer-journey-map"
+        },
+        {
+          "path": "skills/customer-journey-mapping-workshop/SKILL.md",
+          "skill_id_guess": "customer-journey-mapping-workshop"
+        },
+        {
+          "path": "skills/derisk-measurement-advisor/SKILL.md",
+          "skill_id_guess": "derisk-measurement-advisor"
+        },
+        {
+          "path": "skills/director-readiness-advisor/SKILL.md",
+          "skill_id_guess": "director-readiness-advisor"
+        },
+        {
+          "path": "skills/discovery-interview-prep/SKILL.md",
+          "skill_id_guess": "discovery-interview-prep"
+        },
+        {
+          "path": "skills/discovery-process/SKILL.md",
+          "skill_id_guess": "discovery-process"
+        },
+        {
+          "path": "skills/eol-checklist/SKILL.md",
+          "skill_id_guess": "eol-checklist"
+        },
+        {
+          "path": "skills/eol-internal-enablement/SKILL.md",
+          "skill_id_guess": "eol-internal-enablement"
+        },
+        {
+          "path": "skills/eol-message/SKILL.md",
+          "skill_id_guess": "eol-message"
+        },
+        {
+          "path": "skills/eol-process/SKILL.md",
+          "skill_id_guess": "eol-process"
+        },
+        {
+          "path": "skills/eol-readiness-advisor/SKILL.md",
+          "skill_id_guess": "eol-readiness-advisor"
+        },
+        {
+          "path": "skills/eol-stakeholder-sequence/SKILL.md",
+          "skill_id_guess": "eol-stakeholder-sequence"
+        },
+        {
+          "path": "skills/epic-breakdown-advisor/SKILL.md",
+          "skill_id_guess": "epic-breakdown-advisor"
+        },
+        {
+          "path": "skills/epic-hypothesis/SKILL.md",
+          "skill_id_guess": "epic-hypothesis"
+        },
+        {
+          "path": "skills/executive-onboarding-playbook/SKILL.md",
+          "skill_id_guess": "executive-onboarding-playbook"
+        },
+        {
+          "path": "skills/feature-investment-advisor/SKILL.md",
+          "skill_id_guess": "feature-investment-advisor"
+        },
+        {
+          "path": "skills/finance-based-pricing-advisor/SKILL.md",
+          "skill_id_guess": "finance-based-pricing-advisor"
+        },
+        {
+          "path": "skills/finance-metrics-quickref/SKILL.md",
+          "skill_id_guess": "finance-metrics-quickref"
+        },
+        {
+          "path": "skills/incoming-request-advisor/SKILL.md",
+          "skill_id_guess": "incoming-request-advisor"
+        },
+        {
+          "path": "skills/intel-discipline-advisor/SKILL.md",
+          "skill_id_guess": "intel-discipline-advisor"
+        },
+        {
+          "path": "skills/intelligence-collection-disciplines/SKILL.md",
+          "skill_id_guess": "intelligence-collection-disciplines"
+        },
+        {
+          "path": "skills/jobs-to-be-done/SKILL.md",
+          "skill_id_guess": "jobs-to-be-done"
+        },
+        {
+          "path": "skills/lean-ux-canvas/SKILL.md",
+          "skill_id_guess": "lean-ux-canvas"
+        },
+        {
+          "path": "skills/lifecycle-play-advisor/SKILL.md",
+          "skill_id_guess": "lifecycle-play-advisor"
+        },
+        {
+          "path": "skills/market-landscape-scan/SKILL.md",
+          "skill_id_guess": "market-landscape-scan"
+        },
+        {
+          "path": "skills/opportunity-solution-tree/SKILL.md",
+          "skill_id_guess": "opportunity-solution-tree"
+        },
+        {
+          "path": "skills/organic-growth-advisor/SKILL.md",
+          "skill_id_guess": "organic-growth-advisor"
+        },
+        {
+          "path": "skills/pestel-analysis/SKILL.md",
+          "skill_id_guess": "pestel-analysis"
+        },
+        {
+          "path": "skills/pestel-delta-monitor/SKILL.md",
+          "skill_id_guess": "pestel-delta-monitor"
+        },
+        {
+          "path": "skills/pm-skill-creator/SKILL.md",
+          "skill_id_guess": "pm-skill-creator"
+        },
+        {
+          "path": "skills/pol-probe-advisor/SKILL.md",
+          "skill_id_guess": "pol-probe-advisor"
+        },
+        {
+          "path": "skills/pol-probe/SKILL.md",
+          "skill_id_guess": "pol-probe"
+        },
+        {
+          "path": "skills/porters-five-forces/SKILL.md",
+          "skill_id_guess": "porters-five-forces"
+        },
+        {
+          "path": "skills/positioning-statement/SKILL.md",
+          "skill_id_guess": "positioning-statement"
+        },
+        {
+          "path": "skills/positioning-workshop/SKILL.md",
+          "skill_id_guess": "positioning-workshop"
+        },
+        {
+          "path": "skills/prd-development/SKILL.md",
+          "skill_id_guess": "prd-development"
+        },
+        {
+          "path": "skills/press-release/SKILL.md",
+          "skill_id_guess": "press-release"
+        },
+        {
+          "path": "skills/pricing-packaging-tracker/SKILL.md",
+          "skill_id_guess": "pricing-packaging-tracker"
+        },
+        {
+          "path": "skills/prioritization-advisor/SKILL.md",
+          "skill_id_guess": "prioritization-advisor"
+        },
+        {
+          "path": "skills/problem-framing-canvas/SKILL.md",
+          "skill_id_guess": "problem-framing-canvas"
+        },
+        {
+          "path": "skills/problem-statement/SKILL.md",
+          "skill_id_guess": "problem-statement"
+        },
+        {
+          "path": "skills/product-lifecycle-plays/SKILL.md",
+          "skill_id_guess": "product-lifecycle-plays"
+        },
+        {
+          "path": "skills/product-sense-interview-answer/SKILL.md",
+          "skill_id_guess": "product-sense-interview-answer"
+        },
+        {
+          "path": "skills/product-strategy-session/SKILL.md",
+          "skill_id_guess": "product-strategy-session"
+        },
+        {
+          "path": "skills/proto-persona/SKILL.md",
+          "skill_id_guess": "proto-persona"
+        },
+        {
+          "path": "skills/recommendation-canvas/SKILL.md",
+          "skill_id_guess": "recommendation-canvas"
+        },
+        {
+          "path": "skills/roadmap-planning/SKILL.md",
+          "skill_id_guess": "roadmap-planning"
+        },
+        {
+          "path": "skills/saas-economics-efficiency-metrics/SKILL.md",
+          "skill_id_guess": "saas-economics-efficiency-metrics"
+        },
+        {
+          "path": "skills/saas-revenue-growth-metrics/SKILL.md",
+          "skill_id_guess": "saas-revenue-growth-metrics"
+        },
+        {
+          "path": "skills/skill-authoring-workflow/SKILL.md",
+          "skill_id_guess": "skill-authoring-workflow"
+        },
+        {
+          "path": "skills/stakeholder-engagement-advisor/SKILL.md",
+          "skill_id_guess": "stakeholder-engagement-advisor"
+        },
+        {
+          "path": "skills/stakeholder-identification/SKILL.md",
+          "skill_id_guess": "stakeholder-identification"
+        },
+        {
+          "path": "skills/stakeholder-mapping/SKILL.md",
+          "skill_id_guess": "stakeholder-mapping"
+        },
+        {
+          "path": "skills/storyboard/SKILL.md",
+          "skill_id_guess": "storyboard"
+        },
+        {
+          "path": "skills/swot-analysis/SKILL.md",
+          "skill_id_guess": "swot-analysis"
+        },
+        {
+          "path": "skills/tam-sam-som-calculator/SKILL.md",
+          "skill_id_guess": "tam-sam-som-calculator"
+        },
+        {
+          "path": "skills/user-story-mapping-workshop/SKILL.md",
+          "skill_id_guess": "user-story-mapping-workshop"
+        },
+        {
+          "path": "skills/user-story-mapping/SKILL.md",
+          "skill_id_guess": "user-story-mapping"
+        },
+        {
+          "path": "skills/user-story-splitting/SKILL.md",
+          "skill_id_guess": "user-story-splitting"
+        },
+        {
+          "path": "skills/user-story/SKILL.md",
+          "skill_id_guess": "user-story"
+        },
+        {
+          "path": "skills/voice-of-customer-miner/SKILL.md",
+          "skill_id_guess": "voice-of-customer-miner"
+        },
+        {
+          "path": "skills/vp-cpo-readiness-advisor/SKILL.md",
+          "skill_id_guess": "vp-cpo-readiness-advisor"
+        },
+        {
+          "path": "skills/workshop-facilitation/SKILL.md",
+          "skill_id_guess": "workshop-facilitation"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 77
+    },
+    {
+      "repository": "therealharpaljadeja/monskills",
+      "skills": [
+        {
+          "path": "skills/addresses/SKILL.md",
+          "skill_id_guess": "addresses"
+        },
+        {
+          "path": "skills/concepts/SKILL.md",
+          "skill_id_guess": "concepts"
+        },
+        {
+          "path": "skills/gas/SKILL.md",
+          "skill_id_guess": "gas"
+        },
+        {
+          "path": "skills/indexer/SKILL.md",
+          "skill_id_guess": "indexer"
+        },
+        {
+          "path": "skills/monskill/SKILL.md",
+          "skill_id_guess": "monskill"
+        },
+        {
+          "path": "skills/scaffold/SKILL.md",
+          "skill_id_guess": "scaffold"
+        },
+        {
+          "path": "skills/tooling-and-infra/SKILL.md",
+          "skill_id_guess": "tooling-and-infra"
+        },
+        {
+          "path": "skills/wallet-integration/SKILL.md",
+          "skill_id_guess": "wallet-integration"
+        },
+        {
+          "path": "skills/wallet/SKILL.md",
+          "skill_id_guess": "wallet"
+        },
+        {
+          "path": "skills/why-monad/SKILL.md",
+          "skill_id_guess": "why-monad"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 10
+    },
+    {
+      "repository": "0x70626a/monad-wingman",
+      "skills": [
+        {
+          "path": ".agents/skills/monad-wingman/SKILL.md",
+          "skill_id_guess": "monad-wingman"
+        },
+        {
+          "path": "skills/monad-wingman/SKILL.md",
+          "skill_id_guess": "monad-wingman"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 2
+    },
+    {
+      "repository": "stakeme-team/monad-agent-kit",
+      "skills": [
+        {
+          "path": ".claude/skills/deploy/SKILL.md",
+          "skill_id_guess": "deploy"
+        },
+        {
+          "path": ".claude/skills/send/SKILL.md",
+          "skill_id_guess": "send"
+        },
+        {
+          "path": ".claude/skills/wallet/SKILL.md",
+          "skill_id_guess": "wallet"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 3
+    },
+    {
+      "repository": "wshobson/agents",
+      "skills": [
+        {
+          "path": "plugins/accessibility-compliance/skills/screen-reader-testing/SKILL.md",
+          "skill_id_guess": "screen-reader-testing"
+        },
+        {
+          "path": "plugins/accessibility-compliance/skills/wcag-audit-patterns/SKILL.md",
+          "skill_id_guess": "wcag-audit-patterns"
+        },
+        {
+          "path": "plugins/agent-teams/skills/multi-reviewer-patterns/SKILL.md",
+          "skill_id_guess": "multi-reviewer-patterns"
+        },
+        {
+          "path": "plugins/agent-teams/skills/parallel-debugging/SKILL.md",
+          "skill_id_guess": "parallel-debugging"
+        },
+        {
+          "path": "plugins/agent-teams/skills/parallel-feature-development/SKILL.md",
+          "skill_id_guess": "parallel-feature-development"
+        },
+        {
+          "path": "plugins/agent-teams/skills/task-coordination-strategies/SKILL.md",
+          "skill_id_guess": "task-coordination-strategies"
+        },
+        {
+          "path": "plugins/agent-teams/skills/team-communication-protocols/SKILL.md",
+          "skill_id_guess": "team-communication-protocols"
+        },
+        {
+          "path": "plugins/agent-teams/skills/team-composition-patterns/SKILL.md",
+          "skill_id_guess": "team-composition-patterns"
+        },
+        {
+          "path": "plugins/api-scaffolding/skills/fastapi-templates/SKILL.md",
+          "skill_id_guess": "fastapi-templates"
+        },
+        {
+          "path": "plugins/avoid-ai-writing/skills/avoid-ai-writing/SKILL.md",
+          "skill_id_guess": "avoid-ai-writing"
+        },
+        {
+          "path": "plugins/backend-development/skills/api-design-principles/SKILL.md",
+          "skill_id_guess": "api-design-principles"
+        },
+        {
+          "path": "plugins/backend-development/skills/architecture-patterns/SKILL.md",
+          "skill_id_guess": "architecture-patterns"
+        },
+        {
+          "path": "plugins/backend-development/skills/cqrs-implementation/SKILL.md",
+          "skill_id_guess": "cqrs-implementation"
+        },
+        {
+          "path": "plugins/backend-development/skills/event-store-design/SKILL.md",
+          "skill_id_guess": "event-store-design"
+        },
+        {
+          "path": "plugins/backend-development/skills/microservices-patterns/SKILL.md",
+          "skill_id_guess": "microservices-patterns"
+        },
+        {
+          "path": "plugins/backend-development/skills/projection-patterns/SKILL.md",
+          "skill_id_guess": "projection-patterns"
+        },
+        {
+          "path": "plugins/backend-development/skills/saga-orchestration/SKILL.md",
+          "skill_id_guess": "saga-orchestration"
+        },
+        {
+          "path": "plugins/backend-development/skills/temporal-python-testing/SKILL.md",
+          "skill_id_guess": "temporal-python-testing"
+        },
+        {
+          "path": "plugins/backend-development/skills/workflow-orchestration-patterns/SKILL.md",
+          "skill_id_guess": "workflow-orchestration-patterns"
+        },
+        {
+          "path": "plugins/before-you-build/skills/before-you-build/SKILL.md",
+          "skill_id_guess": "before-you-build"
+        },
+        {
+          "path": "plugins/block-no-verify/skills/block-no-verify-hook/SKILL.md",
+          "skill_id_guess": "block-no-verify-hook"
+        },
+        {
+          "path": "plugins/blockchain-web3/skills/defi-protocol-templates/SKILL.md",
+          "skill_id_guess": "defi-protocol-templates"
+        },
+        {
+          "path": "plugins/blockchain-web3/skills/nft-standards/SKILL.md",
+          "skill_id_guess": "nft-standards"
+        },
+        {
+          "path": "plugins/blockchain-web3/skills/solidity-security/SKILL.md",
+          "skill_id_guess": "solidity-security"
+        },
+        {
+          "path": "plugins/blockchain-web3/skills/web3-testing/SKILL.md",
+          "skill_id_guess": "web3-testing"
+        },
+        {
+          "path": "plugins/brand-landingpage/skills/brand-landingpage/SKILL.md",
+          "skill_id_guess": "brand-landingpage"
+        },
+        {
+          "path": "plugins/business-analytics/skills/data-storytelling/SKILL.md",
+          "skill_id_guess": "data-storytelling"
+        },
+        {
+          "path": "plugins/business-analytics/skills/kpi-dashboard-design/SKILL.md",
+          "skill_id_guess": "kpi-dashboard-design"
+        },
+        {
+          "path": "plugins/cicd-automation/skills/deployment-pipeline-design/SKILL.md",
+          "skill_id_guess": "deployment-pipeline-design"
+        },
+        {
+          "path": "plugins/cicd-automation/skills/github-actions-templates/SKILL.md",
+          "skill_id_guess": "github-actions-templates"
+        },
+        {
+          "path": "plugins/cicd-automation/skills/gitlab-ci-patterns/SKILL.md",
+          "skill_id_guess": "gitlab-ci-patterns"
+        },
+        {
+          "path": "plugins/cicd-automation/skills/secrets-management/SKILL.md",
+          "skill_id_guess": "secrets-management"
+        },
+        {
+          "path": "plugins/cloud-infrastructure/skills/cost-optimization/SKILL.md",
+          "skill_id_guess": "cost-optimization"
+        },
+        {
+          "path": "plugins/cloud-infrastructure/skills/hybrid-cloud-networking/SKILL.md",
+          "skill_id_guess": "hybrid-cloud-networking"
+        },
+        {
+          "path": "plugins/cloud-infrastructure/skills/istio-traffic-management/SKILL.md",
+          "skill_id_guess": "istio-traffic-management"
+        },
+        {
+          "path": "plugins/cloud-infrastructure/skills/linkerd-patterns/SKILL.md",
+          "skill_id_guess": "linkerd-patterns"
+        },
+        {
+          "path": "plugins/cloud-infrastructure/skills/mtls-configuration/SKILL.md",
+          "skill_id_guess": "mtls-configuration"
+        },
+        {
+          "path": "plugins/cloud-infrastructure/skills/multi-cloud-architecture/SKILL.md",
+          "skill_id_guess": "multi-cloud-architecture"
+        },
+        {
+          "path": "plugins/cloud-infrastructure/skills/service-mesh-observability/SKILL.md",
+          "skill_id_guess": "service-mesh-observability"
+        },
+        {
+          "path": "plugins/cloud-infrastructure/skills/terraform-module-library/SKILL.md",
+          "skill_id_guess": "terraform-module-library"
+        },
+        {
+          "path": "plugins/conductor/skills/context-driven-development/SKILL.md",
+          "skill_id_guess": "context-driven-development"
+        },
+        {
+          "path": "plugins/conductor/skills/track-management/SKILL.md",
+          "skill_id_guess": "track-management"
+        },
+        {
+          "path": "plugins/conductor/skills/workflow-patterns/SKILL.md",
+          "skill_id_guess": "workflow-patterns"
+        },
+        {
+          "path": "plugins/data-engineering/skills/airflow-dag-patterns/SKILL.md",
+          "skill_id_guess": "airflow-dag-patterns"
+        },
+        {
+          "path": "plugins/data-engineering/skills/data-quality-frameworks/SKILL.md",
+          "skill_id_guess": "data-quality-frameworks"
+        },
+        {
+          "path": "plugins/data-engineering/skills/dbt-transformation-patterns/SKILL.md",
+          "skill_id_guess": "dbt-transformation-patterns"
+        },
+        {
+          "path": "plugins/data-engineering/skills/spark-optimization/SKILL.md",
+          "skill_id_guess": "spark-optimization"
+        },
+        {
+          "path": "plugins/database-design/skills/postgresql-table-design/SKILL.md",
+          "skill_id_guess": "postgresql-table-design"
+        },
+        {
+          "path": "plugins/developer-essentials/skills/auth-implementation-patterns/SKILL.md",
+          "skill_id_guess": "auth-implementation-patterns"
+        },
+        {
+          "path": "plugins/developer-essentials/skills/bazel-build-optimization/SKILL.md",
+          "skill_id_guess": "bazel-build-optimization"
+        },
+        {
+          "path": "plugins/developer-essentials/skills/code-review-excellence/SKILL.md",
+          "skill_id_guess": "code-review-excellence"
+        },
+        {
+          "path": "plugins/developer-essentials/skills/debugging-strategies/SKILL.md",
+          "skill_id_guess": "debugging-strategies"
+        },
+        {
+          "path": "plugins/developer-essentials/skills/e2e-testing-patterns/SKILL.md",
+          "skill_id_guess": "e2e-testing-patterns"
+        },
+        {
+          "path": "plugins/developer-essentials/skills/error-handling-patterns/SKILL.md",
+          "skill_id_guess": "error-handling-patterns"
+        },
+        {
+          "path": "plugins/developer-essentials/skills/git-advanced-workflows/SKILL.md",
+          "skill_id_guess": "git-advanced-workflows"
+        },
+        {
+          "path": "plugins/developer-essentials/skills/monorepo-management/SKILL.md",
+          "skill_id_guess": "monorepo-management"
+        },
+        {
+          "path": "plugins/developer-essentials/skills/nx-workspace-patterns/SKILL.md",
+          "skill_id_guess": "nx-workspace-patterns"
+        },
+        {
+          "path": "plugins/developer-essentials/skills/sql-optimization-patterns/SKILL.md",
+          "skill_id_guess": "sql-optimization-patterns"
+        },
+        {
+          "path": "plugins/developer-essentials/skills/turborepo-caching/SKILL.md",
+          "skill_id_guess": "turborepo-caching"
+        },
+        {
+          "path": "plugins/dgx-spark-ops/skills/spark-environment-setup/SKILL.md",
+          "skill_id_guess": "spark-environment-setup"
+        },
+        {
+          "path": "plugins/dgx-spark-ops/skills/spark-memory-thermal-ops/SKILL.md",
+          "skill_id_guess": "spark-memory-thermal-ops"
+        },
+        {
+          "path": "plugins/dgx-spark-ops/skills/spark-training-gotchas/SKILL.md",
+          "skill_id_guess": "spark-training-gotchas"
+        },
+        {
+          "path": "plugins/documentation-generation/skills/architecture-decision-records/SKILL.md",
+          "skill_id_guess": "architecture-decision-records"
+        },
+        {
+          "path": "plugins/documentation-generation/skills/changelog-automation/SKILL.md",
+          "skill_id_guess": "changelog-automation"
+        },
+        {
+          "path": "plugins/documentation-generation/skills/openapi-spec-generation/SKILL.md",
+          "skill_id_guess": "openapi-spec-generation"
+        },
+        {
+          "path": "plugins/documentation-standards/skills/grounded-vault/SKILL.md",
+          "skill_id_guess": "grounded-vault"
+        },
+        {
+          "path": "plugins/documentation-standards/skills/hads/SKILL.md",
+          "skill_id_guess": "hads"
+        },
+        {
+          "path": "plugins/dotnet-contribution/skills/dotnet-backend-patterns/SKILL.md",
+          "skill_id_guess": "dotnet-backend-patterns"
+        },
+        {
+          "path": "plugins/file-conversion/skills/file-conversion/SKILL.md",
+          "skill_id_guess": "file-conversion"
+        },
+        {
+          "path": "plugins/framework-migration/skills/angular-migration/SKILL.md",
+          "skill_id_guess": "angular-migration"
+        },
+        {
+          "path": "plugins/framework-migration/skills/database-migration/SKILL.md",
+          "skill_id_guess": "database-migration"
+        },
+        {
+          "path": "plugins/framework-migration/skills/dependency-upgrade/SKILL.md",
+          "skill_id_guess": "dependency-upgrade"
+        },
+        {
+          "path": "plugins/framework-migration/skills/react-modernization/SKILL.md",
+          "skill_id_guess": "react-modernization"
+        },
+        {
+          "path": "plugins/frontend-mobile-development/skills/nextjs-app-router-patterns/SKILL.md",
+          "skill_id_guess": "nextjs-app-router-patterns"
+        },
+        {
+          "path": "plugins/frontend-mobile-development/skills/react-native-architecture/SKILL.md",
+          "skill_id_guess": "react-native-architecture"
+        },
+        {
+          "path": "plugins/frontend-mobile-development/skills/react-state-management/SKILL.md",
+          "skill_id_guess": "react-state-management"
+        },
+        {
+          "path": "plugins/frontend-mobile-development/skills/tailwind-design-system/SKILL.md",
+          "skill_id_guess": "tailwind-design-system"
+        },
+        {
+          "path": "plugins/game-development/skills/godot-gdscript-patterns/SKILL.md",
+          "skill_id_guess": "godot-gdscript-patterns"
+        },
+        {
+          "path": "plugins/game-development/skills/unity-ecs-patterns/SKILL.md",
+          "skill_id_guess": "unity-ecs-patterns"
+        },
+        {
+          "path": "plugins/hermes-tweet/skills/hermes-tweet/SKILL.md",
+          "skill_id_guess": "hermes-tweet"
+        },
+        {
+          "path": "plugins/hr-legal-compliance/skills/employment-contract-templates/SKILL.md",
+          "skill_id_guess": "employment-contract-templates"
+        },
+        {
+          "path": "plugins/hr-legal-compliance/skills/gdpr-data-handling/SKILL.md",
+          "skill_id_guess": "gdpr-data-handling"
+        },
+        {
+          "path": "plugins/incident-response/skills/incident-runbook-templates/SKILL.md",
+          "skill_id_guess": "incident-runbook-templates"
+        },
+        {
+          "path": "plugins/incident-response/skills/on-call-handoff-patterns/SKILL.md",
+          "skill_id_guess": "on-call-handoff-patterns"
+        },
+        {
+          "path": "plugins/incident-response/skills/postmortem-writing/SKILL.md",
+          "skill_id_guess": "postmortem-writing"
+        },
+        {
+          "path": "plugins/javascript-typescript/skills/javascript-testing-patterns/SKILL.md",
+          "skill_id_guess": "javascript-testing-patterns"
+        },
+        {
+          "path": "plugins/javascript-typescript/skills/modern-javascript-patterns/SKILL.md",
+          "skill_id_guess": "modern-javascript-patterns"
+        },
+        {
+          "path": "plugins/javascript-typescript/skills/nodejs-backend-patterns/SKILL.md",
+          "skill_id_guess": "nodejs-backend-patterns"
+        },
+        {
+          "path": "plugins/javascript-typescript/skills/typescript-advanced-types/SKILL.md",
+          "skill_id_guess": "typescript-advanced-types"
+        },
+        {
+          "path": "plugins/kubernetes-operations/skills/gitops-workflow/SKILL.md",
+          "skill_id_guess": "gitops-workflow"
+        },
+        {
+          "path": "plugins/kubernetes-operations/skills/helm-chart-scaffolding/SKILL.md",
+          "skill_id_guess": "helm-chart-scaffolding"
+        },
+        {
+          "path": "plugins/kubernetes-operations/skills/k8s-manifest-generator/SKILL.md",
+          "skill_id_guess": "k8s-manifest-generator"
+        },
+        {
+          "path": "plugins/kubernetes-operations/skills/k8s-security-policies/SKILL.md",
+          "skill_id_guess": "k8s-security-policies"
+        },
+        {
+          "path": "plugins/llm-application-dev/skills/embedding-strategies/SKILL.md",
+          "skill_id_guess": "embedding-strategies"
+        },
+        {
+          "path": "plugins/llm-application-dev/skills/hybrid-search-implementation/SKILL.md",
+          "skill_id_guess": "hybrid-search-implementation"
+        },
+        {
+          "path": "plugins/llm-application-dev/skills/langchain-architecture/SKILL.md",
+          "skill_id_guess": "langchain-architecture"
+        },
+        {
+          "path": "plugins/llm-application-dev/skills/llm-evaluation/SKILL.md",
+          "skill_id_guess": "llm-evaluation"
+        },
+        {
+          "path": "plugins/llm-application-dev/skills/prompt-engineering-patterns/SKILL.md",
+          "skill_id_guess": "prompt-engineering-patterns"
+        },
+        {
+          "path": "plugins/llm-application-dev/skills/rag-implementation/SKILL.md",
+          "skill_id_guess": "rag-implementation"
+        },
+        {
+          "path": "plugins/llm-application-dev/skills/similarity-search-patterns/SKILL.md",
+          "skill_id_guess": "similarity-search-patterns"
+        },
+        {
+          "path": "plugins/llm-application-dev/skills/vector-index-tuning/SKILL.md",
+          "skill_id_guess": "vector-index-tuning"
+        },
+        {
+          "path": "plugins/llm-finetuning/skills/checkpoint-promotion/SKILL.md",
+          "skill_id_guess": "checkpoint-promotion"
+        },
+        {
+          "path": "plugins/llm-finetuning/skills/dataset-curation/SKILL.md",
+          "skill_id_guess": "dataset-curation"
+        },
+        {
+          "path": "plugins/llm-finetuning/skills/eval-harness-first/SKILL.md",
+          "skill_id_guess": "eval-harness-first"
+        },
+        {
+          "path": "plugins/llm-finetuning/skills/finetuning-method-selection/SKILL.md",
+          "skill_id_guess": "finetuning-method-selection"
+        },
+        {
+          "path": "plugins/llm-finetuning/skills/grpo-rlvr-training/SKILL.md",
+          "skill_id_guess": "grpo-rlvr-training"
+        },
+        {
+          "path": "plugins/llm-finetuning/skills/lora-qlora-recipes/SKILL.md",
+          "skill_id_guess": "lora-qlora-recipes"
+        },
+        {
+          "path": "plugins/llm-finetuning/skills/preference-optimization/SKILL.md",
+          "skill_id_guess": "preference-optimization"
+        },
+        {
+          "path": "plugins/llm-finetuning/skills/quantized-export/SKILL.md",
+          "skill_id_guess": "quantized-export"
+        },
+        {
+          "path": "plugins/llm-finetuning/skills/trace-to-training-data/SKILL.md",
+          "skill_id_guess": "trace-to-training-data"
+        },
+        {
+          "path": "plugins/llm-finetuning/skills/vision-sft/SKILL.md",
+          "skill_id_guess": "vision-sft"
+        },
+        {
+          "path": "plugins/machine-learning-ops/skills/ml-pipeline-workflow/SKILL.md",
+          "skill_id_guess": "ml-pipeline-workflow"
+        },
+        {
+          "path": "plugins/machine-learning-ops/skills/recsys-pipeline-architect/SKILL.md",
+          "skill_id_guess": "recsys-pipeline-architect"
+        },
+        {
+          "path": "plugins/observability-monitoring/skills/distributed-tracing/SKILL.md",
+          "skill_id_guess": "distributed-tracing"
+        },
+        {
+          "path": "plugins/observability-monitoring/skills/grafana-dashboards/SKILL.md",
+          "skill_id_guess": "grafana-dashboards"
+        },
+        {
+          "path": "plugins/observability-monitoring/skills/prometheus-configuration/SKILL.md",
+          "skill_id_guess": "prometheus-configuration"
+        },
+        {
+          "path": "plugins/observability-monitoring/skills/slo-implementation/SKILL.md",
+          "skill_id_guess": "slo-implementation"
+        },
+        {
+          "path": "plugins/payment-processing/skills/billing-automation/SKILL.md",
+          "skill_id_guess": "billing-automation"
+        },
+        {
+          "path": "plugins/payment-processing/skills/paypal-integration/SKILL.md",
+          "skill_id_guess": "paypal-integration"
+        },
+        {
+          "path": "plugins/payment-processing/skills/pci-compliance/SKILL.md",
+          "skill_id_guess": "pci-compliance"
+        },
+        {
+          "path": "plugins/payment-processing/skills/stripe-integration/SKILL.md",
+          "skill_id_guess": "stripe-integration"
+        },
+        {
+          "path": "plugins/plugin-eval/skills/evaluation-methodology/SKILL.md",
+          "skill_id_guess": "evaluation-methodology"
+        },
+        {
+          "path": "plugins/pptx-deck-creation/skills/pptx-deck-context/SKILL.md",
+          "skill_id_guess": "pptx-deck-context"
+        },
+        {
+          "path": "plugins/pptx-deck-creation/skills/pptx-quality-gates/SKILL.md",
+          "skill_id_guess": "pptx-quality-gates"
+        },
+        {
+          "path": "plugins/pptx-deck-creation/skills/pptx-reference-deck-analysis/SKILL.md",
+          "skill_id_guess": "pptx-reference-deck-analysis"
+        },
+        {
+          "path": "plugins/pptx-deck-creation/skills/pptx-slide-specification/SKILL.md",
+          "skill_id_guess": "pptx-slide-specification"
+        },
+        {
+          "path": "plugins/pptx-deck-creation/skills/pptx-visual-assets/SKILL.md",
+          "skill_id_guess": "pptx-visual-assets"
+        },
+        {
+          "path": "plugins/protect-mcp/skills/protect-mcp-setup/SKILL.md",
+          "skill_id_guess": "protect-mcp-setup"
+        },
+        {
+          "path": "plugins/python-development/skills/async-python-patterns/SKILL.md",
+          "skill_id_guess": "async-python-patterns"
+        },
+        {
+          "path": "plugins/python-development/skills/python-anti-patterns/SKILL.md",
+          "skill_id_guess": "python-anti-patterns"
+        },
+        {
+          "path": "plugins/python-development/skills/python-background-jobs/SKILL.md",
+          "skill_id_guess": "python-background-jobs"
+        },
+        {
+          "path": "plugins/python-development/skills/python-code-style/SKILL.md",
+          "skill_id_guess": "python-code-style"
+        },
+        {
+          "path": "plugins/python-development/skills/python-configuration/SKILL.md",
+          "skill_id_guess": "python-configuration"
+        },
+        {
+          "path": "plugins/python-development/skills/python-design-patterns/SKILL.md",
+          "skill_id_guess": "python-design-patterns"
+        },
+        {
+          "path": "plugins/python-development/skills/python-error-handling/SKILL.md",
+          "skill_id_guess": "python-error-handling"
+        },
+        {
+          "path": "plugins/python-development/skills/python-observability/SKILL.md",
+          "skill_id_guess": "python-observability"
+        },
+        {
+          "path": "plugins/python-development/skills/python-packaging/SKILL.md",
+          "skill_id_guess": "python-packaging"
+        },
+        {
+          "path": "plugins/python-development/skills/python-performance-optimization/SKILL.md",
+          "skill_id_guess": "python-performance-optimization"
+        },
+        {
+          "path": "plugins/python-development/skills/python-project-structure/SKILL.md",
+          "skill_id_guess": "python-project-structure"
+        },
+        {
+          "path": "plugins/python-development/skills/python-resilience/SKILL.md",
+          "skill_id_guess": "python-resilience"
+        },
+        {
+          "path": "plugins/python-development/skills/python-resource-management/SKILL.md",
+          "skill_id_guess": "python-resource-management"
+        },
+        {
+          "path": "plugins/python-development/skills/python-testing-patterns/SKILL.md",
+          "skill_id_guess": "python-testing-patterns"
+        },
+        {
+          "path": "plugins/python-development/skills/python-type-safety/SKILL.md",
+          "skill_id_guess": "python-type-safety"
+        },
+        {
+          "path": "plugins/python-development/skills/uv-package-manager/SKILL.md",
+          "skill_id_guess": "uv-package-manager"
+        },
+        {
+          "path": "plugins/quantitative-trading/skills/backtesting-frameworks/SKILL.md",
+          "skill_id_guess": "backtesting-frameworks"
+        },
+        {
+          "path": "plugins/quantitative-trading/skills/risk-metrics-calculation/SKILL.md",
+          "skill_id_guess": "risk-metrics-calculation"
+        },
+        {
+          "path": "plugins/reverse-engineering/skills/anti-reversing-techniques/SKILL.md",
+          "skill_id_guess": "anti-reversing-techniques"
+        },
+        {
+          "path": "plugins/reverse-engineering/skills/binary-analysis-patterns/SKILL.md",
+          "skill_id_guess": "binary-analysis-patterns"
+        },
+        {
+          "path": "plugins/reverse-engineering/skills/memory-forensics/SKILL.md",
+          "skill_id_guess": "memory-forensics"
+        },
+        {
+          "path": "plugins/reverse-engineering/skills/protocol-reverse-engineering/SKILL.md",
+          "skill_id_guess": "protocol-reverse-engineering"
+        },
+        {
+          "path": "plugins/review-agent-governance/skills/review-agent-setup/SKILL.md",
+          "skill_id_guess": "review-agent-setup"
+        },
+        {
+          "path": "plugins/security-scanning/skills/attack-tree-construction/SKILL.md",
+          "skill_id_guess": "attack-tree-construction"
+        },
+        {
+          "path": "plugins/security-scanning/skills/sast-configuration/SKILL.md",
+          "skill_id_guess": "sast-configuration"
+        },
+        {
+          "path": "plugins/security-scanning/skills/security-requirement-extraction/SKILL.md",
+          "skill_id_guess": "security-requirement-extraction"
+        },
+        {
+          "path": "plugins/security-scanning/skills/stride-analysis-patterns/SKILL.md",
+          "skill_id_guess": "stride-analysis-patterns"
+        },
+        {
+          "path": "plugins/security-scanning/skills/threat-mitigation-mapping/SKILL.md",
+          "skill_id_guess": "threat-mitigation-mapping"
+        },
+        {
+          "path": "plugins/shell-scripting/skills/bash-defensive-patterns/SKILL.md",
+          "skill_id_guess": "bash-defensive-patterns"
+        },
+        {
+          "path": "plugins/shell-scripting/skills/bats-testing-patterns/SKILL.md",
+          "skill_id_guess": "bats-testing-patterns"
+        },
+        {
+          "path": "plugins/shell-scripting/skills/shellcheck-configuration/SKILL.md",
+          "skill_id_guess": "shellcheck-configuration"
+        },
+        {
+          "path": "plugins/ship-mate/skills/scan/SKILL.md",
+          "skill_id_guess": "scan"
+        },
+        {
+          "path": "plugins/signed-audit-trails/skills/signed-audit-trails-recipe/SKILL.md",
+          "skill_id_guess": "signed-audit-trails-recipe"
+        },
+        {
+          "path": "plugins/skill-forge-essentials/skills/ai-debt-detector/SKILL.md",
+          "skill_id_guess": "ai-debt-detector"
+        },
+        {
+          "path": "plugins/skill-forge-essentials/skills/session-guard/SKILL.md",
+          "skill_id_guess": "session-guard"
+        },
+        {
+          "path": "plugins/skill-forge-essentials/skills/visual-edit-precision/SKILL.md",
+          "skill_id_guess": "visual-edit-precision"
+        },
+        {
+          "path": "plugins/social-publishing/skills/social-publishing/SKILL.md",
+          "skill_id_guess": "social-publishing"
+        },
+        {
+          "path": "plugins/startup-business-analyst/skills/competitive-landscape/SKILL.md",
+          "skill_id_guess": "competitive-landscape"
+        },
+        {
+          "path": "plugins/startup-business-analyst/skills/market-sizing-analysis/SKILL.md",
+          "skill_id_guess": "market-sizing-analysis"
+        },
+        {
+          "path": "plugins/startup-business-analyst/skills/startup-financial-modeling/SKILL.md",
+          "skill_id_guess": "startup-financial-modeling"
+        },
+        {
+          "path": "plugins/startup-business-analyst/skills/startup-metrics-framework/SKILL.md",
+          "skill_id_guess": "startup-metrics-framework"
+        },
+        {
+          "path": "plugins/startup-business-analyst/skills/team-composition-analysis/SKILL.md",
+          "skill_id_guess": "team-composition-analysis"
+        },
+        {
+          "path": "plugins/superself/skills/superself/SKILL.md",
+          "skill_id_guess": "superself"
+        },
+        {
+          "path": "plugins/systems-programming/skills/go-concurrency-patterns/SKILL.md",
+          "skill_id_guess": "go-concurrency-patterns"
+        },
+        {
+          "path": "plugins/systems-programming/skills/memory-safety-patterns/SKILL.md",
+          "skill_id_guess": "memory-safety-patterns"
+        },
+        {
+          "path": "plugins/systems-programming/skills/rust-async-patterns/SKILL.md",
+          "skill_id_guess": "rust-async-patterns"
+        },
+        {
+          "path": "plugins/ui-design/skills/accessibility-compliance/SKILL.md",
+          "skill_id_guess": "accessibility-compliance"
+        },
+        {
+          "path": "plugins/ui-design/skills/design-system-patterns/SKILL.md",
+          "skill_id_guess": "design-system-patterns"
+        },
+        {
+          "path": "plugins/ui-design/skills/interaction-design/SKILL.md",
+          "skill_id_guess": "interaction-design"
+        },
+        {
+          "path": "plugins/ui-design/skills/mobile-android-design/SKILL.md",
+          "skill_id_guess": "mobile-android-design"
+        },
+        {
+          "path": "plugins/ui-design/skills/mobile-ios-design/SKILL.md",
+          "skill_id_guess": "mobile-ios-design"
+        },
+        {
+          "path": "plugins/ui-design/skills/react-native-design/SKILL.md",
+          "skill_id_guess": "react-native-design"
+        },
+        {
+          "path": "plugins/ui-design/skills/responsive-design/SKILL.md",
+          "skill_id_guess": "responsive-design"
+        },
+        {
+          "path": "plugins/ui-design/skills/visual-design-foundations/SKILL.md",
+          "skill_id_guess": "visual-design-foundations"
+        },
+        {
+          "path": "plugins/ui-design/skills/web-component-design/SKILL.md",
+          "skill_id_guess": "web-component-design"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 183
+    },
+    {
+      "repository": "mariano-aguero/solidity-security-audit-skill",
+      "skills": [
+        {
+          "path": "SKILL.md",
+          "skill_id_guess": "root"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 1
+    },
+    {
+      "repository": "lowwwbank/interview-to-jtbd",
+      "skills": [
+        {
+          "path": "SKILL.md",
+          "skill_id_guess": "root"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 1
+    },
+    {
+      "repository": "hiDaDeng/grill-me",
+      "skills": [
+        {
+          "path": "skills/SKILL.md",
+          "skill_id_guess": "skills"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 1
+    },
+    {
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "skills": [
+        {
+          "path": ".claude/skills/check-understanding/SKILL.md",
+          "skill_id_guess": "check-understanding"
+        },
+        {
+          "path": ".claude/skills/claude-certification/SKILL.md",
+          "skill_id_guess": "claude-certification"
+        },
+        {
+          "path": ".claude/skills/course-guide/SKILL.md",
+          "skill_id_guess": "course-guide"
+        },
+        {
+          "path": ".claude/skills/find-your-level/SKILL.md",
+          "skill_id_guess": "find-your-level"
+        },
+        {
+          "path": ".claude/skills/learn-agent-skills/SKILL.md",
+          "skill_id_guess": "learn-agent-skills"
+        },
+        {
+          "path": ".claude/skills/learn-mcp/SKILL.md",
+          "skill_id_guess": "learn-mcp"
+        },
+        {
+          "path": ".claude/skills/learn/SKILL.md",
+          "skill_id_guess": "learn"
+        },
+        {
+          "path": ".claude/skills/start-learning/SKILL.md",
+          "skill_id_guess": "start-learning"
+        },
+        {
+          "path": "certifications/claude/lessons/19-claude-code-memory-rules-skills-and-ci/outputs/migration-review-skill/SKILL.md",
+          "skill_id_guess": "migration-review-skill"
+        },
+        {
+          "path": "phases/13-tools-and-protocols/22-skills-and-agent-sdks/outputs/skill-contract-reviewer/SKILL.md",
+          "skill_id_guess": "skill-contract-reviewer"
+        },
+        {
+          "path": "phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/outputs/skill-catalog-builder/SKILL.md",
+          "skill_id_guess": "skill-catalog-builder"
+        },
+        {
+          "path": "phases/13-tools-and-protocols/25-skill-invocation-and-routing/outputs/skill-invocation-router/SKILL.md",
+          "skill_id_guess": "skill-invocation-router"
+        },
+        {
+          "path": "phases/13-tools-and-protocols/26-skill-permissions-sandboxes-and-trust/outputs/skill-safety-reviewer/SKILL.md",
+          "skill_id_guess": "skill-safety-reviewer"
+        },
+        {
+          "path": "phases/13-tools-and-protocols/27-skill-evals-packaging-and-portability/outputs/skill-release-gate/SKILL.md",
+          "skill_id_guess": "skill-release-gate"
+        },
+        {
+          "path": "skills/check-understanding/SKILL.md",
+          "skill_id_guess": "check-understanding"
+        },
+        {
+          "path": "skills/claude-certification/SKILL.md",
+          "skill_id_guess": "claude-certification"
+        },
+        {
+          "path": "skills/course-guide/SKILL.md",
+          "skill_id_guess": "course-guide"
+        },
+        {
+          "path": "skills/find-your-level/SKILL.md",
+          "skill_id_guess": "find-your-level"
+        },
+        {
+          "path": "skills/learn-agent-skills/SKILL.md",
+          "skill_id_guess": "learn-agent-skills"
+        },
+        {
+          "path": "skills/learn-mcp/SKILL.md",
+          "skill_id_guess": "learn-mcp"
+        },
+        {
+          "path": "skills/learn/SKILL.md",
+          "skill_id_guess": "learn"
+        },
+        {
+          "path": "skills/start-learning/SKILL.md",
+          "skill_id_guess": "start-learning"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 22
+    },
+    {
+      "repository": "aomi-labs/skills",
+      "skills": [
+        {
+          "path": ".claude/skills/brian-api/SKILL.md",
+          "skill_id_guess": "brian-api"
+        },
+        {
+          "path": ".claude/skills/coinbase-agentkit/SKILL.md",
+          "skill_id_guess": "coinbase-agentkit"
+        },
+        {
+          "path": ".claude/skills/crypto-skill-creator/SKILL.md",
+          "skill_id_guess": "crypto-skill-creator"
+        },
+        {
+          "path": ".claude/skills/eliza/SKILL.md",
+          "skill_id_guess": "eliza"
+        },
+        {
+          "path": ".claude/skills/goat/SKILL.md",
+          "skill_id_guess": "goat"
+        },
+        {
+          "path": ".claude/skills/manage-aomi-skill/SKILL.md",
+          "skill_id_guess": "manage-aomi-skill"
+        },
+        {
+          "path": ".claude/skills/solana-agent-kit/SKILL.md",
+          "skill_id_guess": "solana-agent-kit"
+        },
+        {
+          "path": ".claude/skills/x402/SKILL.md",
+          "skill_id_guess": "x402"
+        },
+        {
+          "path": "aomi-build/SKILL.md",
+          "skill_id_guess": "aomi-build"
+        },
+        {
+          "path": "aomi-transact/SKILL.md",
+          "skill_id_guess": "aomi-transact"
+        },
+        {
+          "path": "cryptoskill/aomi/SKILL.md",
+          "skill_id_guess": "aomi"
+        },
+        {
+          "path": "plugins/aomi/skills/build/SKILL.md",
+          "skill_id_guess": "build"
+        },
+        {
+          "path": "plugins/aomi/skills/transact/SKILL.md",
+          "skill_id_guess": "transact"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 13
+    },
+    {
+      "repository": "ferdinandobons/startup-skill",
+      "skills": [
+        {
+          "path": "startup-competitors/SKILL.md",
+          "skill_id_guess": "startup-competitors"
+        },
+        {
+          "path": "startup-design/SKILL.md",
+          "skill_id_guess": "startup-design"
+        },
+        {
+          "path": "startup-pitch/SKILL.md",
+          "skill_id_guess": "startup-pitch"
+        },
+        {
+          "path": "startup-positioning/SKILL.md",
+          "skill_id_guess": "startup-positioning"
+        }
+      ],
+      "error": null,
+      "default_branch": "main",
+      "skill_count": 4
+    },
+    {
+      "repository": "portdeveloper/monad-development",
+      "skills": [],
+      "error": "HTTP Error 404: Not Found",
+      "default_branch": null
+    },
+    {
+      "repository": "nolly-studio/design-md",
+      "skills": [],
+      "error": "HTTP Error 404: Not Found",
+      "default_branch": null
+    }
+  ],
+  "total_skills_found": 356
+}

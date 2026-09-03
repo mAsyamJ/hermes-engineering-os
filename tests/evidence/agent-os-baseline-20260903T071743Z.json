@@ -1,0 +1,51 @@
+{
+  "backup": "/var/backups/hermes-engineering-os/agent-os-phase0-20260903T071743Z",
+  "checksums": {
+    "SOUL.md": "29993087d2d7a0fb9f71c589f878b3c5b28c67f61765d51a13f9740fcf82e189",
+    "config.yaml": "815ccad255efe63846f1f2ad1498dd9154d1a73db4a245c8813ae45fda233f6b"
+  },
+  "health": {
+    "dashboard": "active",
+    "gateways": "masked/not_running",
+    "sqlite_integrity": "ok"
+  },
+  "inventory": {
+    "hub_lock_installed": {},
+    "memories": 4,
+    "plugins_dirs": [
+      "engineering-os",
+      "hermes_otel",
+      "superpowers"
+    ],
+    "profiles": [
+      "rp-android",
+      "rp-api-contract",
+      "rp-backend-markets",
+      "rp-friend",
+      "rp-qa-e2e",
+      "rp-recovery-architect",
+      "rp-release-orchestrator",
+      "rp-review-security",
+      "rp-sre-release",
+      "rp-web"
+    ],
+    "sessions": 32,
+    "skill_bundles_dir_exists": false,
+    "skills_skill_md_count": 87,
+    "taps": []
+  },
+  "runtime": {
+    "core_patched": false,
+    "dirty_hermes_agent": [
+      "package-lock.json"
+    ],
+    "eos_sha": "5cc90550405a6ca31fdda99f7b73dd4fe8324815",
+    "hermes_agent_sha": "c0106e50e7ecedb3ce34e785d949725dc4e0e457",
+    "hermes_home": "/home/ubuntu/.hermes",
+    "hermes_version": "0.20.0 (2026.8.3)",
+    "python": "3.11.15",
+    "which_hermes": "/home/ubuntu/.local/bin/hermes"
+  },
+  "secrets_redacted": true,
+  "stamp": "20260903T071743Z"
+}

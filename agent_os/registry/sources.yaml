@@ -1,0 +1,171 @@
+# Curated skill sources for Agent OS seed registry.
+# Each repo may contain MANY skills — expand to per-skill rows at ingest time.
+# trust_tier: T2 = allowlisted curated; T3 = community discover-only; reverify = do not auto-trust.
+
+sources:
+  - id: emersonbraun-skills
+    repository: EmersonBraun/skills
+    trust_tier: T2
+    domains: [startup, product, hackathon]
+    category: CORE_BUSINESS_PRODUCT
+    notes: General hackathon / business skill library
+
+  - id: getagentseal-founder-playbook
+    repository: getagentseal/founder-playbook
+    trust_tier: T2
+    domains: [startup, product]
+    category: CORE_BUSINESS_PRODUCT
+
+  - id: nimitbhargava-testing-business-ideas
+    repository: nimitbhargava/testing-business-ideas-skill
+    trust_tier: T2
+    domains: [startup, validation]
+    category: CORE_BUSINESS_PRODUCT
+    capabilities: [assumption-testing, startup-validation]
+
+  - id: deanpeters-product-manager-skills
+    repository: deanpeters/Product-Manager-Skills
+    trust_tier: T2
+    domains: [product]
+    category: CORE_BUSINESS_PRODUCT
+
+  - id: monskills
+    repository: therealharpaljadeja/monskills
+    trust_tier: T2
+    domains: [monad, web3]
+    category: CORE_MONAD_WEB3
+    capabilities: [monad-routing, monad-knowledge]
+    mutable_fact_policy: monad
+
+  - id: monad-wingman
+    repository: 0x70626a/monad-wingman
+    trust_tier: T2
+    domains: [monad, web3, solidity]
+    category: CORE_MONAD_WEB3
+    capabilities: [monad-implementation]
+    mutable_fact_policy: monad
+
+  - id: stakeme-monad-agent-kit
+    repository: stakeme-team/monad-agent-kit
+    trust_tier: T2
+    domains: [monad, web3]
+    category: CORE_MONAD_WEB3
+    capabilities: [monad-execution]
+    mutable_fact_policy: monad
+
+  - id: wshobson-agents
+    repository: wshobson/agents
+    trust_tier: T2
+    domains: [web3, security, architecture, testing]
+    category: CORE_MONAD_WEB3
+    capabilities: [web3-security, web3-testing, architecture]
+
+  - id: solidity-security-audit
+    repository: mariano-aguero/solidity-security-audit-skill
+    trust_tier: T2
+    domains: [solidity, security, web3]
+    category: CORE_MONAD_WEB3
+    capabilities: [solidity-audit, security-audit]
+
+  - id: aomi-labs-skills
+    repository: aomi-labs/skills
+    trust_tier: T3
+    domains: [web3, agentic]
+    category: ON_DEMAND_SPECIALISTS
+    capabilities: [agentic-web3]
+
+  - id: interview-to-jtbd
+    repository: lowwwbank/interview-to-jtbd
+    trust_tier: T2
+    domains: [product, research]
+    category: ON_DEMAND_SPECIALISTS
+    capabilities: [jtbd, customer-discovery, interview-analysis]
+
+  - id: ferdinandobons-startup-skill
+    repository: ferdinandobons/startup-skill
+    trust_tier: T3
+    domains: [startup]
+    category: ON_DEMAND_SPECIALISTS
+    capabilities: [startup-review]
+
+  - id: grill-me
+    repository: hiDaDeng/grill-me
+    trust_tier: T2
+    domains: [startup, pitch, review]
+    category: ON_DEMAND_SPECIALISTS
+    capabilities: [adversarial-review, judge-grill]
+
+  - id: portdeveloper-monad-development
+    repository: portdeveloper/monad-development
+    trust_tier: T3
+    domains: [monad]
+    category: ON_DEMAND_SPECIALISTS
+    capabilities: [monad-development]
+    mutable_fact_policy: monad
+
+  - id: nolly-studio-design-md
+    repository: nolly-studio/design-md
+    trust_tier: T3
+    domains: [design]
+    category: ON_DEMAND_SPECIALISTS
+    capabilities: [design-system]
+    reverify_before_trust: true
+    notes: Local creative/design-md may already exist — re-verify before trusting.
+
+  - id: rohitg00-ai-engineering
+    repository: rohitg00/ai-engineering-from-scratch
+    trust_tier: T2
+    domains: [ai-engineering, math, ml]
+    category: AI_ENGINEERING
+    capabilities: [ai-engineering, math-foundations]
+
+# Capability seeds used when upstream skill IDs are not yet expanded.
+capability_seeds:
+  - capability: solidity-audit
+    domains: [solidity, security]
+    task_types: [audit, security-review]
+    triggers: [solidity, escrow, smart contract audit, reentrancy]
+    negative_triggers: [pitch, branding, marketing]
+  - capability: monad-routing
+    domains: [monad, web3]
+    task_types: [build, architecture]
+    triggers: [monad, mon]
+  - capability: monad-implementation
+    domains: [monad, solidity]
+    task_types: [build, implement]
+    triggers: [payment escrow on monad, deploy on monad]
+  - capability: web3-testing
+    domains: [web3, testing]
+    task_types: [test]
+    triggers: [forge test, foundry, contract test]
+  - capability: ai-engineering
+    domains: [ai-engineering]
+    task_types: [learn, teach]
+    triggers: [ai engineering, math foundations, transformers]
+    negative_triggers: [solidity, monad, web3]
+  - capability: jtbd
+    domains: [product, research]
+    task_types: [research, discovery]
+    triggers: [jobs to be done, JTBD, interview transcript]
+  - capability: assumption-testing
+    domains: [startup, validation]
+    task_types: [validate]
+    triggers: [fatal assumption, test business idea, startup idea]
+    negative_triggers: [deploy, kubernetes]
+  - capability: pitch-storytelling
+    domains: [pitch, hackathon]
+    task_types: [pitch, demo]
+    triggers: [hackathon pitch, memorable pitch]
+    negative_triggers: [solidity audit]
+  - capability: frontend-nextjs
+    domains: [frontend]
+    task_types: [optimize, build]
+    triggers: [Next.js, nextjs production]
+  - capability: temporal-workflows
+    domains: [backend, devops]
+    task_types: [setup]
+    triggers: [Temporal workflow, temporal.io]
+  - capability: adversarial-review
+    domains: [startup, review]
+    task_types: [review]
+    triggers: [grill, adversarial review, judge]

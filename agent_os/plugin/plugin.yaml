@@ -1,0 +1,7 @@
+name: agent-os-router
+version: "0.1.0"
+description: Hermes Agent OS capability router — deterministic skill routing, progressive disclosure hints, safe missing-skill discovery (not a second orchestrator).
+author: hermes-engineering-os
+provides_hooks:
+  - pre_llm_call
+  - on_skill_lifecycle

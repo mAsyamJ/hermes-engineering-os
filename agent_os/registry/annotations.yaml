@@ -1,0 +1,169 @@
+# CURATED annotations overlay — never silently treat as DERIVED filesystem fact.
+# Applied during registry generation when skill_id matches.
+
+skills:
+  grill-me:
+    capabilities: [adversarial-review, judge-grill]
+    domains: [startup, review, pitch]
+    task_types: [review, validate]
+    triggers: [grill, adversarial, fatal assumption, stress test this idea]
+    negative_triggers: [solidity audit, deploy kubernetes]
+    trust_tier: T1
+    when_to_use:
+      - Adversarial review of plans and startup assumptions
+    when_not_to_use:
+      - Pure Solidity security audits (use solidity-audit specialist)
+
+  solidity-security:
+    capabilities: [solidity-audit, security-audit]
+    domains: [solidity, security, web3]
+    task_types: [audit, security-review]
+    triggers: [solidity, escrow, smart contract audit, reentrancy]
+    negative_triggers: [pitch, branding, marketing, hackathon pitch]
+    trust_tier: T2
+    mutable_fact_policy: null
+
+  web3-testing:
+    capabilities: [web3-testing]
+    domains: [web3, testing]
+    task_types: [test]
+    triggers: [forge test, foundry, contract test]
+    trust_tier: T2
+
+  monad-wingman:
+    capabilities: [monad-implementation, monad-routing]
+    domains: [monad, web3, solidity]
+    task_types: [build, implement]
+    triggers: [monad, payment escrow on monad, deploy on monad]
+    trust_tier: T2
+    mutable_fact_policy: monad
+
+  why-monad:
+    capabilities: [monad-routing, monad-knowledge]
+    domains: [monad, web3]
+    triggers: [monad, why monad]
+    trust_tier: T2
+    mutable_fact_policy: monad
+
+  concepts:
+    capabilities: [monad-routing, monad-knowledge]
+    domains: [monad, web3]
+    triggers: [monad concepts]
+    trust_tier: T2
+    mutable_fact_policy: monad
+
+  scaffold:
+    capabilities: [monad-implementation]
+    domains: [monad, web3]
+    triggers: [scaffold monad]
+    trust_tier: T2
+    mutable_fact_policy: monad
+
+  tooling-and-infra:
+    capabilities: [monad-implementation]
+    domains: [monad, devops]
+    trust_tier: T2
+    mutable_fact_policy: monad
+
+  monskill:
+    capabilities: [monad-routing, monad-knowledge]
+    domains: [monad, web3]
+    triggers: [monad]
+    trust_tier: T2
+    mutable_fact_policy: monad
+
+  interview-to-jtbd:
+    capabilities: [jtbd, customer-discovery, interview-analysis]
+    domains: [product, research]
+    task_types: [research, discovery]
+    triggers: [jobs to be done, JTBD, interview transcript]
+    trust_tier: T2
+
+  testing-business-ideas:
+    capabilities: [assumption-testing, startup-validation]
+    domains: [startup, validation]
+    task_types: [validate]
+    triggers: [fatal assumption, test business idea, startup idea]
+    negative_triggers: [deploy kubernetes]
+    trust_tier: T2
+
+  idea-validation:
+    capabilities: [assumption-testing, startup-validation]
+    domains: [startup, validation]
+    triggers: [validate idea, idea validation]
+    trust_tier: T2
+
+  learn:
+    capabilities: [ai-engineering, math-foundations]
+    domains: [ai-engineering, math, ml]
+    task_types: [learn, teach]
+    triggers: [ai engineering, math foundations, transformers]
+    negative_triggers: [solidity, monad, web3]
+    trust_tier: T2
+
+  nextjs-app-router-patterns:
+    capabilities: [frontend-nextjs]
+    domains: [frontend]
+    task_types: [optimize, build]
+    triggers: [Next.js, nextjs production, app router]
+    trust_tier: T2
+    mutable_fact_policy: nextjs
+
+  senior-frontend:
+    capabilities: [frontend-nextjs]
+    domains: [frontend]
+    triggers: [frontend, Next.js]
+    trust_tier: T2
+
+  temporal-python-testing:
+    capabilities: [temporal-workflows]
+    domains: [backend]
+    task_types: [setup, test]
+    triggers: [Temporal workflow, temporal.io]
+    trust_tier: T2
+
+  made-to-stick:
+    capabilities: [pitch-storytelling]
+    domains: [pitch, hackathon]
+    task_types: [pitch]
+    triggers: [hackathon pitch, memorable pitch, sticky idea]
+    negative_triggers: [solidity audit]
+    trust_tier: T2
+
+  storybrand:
+    capabilities: [pitch-storytelling]
+    domains: [pitch]
+    triggers: [storybrand, pitch story]
+    negative_triggers: [solidity audit]
+    trust_tier: T2
+
+  find-skills:
+    capabilities: [skill-discovery-npx]
+    negative_triggers: [hermes hub install, hermes skills install]
+    when_not_to_use:
+      - Installing Hermes-native skills (use Agent OS resolver + hermes skills)
+
+  design-md:
+    capabilities: [design-system]
+    domains: [design]
+    trust_tier: T3
+    security_state: reverify_required
+    when_not_to_use:
+      - Until nolly-studio provenance is re-verified
+
+  test-driven-development:
+    capabilities: [software-testing, tdd]
+    domains: [testing]
+
+  systematic-debugging:
+    capabilities: [software-testing, debugging]
+    domains: [testing]
+
+  # Rejected after native DANGEROUS scan — never force
+  solidity-security-audit-skill:
+    capabilities: [solidity-audit]
+    trust_tier: T4
+    security_state: dangerous_blocked
+    install_state_override: rejected
+    when_not_to_use:
+      - Blocked by skills-guard DANGEROUS (curl|bash / supply-chain). Use solidity-security instead.

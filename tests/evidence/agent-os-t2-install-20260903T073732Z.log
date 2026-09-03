@@ -1,0 +1,64 @@
+==== INSTALL https://raw.githubusercontent.com/mariano-aguero/solidity-security-audit-skill/main/SKILL.md --name solidity-security-audit
+
+Fetching: 
+https://raw.githubusercontent.com/mariano-aguero/solidity-security-audit-skill/m
+ain/SKILL.md
+Quarantined to .hub/quarantine/solidity-security-audit
+Running security scan...
+Scan: solidity-security-audit 
+(https://raw.githubusercontent.com/mariano-aguero/solidity-security-audit-skill/
+main/SKILL.md/community)  Verdict: DANGEROUS
+  CRITICAL persistence    SKILL.md:609                   "- **CLAUDE.md fix**: 
+audit modes count corrected to 5 (Conte"
+  CRITICAL supply_chain   references/tool-integration.md:342 "curl -L 
+https://install.aderyn.dev | bash"
+  CRITICAL supply_chain   references/tool-integration.md:870 "curl -L 
+https://foundry.paradigm.xyz | bash"
+  HIGH     exfiltration   references/vulnerability-taxonomy.md:2253 "both the 
+caller and callee share the same transient storage "
+  MEDIUM   injection      references/fusaka-eof.md:29    "| 7069 | Revised Call 
+Instructions | `EXTCALL` / `EXTDELEGAT"
+  MEDIUM   supply_chain   references/tool-integration.md:789 "pip install 
+halmos-recon"
+  MEDIUM   supply_chain   references/tool-integration.md:867 "pip install 
+slither-analyzer"
+  MEDIUM   supply_chain   references/tool-integration.md:880 "pip install 
+halmos"
+  MEDIUM   supply_chain   references/tool-integration.md:1248 "pip install -e 
+./my-detectors/"
+  MEDIUM   supply_chain   references/tool-integration.md:1322 "pip install 
+mythril"
+  MEDIUM   supply_chain   references/tool-integration.md:1412 "pip install 
+manticore"
+  MEDIUM   supply_chain   references/tool-integration.md:1431 "pip install 
+semgrep"
+  MEDIUM   supply_chain   references/tool-integration.md:1523 "pip install 
+eth-wake"
+  MEDIUM   supply_chain   references/tool-integration.md:1651 "pip install 
+kontrol"
+  MEDIUM   supply_chain   references/tool-integration.md:1770 "pip install 
+eth-wake"
+  MEDIUM   supply_chain   references/tool-integration.md:1789 "pip install 
+semgrep"
+  MEDIUM   supply_chain   references/tool-integration.md:990 "npm install 
+@nomicfoundation/slang"
+  MEDIUM   supply_chain   references/tool-integration.md:874 "docker pull 
+ghcr.io/trailofbits/eth-security-toolbox:nightly"
+  MEDIUM   supply_chain   references/tool-integration.md:892 "docker pull 
+ghcr.io/trailofbits/eth-security-toolbox:nightly"
+  MEDIUM   supply_chain   references/tool-integration.md:1415 "docker pull 
+ghcr.io/trailofbits/eth-security-toolbox:nightly"
+
+Decision: BLOCKED — Blocked (community source + dangerous verdict, 20 findings).
+--force does not override a dangerous verdict.
+Scan provenance: fresh; scanner skills-guard-v1; hash 
+sha256:6feae107ab92331cf52df63fb72d758989b41d2ade273efaa4959b21a69966e8
+Source: 
+https://raw.githubusercontent.com/mariano-aguero/solidity-security-audit-skill/m
+ain/SKILL.md; scanned 2026-09-03T07:38:03.866795+00:00; rules: agent_config_mod,
+context_exfil, curl_pipe_shell, docker_pull, fake_policy, unpinned_npm_install, 
+unpinned_pip_install
+
+Installation blocked: Blocked (community source + dangerous verdict, 20 
+findings). --force does not override a dangerous verdict.
+exit=0

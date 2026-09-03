@@ -1,0 +1,24 @@
+# Mutable-fact policy: skills teach HOW; live docs decide WHAT IS TRUE NOW.
+
+defaults:
+  current_docs_required: false
+
+domains:
+  monad:
+    current_docs_required: true
+    authoritative_outrank_skill_text: true
+    notes: Official Monad docs and sponsor/protocol docs outrank static skill text for addresses, SDK versions, network params.
+  openai_apis:
+    current_docs_required: true
+  vercel:
+    current_docs_required: true
+  nextjs:
+    current_docs_required: true
+  cloud_providers:
+    current_docs_required: true
+  wallet_integrations:
+    current_docs_required: true
+  chain_addresses:
+    current_docs_required: true
+  security_standards:
+    current_docs_required: true
