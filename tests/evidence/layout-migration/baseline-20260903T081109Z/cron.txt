@@ -1,0 +1,14 @@
+no crontab for ubuntu
+---
+total 308
+drwx------  3 ubuntu ubuntu   4096 Sep  3 14:17 .
+drwx------ 28 ubuntu ubuntu   4096 Sep  3 15:08 ..
+-rw-rw-r--  1 ubuntu ubuntu      0 Aug 11 21:07 .jobs.lock
+-rw-rw-r--  1 ubuntu ubuntu      0 Aug 30 01:32 .tick.lock
+-rw-r--r--  1 ubuntu ubuntu 270336 Sep  1 12:59 executions.db
+-rw-------  1 ubuntu ubuntu   5646 Aug 30 01:04 jobs.json
+-rw-r--r--  1 ubuntu ubuntu  12288 Sep  1 12:59 notepad.db
+drwx------  4 ubuntu ubuntu   4096 Aug 12 05:37 output
+-rw-------  1 ubuntu ubuntu     18 Aug 30 01:32 ticker_heartbeat
+-rw-------  1 ubuntu ubuntu     17 Aug 30 01:32 ticker_last_success
+-rw-rw-r--  1 ubuntu ubuntu   2392 Aug 12 14:14 usage_audit.jsonl

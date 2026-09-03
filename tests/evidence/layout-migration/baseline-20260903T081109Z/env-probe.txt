@@ -1,0 +1,12 @@
+whoami=ubuntu
+hostname=Ubuntu-VPS-Clone
+HOME=/home/ubuntu
+HERMES_HOME=<unset>
+pwd=/opt/hermes-engineering-os
+which_hermes=/home/ubuntu/.local/bin/hermes
+realpath_hermes=/home/ubuntu/.local/bin/hermes
+Hermes Agent v0.20.0 (2026.8.3)
+Install directory: /home/ubuntu/.hermes/hermes-agent
+Python: 3.11.15
+OpenAI SDK: 2.24.0
+Run 'hermes version' for update status.

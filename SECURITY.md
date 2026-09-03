@@ -19,7 +19,7 @@
 - Candidate evaluation containers have network disabled, no Docker socket, and
   no host secrets. Planted `FAKE_PHASE4_SECRET_ABC123` must not leak.
 - Performance tables store IDs and aggregates only. The Phase 5 privacy plant
-  from `scripts/performance-privacy-test.sh` must not leak.
+  from `scripts/observability/performance-privacy-test.sh` must not leak.
 - Adaptation control state lives in `hermes_control`. The Phase 7 privacy plant
   `FAKE_PHASE7_SECRET_ABC123` must not leak. TEST approval signatures are not
   returned by `/adaptation/audit`. Production approval is BLOCKED_CAPABILITY.
@@ -50,6 +50,6 @@
   `/var/backups/hermes-engineering-os`.
 
 Report a suspected leak by disabling and unlinking the plugin with
-`scripts/uninstall-plugin.sh`, restarting only the dashboard, and preserving
+`scripts/deployment/uninstall-plugin.sh`, restarting only the dashboard, and preserving
 the relevant owner-only backup for investigation.
 

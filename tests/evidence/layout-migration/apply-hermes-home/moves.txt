@@ -1,0 +1,20 @@
+moved_to_backups_config:
+total 148
+drwxr-xr-x 2 ubuntu ubuntu  4096 Sep  3 15:28 .
+drwxr-xr-x 3 ubuntu ubuntu  4096 Sep  3 15:28 ..
+-rw------- 1 ubuntu ubuntu 24508 Aug 11 21:06 .env.before-codex
+-rw-rw-r-- 1 ubuntu ubuntu 92801 Aug 11 21:00 config.yaml.bak.20260811_140009
+-rw------- 1 ubuntu ubuntu  4612 Aug 16 20:15 config.yaml.bak.20260817_101559
+-rw------- 1 ubuntu ubuntu  6513 Aug 17 17:16 config.yaml.bak.20260817_101633
+-rw------- 1 ubuntu ubuntu  4508 Aug 12 00:04 config.yaml.before-codex
+
+extensions:
+total 12
+drwxr-xr-x  3 ubuntu ubuntu 4096 Sep  3 15:28 .
+drwx------ 29 ubuntu ubuntu 4096 Sep  3 15:28 ..
+drwxrwxr-x  2 ubuntu ubuntu 4096 Aug 13 20:05 audit
+
+KEEP_ROOT_logs: dashboard.log gateway-starts.log (gateway-starts.writer=hermes gateway/status.py)
+KEEP_ROOT_scripts: ~/.hermes/scripts (Hermes cron/tips reference HERMES_HOME/scripts)
+KEEP_ROOT_otel: hermes_otel.yaml
+KEEP_ROOT_dbs: state.db kanban.db projects.db verification_evidence.db

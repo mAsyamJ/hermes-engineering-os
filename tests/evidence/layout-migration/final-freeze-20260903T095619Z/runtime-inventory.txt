@@ -1,0 +1,36 @@
+memories_root /home/ubuntu/.hermes/memories entries_sample 4
+skills_list_err Command '['hermes', 'skills', 'list', '--json']' returned non-zero exit status 2.
+{
+  "profiles": 10,
+  "profile_names": [
+    "rp-android",
+    "rp-api-contract",
+    "rp-backend-markets",
+    "rp-friend",
+    "rp-qa-e2e",
+    "rp-recovery-architect",
+    "rp-release-orchestrator",
+    "rp-review-security",
+    "rp-sre-release",
+    "rp-web"
+  ],
+  "sessions_files": 32,
+  "cron_jobs_present": true,
+  "kanban_present": true,
+  "otel_files": [
+    "/home/ubuntu/.hermes/hermes_otel.yaml",
+    "/home/ubuntu/.hermes/hermes_otel.yaml",
+    "/home/ubuntu/.hermes/profiles/rp-android/hermes_otel.yaml",
+    "/home/ubuntu/.hermes/profiles/rp-backend-markets/hermes_otel.yaml",
+    "/home/ubuntu/.hermes/profiles/rp-recovery-architect/hermes_otel.yaml",
+    "/home/ubuntu/.hermes/profiles/rp-friend/hermes_otel.yaml",
+    "/home/ubuntu/.hermes/profiles/rp-review-security/hermes_otel.yaml",
+    "/home/ubuntu/.hermes/profiles/rp-api-contract/hermes_otel.yaml",
+    "/home/ubuntu/.hermes/profiles/rp-qa-e2e/hermes_otel.yaml",
+    "/home/ubuntu/.hermes/profiles/rp-web/hermes_otel.yaml"
+  ],
+  "bundles": 0,
+  "bundle_names": [],
+  "skills_list_count": null,
+  "SKILLS_md": true
+}

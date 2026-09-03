@@ -1,0 +1,2 @@
+PASS: checkpoint branch present
+PASS: rollback-check materials enumerated (full restore uses checkpoint + reverse mv list)

@@ -1,0 +1,5 @@
+ExecStart={ path=/home/ubuntu/.local/bin/hermes ; argv[]=/home/ubuntu/.local/bin/hermes dashboard --host 127.0.0.1 --port 9119 --no-open ; ignore_errors=no ; start_time=[Thu 2026-09-03 12:55:50 +07] ; stop_time=[n/a] ; pid=449 ; code=(null) ; status=0/0 }
+Environment=HERMES_HOME=/home/ubuntu/.hermes
+ActiveState=active
+FragmentPath=/home/ubuntu/.config/systemd/user/hermes-dashboard.service
+UnitFileState=enabled

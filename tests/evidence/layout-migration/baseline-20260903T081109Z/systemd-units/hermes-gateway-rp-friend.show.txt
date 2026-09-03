@@ -1,0 +1,4 @@
+Environment=
+ActiveState=inactive
+FragmentPath=/home/ubuntu/.config/systemd/user/hermes-gateway-rp-friend.service
+UnitFileState=masked

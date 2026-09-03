@@ -1,0 +1,4 @@
+state.db ok
+kanban.db ok
+projects.db ok
+verification_evidence.db ok

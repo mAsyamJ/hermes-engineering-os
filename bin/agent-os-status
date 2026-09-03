@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+_resolve_root() {
+  local dir
+  dir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd -P)"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -f "$dir/plugin.yaml" && -f "$dir/pyproject.toml" && -d "$dir/agent_os" ]]; then
+      printf '%s\n' "$dir"
+      return 0
+    fi
+    dir="$(dirname "$dir")"
+  done
+  return 1
+}
+ROOT="$(_resolve_root)"
+HERMES=/home/ubuntu/.local/bin/hermes
+echo "repo=$ROOT"
+echo "plugin_link=$(readlink -f /home/ubuntu/.hermes/plugins/agent-os-router 2>/dev/null || true)"
+"$HERMES" plugins list --json --user 2>/dev/null | rg -n 'agent-os-router|engineering-os' || true
+if [[ -f /home/ubuntu/.hermes/SKILLS.md ]]; then echo "SKILLS.md=present"; else echo "SKILLS.md=MISSING"; fi
+echo "skill_md_count=$(find /home/ubuntu/.hermes/skills -name SKILL.md | wc -l)"

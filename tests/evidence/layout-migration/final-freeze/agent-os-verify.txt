@@ -1,0 +1,24 @@
+== Agent OS unit tests ==
+test_case10_malicious_never_force (tests.python.test_agent_os_router.TestAgentOsRouting.test_case10_malicious_never_force) ... ok
+test_case1_solidity_audit (tests.python.test_agent_os_router.TestAgentOsRouting.test_case1_solidity_audit) ... ok
+test_case2_monad_escrow (tests.python.test_agent_os_router.TestAgentOsRouting.test_case2_monad_escrow) ... ok
+test_case3_ai_engineering_no_web3 (tests.python.test_agent_os_router.TestAgentOsRouting.test_case3_ai_engineering_no_web3) ... ok
+test_case4_jtbd (tests.python.test_agent_os_router.TestAgentOsRouting.test_case4_jtbd) ... ok
+test_case5_fatal_assumption (tests.python.test_agent_os_router.TestAgentOsRouting.test_case5_fatal_assumption) ... ok
+test_case6_pitch_not_audit (tests.python.test_agent_os_router.TestAgentOsRouting.test_case6_pitch_not_audit) ... ok
+test_case7_nextjs (tests.python.test_agent_os_router.TestAgentOsRouting.test_case7_nextjs) ... ok
+test_case8_temporal_installed_and_community_refused (tests.python.test_agent_os_router.TestAgentOsRouting.test_case8_temporal_installed_and_community_refused) ... ok
+test_case9_ambiguous_multi_domain_bounded (tests.python.test_agent_os_router.TestAgentOsRouting.test_case9_ambiguous_multi_domain_bounded) ... ok
+test_context_budget (tests.python.test_agent_os_router.TestAgentOsRouting.test_context_budget) ... ok
+test_regen_idempotent (tests.python.test_agent_os_router.TestAgentOsRouting.test_regen_idempotent) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.243s
+
+OK
+== Registry regenerate idempotence ==
+idempotent {'skills_registry_sha256': 'af473c82a791733a958549dba0b3a5d15b34238166034ebde018c4f674f7ea60', 'skills_md_sha256': '0f5a7f570ca71371da362a76ff81a60b4f4519c1f2fe22cd54a03af76c2c9537', 'installed_count': 104, 'total_entries': 477}
+== Plugin present ==
+== Hermes CLI health ==
+== Core untouched ==
+PASS: agent-os-verify

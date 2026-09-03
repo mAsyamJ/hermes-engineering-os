@@ -1,0 +1,1 @@
+/opt/hermes-engineering-os/scripts/agent-os/install-agent-os-plugin.sh:8:# Canonical plugin path after filesystem normalization; agent_os/plugin remains a compat shim.

@@ -1,0 +1,306 @@
+=== git ===
+## filesystem-normalization
+ M AGENTS.md
+ M ARCHITECTURE.md
+ M DECISIONS.md
+ M OPERATIONS.md
+ M README.md
+ M RUNBOOK.md
+ M SECURITY.md
+ M TESTING.md
+ M UPGRADE.md
+R  agent_os/classify.py -> agent_os/core/classifier.py
+R  agent_os/resolver.py -> agent_os/core/resolver.py
+RM agent_os/router.py -> agent_os/core/router.py
+RM agent_os/plugin/__init__.py -> agent_os/integrations/hermes/plugin/__init__.py
+R  agent_os/plugin/plugin.yaml -> agent_os/integrations/hermes/plugin/plugin.yaml
+R  agent_os/lifecycle.py -> agent_os/lifecycle/sync.py
+RM agent_os/generate.py -> agent_os/registry/generate.py
+R  agent_os/ingest_github.py -> agent_os/registry/ingest/github.py
+R  agent_os/inventory.py -> agent_os/registry/inventory.py
+R  agent_os/schema.py -> agent_os/registry/schema.py
+ M agent_os/registry/skills.lock.json
+ M deploy/adaptation/hermes-eos-adaptation.service
+ M deploy/analytics/hermes-eos-analytics.service
+ M deploy/evaluation/hermes-eos-evaluate.service
+ M deploy/experiments/hermes-eos-experiments.service
+ M deploy/performance/hermes-eos-performance.service
+R  docs/ADAPTATION_APPROVAL_BOUNDARY.md -> docs/adaptation/ADAPTATION_APPROVAL_BOUNDARY.md
+R  docs/ADAPTATION_AUDIT.md -> docs/adaptation/ADAPTATION_AUDIT.md
+R  docs/ADAPTATION_CANARY.md -> docs/adaptation/ADAPTATION_CANARY.md
+R  docs/ADAPTATION_CAPABILITY_MATRIX.md -> docs/adaptation/ADAPTATION_CAPABILITY_MATRIX.md
+R  docs/ADAPTATION_DATABASE.md -> docs/adaptation/ADAPTATION_DATABASE.md
+R  docs/ADAPTATION_GUARDRAILS.md -> docs/adaptation/ADAPTATION_GUARDRAILS.md
+RM docs/ADAPTATION_OPERATIONS.md -> docs/adaptation/ADAPTATION_OPERATIONS.md
+R  docs/ADAPTATION_POLICY_MODEL.md -> docs/adaptation/ADAPTATION_POLICY_MODEL.md
+R  docs/ADAPTATION_RECOMMENDATIONS.md -> docs/adaptation/ADAPTATION_RECOMMENDATIONS.md
+RM docs/ADAPTATION_RECOVERY.md -> docs/adaptation/ADAPTATION_RECOVERY.md
+R  docs/ADAPTATION_ROLLBACK.md -> docs/adaptation/ADAPTATION_ROLLBACK.md
+R  docs/ADAPTATION_ROLLOUT.md -> docs/adaptation/ADAPTATION_ROLLOUT.md
+R  docs/ADAPTATION_SECURITY.md -> docs/adaptation/ADAPTATION_SECURITY.md
+R  docs/ADAPTATION_SEMANTICS.md -> docs/adaptation/ADAPTATION_SEMANTICS.md
+R  docs/ADAPTATION_SHADOW.md -> docs/adaptation/ADAPTATION_SHADOW.md
+R  docs/ADAPTATION_VALIDITY.md -> docs/adaptation/ADAPTATION_VALIDITY.md
+RM docs/CAPABILITY_CONTROL_PLANE.md -> docs/agent-os/CAPABILITY_CONTROL_PLANE.md
+RM docs/HERMES_AGENT_OS.md -> docs/agent-os/HERMES_AGENT_OS.md
+R  docs/AGENT_OS_ROLLBACK.md -> docs/agent-os/operations/AGENT_OS_ROLLBACK.md
+R  docs/PROFILE_TOPOLOGY.md -> docs/agent-os/profiles/PROFILE_TOPOLOGY.md
+RM docs/SKILL_ROUTING.md -> docs/agent-os/skills/SKILL_ROUTING.md
+R  docs/SKILL_SOURCE_POLICY.md -> docs/agent-os/skills/SKILL_SOURCE_POLICY.md
+R  docs/SKILL_TRUST_MODEL.md -> docs/agent-os/skills/SKILL_TRUST_MODEL.md
+RM docs/ANALYTICS_BACKFILL.md -> docs/analytics/ANALYTICS_BACKFILL.md
+RM docs/ANALYTICS_DATABASE.md -> docs/analytics/ANALYTICS_DATABASE.md
+RM docs/ANALYTICS_DATA_QUALITY.md -> docs/analytics/ANALYTICS_DATA_QUALITY.md
+RM docs/ANALYTICS_MATERIALIZATION.md -> docs/analytics/ANALYTICS_MATERIALIZATION.md
+RM docs/ANALYTICS_OPERATIONS.md -> docs/analytics/ANALYTICS_OPERATIONS.md
+RM docs/ANALYTICS_RECOVERY.md -> docs/analytics/ANALYTICS_RECOVERY.md
+R  docs/ANALYTICS_SOURCE_CAPABILITIES.md -> docs/analytics/ANALYTICS_SOURCE_CAPABILITIES.md
+RM docs/ADR-HERMES-AGENT-OS.md -> docs/architecture/decisions/ADR-HERMES-AGENT-OS.md
+R  docs/HERMES_HOME_AUTHORITY_MAP.md -> docs/architecture/filesystem/HERMES_HOME_AUTHORITY_MAP.md
+R  docs/EVALUATION_ARTIFACTS.md -> docs/evaluation/EVALUATION_ARTIFACTS.md
+R  docs/EVALUATION_BASELINES.md -> docs/evaluation/EVALUATION_BASELINES.md
+R  docs/EVALUATION_CAPABILITY_MATRIX.md -> docs/evaluation/EVALUATION_CAPABILITY_MATRIX.md
+RM docs/EVALUATION_DATABASE.md -> docs/evaluation/EVALUATION_DATABASE.md
+RM docs/EVALUATION_DATA_QUALITY.md -> docs/evaluation/EVALUATION_DATA_QUALITY.md
+R  docs/EVALUATION_EVIDENCE_MODEL.md -> docs/evaluation/EVALUATION_EVIDENCE_MODEL.md
+RM docs/EVALUATION_OPERATIONS.md -> docs/evaluation/EVALUATION_OPERATIONS.md
+R  docs/EVALUATION_PROFILES.md -> docs/evaluation/EVALUATION_PROFILES.md
+RM docs/EVALUATION_RECOVERY.md -> docs/evaluation/EVALUATION_RECOVERY.md
+RM docs/EVALUATION_RUNNER.md -> docs/evaluation/EVALUATION_RUNNER.md
+R  docs/EVALUATION_SANDBOX.md -> docs/evaluation/EVALUATION_SANDBOX.md
+R  docs/EVALUATION_SECURITY.md -> docs/evaluation/EVALUATION_SECURITY.md
+R  docs/EVALUATION_SEMANTICS.md -> docs/evaluation/EVALUATION_SEMANTICS.md
+R  docs/EVALUATOR_DICTIONARY.md -> docs/evaluation/EVALUATOR_DICTIONARY.md
+R  docs/EXPERIMENT_ANALYSIS.md -> docs/experiments/EXPERIMENT_ANALYSIS.md
+R  docs/EXPERIMENT_ASSIGNMENT.md -> docs/experiments/EXPERIMENT_ASSIGNMENT.md
+R  docs/EXPERIMENT_BENCHMARKS.md -> docs/experiments/EXPERIMENT_BENCHMARKS.md
+R  docs/EXPERIMENT_CAPABILITY_MATRIX.md -> docs/experiments/EXPERIMENT_CAPABILITY_MATRIX.md
+R  docs/EXPERIMENT_CONCLUSIONS.md -> docs/experiments/EXPERIMENT_CONCLUSIONS.md
+R  docs/EXPERIMENT_CONFIGURATION_IDENTITY.md -> docs/experiments/EXPERIMENT_CONFIGURATION_IDENTITY.md
+RM docs/EXPERIMENT_DATABASE.md -> docs/experiments/EXPERIMENT_DATABASE.md
+R  docs/EXPERIMENT_MEMORY_ISOLATION.md -> docs/experiments/EXPERIMENT_MEMORY_ISOLATION.md
+R  docs/EXPERIMENT_MISSINGNESS.md -> docs/experiments/EXPERIMENT_MISSINGNESS.md
+RM docs/EXPERIMENT_OPERATIONS.md -> docs/experiments/EXPERIMENT_OPERATIONS.md
+R  docs/EXPERIMENT_PROTOCOL.md -> docs/experiments/EXPERIMENT_PROTOCOL.md
+RM docs/EXPERIMENT_RECOVERY.md -> docs/experiments/EXPERIMENT_RECOVERY.md
+RM docs/EXPERIMENT_SECURITY.md -> docs/experiments/EXPERIMENT_SECURITY.md
+R  docs/EXPERIMENT_SEMANTICS.md -> docs/experiments/EXPERIMENT_SEMANTICS.md
+R  docs/EXPERIMENT_VALIDITY.md -> docs/experiments/EXPERIMENT_VALIDITY.md
+RM docs/OBSERVABILITY_INFRASTRUCTURE.md -> docs/observability/OBSERVABILITY_INFRASTRUCTURE.md
+R  docs/OTEL_CORRELATION.md -> docs/observability/OTEL_CORRELATION.md
+R  docs/OTEL_FIELD_MAPPING.md -> docs/observability/OTEL_FIELD_MAPPING.md
+R  docs/OTEL_SCHEMA.md -> docs/observability/OTEL_SCHEMA.md
+R  docs/PERFORMANCE_ATTRIBUTION.md -> docs/observability/PERFORMANCE_ATTRIBUTION.md
+R  docs/PERFORMANCE_COHORTS.md -> docs/observability/PERFORMANCE_COHORTS.md
+R  docs/PERFORMANCE_COMPARABILITY.md -> docs/observability/PERFORMANCE_COMPARABILITY.md
+RM docs/PERFORMANCE_DATABASE.md -> docs/observability/PERFORMANCE_DATABASE.md
+RM docs/PERFORMANCE_DATA_QUALITY.md -> docs/observability/PERFORMANCE_DATA_QUALITY.md
+R  docs/PERFORMANCE_EVIDENCE_TIERS.md -> docs/observability/PERFORMANCE_EVIDENCE_TIERS.md
+RM docs/PERFORMANCE_METRIC_DICTIONARY.md -> docs/observability/PERFORMANCE_METRIC_DICTIONARY.md
+RM docs/PERFORMANCE_OPERATIONS.md -> docs/observability/PERFORMANCE_OPERATIONS.md
+RM docs/PERFORMANCE_RECOVERY.md -> docs/observability/PERFORMANCE_RECOVERY.md
+RM docs/PERFORMANCE_SECURITY.md -> docs/observability/PERFORMANCE_SECURITY.md
+R  docs/PERFORMANCE_SEMANTICS.md -> docs/observability/PERFORMANCE_SEMANTICS.md
+R  docs/PERFORMANCE_SOURCE_CAPABILITIES.md -> docs/observability/PERFORMANCE_SOURCE_CAPABILITIES.md
+R  docs/PERFORMANCE_STATISTICS.md -> docs/observability/PERFORMANCE_STATISTICS.md
+RM docs/HERMES_ACTUATION_SEAM.md -> docs/operations/HERMES_ACTUATION_SEAM.md
+RM docs/HERMES_ACTUATION_UPSTREAM_PATCH.md -> docs/operations/HERMES_ACTUATION_UPSTREAM_PATCH.md
+RM docs/HERMES_HOME_OPERATIONS.md -> docs/operations/HERMES_HOME_OPERATIONS.md
+R  docs/HERMES_LIVE_PATCH.md -> docs/operations/HERMES_LIVE_PATCH.md
+R  docs/HERMES_OTEL_UPSTREAM_AUDIT.md -> docs/operations/HERMES_OTEL_UPSTREAM_AUDIT.md
+R  docs/HERMES_UPSTREAM_DELTA_AUDIT.md -> docs/operations/HERMES_UPSTREAM_DELTA_AUDIT.md
+R  docs/HERMES_UPSTREAM_PR_READY.md -> docs/operations/HERMES_UPSTREAM_PR_READY.md
+R  docs/MEMORY_ISOLATION.md -> docs/operations/MEMORY_ISOLATION.md
+R  docs/MEMORY_STATE_INVENTORY.md -> docs/operations/MEMORY_STATE_INVENTORY.md
+RM docs/PRODUCTION_ADAPTATION_READINESS.md -> docs/operations/PRODUCTION_ADAPTATION_READINESS.md
+RM docs/PRODUCTION_APPROVAL_PROTOCOL.md -> docs/operations/PRODUCTION_APPROVAL_PROTOCOL.md
+R  docs/PRODUCTION_AUTHORITY_THREAT_MODEL.md -> docs/operations/PRODUCTION_AUTHORITY_THREAT_MODEL.md
+R  docs/PRODUCTION_CANARY_PREREQUISITES.md -> docs/operations/PRODUCTION_CANARY_PREREQUISITES.md
+RM docs/PRODUCTION_CANARY_RESULT.md -> docs/operations/PRODUCTION_CANARY_RESULT.md
+R  docs/PRODUCTION_OPERATOR_HANDOFF.md -> docs/operations/PRODUCTION_OPERATOR_HANDOFF.md
+RM docs/PRODUCTION_ROLLBACK_RESULT.md -> docs/operations/PRODUCTION_ROLLBACK_RESULT.md
+RM docs/PRODUCTION_SHADOW_RESULT.md -> docs/operations/PRODUCTION_SHADOW_RESULT.md
+RM docs/HASH_LOCKED_DEPLOY_TOOL.md -> docs/operations/deployment/HASH_LOCKED_DEPLOY_TOOL.md
+R  docs/LICENSE_ADOPTION_REPORT.md -> docs/reference/LICENSE_ADOPTION_REPORT.md
+RM docs/LIVE_HERMES_GATEWAY_DEPLOYMENT.md -> docs/reference/LIVE_HERMES_GATEWAY_DEPLOYMENT.md
+RM docs/METRIC_DICTIONARY.md -> docs/reference/METRIC_DICTIONARY.md
+R  docs/OPERATOR_AUTHORITY_ARCHITECTURE.md -> docs/reference/OPERATOR_AUTHORITY_ARCHITECTURE.md
+RM docs/OPERATOR_BOOTSTRAP.md -> docs/reference/OPERATOR_BOOTSTRAP.md
+RM docs/OPERATOR_BOUNDARY_VERIFICATION.md -> docs/reference/OPERATOR_BOUNDARY_VERIFICATION.md
+R  docs/OUTCOME_SEMANTICS.md -> docs/reference/OUTCOME_SEMANTICS.md
+RM docs/PAR_ENTRY_CHECK.md -> docs/reference/PAR_ENTRY_CHECK.md
+R  docs/PHOENIX_PIN.md -> docs/reference/PHOENIX_PIN.md
+RM docs/PLUGIN_VERIFICATION_MATRIX.md -> docs/reference/PLUGIN_VERIFICATION_MATRIX.md
+RM docs/REAL_CAUSAL_EXPERIMENT_RESULT.md -> docs/reference/REAL_CAUSAL_EXPERIMENT_RESULT.md
+RM docs/REAL_EXPERIMENT_BUDGET.md -> docs/reference/REAL_EXPERIMENT_BUDGET.md
+R  docs/REAL_EXPERIMENT_PLAN.md -> docs/reference/REAL_EXPERIMENT_PLAN.md
+R  docs/REAL_HERMES_BENCHMARK.md -> docs/reference/REAL_HERMES_BENCHMARK.md
+RM docs/SECURE_OPERATOR_BOUNDARY_RESULT.md -> docs/reference/SECURE_OPERATOR_BOUNDARY_RESULT.md
+R  docs/TRACE_PERSISTENCE_TEST.md -> docs/reference/TRACE_PERSISTENCE_TEST.md
+RM docs/AGENT_OS_ACCEPTANCE_REPORT.md -> docs/reports/agent-os/AGENT_OS_ACCEPTANCE_REPORT.md
+RM docs/AGENT_OS_BASELINE.md -> docs/reports/agent-os/AGENT_OS_BASELINE.md
+R  docs/AGENT_OS_MIGRATION_REPORT.md -> docs/reports/agent-os/AGENT_OS_MIGRATION_REPORT.md
+RM docs/PAG1_CAUSAL_EVIDENCE.md -> docs/reports/pag/PAG1_CAUSAL_EVIDENCE.md
+RM docs/PAG1_ENTRY_CHECK.md -> docs/reports/pag/PAG1_ENTRY_CHECK.md
+R  docs/PAG1_REAL_EXPERIMENT_PREFLIGHT.md -> docs/reports/pag/PAG1_REAL_EXPERIMENT_PREFLIGHT.md
+RM PAG1_REPORT.md -> docs/reports/pag/PAG1_REPORT.md
+RM docs/PAG2_ENTRY_CHECK.md -> docs/reports/pag/PAG2_ENTRY_CHECK.md
+R  docs/PAG2_PREREQUISITES.md -> docs/reports/pag/PAG2_PREREQUISITES.md
+RM docs/PAG2_PROPOSED_PLAN.md -> docs/reports/pag/PAG2_PROPOSED_PLAN.md
+RM PAG2_REPORT.md -> docs/reports/pag/PAG2_REPORT.md
+RM PHASE1_REPORT.md -> docs/reports/phases/PHASE1_REPORT.md
+RM docs/PHASE2_ENTRY_CHECK.md -> docs/reports/phases/PHASE2_ENTRY_CHECK.md
+R  PHASE2_REPORT.md -> docs/reports/phases/PHASE2_REPORT.md
+R  docs/PHASE3_ENTRY_CHECK.md -> docs/reports/phases/PHASE3_ENTRY_CHECK.md
+R  docs/PHASE3_PREREQUISITES.md -> docs/reports/phases/PHASE3_PREREQUISITES.md
+RM PHASE3_REPORT.md -> docs/reports/phases/PHASE3_REPORT.md
+RM docs/PHASE4_ENTRY_CHECK.md -> docs/reports/phases/PHASE4_ENTRY_CHECK.md
+R  docs/PHASE4_PREREQUISITES.md -> docs/reports/phases/PHASE4_PREREQUISITES.md
+R  docs/PHASE4_PROPOSED_PLAN.md -> docs/reports/phases/PHASE4_PROPOSED_PLAN.md
+RM PHASE4_REPORT.md -> docs/reports/phases/PHASE4_REPORT.md
+RM docs/PHASE5_ENTRY_CHECK.md -> docs/reports/phases/PHASE5_ENTRY_CHECK.md
+R  docs/PHASE5_PREREQUISITES.md -> docs/reports/phases/PHASE5_PREREQUISITES.md
+R  docs/PHASE5_PROPOSED_PLAN.md -> docs/reports/phases/PHASE5_PROPOSED_PLAN.md
+RM PHASE5_REPORT.md -> docs/reports/phases/PHASE5_REPORT.md
+RM docs/PHASE6_ENTRY_CHECK.md -> docs/reports/phases/PHASE6_ENTRY_CHECK.md
+R  docs/PHASE6_PREREQUISITES.md -> docs/reports/phases/PHASE6_PREREQUISITES.md
+R  docs/PHASE6_PROPOSED_PLAN.md -> docs/reports/phases/PHASE6_PROPOSED_PLAN.md
+RM PHASE6_REPORT.md -> docs/reports/phases/PHASE6_REPORT.md
+RM docs/PHASE7_ENTRY_CHECK.md -> docs/reports/phases/PHASE7_ENTRY_CHECK.md
+R  docs/PHASE7_PREREQUISITES.md -> docs/reports/phases/PHASE7_PREREQUISITES.md
+R  docs/PHASE7_PROPOSED_PLAN.md -> docs/reports/phases/PHASE7_PROPOSED_PLAN.md
+RM PHASE7_REPORT.md -> docs/reports/phases/PHASE7_REPORT.md
+RM PRODUCTION_READINESS_REPORT.md -> docs/reports/production/PRODUCTION_READINESS_REPORT.md
+RM scripts/adapt.sh -> scripts/adaptation/adapt.sh
+RM scripts/adaptation-fail-open-test.sh -> scripts/adaptation/adaptation-fail-open-test.sh
+RM scripts/adaptation-materialize.sh -> scripts/adaptation/adaptation-materialize.sh
+RM scripts/adaptation-privacy-test.sh -> scripts/adaptation/adaptation-privacy-test.sh
+RM scripts/agent-os-create-bundles.sh -> scripts/agent-os/agent-os-create-bundles.sh
+RM scripts/agent-os-hub-ingest.py -> scripts/agent-os/agent-os-hub-ingest.py
+RM scripts/agent-os-install-t2.sh -> scripts/agent-os/agent-os-install-t2.sh
+RM scripts/agent-os-verify.sh -> scripts/agent-os/agent-os-verify.sh
+RM scripts/install-agent-os-plugin.sh -> scripts/agent-os/install-agent-os-plugin.sh
+R  scripts/rollback-agent-os.sh -> scripts/agent-os/rollback-agent-os.sh
+RM scripts/analytics-db-roles.sh -> scripts/analytics/analytics-db-roles.sh
+RM scripts/analytics-explain.sh -> scripts/analytics/analytics-explain.sh
+RM scripts/analytics-fail-open-test.sh -> scripts/analytics/analytics-fail-open-test.sh
+RM scripts/analytics-materialize.sh -> scripts/analytics/analytics-materialize.sh
+RM scripts/analytics-migrate.sh -> scripts/analytics/analytics-migrate.sh
+RM scripts/analytics-privacy-test.sh -> scripts/analytics/analytics-privacy-test.sh
+RM scripts/control-db-init.sh -> scripts/database/control-db-init.sh
+RM scripts/control-db-migrate.sh -> scripts/database/control-db-migrate.sh
+RM scripts/control-db-roles.sh -> scripts/database/control-db-roles.sh
+RM scripts/h1-cutover.sh -> scripts/deployment/h1-cutover.sh
+RM scripts/h1-postcheck.sh -> scripts/deployment/h1-postcheck.sh
+R  scripts/h1-preflight-ssh.sh -> scripts/deployment/h1-preflight-ssh.sh
+RM scripts/h1-preflight.sh -> scripts/deployment/h1-preflight.sh
+RM scripts/h2-present-budget.sh -> scripts/deployment/h2-present-budget.sh
+RM scripts/h2-write-authorization.sh -> scripts/deployment/h2-write-authorization.sh
+RM scripts/h3-present-deploy.sh -> scripts/deployment/h3-present-deploy.sh
+RM scripts/hermes-eos-deploy-tool.py -> scripts/deployment/hermes-eos-deploy-tool.py
+RM scripts/install-plugin.sh -> scripts/deployment/install-plugin.sh
+RM scripts/pag2-as-runtime.sh -> scripts/deployment/pag2-as-runtime.sh
+RM scripts/pag2-backup.sh -> scripts/deployment/pag2-backup.sh
+R  scripts/pag2-bind-canary.sh -> scripts/deployment/pag2-bind-canary.sh
+RM scripts/pag2-canary.sh -> scripts/deployment/pag2-canary.sh
+RM scripts/pag2-fix-actuator-runtime.sh -> scripts/deployment/pag2-fix-actuator-runtime.sh
+R  scripts/pag2-inspect-ubuntu.sh -> scripts/deployment/pag2-inspect-ubuntu.sh
+RM scripts/pag2-present-approval-a.sh -> scripts/deployment/pag2-present-approval-a.sh
+RM scripts/pag2-restore-rehearsal.sh -> scripts/deployment/pag2-restore-rehearsal.sh
+R  scripts/pag2-rollback-persist.sh -> scripts/deployment/pag2-rollback-persist.sh
+RM scripts/pag2-rollback.sh -> scripts/deployment/pag2-rollback.sh
+RM scripts/pag2-shadow.sh -> scripts/deployment/pag2-shadow.sh
+RM scripts/pag2-status.sh -> scripts/deployment/pag2-status.sh
+RM scripts/uninstall-plugin.sh -> scripts/deployment/uninstall-plugin.sh
+RM scripts/evaluate.sh -> scripts/evaluation/evaluate.sh
+RM scripts/evaluation-canary.sh -> scripts/evaluation/evaluation-canary.sh
+RM scripts/evaluation-fail-open-test.sh -> scripts/evaluation/evaluation-fail-open-test.sh
+RM scripts/evaluation-privacy-test.sh -> scripts/evaluation/evaluation-privacy-test.sh
+RM scripts/evaluation-sandbox-test.sh -> scripts/evaluation/evaluation-sandbox-test.sh
+RM scripts/experiment-fail-open-test.sh -> scripts/experiments/experiment-fail-open-test.sh
+RM scripts/experiment-materialize.sh -> scripts/experiments/experiment-materialize.sh
+RM scripts/experiment-privacy-test.sh -> scripts/experiments/experiment-privacy-test.sh
+RM scripts/experiment.sh -> scripts/experiments/experiment.sh
+RM scripts/capture-h1-baseline.sh -> scripts/maintenance/capture-h1-baseline.sh
+RM scripts/capture-platform-overview.sh -> scripts/maintenance/capture-platform-overview.sh
+RM scripts/check-vendor-provenance.sh -> scripts/maintenance/check-vendor-provenance.sh
+RM scripts/clone-upstreams.sh -> scripts/maintenance/clone-upstreams.sh
+RM scripts/create-fixture-repo.sh -> scripts/maintenance/create-fixture-repo.sh
+R  scripts/dashboard-request.py -> scripts/maintenance/dashboard-request.py
+RM scripts/rescan-dashboard.sh -> scripts/maintenance/rescan-dashboard.sh
+RM scripts/observability-db-backup.sh -> scripts/observability/observability-db-backup.sh
+R  scripts/observability-db-verify.sh -> scripts/observability/observability-db-verify.sh
+RM scripts/otel-fail-open-test.sh -> scripts/observability/otel-fail-open-test.sh
+R  scripts/otel-persist.py -> scripts/observability/otel-persist.py
+R  scripts/otel-phoenix-e2e.py -> scripts/observability/otel-phoenix-e2e.py
+RM scripts/otel-privacy-test.sh -> scripts/observability/otel-privacy-test.sh
+RM scripts/otel-smoke-test.sh -> scripts/observability/otel-smoke-test.sh
+RM scripts/performance-fail-open-test.sh -> scripts/observability/performance-fail-open-test.sh
+RM scripts/performance-materialize.sh -> scripts/observability/performance-materialize.sh
+RM scripts/performance-privacy-test.sh -> scripts/observability/performance-privacy-test.sh
+RM scripts/restart-observability.sh -> scripts/observability/restart-observability.sh
+RM scripts/start-observability.sh -> scripts/observability/start-observability.sh
+RM scripts/stop-observability.sh -> scripts/observability/stop-observability.sh
+RM scripts/preflight-plugins.py -> scripts/verification/preflight-plugins.py
+RM scripts/snapshot-boundaries.sh -> scripts/verification/snapshot-boundaries.sh
+RM scripts/verify-adaptation-data.sh -> scripts/verification/verify-adaptation-data.sh
+RM scripts/verify-analytics-data.sh -> scripts/verification/verify-analytics-data.sh
+RM scripts/verify-evaluation-data.sh -> scripts/verification/verify-evaluation-data.sh
+RM scripts/verify-experiment-data.sh -> scripts/verification/verify-experiment-data.sh
+RM scripts/verify-observability.sh -> scripts/verification/verify-observability.sh
+RM scripts/verify-operator-boundary.sh -> scripts/verification/verify-operator-boundary.sh
+RM scripts/verify-pag1-data.sh -> scripts/verification/verify-pag1-data.sh
+RM scripts/verify-pag2-hardening.sh -> scripts/verification/verify-pag2-hardening.sh
+RM scripts/verify-performance-data.sh -> scripts/verification/verify-performance-data.sh
+RM scripts/verify-plugins.sh -> scripts/verification/verify-plugins.sh
+RM scripts/verify.sh -> scripts/verification/verify.sh
+ M tests/python/test_pag1.py
+ M tests/python/test_pag2.py
+?? agent_os/classify.py
+?? agent_os/core/__init__.py
+?? agent_os/generate.py
+?? agent_os/ingest_github.py
+?? agent_os/integrations/__init__.py
+?? agent_os/integrations/hermes/__init__.py
+?? agent_os/inventory.py
+?? agent_os/lifecycle/__init__.py
+?? agent_os/plugin/
+?? agent_os/registry/ingest/__init__.py
+?? agent_os/resolver.py
+?? agent_os/router.py
+?? agent_os/schema.py
+?? bin/
+?? docs/README.md
+?? docs/adaptation/README.md
+?? docs/agent-os/README.md
+?? docs/analytics/README.md
+?? docs/architecture/README.md
+?? docs/architecture/filesystem/README.md
+?? docs/architecture/filesystem/hermes-home-map.md
+?? docs/architecture/filesystem/repository-layout.md
+?? docs/architecture/filesystem/root-contract.md
+?? docs/evaluation/README.md
+?? docs/experiments/README.md
+?? docs/observability/README.md
+?? docs/operations/README.md
+?? docs/operations/migrations/
+?? docs/reference/README.md
+?? docs/reports/README.md
+?? docs/reports/agent-os/README.md
+?? docs/reports/pag/README.md
+?? docs/reports/phases/README.md
+?? docs/reports/production/README.md
+?? docs/security/
+?? migration/
+?? scripts/lib/
+?? scripts/migration/
+?? scripts/verification/layout-check.py
+?? tests/evidence/layout-migration/
+filesystem-normalization
+=== hermes root unusual remaining ===
+OUR_CATEGORY backups
+KEEP_LOG dashboard.log
+OUR_CATEGORY extensions
+KEEP_LOG gateway-starts.log
+KEEP_OTEL hermes_otel.yaml
+KEEP_HERMES_SCRIPTS scripts

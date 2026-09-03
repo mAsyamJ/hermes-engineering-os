@@ -1,0 +1,4697 @@
+version: 1
+generated_at: '2026-09-03T09:50:28.610481+00:00'
+phase: final-freeze
+moves_executed: true
+baseline_evidence: tests/evidence/layout-migration/baseline-20260903T081109Z
+checkpoint_branch: checkpoint/pre-filesystem-normalization
+checkpoint_commit: 97e59871605e144a62c4016aaead29cbc14c2ab5
+principles:
+- No moves until this manifest is frozen
+- Class A KEEP_FIXED never relocated for aesthetics
+- Prefer update consumers > config indirection > wrapper > symlink > bind mount
+- No SQLite/lock/socket/auth symlinks
+- migration/ is filesystem IA; migrations/ is SQL
+counts:
+  planned_moves: 247
+  class_B: 229
+  class_C: 18
+  compatibility_planned: 18
+  done: 244
+  deferred: 3
+  unverified: 0
+bin_entrypoints_to_create:
+- path: bin/hermes-eos-verify
+  implements: scripts/verification/verify.sh
+  source_today: scripts/verification/verify.sh
+- path: bin/agent-os-verify
+  implements: scripts/agent-os/agent-os-verify.sh
+  source_today: scripts/agent-os/agent-os-verify.sh
+- path: bin/agent-os-regenerate
+  implements: null
+  source_today: hermes agent-os regenerate / generate CLI
+- path: bin/agent-os-status
+  implements: null
+  source_today: status helper
+- path: bin/eos-layout-migrate
+  implements: scripts/migration/eos-layout-migrate.py
+  source_today: new
+entries:
+- old_path: /home/ubuntu/.hermes/.env.before-codex
+  new_path: /home/ubuntu/.hermes/backups/config/.env.before-codex
+  owner: hermes
+  classification: B
+  reason: Historical config/env backup
+  readers:
+  - operator
+  writers:
+  - hermes config
+  migration_method: mv_after_quiesce
+  compatibility: UPDATE_CONSUMERS_NONE_THEN_MOVE
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: mv back to HERMES_HOME root
+  status: done
+  public_entrypoint: null
+  category: GENERATED
+- old_path: /home/ubuntu/.hermes/audit
+  new_path: /home/ubuntu/.hermes/extensions/audit
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operator/Engineering audit scraps
+  readers:
+  - operator
+  writers:
+  - operator/hermes
+  migration_method: mv_after_quiesce
+  compatibility: UPDATE_CONSUMERS_THEN_MOVE
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - systemctl cat ExecStart uses bin/ or new path
+  rollback: mv back
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /home/ubuntu/.hermes/config.yaml.bak.20260811_140009
+  new_path: /home/ubuntu/.hermes/backups/config/config.yaml.bak.20260811_140009
+  owner: hermes
+  classification: B
+  reason: Historical config/env backup
+  readers:
+  - operator
+  writers:
+  - hermes config
+  migration_method: mv_after_quiesce
+  compatibility: UPDATE_CONSUMERS_NONE_THEN_MOVE
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: mv back to HERMES_HOME root
+  status: done
+  public_entrypoint: null
+  category: GENERATED
+- old_path: /home/ubuntu/.hermes/config.yaml.bak.20260817_101559
+  new_path: /home/ubuntu/.hermes/backups/config/config.yaml.bak.20260817_101559
+  owner: hermes
+  classification: B
+  reason: Historical config/env backup
+  readers:
+  - operator
+  writers:
+  - hermes config
+  migration_method: mv_after_quiesce
+  compatibility: UPDATE_CONSUMERS_NONE_THEN_MOVE
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: mv back to HERMES_HOME root
+  status: done
+  public_entrypoint: null
+  category: GENERATED
+- old_path: /home/ubuntu/.hermes/config.yaml.bak.20260817_101633
+  new_path: /home/ubuntu/.hermes/backups/config/config.yaml.bak.20260817_101633
+  owner: hermes
+  classification: B
+  reason: Historical config/env backup
+  readers:
+  - operator
+  writers:
+  - hermes config
+  migration_method: mv_after_quiesce
+  compatibility: UPDATE_CONSUMERS_NONE_THEN_MOVE
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: mv back to HERMES_HOME root
+  status: done
+  public_entrypoint: null
+  category: GENERATED
+- old_path: /home/ubuntu/.hermes/config.yaml.before-codex
+  new_path: /home/ubuntu/.hermes/backups/config/config.yaml.before-codex
+  owner: hermes
+  classification: B
+  reason: Historical config/env backup
+  readers:
+  - operator
+  writers:
+  - hermes config
+  migration_method: mv_after_quiesce
+  compatibility: UPDATE_CONSUMERS_NONE_THEN_MOVE
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: mv back to HERMES_HOME root
+  status: done
+  public_entrypoint: null
+  category: GENERATED
+- old_path: /home/ubuntu/.hermes/dashboard.log
+  new_path: /home/ubuntu/.hermes/logs/dashboard.log
+  owner: hermes
+  classification: C
+  reason: Root-level log; candidate to nest under logs/ after writer proof
+  readers:
+  - operator
+  writers:
+  - operator/hermes
+  migration_method: mv_after_quiesce
+  compatibility: INVESTIGATE_WRITER_THEN_CONFIG_OR_KEEP
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: mv back
+  status: deferred
+  public_entrypoint: null
+  category: UPSTREAM_CONFIGURABLE
+  deferral_reason: Hermes owns writer or Class-A/operator path kept at root by policy
+- old_path: /home/ubuntu/.hermes/gateway-starts.log
+  new_path: /home/ubuntu/.hermes/logs/gateway-starts.log
+  owner: hermes
+  classification: C
+  reason: Root-level log; candidate to nest under logs/ after writer proof
+  readers:
+  - operator
+  writers:
+  - operator/hermes
+  migration_method: mv_after_quiesce
+  compatibility: INVESTIGATE_WRITER_THEN_CONFIG_OR_KEEP
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: mv back
+  status: deferred
+  public_entrypoint: null
+  category: UPSTREAM_CONFIGURABLE
+  deferral_reason: Hermes owns writer or Class-A/operator path kept at root by policy
+- old_path: /home/ubuntu/.hermes/scripts
+  new_path: /home/ubuntu/.hermes/extensions/operator-scripts
+  owner: USER
+  classification: B
+  reason: Operator local scripts (retropick); not Hermes core
+  readers:
+  - operator
+  writers:
+  - operator/hermes
+  migration_method: mv_after_quiesce
+  compatibility: UPDATE_CONSUMERS_THEN_MOVE
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - systemctl cat ExecStart uses bin/ or new path
+  rollback: mv back
+  status: deferred
+  public_entrypoint: null
+  category: USER
+  deferral_reason: Hermes owns writer or Class-A/operator path kept at root by policy
+- old_path: /opt/hermes-engineering-os/PAG1_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/pag/PAG1_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Historical phase/PAG/production report — not root contract
+  readers:
+  - humans
+  - docs
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/PAG2_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/pag/PAG2_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Historical phase/PAG/production report — not root contract
+  readers:
+  - humans
+  - docs
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/PHASE1_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE1_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Historical phase/PAG/production report — not root contract
+  readers:
+  - humans
+  - docs
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/PHASE2_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE2_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Historical phase/PAG/production report — not root contract
+  readers:
+  - humans
+  - docs
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/PHASE3_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE3_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Historical phase/PAG/production report — not root contract
+  readers:
+  - humans
+  - docs
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/PHASE4_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE4_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Historical phase/PAG/production report — not root contract
+  readers:
+  - humans
+  - docs
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/PHASE5_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE5_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Historical phase/PAG/production report — not root contract
+  readers:
+  - humans
+  - docs
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/PHASE6_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE6_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Historical phase/PAG/production report — not root contract
+  readers:
+  - humans
+  - docs
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/PHASE7_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE7_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Historical phase/PAG/production report — not root contract
+  readers:
+  - humans
+  - docs
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/PRODUCTION_READINESS_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/production/PRODUCTION_READINESS_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Historical phase/PAG/production report — not root contract
+  readers:
+  - humans
+  - docs
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_APPROVAL_BOUNDARY.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_APPROVAL_BOUNDARY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_AUDIT.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_AUDIT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_CANARY.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_CANARY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_CAPABILITY_MATRIX.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_CAPABILITY_MATRIX.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_DATABASE.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_DATABASE.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_GUARDRAILS.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_GUARDRAILS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_OPERATIONS.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_OPERATIONS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_POLICY_MODEL.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_POLICY_MODEL.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_RECOMMENDATIONS.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_RECOMMENDATIONS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_RECOVERY.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_RECOVERY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_ROLLBACK.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_ROLLBACK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_ROLLOUT.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_ROLLOUT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_SECURITY.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_SECURITY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_SEMANTICS.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_SEMANTICS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_SHADOW.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_SHADOW.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADAPTATION_VALIDITY.md
+  new_path: /opt/hermes-engineering-os/docs/adaptation/ADAPTATION_VALIDITY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ADR-HERMES-AGENT-OS.md
+  new_path: /opt/hermes-engineering-os/docs/architecture/decisions/ADR-HERMES-AGENT-OS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/AGENT_OS_ACCEPTANCE_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/agent-os/AGENT_OS_ACCEPTANCE_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/AGENT_OS_BASELINE.md
+  new_path: /opt/hermes-engineering-os/docs/reports/agent-os/AGENT_OS_BASELINE.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/AGENT_OS_MIGRATION_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/agent-os/AGENT_OS_MIGRATION_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/AGENT_OS_ROLLBACK.md
+  new_path: /opt/hermes-engineering-os/docs/agent-os/operations/AGENT_OS_ROLLBACK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ANALYTICS_BACKFILL.md
+  new_path: /opt/hermes-engineering-os/docs/analytics/ANALYTICS_BACKFILL.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ANALYTICS_DATABASE.md
+  new_path: /opt/hermes-engineering-os/docs/analytics/ANALYTICS_DATABASE.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ANALYTICS_DATA_QUALITY.md
+  new_path: /opt/hermes-engineering-os/docs/analytics/ANALYTICS_DATA_QUALITY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ANALYTICS_MATERIALIZATION.md
+  new_path: /opt/hermes-engineering-os/docs/analytics/ANALYTICS_MATERIALIZATION.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ANALYTICS_OPERATIONS.md
+  new_path: /opt/hermes-engineering-os/docs/analytics/ANALYTICS_OPERATIONS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ANALYTICS_RECOVERY.md
+  new_path: /opt/hermes-engineering-os/docs/analytics/ANALYTICS_RECOVERY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/ANALYTICS_SOURCE_CAPABILITIES.md
+  new_path: /opt/hermes-engineering-os/docs/analytics/ANALYTICS_SOURCE_CAPABILITIES.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/CAPABILITY_CONTROL_PLANE.md
+  new_path: /opt/hermes-engineering-os/docs/agent-os/CAPABILITY_CONTROL_PLANE.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_ARTIFACTS.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_ARTIFACTS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_BASELINES.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_BASELINES.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_CAPABILITY_MATRIX.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_CAPABILITY_MATRIX.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_DATABASE.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_DATABASE.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_DATA_QUALITY.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_DATA_QUALITY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_EVIDENCE_MODEL.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_EVIDENCE_MODEL.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_OPERATIONS.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_OPERATIONS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_PROFILES.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_PROFILES.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_RECOVERY.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_RECOVERY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_RUNNER.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_RUNNER.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_SANDBOX.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_SANDBOX.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_SECURITY.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_SECURITY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATION_SEMANTICS.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATION_SEMANTICS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EVALUATOR_DICTIONARY.md
+  new_path: /opt/hermes-engineering-os/docs/evaluation/EVALUATOR_DICTIONARY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_ANALYSIS.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_ANALYSIS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_ASSIGNMENT.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_ASSIGNMENT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_BENCHMARKS.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_BENCHMARKS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_CAPABILITY_MATRIX.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_CAPABILITY_MATRIX.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_CONCLUSIONS.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_CONCLUSIONS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_CONFIGURATION_IDENTITY.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_CONFIGURATION_IDENTITY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_DATABASE.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_DATABASE.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_MEMORY_ISOLATION.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_MEMORY_ISOLATION.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_MISSINGNESS.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_MISSINGNESS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_OPERATIONS.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_OPERATIONS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_PROTOCOL.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_PROTOCOL.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_RECOVERY.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_RECOVERY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_SECURITY.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_SECURITY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_SEMANTICS.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_SEMANTICS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/EXPERIMENT_VALIDITY.md
+  new_path: /opt/hermes-engineering-os/docs/experiments/EXPERIMENT_VALIDITY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/HASH_LOCKED_DEPLOY_TOOL.md
+  new_path: /opt/hermes-engineering-os/docs/operations/deployment/HASH_LOCKED_DEPLOY_TOOL.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/HERMES_ACTUATION_SEAM.md
+  new_path: /opt/hermes-engineering-os/docs/operations/HERMES_ACTUATION_SEAM.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/HERMES_ACTUATION_UPSTREAM_PATCH.md
+  new_path: /opt/hermes-engineering-os/docs/operations/HERMES_ACTUATION_UPSTREAM_PATCH.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/HERMES_AGENT_OS.md
+  new_path: /opt/hermes-engineering-os/docs/agent-os/HERMES_AGENT_OS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/HERMES_HOME_AUTHORITY_MAP.md
+  new_path: /opt/hermes-engineering-os/docs/architecture/filesystem/HERMES_HOME_AUTHORITY_MAP.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/HERMES_HOME_OPERATIONS.md
+  new_path: /opt/hermes-engineering-os/docs/operations/HERMES_HOME_OPERATIONS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/HERMES_LIVE_PATCH.md
+  new_path: /opt/hermes-engineering-os/docs/operations/HERMES_LIVE_PATCH.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/HERMES_OTEL_UPSTREAM_AUDIT.md
+  new_path: /opt/hermes-engineering-os/docs/operations/HERMES_OTEL_UPSTREAM_AUDIT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/HERMES_UPSTREAM_DELTA_AUDIT.md
+  new_path: /opt/hermes-engineering-os/docs/operations/HERMES_UPSTREAM_DELTA_AUDIT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/HERMES_UPSTREAM_PR_READY.md
+  new_path: /opt/hermes-engineering-os/docs/operations/HERMES_UPSTREAM_PR_READY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/LICENSE_ADOPTION_REPORT.md
+  new_path: /opt/hermes-engineering-os/docs/reference/LICENSE_ADOPTION_REPORT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/LIVE_HERMES_GATEWAY_DEPLOYMENT.md
+  new_path: /opt/hermes-engineering-os/docs/reference/LIVE_HERMES_GATEWAY_DEPLOYMENT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/MEMORY_ISOLATION.md
+  new_path: /opt/hermes-engineering-os/docs/operations/MEMORY_ISOLATION.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/MEMORY_STATE_INVENTORY.md
+  new_path: /opt/hermes-engineering-os/docs/operations/MEMORY_STATE_INVENTORY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/METRIC_DICTIONARY.md
+  new_path: /opt/hermes-engineering-os/docs/reference/METRIC_DICTIONARY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/OBSERVABILITY_INFRASTRUCTURE.md
+  new_path: /opt/hermes-engineering-os/docs/observability/OBSERVABILITY_INFRASTRUCTURE.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/OPERATOR_AUTHORITY_ARCHITECTURE.md
+  new_path: /opt/hermes-engineering-os/docs/reference/OPERATOR_AUTHORITY_ARCHITECTURE.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/OPERATOR_BOOTSTRAP.md
+  new_path: /opt/hermes-engineering-os/docs/reference/OPERATOR_BOOTSTRAP.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/OPERATOR_BOUNDARY_VERIFICATION.md
+  new_path: /opt/hermes-engineering-os/docs/reference/OPERATOR_BOUNDARY_VERIFICATION.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/OTEL_CORRELATION.md
+  new_path: /opt/hermes-engineering-os/docs/observability/OTEL_CORRELATION.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/OTEL_FIELD_MAPPING.md
+  new_path: /opt/hermes-engineering-os/docs/observability/OTEL_FIELD_MAPPING.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/OTEL_SCHEMA.md
+  new_path: /opt/hermes-engineering-os/docs/observability/OTEL_SCHEMA.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/OUTCOME_SEMANTICS.md
+  new_path: /opt/hermes-engineering-os/docs/reference/OUTCOME_SEMANTICS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PAG1_CAUSAL_EVIDENCE.md
+  new_path: /opt/hermes-engineering-os/docs/reports/pag/PAG1_CAUSAL_EVIDENCE.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PAG1_ENTRY_CHECK.md
+  new_path: /opt/hermes-engineering-os/docs/reports/pag/PAG1_ENTRY_CHECK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PAG1_REAL_EXPERIMENT_PREFLIGHT.md
+  new_path: /opt/hermes-engineering-os/docs/reports/pag/PAG1_REAL_EXPERIMENT_PREFLIGHT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PAG2_ENTRY_CHECK.md
+  new_path: /opt/hermes-engineering-os/docs/reports/pag/PAG2_ENTRY_CHECK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PAG2_PREREQUISITES.md
+  new_path: /opt/hermes-engineering-os/docs/reports/pag/PAG2_PREREQUISITES.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PAG2_PROPOSED_PLAN.md
+  new_path: /opt/hermes-engineering-os/docs/reports/pag/PAG2_PROPOSED_PLAN.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PAR_ENTRY_CHECK.md
+  new_path: /opt/hermes-engineering-os/docs/reference/PAR_ENTRY_CHECK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_ATTRIBUTION.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_ATTRIBUTION.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_COHORTS.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_COHORTS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_COMPARABILITY.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_COMPARABILITY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_DATABASE.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_DATABASE.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_DATA_QUALITY.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_DATA_QUALITY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_EVIDENCE_TIERS.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_EVIDENCE_TIERS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_METRIC_DICTIONARY.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_METRIC_DICTIONARY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_OPERATIONS.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_OPERATIONS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_RECOVERY.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_RECOVERY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_SECURITY.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_SECURITY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_SEMANTICS.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_SEMANTICS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_SOURCE_CAPABILITIES.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_SOURCE_CAPABILITIES.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PERFORMANCE_STATISTICS.md
+  new_path: /opt/hermes-engineering-os/docs/observability/PERFORMANCE_STATISTICS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE2_ENTRY_CHECK.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE2_ENTRY_CHECK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE3_ENTRY_CHECK.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE3_ENTRY_CHECK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE3_PREREQUISITES.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE3_PREREQUISITES.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE4_ENTRY_CHECK.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE4_ENTRY_CHECK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE4_PREREQUISITES.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE4_PREREQUISITES.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE4_PROPOSED_PLAN.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE4_PROPOSED_PLAN.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE5_ENTRY_CHECK.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE5_ENTRY_CHECK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE5_PREREQUISITES.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE5_PREREQUISITES.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE5_PROPOSED_PLAN.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE5_PROPOSED_PLAN.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE6_ENTRY_CHECK.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE6_ENTRY_CHECK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE6_PREREQUISITES.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE6_PREREQUISITES.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE6_PROPOSED_PLAN.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE6_PROPOSED_PLAN.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE7_ENTRY_CHECK.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE7_ENTRY_CHECK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE7_PREREQUISITES.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE7_PREREQUISITES.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHASE7_PROPOSED_PLAN.md
+  new_path: /opt/hermes-engineering-os/docs/reports/phases/PHASE7_PROPOSED_PLAN.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PHOENIX_PIN.md
+  new_path: /opt/hermes-engineering-os/docs/reference/PHOENIX_PIN.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PLUGIN_VERIFICATION_MATRIX.md
+  new_path: /opt/hermes-engineering-os/docs/reference/PLUGIN_VERIFICATION_MATRIX.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PRODUCTION_ADAPTATION_READINESS.md
+  new_path: /opt/hermes-engineering-os/docs/operations/PRODUCTION_ADAPTATION_READINESS.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PRODUCTION_APPROVAL_PROTOCOL.md
+  new_path: /opt/hermes-engineering-os/docs/operations/PRODUCTION_APPROVAL_PROTOCOL.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PRODUCTION_AUTHORITY_THREAT_MODEL.md
+  new_path: /opt/hermes-engineering-os/docs/operations/PRODUCTION_AUTHORITY_THREAT_MODEL.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PRODUCTION_CANARY_PREREQUISITES.md
+  new_path: /opt/hermes-engineering-os/docs/operations/PRODUCTION_CANARY_PREREQUISITES.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PRODUCTION_CANARY_RESULT.md
+  new_path: /opt/hermes-engineering-os/docs/operations/PRODUCTION_CANARY_RESULT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PRODUCTION_OPERATOR_HANDOFF.md
+  new_path: /opt/hermes-engineering-os/docs/operations/PRODUCTION_OPERATOR_HANDOFF.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PRODUCTION_ROLLBACK_RESULT.md
+  new_path: /opt/hermes-engineering-os/docs/operations/PRODUCTION_ROLLBACK_RESULT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PRODUCTION_SHADOW_RESULT.md
+  new_path: /opt/hermes-engineering-os/docs/operations/PRODUCTION_SHADOW_RESULT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/PROFILE_TOPOLOGY.md
+  new_path: /opt/hermes-engineering-os/docs/agent-os/profiles/PROFILE_TOPOLOGY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/REAL_CAUSAL_EXPERIMENT_RESULT.md
+  new_path: /opt/hermes-engineering-os/docs/reference/REAL_CAUSAL_EXPERIMENT_RESULT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/REAL_EXPERIMENT_BUDGET.md
+  new_path: /opt/hermes-engineering-os/docs/reference/REAL_EXPERIMENT_BUDGET.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/REAL_EXPERIMENT_PLAN.md
+  new_path: /opt/hermes-engineering-os/docs/reference/REAL_EXPERIMENT_PLAN.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/REAL_HERMES_BENCHMARK.md
+  new_path: /opt/hermes-engineering-os/docs/reference/REAL_HERMES_BENCHMARK.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/SECURE_OPERATOR_BOUNDARY_RESULT.md
+  new_path: /opt/hermes-engineering-os/docs/reference/SECURE_OPERATOR_BOUNDARY_RESULT.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/SKILL_ROUTING.md
+  new_path: /opt/hermes-engineering-os/docs/agent-os/skills/SKILL_ROUTING.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/SKILL_SOURCE_POLICY.md
+  new_path: /opt/hermes-engineering-os/docs/agent-os/skills/SKILL_SOURCE_POLICY.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/SKILL_TRUST_MODEL.md
+  new_path: /opt/hermes-engineering-os/docs/agent-os/skills/SKILL_TRUST_MODEL.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/docs/TRACE_PERSISTENCE_TEST.md
+  new_path: /opt/hermes-engineering-os/docs/reference/TRACE_PERSISTENCE_TEST.md
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Documentation currently in flat docs/
+  readers:
+  - humans
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_markdown_links
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore links
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/adaptation/adapt.sh
+  new_path: /opt/hermes-engineering-os/scripts/adaptation/adapt.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/adaptation/adaptation-fail-open-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/adaptation/adaptation-fail-open-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/adaptation/adaptation-materialize.sh
+  new_path: /opt/hermes-engineering-os/scripts/adaptation/adaptation-materialize.sh
+  owner: ENGINEERING_OS
+  classification: C
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: STABLE_WRAPPER_THEN_UPDATE_SYSTEMD
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - systemctl cat ExecStart uses bin/ or new path
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: bin/eos-adaptation-materialize
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/adaptation/adaptation-privacy-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/adaptation/adaptation-privacy-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/agent-os/agent-os-create-bundles.sh
+  new_path: /opt/hermes-engineering-os/scripts/agent-os/agent-os-create-bundles.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/agent-os/agent-os-hub-ingest.py
+  new_path: /opt/hermes-engineering-os/scripts/agent-os/agent-os-hub-ingest.py
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/agent-os/agent-os-install-t2.sh
+  new_path: /opt/hermes-engineering-os/scripts/agent-os/agent-os-install-t2.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/agent-os/agent-os-verify.sh
+  new_path: /opt/hermes-engineering-os/scripts/agent-os/agent-os-verify.sh
+  owner: ENGINEERING_OS
+  classification: C
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: STABLE_WRAPPER_THEN_UPDATE_SYSTEMD
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: bin/agent-os-verify
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/analytics/analytics-db-roles.sh
+  new_path: /opt/hermes-engineering-os/scripts/analytics/analytics-db-roles.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/analytics/analytics-explain.sh
+  new_path: /opt/hermes-engineering-os/scripts/analytics/analytics-explain.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/analytics/analytics-fail-open-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/analytics/analytics-fail-open-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/analytics/analytics-materialize.sh
+  new_path: /opt/hermes-engineering-os/scripts/analytics/analytics-materialize.sh
+  owner: ENGINEERING_OS
+  classification: C
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: STABLE_WRAPPER_THEN_UPDATE_SYSTEMD
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - systemctl cat ExecStart uses bin/ or new path
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: bin/eos-analytics-materialize
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/analytics/analytics-migrate.sh
+  new_path: /opt/hermes-engineering-os/scripts/analytics/analytics-migrate.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/analytics/analytics-privacy-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/analytics/analytics-privacy-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/maintenance/capture-h1-baseline.sh
+  new_path: /opt/hermes-engineering-os/scripts/maintenance/capture-h1-baseline.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/maintenance/capture-platform-overview.sh
+  new_path: /opt/hermes-engineering-os/scripts/maintenance/capture-platform-overview.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/maintenance/check-vendor-provenance.sh
+  new_path: /opt/hermes-engineering-os/scripts/maintenance/check-vendor-provenance.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/maintenance/clone-upstreams.sh
+  new_path: /opt/hermes-engineering-os/scripts/maintenance/clone-upstreams.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/database/control-db-init.sh
+  new_path: /opt/hermes-engineering-os/scripts/database/control-db-init.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/database/control-db-migrate.sh
+  new_path: /opt/hermes-engineering-os/scripts/database/control-db-migrate.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/database/control-db-roles.sh
+  new_path: /opt/hermes-engineering-os/scripts/database/control-db-roles.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/maintenance/create-fixture-repo.sh
+  new_path: /opt/hermes-engineering-os/scripts/maintenance/create-fixture-repo.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/maintenance/dashboard-request.py
+  new_path: /opt/hermes-engineering-os/scripts/maintenance/dashboard-request.py
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/evaluation/evaluate.sh
+  new_path: /opt/hermes-engineering-os/scripts/evaluation/evaluate.sh
+  owner: ENGINEERING_OS
+  classification: C
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: STABLE_WRAPPER_THEN_UPDATE_SYSTEMD
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - systemctl cat ExecStart uses bin/ or new path
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: bin/eos-evaluate
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/evaluation/evaluation-canary.sh
+  new_path: /opt/hermes-engineering-os/scripts/evaluation/evaluation-canary.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/evaluation/evaluation-fail-open-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/evaluation/evaluation-fail-open-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/evaluation/evaluation-privacy-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/evaluation/evaluation-privacy-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/evaluation/evaluation-sandbox-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/evaluation/evaluation-sandbox-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/experiments/experiment-fail-open-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/experiments/experiment-fail-open-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/experiments/experiment-materialize.sh
+  new_path: /opt/hermes-engineering-os/scripts/experiments/experiment-materialize.sh
+  owner: ENGINEERING_OS
+  classification: C
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: STABLE_WRAPPER_THEN_UPDATE_SYSTEMD
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - systemctl cat ExecStart uses bin/ or new path
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: bin/eos-experiments-materialize
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/experiments/experiment-privacy-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/experiments/experiment-privacy-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/experiments/experiment.sh
+  new_path: /opt/hermes-engineering-os/scripts/experiments/experiment.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/h1-cutover.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/h1-cutover.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/h1-postcheck.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/h1-postcheck.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/h1-preflight-ssh.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/h1-preflight-ssh.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/h1-preflight.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/h1-preflight.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/h2-present-budget.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/h2-present-budget.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/h2-write-authorization.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/h2-write-authorization.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/h3-present-deploy.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/h3-present-deploy.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/hermes-eos-deploy-tool.py
+  new_path: /opt/hermes-engineering-os/scripts/deployment/hermes-eos-deploy-tool.py
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/agent-os/install-agent-os-plugin.sh
+  new_path: /opt/hermes-engineering-os/scripts/agent-os/install-agent-os-plugin.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/install-plugin.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/install-plugin.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/observability-db-backup.sh
+  new_path: /opt/hermes-engineering-os/scripts/observability/observability-db-backup.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/observability-db-verify.sh
+  new_path: /opt/hermes-engineering-os/scripts/observability/observability-db-verify.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/otel-fail-open-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/observability/otel-fail-open-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/otel-persist.py
+  new_path: /opt/hermes-engineering-os/scripts/observability/otel-persist.py
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/otel-phoenix-e2e.py
+  new_path: /opt/hermes-engineering-os/scripts/observability/otel-phoenix-e2e.py
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/otel-privacy-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/observability/otel-privacy-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/otel-smoke-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/observability/otel-smoke-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-as-runtime.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-as-runtime.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-backup.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-backup.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-bind-canary.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-bind-canary.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-canary.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-canary.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-fix-actuator-runtime.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-fix-actuator-runtime.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-inspect-ubuntu.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-inspect-ubuntu.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-present-approval-a.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-present-approval-a.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-restore-rehearsal.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-restore-rehearsal.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-rollback-persist.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-rollback-persist.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-rollback.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-rollback.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-shadow.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-shadow.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/pag2-status.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/pag2-status.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/performance-fail-open-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/observability/performance-fail-open-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/performance-materialize.sh
+  new_path: /opt/hermes-engineering-os/scripts/observability/performance-materialize.sh
+  owner: ENGINEERING_OS
+  classification: C
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: STABLE_WRAPPER_THEN_UPDATE_SYSTEMD
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - systemctl cat ExecStart uses bin/ or new path
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: bin/eos-performance-materialize
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/performance-privacy-test.sh
+  new_path: /opt/hermes-engineering-os/scripts/observability/performance-privacy-test.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/preflight-plugins.py
+  new_path: /opt/hermes-engineering-os/scripts/verification/preflight-plugins.py
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/maintenance/rescan-dashboard.sh
+  new_path: /opt/hermes-engineering-os/scripts/maintenance/rescan-dashboard.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/restart-observability.sh
+  new_path: /opt/hermes-engineering-os/scripts/observability/restart-observability.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/agent-os/rollback-agent-os.sh
+  new_path: /opt/hermes-engineering-os/scripts/agent-os/rollback-agent-os.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/snapshot-boundaries.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/snapshot-boundaries.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/start-observability.sh
+  new_path: /opt/hermes-engineering-os/scripts/observability/start-observability.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/observability/stop-observability.sh
+  new_path: /opt/hermes-engineering-os/scripts/observability/stop-observability.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/deployment/uninstall-plugin.sh
+  new_path: /opt/hermes-engineering-os/scripts/deployment/uninstall-plugin.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/verify-adaptation-data.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/verify-adaptation-data.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/verify-analytics-data.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/verify-analytics-data.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/verify-evaluation-data.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/verify-evaluation-data.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/verify-experiment-data.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/verify-experiment-data.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/verify-observability.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/verify-observability.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/verify-operator-boundary.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/verify-operator-boundary.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/verify-pag1-data.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/verify-pag1-data.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/verify-pag2-hardening.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/verify-pag2-hardening.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/verify-performance-data.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/verify-performance-data.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/verify-plugins.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/verify-plugins.sh
+  owner: ENGINEERING_OS
+  classification: B
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_update_callers
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: null
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/scripts/verification/verify.sh
+  new_path: /opt/hermes-engineering-os/scripts/verification/verify.sh
+  owner: ENGINEERING_OS
+  classification: C
+  reason: Operational/verification script currently flat under scripts/
+  readers:
+  - operators
+  - systemd
+  - ci
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: STABLE_WRAPPER_THEN_UPDATE_SYSTEMD
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + restore systemd
+  status: done
+  public_entrypoint: bin/hermes-eos-verify
+  category: ENGINEERING_OS
+- old_path: /opt/hermes-engineering-os/agent_os/classify.py
+  new_path: /opt/hermes-engineering-os/agent_os/core/classifier.py
+  owner: AGENT_OS
+  classification: C
+  reason: Agent OS module pending package-boundary normalization
+  readers:
+  - agent_os.plugin
+  - tests
+  - scripts
+  writers:
+  - humans
+  migration_method: git_mv_plus_reexport_shim
+  compatibility: git_mv_plus_reexport_shim_at_old_path
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - python -c import old and new modules
+  rollback: git mv reverse + remove shims
+  status: done
+  public_entrypoint: null
+  category: AGENT_OS
+- old_path: /opt/hermes-engineering-os/agent_os/router.py
+  new_path: /opt/hermes-engineering-os/agent_os/core/router.py
+  owner: AGENT_OS
+  classification: C
+  reason: Agent OS module pending package-boundary normalization
+  readers:
+  - agent_os.plugin
+  - tests
+  - scripts
+  writers:
+  - humans
+  migration_method: git_mv_plus_reexport_shim
+  compatibility: git_mv_plus_reexport_shim_at_old_path
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - python -c import old and new modules
+  rollback: git mv reverse + remove shims
+  status: done
+  public_entrypoint: null
+  category: AGENT_OS
+- old_path: /opt/hermes-engineering-os/agent_os/resolver.py
+  new_path: /opt/hermes-engineering-os/agent_os/core/resolver.py
+  owner: AGENT_OS
+  classification: C
+  reason: Agent OS module pending package-boundary normalization
+  readers:
+  - agent_os.plugin
+  - tests
+  - scripts
+  writers:
+  - humans
+  migration_method: git_mv_plus_reexport_shim
+  compatibility: git_mv_plus_reexport_shim_at_old_path
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - python -c import old and new modules
+  rollback: git mv reverse + remove shims
+  status: done
+  public_entrypoint: null
+  category: AGENT_OS
+- old_path: /opt/hermes-engineering-os/agent_os/schema.py
+  new_path: /opt/hermes-engineering-os/agent_os/registry/schema.py
+  owner: AGENT_OS
+  classification: C
+  reason: Agent OS module pending package-boundary normalization
+  readers:
+  - agent_os.plugin
+  - tests
+  - scripts
+  writers:
+  - humans
+  migration_method: git_mv_plus_reexport_shim
+  compatibility: git_mv_plus_reexport_shim_at_old_path
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - python -c import old and new modules
+  rollback: git mv reverse + remove shims
+  status: done
+  public_entrypoint: null
+  category: AGENT_OS
+- old_path: /opt/hermes-engineering-os/agent_os/inventory.py
+  new_path: /opt/hermes-engineering-os/agent_os/registry/inventory.py
+  owner: AGENT_OS
+  classification: C
+  reason: Agent OS module pending package-boundary normalization
+  readers:
+  - agent_os.plugin
+  - tests
+  - scripts
+  writers:
+  - humans
+  migration_method: git_mv_plus_reexport_shim
+  compatibility: git_mv_plus_reexport_shim_at_old_path
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - python -c import old and new modules
+  rollback: git mv reverse + remove shims
+  status: done
+  public_entrypoint: null
+  category: AGENT_OS
+- old_path: /opt/hermes-engineering-os/agent_os/generate.py
+  new_path: /opt/hermes-engineering-os/agent_os/registry/generate.py
+  owner: AGENT_OS
+  classification: C
+  reason: Agent OS module pending package-boundary normalization
+  readers:
+  - agent_os.plugin
+  - tests
+  - scripts
+  writers:
+  - humans
+  migration_method: git_mv_plus_reexport_shim
+  compatibility: git_mv_plus_reexport_shim_at_old_path
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - python -c import old and new modules
+  rollback: git mv reverse + remove shims
+  status: done
+  public_entrypoint: null
+  category: AGENT_OS
+- old_path: /opt/hermes-engineering-os/agent_os/ingest_github.py
+  new_path: /opt/hermes-engineering-os/agent_os/registry/ingest/github.py
+  owner: AGENT_OS
+  classification: C
+  reason: Agent OS module pending package-boundary normalization
+  readers:
+  - agent_os.plugin
+  - tests
+  - scripts
+  writers:
+  - humans
+  migration_method: git_mv_plus_reexport_shim
+  compatibility: git_mv_plus_reexport_shim_at_old_path
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - python -c import old and new modules
+  rollback: git mv reverse + remove shims
+  status: done
+  public_entrypoint: null
+  category: AGENT_OS
+- old_path: /opt/hermes-engineering-os/agent_os/lifecycle.py
+  new_path: /opt/hermes-engineering-os/agent_os/lifecycle/sync.py
+  owner: AGENT_OS
+  classification: C
+  reason: Agent OS module pending package-boundary normalization
+  readers:
+  - agent_os.plugin
+  - tests
+  - scripts
+  writers:
+  - humans
+  migration_method: git_mv_plus_reexport_shim
+  compatibility: git_mv_plus_reexport_shim_at_old_path
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  - python -c import old and new modules
+  rollback: git mv reverse + remove shims
+  status: done
+  public_entrypoint: null
+  category: AGENT_OS
+- old_path: /opt/hermes-engineering-os/agent_os/plugin
+  new_path: /opt/hermes-engineering-os/agent_os/integrations/hermes/plugin
+  owner: AGENT_OS
+  classification: C
+  reason: Agent OS module pending package-boundary normalization
+  readers:
+  - agent_os.plugin
+  - tests
+  - scripts
+  writers:
+  - humans
+  migration_method: git_mv
+  compatibility: git_mv_plus_reexport_shim_at_old_path
+  verification:
+  - rg old_path clean (except documented shims)
+  - imports/tests/systemd green as applicable
+  rollback: git mv reverse + remove shims
+  status: done
+  public_entrypoint: null
+  category: AGENT_OS
+verified_at: '2026-09-03T09:50:28.610481+00:00'

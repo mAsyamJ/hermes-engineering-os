@@ -1,0 +1,5 @@
+97e5987 Add Hermes Agent OS capability control plane without forking core.
+5cc9055 docs: add canonical Hermes Agent OS overview
+432389f feat: add PAG-2 H1-H3 operator scripts and hardened qualification
+ef11ab6 feat: add actuator process entry, runtime-identity bind, and hash-locked apply
+a681321 docs: add PAG-2 result stubs, unit templates, and fail-closed canary path

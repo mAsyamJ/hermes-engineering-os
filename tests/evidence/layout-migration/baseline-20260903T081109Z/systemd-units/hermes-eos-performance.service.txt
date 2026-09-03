@@ -1,0 +1,11 @@
+# /home/ubuntu/.config/systemd/user/hermes-eos-performance.service
+[Unit]
+Description=Hermes Engineering OS incremental performance refresh
+After=hermes-eos-analytics.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/hermes-engineering-os
+ExecStart=/opt/hermes-engineering-os/scripts/performance-materialize.sh --json
+Nice=10
+TimeoutStartSec=300

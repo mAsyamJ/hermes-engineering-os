@@ -5,6 +5,6 @@ After=hermes-dashboard.service
 [Service]
 Type=oneshot
 WorkingDirectory=/opt/hermes-engineering-os
-ExecStart=/opt/hermes-engineering-os/scripts/analytics-materialize.sh --json
+ExecStart=/opt/hermes-engineering-os/bin/eos-analytics-materialize --json
 Nice=10
 TimeoutStartSec=300

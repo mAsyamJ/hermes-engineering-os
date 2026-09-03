@@ -1,0 +1,11 @@
+# /home/ubuntu/.config/systemd/user/hermes-eos-analytics.service
+[Unit]
+Description=Hermes Engineering OS analytics one-shot materializer
+After=hermes-dashboard.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/hermes-engineering-os
+ExecStart=/opt/hermes-engineering-os/scripts/analytics-materialize.sh --json
+Nice=10
+TimeoutStartSec=300

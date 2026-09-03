@@ -1,0 +1,74 @@
+{
+  "completed_at": "2026-09-03T09:17:37.254562+00:00",
+  "hermes_version": "0.20.0",
+  "hermes_core_unmodified": true,
+  "dashboard": "active/200",
+  "unittest_discover": "245 OK",
+  "agent_os_verify": "PASS",
+  "layout_check": "ok",
+  "sqlite": "all ok",
+  "kanban_tables": 25,
+  "otel_config": "present",
+  "otel_live_db": "present",
+  "skills_md_count": 104,
+  "profiles": 10,
+  "bundles": 8,
+  "plugin_agent_os": "/opt/hermes-engineering-os/agent_os/integrations/hermes/plugin",
+  "plugin_engineering_os": "/opt/hermes-engineering-os",
+  "checkpoint_branch": "checkpoint/pre-filesystem-normalization",
+  "apply_branch": "filesystem-normalization",
+  "rollback_proof": [
+    "hermes_backup_roundtrip",
+    "git_checkpoint_blob_readable",
+    "eos-layout-migrate --rollback"
+  ],
+  "symlinks_created": [
+    {
+      "path": "~/.hermes/plugins/agent-os-router",
+      "target": "agent_os/integrations/hermes/plugin",
+      "reason": "canonical plugin after package move"
+    }
+  ],
+  "symlinks_rejected": [
+    "sqlite",
+    "locks",
+    "auth",
+    "state.db",
+    "kanban.db"
+  ],
+  "dbs_moved": [],
+  "dbs_kept": [
+    "state.db",
+    "kanban.db",
+    "projects.db",
+    "verification_evidence.db"
+  ],
+  "hermes_moved": [
+    "config backups -> backups/config/",
+    "audit/ -> extensions/audit/"
+  ],
+  "hermes_kept_deliberately": [
+    "dashboard.log",
+    "gateway-starts.log",
+    "scripts/",
+    "hermes_otel.yaml",
+    "all Class A"
+  ],
+  "bin_commands": [
+    "agent-os-regenerate",
+    "agent-os-status",
+    "agent-os-verify",
+    "eos-adaptation-materialize",
+    "eos-analytics-materialize",
+    "eos-evaluate",
+    "eos-experiments-materialize",
+    "eos-layout-migrate",
+    "eos-performance-materialize",
+    "hermes-eos-verify"
+  ],
+  "remaining_cleanup_debt": [
+    "Agent OS re-export shims until callers fully migrate",
+    "dashboard.log nesting deferred (writer audit)",
+    "Historical report docs may still mention old script paths in narrative"
+  ]
+}

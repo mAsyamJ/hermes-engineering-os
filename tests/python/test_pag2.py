@@ -827,7 +827,7 @@ class LivePatchAndBoundaryTests(unittest.TestCase):
         self.assertNotIn("ThreadPoolExecutor", LIVE_PATCH.read_text(encoding="utf-8"))
 
     def test_h1_cutover_refuses_ubuntu_and_uses_ubuntu_machine(self) -> None:
-        script = (ROOT / "scripts/h1-cutover.sh").read_text(encoding="utf-8")
+        script = (ROOT / "scripts/deployment/h1-cutover.sh").read_text(encoding="utf-8")
         self.assertIn('SUDO_USER:-}" != "hermes-op"', script)
         self.assertIn("systemctl --user -M ubuntu@", script)
         self.assertIn("safe.directory", script)
@@ -839,7 +839,7 @@ class LivePatchAndBoundaryTests(unittest.TestCase):
         self.assertIn("verify-operator-boundary.sh", script)
         self.assertIn("pag2-inspect-ubuntu.sh", script)
         self.assertIn("eos-actuation-plugin", script)
-        preflight = (ROOT / "scripts/h1-preflight-ssh.sh").read_text(encoding="utf-8")
+        preflight = (ROOT / "scripts/deployment/h1-preflight-ssh.sh").read_text(encoding="utf-8")
         self.assertIn("hermes-op", preflight)
         self.assertIn("passwordauthentication no", preflight)
         self.assertIn("/usr/local/lib/hermes-eos/scripts/", script)
@@ -850,7 +850,7 @@ class LivePatchAndBoundaryTests(unittest.TestCase):
         self.assertIn("EOS_ADAPTATION_RUNTIME=/var/lib/hermes-actuator/adaptation", unit)
         self.assertIn("ReadWritePaths=/var/lib/hermes-actuator /run/hermes-eos", unit)
         self.assertIn("--exclude .cache", script)
-        postcheck = (ROOT / "scripts/h1-postcheck.sh").read_text(encoding="utf-8")
+        postcheck = (ROOT / "scripts/deployment/h1-postcheck.sh").read_text(encoding="utf-8")
         self.assertIn("except FileNotFoundError:", postcheck)
         self.assertIn("not ubuntu-visible (0750)", postcheck)
         self.assertIn("=== disk preflight", script)
@@ -868,7 +868,7 @@ class LivePatchAndBoundaryTests(unittest.TestCase):
         ]
         self.assertEqual(active, [])
         proc = subprocess.run(
-            ["sudo", "-n", str(ROOT / "scripts/h1-cutover.sh")],
+            ["sudo", "-n", str(ROOT / "scripts/deployment/h1-cutover.sh")],
             check=False,
             capture_output=True,
             text=True,
@@ -878,7 +878,7 @@ class LivePatchAndBoundaryTests(unittest.TestCase):
         self.assertTrue("REFUSED" in denied or "password is required" in denied, denied)
         self.assertNotIn("CUTOVER_DONE", proc.stdout)
         runtime = subprocess.run(
-            ["sudo", "-n", str(ROOT / "scripts/pag2-as-runtime.sh"), "pag2-shadow"],
+            ["sudo", "-n", str(ROOT / "scripts/deployment/pag2-as-runtime.sh"), "pag2-shadow"],
             check=False,
             capture_output=True,
             text=True,
@@ -889,7 +889,7 @@ class LivePatchAndBoundaryTests(unittest.TestCase):
 
     def test_boundary_verifier_not_fake_pass(self) -> None:
         proc = subprocess.run(
-            [str(ROOT / "scripts/verify-operator-boundary.sh")],
+            [str(ROOT / "scripts/verification/verify-operator-boundary.sh")],
             check=False,
             capture_output=True,
             text=True,
@@ -916,11 +916,11 @@ class LivePatchAndBoundaryTests(unittest.TestCase):
         self.assertNotIn(FAKE_SECRET, proc.stdout)
         self.assertIn("invoked_user=", proc.stdout)
         self.assertIn("agent_user=ubuntu", proc.stdout)
-        inspect = (ROOT / "scripts/pag2-inspect-ubuntu.sh").read_text(encoding="utf-8")
+        inspect = (ROOT / "scripts/deployment/pag2-inspect-ubuntu.sh").read_text(encoding="utf-8")
         self.assertIn("sudo -n -l -U ubuntu", inspect)
         self.assertIn("systemctl --user -M ubuntu@", inspect)
         self.assertIn("id -nG ubuntu", inspect)
-        verifier = (ROOT / "scripts/verify-operator-boundary.sh").read_text(encoding="utf-8")
+        verifier = (ROOT / "scripts/verification/verify-operator-boundary.sh").read_text(encoding="utf-8")
         self.assertIn("pag2-inspect-ubuntu.sh", verifier)
         self.assertIn("pag2_ubuntu_sudo_list", verifier)
         self.assertNotIn('user_unit="$HOME/.config/systemd/user/', verifier)
@@ -1007,7 +1007,7 @@ class ShadowCanaryAndDeployTests(unittest.TestCase):
         }
         manifest = tmp / "m.json"
         manifest.write_text(json.dumps(good), encoding="utf-8")
-        tool = str(ROOT / "scripts/hermes-eos-deploy-tool.py")
+        tool = str(ROOT / "scripts/deployment/hermes-eos-deploy-tool.py")
         verify = subprocess.run(
             [tool, "verify", "--manifest", str(manifest), "--artifact", str(artifact)],
             check=False,
@@ -1035,7 +1035,7 @@ class ShadowCanaryAndDeployTests(unittest.TestCase):
         self.assertNotEqual(install.returncode, 0)
         self.assertIn("ubuntu cannot invoke", (install.stderr + install.stdout).lower())
 
-        spec = importlib.util.spec_from_file_location("deploy_tool_h3", ROOT / "scripts" / "hermes-eos-deploy-tool.py")
+        spec = importlib.util.spec_from_file_location("deploy_tool_h3", ROOT / "scripts" / "deployment" / "hermes-eos-deploy-tool.py")
         mod = importlib.util.module_from_spec(spec)
         assert spec.loader is not None
         spec.loader.exec_module(mod)
@@ -1095,7 +1095,7 @@ class ShadowCanaryAndDeployTests(unittest.TestCase):
         self.assertEqual(transport, manifest["ipc_transport_sha256"])
         spec = importlib.util.spec_from_file_location(
             "pag2_h3_default_plugin",
-            ROOT / "scripts" / "hermes-eos-deploy-tool.py",
+            ROOT / "scripts" / "deployment" / "hermes-eos-deploy-tool.py",
         )
         tool = importlib.util.module_from_spec(spec)
         assert spec.loader is not None
@@ -1106,11 +1106,11 @@ class ShadowCanaryAndDeployTests(unittest.TestCase):
             self.assertEqual(chosen, protected_plugin)
         else:
             self.assertEqual(chosen, plugin)
-        present = (ROOT / "scripts" / "h3-present-deploy.sh").read_text(encoding="utf-8")
+        present = (ROOT / "scripts" / "deployment" / "h3-present-deploy.sh").read_text(encoding="utf-8")
         self.assertIn("/usr/local/lib/hermes-eos/hermes-eos-deploy-tool.py", present)
         self.assertIn("eos-actuation-plugin", present)
-        self.assertIn("try-reload-or-restart", (ROOT / "scripts" / "hermes-eos-deploy-tool.py").read_text(encoding="utf-8"))
-        verifier = (ROOT / "scripts" / "verify-operator-boundary.sh").read_text(encoding="utf-8")
+        self.assertIn("try-reload-or-restart", (ROOT / "scripts" / "deployment" / "hermes-eos-deploy-tool.py").read_text(encoding="utf-8"))
+        verifier = (ROOT / "scripts" / "verification" / "verify-operator-boundary.sh").read_text(encoding="utf-8")
         self.assertIn("AUTH_NO_PROTECTED_PLUGIN_SOURCE", verifier)
 
     def test_agent_writable_approval_file_is_not_a_grant(self) -> None:
@@ -1299,7 +1299,7 @@ class RuntimeIdentityAndDisableTests(unittest.TestCase):
         import importlib.util
 
         spec = importlib.util.spec_from_file_location(
-            "deploy_tool", ROOT / "scripts" / "hermes-eos-deploy-tool.py"
+            "deploy_tool", ROOT / "scripts" / "deployment" / "hermes-eos-deploy-tool.py"
         )
         tool = importlib.util.module_from_spec(spec)
         assert spec.loader is not None
@@ -1340,7 +1340,7 @@ class RuntimeIdentityAndDisableTests(unittest.TestCase):
         self.assertIn("HERMES_EOS_LIVE_PATCH_HASH=\n", env.read_text(encoding="utf-8"))
         self.assertNotIn("eos-actuation", (home / "config.yaml").read_text(encoding="utf-8"))
         self.assertNotIn("eos-actuation", (home / "profiles" / "rp-friend" / "config.yaml").read_text(encoding="utf-8"))
-        src = (ROOT / "scripts" / "hermes-eos-deploy-tool.py").read_text(encoding="utf-8")
+        src = (ROOT / "scripts" / "deployment" / "hermes-eos-deploy-tool.py").read_text(encoding="utf-8")
         self.assertIn("try-reload-or-restart", src)
         self.assertNotIn('["systemctl", "try-restart", "hermes-eos-actuator.service"]', src)
         os.environ.pop("HERMES_EOS_ACTUATOR_ENV", None)
@@ -1354,7 +1354,7 @@ class RuntimeIdentityAndDisableTests(unittest.TestCase):
         import importlib.util
 
         spec = importlib.util.spec_from_file_location(
-            "deploy_tool", ROOT / "scripts" / "hermes-eos-deploy-tool.py"
+            "deploy_tool", ROOT / "scripts" / "deployment" / "hermes-eos-deploy-tool.py"
         )
         tool = importlib.util.module_from_spec(spec)
         assert spec.loader is not None
@@ -1371,7 +1371,7 @@ class RuntimeIdentityAndDisableTests(unittest.TestCase):
         proc = subprocess.run(
             [
                 "python3",
-                str(ROOT / "scripts" / "hermes-eos-deploy-tool.py"),
+                str(ROOT / "scripts" / "deployment" / "hermes-eos-deploy-tool.py"),
                 "canonical",
                 "--manifest",
                 str(ROOT / "deploy" / "pag2" / "h3-live-patch.manifest.example.json"),
@@ -1391,7 +1391,7 @@ class RuntimeIdentityAndDisableTests(unittest.TestCase):
         mismatch = subprocess.run(
             [
                 "python3",
-                str(ROOT / "scripts" / "hermes-eos-deploy-tool.py"),
+                str(ROOT / "scripts" / "deployment" / "hermes-eos-deploy-tool.py"),
                 "verify",
                 "--manifest",
                 str(bad_path),
@@ -1412,7 +1412,7 @@ class RuntimeIdentityAndDisableTests(unittest.TestCase):
         import importlib.util
 
         spec = importlib.util.spec_from_file_location(
-            "deploy_tool", ROOT / "scripts" / "hermes-eos-deploy-tool.py"
+            "deploy_tool", ROOT / "scripts" / "deployment" / "hermes-eos-deploy-tool.py"
         )
         tool = importlib.util.module_from_spec(spec)
         assert spec.loader is not None
@@ -1712,7 +1712,7 @@ class Pag2OpsTests(unittest.TestCase):
 
     def test_pag2_status_is_read_only_and_honest(self) -> None:
         proc = subprocess.run(
-            [str(ROOT / "scripts/pag2-status.sh")],
+            [str(ROOT / "scripts/deployment/pag2-status.sh")],
             check=False,
             capture_output=True,
             text=True,

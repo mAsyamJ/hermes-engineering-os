@@ -4,7 +4,7 @@
 
 ```bash
 cd /opt/hermes-engineering-os
-./scripts/verify.sh
+./bin/hermes-eos-verify
 ```
 
 ## Install
@@ -12,9 +12,9 @@ cd /opt/hermes-engineering-os
 The repository must be clean and all plugin checks must pass.
 
 ```bash
-./scripts/install-plugin.sh
+./scripts/deployment/install-plugin.sh
 systemctl --user restart hermes-dashboard.service
-./scripts/dashboard-request.py /api/plugins/engineering-os/health
+./scripts/maintenance/dashboard-request.py /api/plugins/engineering-os/health
 ```
 
 Never restart either Hermes gateway.
@@ -22,7 +22,7 @@ Never restart either Hermes gateway.
 ## Rescan frontend manifests
 
 ```bash
-./scripts/rescan-dashboard.sh
+./scripts/maintenance/rescan-dashboard.sh
 ```
 
 Rescan does not mount a new Python router. A first installation or backend file
@@ -31,7 +31,7 @@ change requires all-plugin preflight and a dashboard-only restart.
 ## Roll back
 
 ```bash
-./scripts/uninstall-plugin.sh
+./scripts/deployment/uninstall-plugin.sh
 systemctl --user restart hermes-dashboard.service
 ```
 
@@ -42,11 +42,11 @@ run `hermes plugins remove engineering-os`.
 ## Observability stack
 
 ```bash
-./scripts/start-observability.sh
-./scripts/verify-observability.sh
-./scripts/observability-db-backup.sh
-./scripts/observability-db-verify.sh /var/backups/hermes-engineering-os/observability-<stamp>
-./scripts/stop-observability.sh
+./scripts/observability/start-observability.sh
+./scripts/verification/verify-observability.sh
+./scripts/observability/observability-db-backup.sh
+./scripts/observability/observability-db-verify.sh /var/backups/hermes-engineering-os/observability-<stamp>
+./scripts/observability/stop-observability.sh
 ```
 
 Phoenix: `http://127.0.0.1:6006`. Never attach this compose project to RetroPick
@@ -56,11 +56,11 @@ never restart either Hermes gateway for OTel.
 ## Analytics
 
 ```bash
-./scripts/analytics-migrate.sh
-./scripts/analytics-db-roles.sh
-./scripts/analytics-materialize.sh --json
-./scripts/analytics-explain.sh <task_id> [board]
-./scripts/verify-analytics-data.sh
+./scripts/analytics/analytics-migrate.sh
+./scripts/analytics/analytics-db-roles.sh
+./scripts/analytics/analytics-materialize.sh --json
+./scripts/analytics/analytics-explain.sh <task_id> [board]
+./scripts/verification/verify-analytics-data.sh
 systemctl --user enable --now hermes-eos-analytics.timer
 systemctl --user disable --now hermes-eos-analytics.timer
 ```
@@ -74,11 +74,11 @@ Kanban dispatcher.
 ## Evaluation
 
 ```bash
-./scripts/analytics-migrate.sh
-./scripts/evaluate.sh --incremental --json
-./scripts/evaluate.sh --explain --task t_eval_canary_a --board eos-phase4-eval
-./scripts/evaluation-canary.sh
-./scripts/verify-evaluation-data.sh
+./scripts/analytics/analytics-migrate.sh
+./scripts/evaluation/evaluate.sh --incremental --json
+./scripts/evaluation/evaluate.sh --explain --task t_eval_canary_a --board eos-phase4-eval
+./scripts/evaluation/evaluation-canary.sh
+./scripts/verification/verify-evaluation-data.sh
 systemctl --user enable --now hermes-eos-evaluate.timer
 ```
 
@@ -88,10 +88,10 @@ for evaluation work.
 ## Performance
 
 ```bash
-./scripts/analytics-migrate.sh
-./scripts/performance-materialize.sh --dry-run --json
-./scripts/performance-materialize.sh --json
-./scripts/verify-performance-data.sh
+./scripts/analytics/analytics-migrate.sh
+./scripts/observability/performance-materialize.sh --dry-run --json
+./scripts/observability/performance-materialize.sh --json
+./scripts/verification/verify-performance-data.sh
 systemctl --user enable --now hermes-eos-performance.timer
 ```
 
@@ -101,13 +101,13 @@ Never restart rp-friend.
 ## Experiments
 
 ```bash
-./scripts/analytics-migrate.sh
-./scripts/experiment.sh validate fixture-aa-v1
-./scripts/experiment.sh preregister fixture-aa-v1
-./scripts/experiment.sh assign fixture-aa-v1
-./scripts/experiment.sh run-fixture fixture-aa-v1
-./scripts/experiment.sh analyze fixture-aa-v1 --final
-./scripts/verify-experiment-data.sh
+./scripts/analytics/analytics-migrate.sh
+./scripts/experiments/experiment.sh validate fixture-aa-v1
+./scripts/experiments/experiment.sh preregister fixture-aa-v1
+./scripts/experiments/experiment.sh assign fixture-aa-v1
+./scripts/experiments/experiment.sh run-fixture fixture-aa-v1
+./scripts/experiments/experiment.sh analyze fixture-aa-v1 --final
+./scripts/verification/verify-experiment-data.sh
 systemctl --user enable --now hermes-eos-experiments.timer
 ```
 
@@ -117,15 +117,15 @@ Never restart rp-friend.
 ## Adaptation
 
 ```bash
-./scripts/control-db-init.sh
-./scripts/control-db-roles.sh
-./scripts/adapt.sh recommend fixture-known-effect-v1
-./scripts/adapt.sh compile-policy <recommendation_id> --policy fixture-known-effect-policy-v1
-./scripts/adapt.sh approve-test fixture-known-effect-policy-v1 --stage A
-./scripts/adapt.sh shadow-start fixture-known-effect-policy-v1 --board retropick-markets-release
-./scripts/adapt.sh canary-start-fixture fixture-known-effect-policy-v1
-./scripts/adapt.sh disable-all --reason emergency
-./scripts/verify-adaptation-data.sh
+./scripts/database/control-db-init.sh
+./scripts/database/control-db-roles.sh
+./scripts/adaptation/adapt.sh recommend fixture-known-effect-v1
+./scripts/adaptation/adapt.sh compile-policy <recommendation_id> --policy fixture-known-effect-policy-v1
+./scripts/adaptation/adapt.sh approve-test fixture-known-effect-policy-v1 --stage A
+./scripts/adaptation/adapt.sh shadow-start fixture-known-effect-policy-v1 --board retropick-markets-release
+./scripts/adaptation/adapt.sh canary-start-fixture fixture-known-effect-policy-v1
+./scripts/adaptation/adapt.sh disable-all --reason emergency
+./scripts/verification/verify-adaptation-data.sh
 systemctl --user enable --now hermes-eos-adaptation.timer
 ```
 
@@ -136,7 +136,7 @@ Never restart rp-friend. Never mutate Kanban to apply policy.
 ## Production Adaptation Readiness
 
 ```bash
-./scripts/control-db-migrate.sh
+./scripts/database/control-db-migrate.sh
 curl -fsS http://127.0.0.1:9120/adaptation/readiness
 curl -fsS http://127.0.0.1:9120/adaptation/readiness/authority
 ```
@@ -145,29 +145,29 @@ Do not apply `patches/hermes/0001-pre-worker-spawn-hook.patch` or
 `patches/hermes/upstream/0001-worker-spawn-transform.patch` to live Hermes.
 Do not create `.runtime/experiments/LLM_BUDGET_AUTHORIZATION` without a human
 budget grant. Do not generate a production signing private key on this VPS.
-See `docs/PRODUCTION_OPERATOR_HANDOFF.md` and `.runtime/operator-bootstrap/`.
-Read-only boundary check: `./scripts/verify-operator-boundary.sh`.
-PAG-2 hardening check: `./scripts/verify-pag2-hardening.sh`.
-H1 baseline capture (read-only): `./scripts/capture-h1-baseline.sh`.
-PAG-2 gate dashboard (read-only): `./scripts/pag2-status.sh`.
+See `docs/operations/PRODUCTION_OPERATOR_HANDOFF.md` and `.runtime/operator-bootstrap/`.
+Read-only boundary check: `./scripts/verification/verify-operator-boundary.sh`.
+PAG-2 hardening check: `./scripts/verification/verify-pag2-hardening.sh`.
+H1 baseline capture (read-only): `./scripts/maintenance/capture-h1-baseline.sh`.
+PAG-2 gate dashboard (read-only): `./scripts/deployment/pag2-status.sh`.
 System unit templates for hermes-op live in `deploy/pag2/` and must not be
 installed by ubuntu.
 H1 copy-paste: `.runtime/operator-bootstrap/H1_COMMANDS.md`.
-Mechanical H1 cutover (hermes-op only): `./scripts/h1-cutover.sh`.
-Read-only H1 preflight: `./scripts/h1-preflight.sh`.
-Post-H1 IPC probes as hermes-runtime (hermes-op only): `./scripts/pag2-as-runtime.sh pag2-probe`.
+Mechanical H1 cutover (hermes-op only): `./scripts/deployment/h1-cutover.sh`.
+Read-only H1 preflight: `./scripts/deployment/h1-preflight.sh`.
+Post-H1 IPC probes as hermes-runtime (hermes-op only): `./scripts/deployment/pag2-as-runtime.sh pag2-probe`.
 Evidence-gated shadow remains `pag2-shadow` after `QUALIFIED_CANDIDATE`.
-H2 present: `./scripts/h2-present-budget.sh`. Persist only after H1 PASS and
-the exact phrase: `./scripts/h2-write-authorization.sh`.
-H3 present (does not apply): `./scripts/h3-present-deploy.sh`.
+H2 present: `./scripts/deployment/h2-present-budget.sh`. Persist only after H1 PASS and
+the exact phrase: `./scripts/deployment/h2-write-authorization.sh`.
+H3 present (does not apply): `./scripts/deployment/h3-present-deploy.sh`.
 Canary sequence (hermes-op): `.runtime/operator-bootstrap/CANARY_COMMANDS.md`
-and `./scripts/pag2-bind-canary.sh`. Persist auto-disable:
-`./scripts/pag2-rollback-persist.sh` (hermes-op; ubuntu/runtime cannot write
+and `./scripts/deployment/pag2-bind-canary.sh`. Persist auto-disable:
+`./scripts/deployment/pag2-rollback-persist.sh` (hermes-op; ubuntu/runtime cannot write
 actuator state).
-Secret-free backup: `./scripts/pag2-backup.sh`. Isolated restore rehearsal:
-`./scripts/pag2-restore-rehearsal.sh`.
-Fail-closed production probes: `./scripts/pag2-shadow.sh`,
-`./scripts/pag2-canary.sh`, `./scripts/pag2-rollback.sh`. ubuntu IPC is
+Secret-free backup: `./scripts/deployment/pag2-backup.sh`. Isolated restore rehearsal:
+`./scripts/deployment/pag2-restore-rehearsal.sh`.
+Fail-closed production probes: `./scripts/deployment/pag2-shadow.sh`,
+`./scripts/deployment/pag2-canary.sh`, `./scripts/deployment/pag2-rollback.sh`. ubuntu IPC is
 `BLOCKED_PEER`; use `pag2-as-runtime.sh` after H1.
 
 ## Evidence states

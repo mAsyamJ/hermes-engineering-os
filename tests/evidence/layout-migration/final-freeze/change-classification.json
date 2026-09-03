@@ -1,0 +1,2776 @@
+{
+  "generated_at": "2026-09-03T09:49:57.631426Z",
+  "branch": "filesystem-normalization",
+  "base_sha": "97e59871605e144a62c4016aaead29cbc14c2ab5",
+  "summary_counts": {
+    "A": 239,
+    "B": 25,
+    "C": 144,
+    "D": 0,
+    "G": 74,
+    "H": 9,
+    "I": 5,
+    "J": 31
+  },
+  "class_legend": {
+    "A": "MOVED_RENAMED",
+    "B": "NEW",
+    "C": "MODIFIED",
+    "D": "DELETED",
+    "E": "SYMLINK",
+    "F": "GENERATED",
+    "G": "TEST_EVIDENCE",
+    "H": "COMPATIBILITY_SHIM",
+    "I": "SYSTEMD_DEPLOYMENT",
+    "J": "DOCUMENTATION"
+  },
+  "classes": {
+    "J": [
+      {
+        "path": "AGENTS.md",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "ARCHITECTURE.md",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "DECISIONS.md",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "OPERATIONS.md",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "README.md",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "RUNBOOK.md",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "SECURITY.md",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "TESTING.md",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "UPGRADE.md",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "docs/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/adaptation/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/agent-os/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/analytics/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/architecture/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/architecture/filesystem/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/architecture/filesystem/hermes-home-map.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/architecture/filesystem/repository-layout.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/architecture/filesystem/root-contract.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/evaluation/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/experiments/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/observability/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/operations/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/operations/migrations/filesystem-normalization-rollback.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/reference/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/reports/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/reports/agent-os/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/reports/pag/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/reports/phases/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/reports/production/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "docs/security/README.md",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "migration/README.md",
+        "kind": "NEW_UNTRACKED"
+      }
+    ],
+    "A": [
+      {
+        "old": "agent_os/classify.py",
+        "new": "agent_os/core/classifier.py",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "agent_os/resolver.py",
+        "new": "agent_os/core/resolver.py",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "agent_os/router.py",
+        "new": "agent_os/core/router.py",
+        "similarity": "098",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "agent_os/plugin/__init__.py",
+        "new": "agent_os/integrations/hermes/plugin/__init__.py",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "agent_os/plugin/plugin.yaml",
+        "new": "agent_os/integrations/hermes/plugin/plugin.yaml",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "agent_os/lifecycle.py",
+        "new": "agent_os/lifecycle/sync.py",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "agent_os/generate.py",
+        "new": "agent_os/registry/generate.py",
+        "similarity": "099",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "agent_os/ingest_github.py",
+        "new": "agent_os/registry/ingest/github.py",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "agent_os/inventory.py",
+        "new": "agent_os/registry/inventory.py",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "agent_os/schema.py",
+        "new": "agent_os/registry/schema.py",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_APPROVAL_BOUNDARY.md",
+        "new": "docs/adaptation/ADAPTATION_APPROVAL_BOUNDARY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_AUDIT.md",
+        "new": "docs/adaptation/ADAPTATION_AUDIT.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_CANARY.md",
+        "new": "docs/adaptation/ADAPTATION_CANARY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_CAPABILITY_MATRIX.md",
+        "new": "docs/adaptation/ADAPTATION_CAPABILITY_MATRIX.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_DATABASE.md",
+        "new": "docs/adaptation/ADAPTATION_DATABASE.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_GUARDRAILS.md",
+        "new": "docs/adaptation/ADAPTATION_GUARDRAILS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_OPERATIONS.md",
+        "new": "docs/adaptation/ADAPTATION_OPERATIONS.md",
+        "similarity": "065",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_POLICY_MODEL.md",
+        "new": "docs/adaptation/ADAPTATION_POLICY_MODEL.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_RECOMMENDATIONS.md",
+        "new": "docs/adaptation/ADAPTATION_RECOMMENDATIONS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_RECOVERY.md",
+        "new": "docs/adaptation/ADAPTATION_RECOVERY.md",
+        "similarity": "070",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_ROLLBACK.md",
+        "new": "docs/adaptation/ADAPTATION_ROLLBACK.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_ROLLOUT.md",
+        "new": "docs/adaptation/ADAPTATION_ROLLOUT.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_SECURITY.md",
+        "new": "docs/adaptation/ADAPTATION_SECURITY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_SEMANTICS.md",
+        "new": "docs/adaptation/ADAPTATION_SEMANTICS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_SHADOW.md",
+        "new": "docs/adaptation/ADAPTATION_SHADOW.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADAPTATION_VALIDITY.md",
+        "new": "docs/adaptation/ADAPTATION_VALIDITY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/CAPABILITY_CONTROL_PLANE.md",
+        "new": "docs/agent-os/CAPABILITY_CONTROL_PLANE.md",
+        "similarity": "083",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/HERMES_AGENT_OS.md",
+        "new": "docs/agent-os/HERMES_AGENT_OS.md",
+        "similarity": "088",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/AGENT_OS_ROLLBACK.md",
+        "new": "docs/agent-os/operations/AGENT_OS_ROLLBACK.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PROFILE_TOPOLOGY.md",
+        "new": "docs/agent-os/profiles/PROFILE_TOPOLOGY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/SKILL_ROUTING.md",
+        "new": "docs/agent-os/skills/SKILL_ROUTING.md",
+        "similarity": "090",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/SKILL_SOURCE_POLICY.md",
+        "new": "docs/agent-os/skills/SKILL_SOURCE_POLICY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/SKILL_TRUST_MODEL.md",
+        "new": "docs/agent-os/skills/SKILL_TRUST_MODEL.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ANALYTICS_BACKFILL.md",
+        "new": "docs/analytics/ANALYTICS_BACKFILL.md",
+        "similarity": "083",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ANALYTICS_DATABASE.md",
+        "new": "docs/analytics/ANALYTICS_DATABASE.md",
+        "similarity": "097",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ANALYTICS_DATA_QUALITY.md",
+        "new": "docs/analytics/ANALYTICS_DATA_QUALITY.md",
+        "similarity": "082",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ANALYTICS_MATERIALIZATION.md",
+        "new": "docs/analytics/ANALYTICS_MATERIALIZATION.md",
+        "similarity": "089",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ANALYTICS_OPERATIONS.md",
+        "new": "docs/analytics/ANALYTICS_OPERATIONS.md",
+        "similarity": "072",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ANALYTICS_RECOVERY.md",
+        "new": "docs/analytics/ANALYTICS_RECOVERY.md",
+        "similarity": "029",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ANALYTICS_SOURCE_CAPABILITIES.md",
+        "new": "docs/analytics/ANALYTICS_SOURCE_CAPABILITIES.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/ADR-HERMES-AGENT-OS.md",
+        "new": "docs/architecture/decisions/ADR-HERMES-AGENT-OS.md",
+        "similarity": "096",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/HERMES_HOME_AUTHORITY_MAP.md",
+        "new": "docs/architecture/filesystem/HERMES_HOME_AUTHORITY_MAP.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_ARTIFACTS.md",
+        "new": "docs/evaluation/EVALUATION_ARTIFACTS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_BASELINES.md",
+        "new": "docs/evaluation/EVALUATION_BASELINES.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_CAPABILITY_MATRIX.md",
+        "new": "docs/evaluation/EVALUATION_CAPABILITY_MATRIX.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_DATABASE.md",
+        "new": "docs/evaluation/EVALUATION_DATABASE.md",
+        "similarity": "091",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_DATA_QUALITY.md",
+        "new": "docs/evaluation/EVALUATION_DATA_QUALITY.md",
+        "similarity": "091",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_EVIDENCE_MODEL.md",
+        "new": "docs/evaluation/EVALUATION_EVIDENCE_MODEL.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_OPERATIONS.md",
+        "new": "docs/evaluation/EVALUATION_OPERATIONS.md",
+        "similarity": "079",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_PROFILES.md",
+        "new": "docs/evaluation/EVALUATION_PROFILES.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_RECOVERY.md",
+        "new": "docs/evaluation/EVALUATION_RECOVERY.md",
+        "similarity": "066",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_RUNNER.md",
+        "new": "docs/evaluation/EVALUATION_RUNNER.md",
+        "similarity": "083",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_SANDBOX.md",
+        "new": "docs/evaluation/EVALUATION_SANDBOX.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_SECURITY.md",
+        "new": "docs/evaluation/EVALUATION_SECURITY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATION_SEMANTICS.md",
+        "new": "docs/evaluation/EVALUATION_SEMANTICS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EVALUATOR_DICTIONARY.md",
+        "new": "docs/evaluation/EVALUATOR_DICTIONARY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_ANALYSIS.md",
+        "new": "docs/experiments/EXPERIMENT_ANALYSIS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_ASSIGNMENT.md",
+        "new": "docs/experiments/EXPERIMENT_ASSIGNMENT.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_BENCHMARKS.md",
+        "new": "docs/experiments/EXPERIMENT_BENCHMARKS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_CAPABILITY_MATRIX.md",
+        "new": "docs/experiments/EXPERIMENT_CAPABILITY_MATRIX.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_CONCLUSIONS.md",
+        "new": "docs/experiments/EXPERIMENT_CONCLUSIONS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_CONFIGURATION_IDENTITY.md",
+        "new": "docs/experiments/EXPERIMENT_CONFIGURATION_IDENTITY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_DATABASE.md",
+        "new": "docs/experiments/EXPERIMENT_DATABASE.md",
+        "similarity": "089",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_MEMORY_ISOLATION.md",
+        "new": "docs/experiments/EXPERIMENT_MEMORY_ISOLATION.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_MISSINGNESS.md",
+        "new": "docs/experiments/EXPERIMENT_MISSINGNESS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_OPERATIONS.md",
+        "new": "docs/experiments/EXPERIMENT_OPERATIONS.md",
+        "similarity": "082",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_PROTOCOL.md",
+        "new": "docs/experiments/EXPERIMENT_PROTOCOL.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_RECOVERY.md",
+        "new": "docs/experiments/EXPERIMENT_RECOVERY.md",
+        "similarity": "070",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_SECURITY.md",
+        "new": "docs/experiments/EXPERIMENT_SECURITY.md",
+        "similarity": "087",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_SEMANTICS.md",
+        "new": "docs/experiments/EXPERIMENT_SEMANTICS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/EXPERIMENT_VALIDITY.md",
+        "new": "docs/experiments/EXPERIMENT_VALIDITY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/OBSERVABILITY_INFRASTRUCTURE.md",
+        "new": "docs/observability/OBSERVABILITY_INFRASTRUCTURE.md",
+        "similarity": "084",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/OTEL_CORRELATION.md",
+        "new": "docs/observability/OTEL_CORRELATION.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/OTEL_FIELD_MAPPING.md",
+        "new": "docs/observability/OTEL_FIELD_MAPPING.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/OTEL_SCHEMA.md",
+        "new": "docs/observability/OTEL_SCHEMA.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_ATTRIBUTION.md",
+        "new": "docs/observability/PERFORMANCE_ATTRIBUTION.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_COHORTS.md",
+        "new": "docs/observability/PERFORMANCE_COHORTS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_COMPARABILITY.md",
+        "new": "docs/observability/PERFORMANCE_COMPARABILITY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_DATABASE.md",
+        "new": "docs/observability/PERFORMANCE_DATABASE.md",
+        "similarity": "091",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_DATA_QUALITY.md",
+        "new": "docs/observability/PERFORMANCE_DATA_QUALITY.md",
+        "similarity": "089",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_EVIDENCE_TIERS.md",
+        "new": "docs/observability/PERFORMANCE_EVIDENCE_TIERS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_METRIC_DICTIONARY.md",
+        "new": "docs/observability/PERFORMANCE_METRIC_DICTIONARY.md",
+        "similarity": "096",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_OPERATIONS.md",
+        "new": "docs/observability/PERFORMANCE_OPERATIONS.md",
+        "similarity": "079",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_RECOVERY.md",
+        "new": "docs/observability/PERFORMANCE_RECOVERY.md",
+        "similarity": "043",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_SECURITY.md",
+        "new": "docs/observability/PERFORMANCE_SECURITY.md",
+        "similarity": "078",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_SEMANTICS.md",
+        "new": "docs/observability/PERFORMANCE_SEMANTICS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_SOURCE_CAPABILITIES.md",
+        "new": "docs/observability/PERFORMANCE_SOURCE_CAPABILITIES.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PERFORMANCE_STATISTICS.md",
+        "new": "docs/observability/PERFORMANCE_STATISTICS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/HERMES_ACTUATION_SEAM.md",
+        "new": "docs/operations/HERMES_ACTUATION_SEAM.md",
+        "similarity": "094",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/HERMES_ACTUATION_UPSTREAM_PATCH.md",
+        "new": "docs/operations/HERMES_ACTUATION_UPSTREAM_PATCH.md",
+        "similarity": "087",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/HERMES_HOME_OPERATIONS.md",
+        "new": "docs/operations/HERMES_HOME_OPERATIONS.md",
+        "similarity": "096",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/HERMES_LIVE_PATCH.md",
+        "new": "docs/operations/HERMES_LIVE_PATCH.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/HERMES_OTEL_UPSTREAM_AUDIT.md",
+        "new": "docs/operations/HERMES_OTEL_UPSTREAM_AUDIT.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/HERMES_UPSTREAM_DELTA_AUDIT.md",
+        "new": "docs/operations/HERMES_UPSTREAM_DELTA_AUDIT.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/HERMES_UPSTREAM_PR_READY.md",
+        "new": "docs/operations/HERMES_UPSTREAM_PR_READY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/MEMORY_ISOLATION.md",
+        "new": "docs/operations/MEMORY_ISOLATION.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/MEMORY_STATE_INVENTORY.md",
+        "new": "docs/operations/MEMORY_STATE_INVENTORY.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PRODUCTION_ADAPTATION_READINESS.md",
+        "new": "docs/operations/PRODUCTION_ADAPTATION_READINESS.md",
+        "similarity": "089",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PRODUCTION_APPROVAL_PROTOCOL.md",
+        "new": "docs/operations/PRODUCTION_APPROVAL_PROTOCOL.md",
+        "similarity": "096",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PRODUCTION_AUTHORITY_THREAT_MODEL.md",
+        "new": "docs/operations/PRODUCTION_AUTHORITY_THREAT_MODEL.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PRODUCTION_CANARY_PREREQUISITES.md",
+        "new": "docs/operations/PRODUCTION_CANARY_PREREQUISITES.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PRODUCTION_CANARY_RESULT.md",
+        "new": "docs/operations/PRODUCTION_CANARY_RESULT.md",
+        "similarity": "082",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PRODUCTION_OPERATOR_HANDOFF.md",
+        "new": "docs/operations/PRODUCTION_OPERATOR_HANDOFF.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PRODUCTION_ROLLBACK_RESULT.md",
+        "new": "docs/operations/PRODUCTION_ROLLBACK_RESULT.md",
+        "similarity": "085",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PRODUCTION_SHADOW_RESULT.md",
+        "new": "docs/operations/PRODUCTION_SHADOW_RESULT.md",
+        "similarity": "074",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/HASH_LOCKED_DEPLOY_TOOL.md",
+        "new": "docs/operations/deployment/HASH_LOCKED_DEPLOY_TOOL.md",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/LICENSE_ADOPTION_REPORT.md",
+        "new": "docs/reference/LICENSE_ADOPTION_REPORT.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/LIVE_HERMES_GATEWAY_DEPLOYMENT.md",
+        "new": "docs/reference/LIVE_HERMES_GATEWAY_DEPLOYMENT.md",
+        "similarity": "087",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/METRIC_DICTIONARY.md",
+        "new": "docs/reference/METRIC_DICTIONARY.md",
+        "similarity": "097",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/OPERATOR_AUTHORITY_ARCHITECTURE.md",
+        "new": "docs/reference/OPERATOR_AUTHORITY_ARCHITECTURE.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/OPERATOR_BOOTSTRAP.md",
+        "new": "docs/reference/OPERATOR_BOOTSTRAP.md",
+        "similarity": "092",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/OPERATOR_BOUNDARY_VERIFICATION.md",
+        "new": "docs/reference/OPERATOR_BOUNDARY_VERIFICATION.md",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/OUTCOME_SEMANTICS.md",
+        "new": "docs/reference/OUTCOME_SEMANTICS.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PAR_ENTRY_CHECK.md",
+        "new": "docs/reference/PAR_ENTRY_CHECK.md",
+        "similarity": "096",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHOENIX_PIN.md",
+        "new": "docs/reference/PHOENIX_PIN.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PLUGIN_VERIFICATION_MATRIX.md",
+        "new": "docs/reference/PLUGIN_VERIFICATION_MATRIX.md",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/REAL_CAUSAL_EXPERIMENT_RESULT.md",
+        "new": "docs/reference/REAL_CAUSAL_EXPERIMENT_RESULT.md",
+        "similarity": "083",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/REAL_EXPERIMENT_BUDGET.md",
+        "new": "docs/reference/REAL_EXPERIMENT_BUDGET.md",
+        "similarity": "094",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/REAL_EXPERIMENT_PLAN.md",
+        "new": "docs/reference/REAL_EXPERIMENT_PLAN.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/REAL_HERMES_BENCHMARK.md",
+        "new": "docs/reference/REAL_HERMES_BENCHMARK.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/SECURE_OPERATOR_BOUNDARY_RESULT.md",
+        "new": "docs/reference/SECURE_OPERATOR_BOUNDARY_RESULT.md",
+        "similarity": "073",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/TRACE_PERSISTENCE_TEST.md",
+        "new": "docs/reference/TRACE_PERSISTENCE_TEST.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/AGENT_OS_ACCEPTANCE_REPORT.md",
+        "new": "docs/reports/agent-os/AGENT_OS_ACCEPTANCE_REPORT.md",
+        "similarity": "096",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/AGENT_OS_BASELINE.md",
+        "new": "docs/reports/agent-os/AGENT_OS_BASELINE.md",
+        "similarity": "094",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/AGENT_OS_MIGRATION_REPORT.md",
+        "new": "docs/reports/agent-os/AGENT_OS_MIGRATION_REPORT.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PAG1_CAUSAL_EVIDENCE.md",
+        "new": "docs/reports/pag/PAG1_CAUSAL_EVIDENCE.md",
+        "similarity": "091",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PAG1_ENTRY_CHECK.md",
+        "new": "docs/reports/pag/PAG1_ENTRY_CHECK.md",
+        "similarity": "097",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PAG1_REAL_EXPERIMENT_PREFLIGHT.md",
+        "new": "docs/reports/pag/PAG1_REAL_EXPERIMENT_PREFLIGHT.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "PAG1_REPORT.md",
+        "new": "docs/reports/pag/PAG1_REPORT.md",
+        "similarity": "094",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PAG2_ENTRY_CHECK.md",
+        "new": "docs/reports/pag/PAG2_ENTRY_CHECK.md",
+        "similarity": "098",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PAG2_PREREQUISITES.md",
+        "new": "docs/reports/pag/PAG2_PREREQUISITES.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PAG2_PROPOSED_PLAN.md",
+        "new": "docs/reports/pag/PAG2_PROPOSED_PLAN.md",
+        "similarity": "076",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "PAG2_REPORT.md",
+        "new": "docs/reports/pag/PAG2_REPORT.md",
+        "similarity": "083",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "PHASE1_REPORT.md",
+        "new": "docs/reports/phases/PHASE1_REPORT.md",
+        "similarity": "099",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE2_ENTRY_CHECK.md",
+        "new": "docs/reports/phases/PHASE2_ENTRY_CHECK.md",
+        "similarity": "097",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "PHASE2_REPORT.md",
+        "new": "docs/reports/phases/PHASE2_REPORT.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE3_ENTRY_CHECK.md",
+        "new": "docs/reports/phases/PHASE3_ENTRY_CHECK.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE3_PREREQUISITES.md",
+        "new": "docs/reports/phases/PHASE3_PREREQUISITES.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "PHASE3_REPORT.md",
+        "new": "docs/reports/phases/PHASE3_REPORT.md",
+        "similarity": "099",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE4_ENTRY_CHECK.md",
+        "new": "docs/reports/phases/PHASE4_ENTRY_CHECK.md",
+        "similarity": "095",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE4_PREREQUISITES.md",
+        "new": "docs/reports/phases/PHASE4_PREREQUISITES.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE4_PROPOSED_PLAN.md",
+        "new": "docs/reports/phases/PHASE4_PROPOSED_PLAN.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "PHASE4_REPORT.md",
+        "new": "docs/reports/phases/PHASE4_REPORT.md",
+        "similarity": "096",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE5_ENTRY_CHECK.md",
+        "new": "docs/reports/phases/PHASE5_ENTRY_CHECK.md",
+        "similarity": "098",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE5_PREREQUISITES.md",
+        "new": "docs/reports/phases/PHASE5_PREREQUISITES.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE5_PROPOSED_PLAN.md",
+        "new": "docs/reports/phases/PHASE5_PROPOSED_PLAN.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "PHASE5_REPORT.md",
+        "new": "docs/reports/phases/PHASE5_REPORT.md",
+        "similarity": "097",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE6_ENTRY_CHECK.md",
+        "new": "docs/reports/phases/PHASE6_ENTRY_CHECK.md",
+        "similarity": "098",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE6_PREREQUISITES.md",
+        "new": "docs/reports/phases/PHASE6_PREREQUISITES.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE6_PROPOSED_PLAN.md",
+        "new": "docs/reports/phases/PHASE6_PROPOSED_PLAN.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "PHASE6_REPORT.md",
+        "new": "docs/reports/phases/PHASE6_REPORT.md",
+        "similarity": "098",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE7_ENTRY_CHECK.md",
+        "new": "docs/reports/phases/PHASE7_ENTRY_CHECK.md",
+        "similarity": "098",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE7_PREREQUISITES.md",
+        "new": "docs/reports/phases/PHASE7_PREREQUISITES.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "docs/PHASE7_PROPOSED_PLAN.md",
+        "new": "docs/reports/phases/PHASE7_PROPOSED_PLAN.md",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "PHASE7_REPORT.md",
+        "new": "docs/reports/phases/PHASE7_REPORT.md",
+        "similarity": "097",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "PRODUCTION_READINESS_REPORT.md",
+        "new": "docs/reports/production/PRODUCTION_READINESS_REPORT.md",
+        "similarity": "098",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/adapt.sh",
+        "new": "scripts/adaptation/adapt.sh",
+        "similarity": "080",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/adaptation-fail-open-test.sh",
+        "new": "scripts/adaptation/adaptation-fail-open-test.sh",
+        "similarity": "095",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/adaptation-materialize.sh",
+        "new": "scripts/adaptation/adaptation-materialize.sh",
+        "similarity": "067",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/adaptation-privacy-test.sh",
+        "new": "scripts/adaptation/adaptation-privacy-test.sh",
+        "similarity": "088",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/agent-os-create-bundles.sh",
+        "new": "scripts/agent-os/agent-os-create-bundles.sh",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/agent-os-hub-ingest.py",
+        "new": "scripts/agent-os/agent-os-hub-ingest.py",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/agent-os-install-t2.sh",
+        "new": "scripts/agent-os/agent-os-install-t2.sh",
+        "similarity": "092",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/agent-os-verify.sh",
+        "new": "scripts/agent-os/agent-os-verify.sh",
+        "similarity": "087",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/install-agent-os-plugin.sh",
+        "new": "scripts/agent-os/install-agent-os-plugin.sh",
+        "similarity": "083",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/rollback-agent-os.sh",
+        "new": "scripts/agent-os/rollback-agent-os.sh",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/analytics-db-roles.sh",
+        "new": "scripts/analytics/analytics-db-roles.sh",
+        "similarity": "095",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/analytics-explain.sh",
+        "new": "scripts/analytics/analytics-explain.sh",
+        "similarity": "077",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/analytics-fail-open-test.sh",
+        "new": "scripts/analytics/analytics-fail-open-test.sh",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/analytics-materialize.sh",
+        "new": "scripts/analytics/analytics-materialize.sh",
+        "similarity": "063",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/analytics-migrate.sh",
+        "new": "scripts/analytics/analytics-migrate.sh",
+        "similarity": "078",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/analytics-privacy-test.sh",
+        "new": "scripts/analytics/analytics-privacy-test.sh",
+        "similarity": "095",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/control-db-init.sh",
+        "new": "scripts/database/control-db-init.sh",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/control-db-migrate.sh",
+        "new": "scripts/database/control-db-migrate.sh",
+        "similarity": "079",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/control-db-roles.sh",
+        "new": "scripts/database/control-db-roles.sh",
+        "similarity": "095",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/h1-cutover.sh",
+        "new": "scripts/deployment/h1-cutover.sh",
+        "similarity": "095",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/h1-postcheck.sh",
+        "new": "scripts/deployment/h1-postcheck.sh",
+        "similarity": "095",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/h1-preflight-ssh.sh",
+        "new": "scripts/deployment/h1-preflight-ssh.sh",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/h1-preflight.sh",
+        "new": "scripts/deployment/h1-preflight.sh",
+        "similarity": "089",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/h2-present-budget.sh",
+        "new": "scripts/deployment/h2-present-budget.sh",
+        "similarity": "070",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/h2-write-authorization.sh",
+        "new": "scripts/deployment/h2-write-authorization.sh",
+        "similarity": "078",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/h3-present-deploy.sh",
+        "new": "scripts/deployment/h3-present-deploy.sh",
+        "similarity": "087",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/hermes-eos-deploy-tool.py",
+        "new": "scripts/deployment/hermes-eos-deploy-tool.py",
+        "similarity": "098",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/install-plugin.sh",
+        "new": "scripts/deployment/install-plugin.sh",
+        "similarity": "088",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-as-runtime.sh",
+        "new": "scripts/deployment/pag2-as-runtime.sh",
+        "similarity": "079",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-backup.sh",
+        "new": "scripts/deployment/pag2-backup.sh",
+        "similarity": "088",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-bind-canary.sh",
+        "new": "scripts/deployment/pag2-bind-canary.sh",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-canary.sh",
+        "new": "scripts/deployment/pag2-canary.sh",
+        "similarity": "052",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-fix-actuator-runtime.sh",
+        "new": "scripts/deployment/pag2-fix-actuator-runtime.sh",
+        "similarity": "092",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-inspect-ubuntu.sh",
+        "new": "scripts/deployment/pag2-inspect-ubuntu.sh",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-present-approval-a.sh",
+        "new": "scripts/deployment/pag2-present-approval-a.sh",
+        "similarity": "087",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-restore-rehearsal.sh",
+        "new": "scripts/deployment/pag2-restore-rehearsal.sh",
+        "similarity": "072",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-rollback-persist.sh",
+        "new": "scripts/deployment/pag2-rollback-persist.sh",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-rollback.sh",
+        "new": "scripts/deployment/pag2-rollback.sh",
+        "similarity": "057",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-shadow.sh",
+        "new": "scripts/deployment/pag2-shadow.sh",
+        "similarity": "049",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/pag2-status.sh",
+        "new": "scripts/deployment/pag2-status.sh",
+        "similarity": "092",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/uninstall-plugin.sh",
+        "new": "scripts/deployment/uninstall-plugin.sh",
+        "similarity": "060",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/evaluate.sh",
+        "new": "scripts/evaluation/evaluate.sh",
+        "similarity": "070",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/evaluation-canary.sh",
+        "new": "scripts/evaluation/evaluation-canary.sh",
+        "similarity": "068",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/evaluation-fail-open-test.sh",
+        "new": "scripts/evaluation/evaluation-fail-open-test.sh",
+        "similarity": "095",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/evaluation-privacy-test.sh",
+        "new": "scripts/evaluation/evaluation-privacy-test.sh",
+        "similarity": "087",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/evaluation-sandbox-test.sh",
+        "new": "scripts/evaluation/evaluation-sandbox-test.sh",
+        "similarity": "089",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/experiment-fail-open-test.sh",
+        "new": "scripts/experiments/experiment-fail-open-test.sh",
+        "similarity": "096",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/experiment-materialize.sh",
+        "new": "scripts/experiments/experiment-materialize.sh",
+        "similarity": "067",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/experiment-privacy-test.sh",
+        "new": "scripts/experiments/experiment-privacy-test.sh",
+        "similarity": "086",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/experiment.sh",
+        "new": "scripts/experiments/experiment.sh",
+        "similarity": "070",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/capture-h1-baseline.sh",
+        "new": "scripts/maintenance/capture-h1-baseline.sh",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/capture-platform-overview.sh",
+        "new": "scripts/maintenance/capture-platform-overview.sh",
+        "similarity": "094",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/check-vendor-provenance.sh",
+        "new": "scripts/maintenance/check-vendor-provenance.sh",
+        "similarity": "088",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/clone-upstreams.sh",
+        "new": "scripts/maintenance/clone-upstreams.sh",
+        "similarity": "086",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/create-fixture-repo.sh",
+        "new": "scripts/maintenance/create-fixture-repo.sh",
+        "similarity": "081",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/dashboard-request.py",
+        "new": "scripts/maintenance/dashboard-request.py",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/rescan-dashboard.sh",
+        "new": "scripts/maintenance/rescan-dashboard.sh",
+        "similarity": "041",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/observability-db-backup.sh",
+        "new": "scripts/observability/observability-db-backup.sh",
+        "similarity": "091",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/observability-db-verify.sh",
+        "new": "scripts/observability/observability-db-verify.sh",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/otel-fail-open-test.sh",
+        "new": "scripts/observability/otel-fail-open-test.sh",
+        "similarity": "091",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/otel-persist.py",
+        "new": "scripts/observability/otel-persist.py",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/otel-phoenix-e2e.py",
+        "new": "scripts/observability/otel-phoenix-e2e.py",
+        "similarity": "100",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/otel-privacy-test.sh",
+        "new": "scripts/observability/otel-privacy-test.sh",
+        "similarity": "092",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/otel-smoke-test.sh",
+        "new": "scripts/observability/otel-smoke-test.sh",
+        "similarity": "088",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/performance-fail-open-test.sh",
+        "new": "scripts/observability/performance-fail-open-test.sh",
+        "similarity": "092",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/performance-materialize.sh",
+        "new": "scripts/observability/performance-materialize.sh",
+        "similarity": "063",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/performance-privacy-test.sh",
+        "new": "scripts/observability/performance-privacy-test.sh",
+        "similarity": "078",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/restart-observability.sh",
+        "new": "scripts/observability/restart-observability.sh",
+        "similarity": "063",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/start-observability.sh",
+        "new": "scripts/observability/start-observability.sh",
+        "similarity": "073",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/stop-observability.sh",
+        "new": "scripts/observability/stop-observability.sh",
+        "similarity": "062",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/preflight-plugins.py",
+        "new": "scripts/verification/preflight-plugins.py",
+        "similarity": "095",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/snapshot-boundaries.sh",
+        "new": "scripts/verification/snapshot-boundaries.sh",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/verify-adaptation-data.sh",
+        "new": "scripts/verification/verify-adaptation-data.sh",
+        "similarity": "094",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/verify-analytics-data.sh",
+        "new": "scripts/verification/verify-analytics-data.sh",
+        "similarity": "090",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/verify-evaluation-data.sh",
+        "new": "scripts/verification/verify-evaluation-data.sh",
+        "similarity": "090",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/verify-experiment-data.sh",
+        "new": "scripts/verification/verify-experiment-data.sh",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/verify-observability.sh",
+        "new": "scripts/verification/verify-observability.sh",
+        "similarity": "086",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/verify-operator-boundary.sh",
+        "new": "scripts/verification/verify-operator-boundary.sh",
+        "similarity": "097",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/verify-pag1-data.sh",
+        "new": "scripts/verification/verify-pag1-data.sh",
+        "similarity": "097",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/verify-pag2-hardening.sh",
+        "new": "scripts/verification/verify-pag2-hardening.sh",
+        "similarity": "090",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/verify-performance-data.sh",
+        "new": "scripts/verification/verify-performance-data.sh",
+        "similarity": "093",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/verify-plugins.sh",
+        "new": "scripts/verification/verify-plugins.sh",
+        "similarity": "087",
+        "kind": "MOVED_RENAMED"
+      },
+      {
+        "old": "scripts/verify.sh",
+        "new": "scripts/verification/verify.sh",
+        "similarity": "090",
+        "kind": "MOVED_RENAMED"
+      }
+    ],
+    "C": [
+      {
+        "path": "agent_os/core/router.py",
+        "note": "renamed_with_content_change from agent_os/router.py",
+        "similarity": "098"
+      },
+      {
+        "path": "agent_os/integrations/hermes/plugin/__init__.py",
+        "note": "renamed_with_content_change from agent_os/plugin/__init__.py",
+        "similarity": "093"
+      },
+      {
+        "path": "agent_os/registry/generate.py",
+        "note": "renamed_with_content_change from agent_os/generate.py",
+        "similarity": "099"
+      },
+      {
+        "path": "agent_os/registry/skills.lock.json",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "docs/adaptation/ADAPTATION_OPERATIONS.md",
+        "note": "renamed_with_content_change from docs/ADAPTATION_OPERATIONS.md",
+        "similarity": "065"
+      },
+      {
+        "path": "docs/adaptation/ADAPTATION_RECOVERY.md",
+        "note": "renamed_with_content_change from docs/ADAPTATION_RECOVERY.md",
+        "similarity": "070"
+      },
+      {
+        "path": "docs/agent-os/CAPABILITY_CONTROL_PLANE.md",
+        "note": "renamed_with_content_change from docs/CAPABILITY_CONTROL_PLANE.md",
+        "similarity": "083"
+      },
+      {
+        "path": "docs/agent-os/HERMES_AGENT_OS.md",
+        "note": "renamed_with_content_change from docs/HERMES_AGENT_OS.md",
+        "similarity": "088"
+      },
+      {
+        "path": "docs/agent-os/skills/SKILL_ROUTING.md",
+        "note": "renamed_with_content_change from docs/SKILL_ROUTING.md",
+        "similarity": "090"
+      },
+      {
+        "path": "docs/analytics/ANALYTICS_BACKFILL.md",
+        "note": "renamed_with_content_change from docs/ANALYTICS_BACKFILL.md",
+        "similarity": "083"
+      },
+      {
+        "path": "docs/analytics/ANALYTICS_DATABASE.md",
+        "note": "renamed_with_content_change from docs/ANALYTICS_DATABASE.md",
+        "similarity": "097"
+      },
+      {
+        "path": "docs/analytics/ANALYTICS_DATA_QUALITY.md",
+        "note": "renamed_with_content_change from docs/ANALYTICS_DATA_QUALITY.md",
+        "similarity": "082"
+      },
+      {
+        "path": "docs/analytics/ANALYTICS_MATERIALIZATION.md",
+        "note": "renamed_with_content_change from docs/ANALYTICS_MATERIALIZATION.md",
+        "similarity": "089"
+      },
+      {
+        "path": "docs/analytics/ANALYTICS_OPERATIONS.md",
+        "note": "renamed_with_content_change from docs/ANALYTICS_OPERATIONS.md",
+        "similarity": "072"
+      },
+      {
+        "path": "docs/analytics/ANALYTICS_RECOVERY.md",
+        "note": "renamed_with_content_change from docs/ANALYTICS_RECOVERY.md",
+        "similarity": "029"
+      },
+      {
+        "path": "docs/architecture/decisions/ADR-HERMES-AGENT-OS.md",
+        "note": "renamed_with_content_change from docs/ADR-HERMES-AGENT-OS.md",
+        "similarity": "096"
+      },
+      {
+        "path": "docs/evaluation/EVALUATION_DATABASE.md",
+        "note": "renamed_with_content_change from docs/EVALUATION_DATABASE.md",
+        "similarity": "091"
+      },
+      {
+        "path": "docs/evaluation/EVALUATION_DATA_QUALITY.md",
+        "note": "renamed_with_content_change from docs/EVALUATION_DATA_QUALITY.md",
+        "similarity": "091"
+      },
+      {
+        "path": "docs/evaluation/EVALUATION_OPERATIONS.md",
+        "note": "renamed_with_content_change from docs/EVALUATION_OPERATIONS.md",
+        "similarity": "079"
+      },
+      {
+        "path": "docs/evaluation/EVALUATION_RECOVERY.md",
+        "note": "renamed_with_content_change from docs/EVALUATION_RECOVERY.md",
+        "similarity": "066"
+      },
+      {
+        "path": "docs/evaluation/EVALUATION_RUNNER.md",
+        "note": "renamed_with_content_change from docs/EVALUATION_RUNNER.md",
+        "similarity": "083"
+      },
+      {
+        "path": "docs/experiments/EXPERIMENT_DATABASE.md",
+        "note": "renamed_with_content_change from docs/EXPERIMENT_DATABASE.md",
+        "similarity": "089"
+      },
+      {
+        "path": "docs/experiments/EXPERIMENT_OPERATIONS.md",
+        "note": "renamed_with_content_change from docs/EXPERIMENT_OPERATIONS.md",
+        "similarity": "082"
+      },
+      {
+        "path": "docs/experiments/EXPERIMENT_RECOVERY.md",
+        "note": "renamed_with_content_change from docs/EXPERIMENT_RECOVERY.md",
+        "similarity": "070"
+      },
+      {
+        "path": "docs/experiments/EXPERIMENT_SECURITY.md",
+        "note": "renamed_with_content_change from docs/EXPERIMENT_SECURITY.md",
+        "similarity": "087"
+      },
+      {
+        "path": "docs/observability/OBSERVABILITY_INFRASTRUCTURE.md",
+        "note": "renamed_with_content_change from docs/OBSERVABILITY_INFRASTRUCTURE.md",
+        "similarity": "084"
+      },
+      {
+        "path": "docs/observability/PERFORMANCE_DATABASE.md",
+        "note": "renamed_with_content_change from docs/PERFORMANCE_DATABASE.md",
+        "similarity": "091"
+      },
+      {
+        "path": "docs/observability/PERFORMANCE_DATA_QUALITY.md",
+        "note": "renamed_with_content_change from docs/PERFORMANCE_DATA_QUALITY.md",
+        "similarity": "089"
+      },
+      {
+        "path": "docs/observability/PERFORMANCE_METRIC_DICTIONARY.md",
+        "note": "renamed_with_content_change from docs/PERFORMANCE_METRIC_DICTIONARY.md",
+        "similarity": "096"
+      },
+      {
+        "path": "docs/observability/PERFORMANCE_OPERATIONS.md",
+        "note": "renamed_with_content_change from docs/PERFORMANCE_OPERATIONS.md",
+        "similarity": "079"
+      },
+      {
+        "path": "docs/observability/PERFORMANCE_RECOVERY.md",
+        "note": "renamed_with_content_change from docs/PERFORMANCE_RECOVERY.md",
+        "similarity": "043"
+      },
+      {
+        "path": "docs/observability/PERFORMANCE_SECURITY.md",
+        "note": "renamed_with_content_change from docs/PERFORMANCE_SECURITY.md",
+        "similarity": "078"
+      },
+      {
+        "path": "docs/operations/HERMES_ACTUATION_SEAM.md",
+        "note": "renamed_with_content_change from docs/HERMES_ACTUATION_SEAM.md",
+        "similarity": "094"
+      },
+      {
+        "path": "docs/operations/HERMES_ACTUATION_UPSTREAM_PATCH.md",
+        "note": "renamed_with_content_change from docs/HERMES_ACTUATION_UPSTREAM_PATCH.md",
+        "similarity": "087"
+      },
+      {
+        "path": "docs/operations/HERMES_HOME_OPERATIONS.md",
+        "note": "renamed_with_content_change from docs/HERMES_HOME_OPERATIONS.md",
+        "similarity": "096"
+      },
+      {
+        "path": "docs/operations/PRODUCTION_ADAPTATION_READINESS.md",
+        "note": "renamed_with_content_change from docs/PRODUCTION_ADAPTATION_READINESS.md",
+        "similarity": "089"
+      },
+      {
+        "path": "docs/operations/PRODUCTION_APPROVAL_PROTOCOL.md",
+        "note": "renamed_with_content_change from docs/PRODUCTION_APPROVAL_PROTOCOL.md",
+        "similarity": "096"
+      },
+      {
+        "path": "docs/operations/PRODUCTION_CANARY_RESULT.md",
+        "note": "renamed_with_content_change from docs/PRODUCTION_CANARY_RESULT.md",
+        "similarity": "082"
+      },
+      {
+        "path": "docs/operations/PRODUCTION_ROLLBACK_RESULT.md",
+        "note": "renamed_with_content_change from docs/PRODUCTION_ROLLBACK_RESULT.md",
+        "similarity": "085"
+      },
+      {
+        "path": "docs/operations/PRODUCTION_SHADOW_RESULT.md",
+        "note": "renamed_with_content_change from docs/PRODUCTION_SHADOW_RESULT.md",
+        "similarity": "074"
+      },
+      {
+        "path": "docs/operations/deployment/HASH_LOCKED_DEPLOY_TOOL.md",
+        "note": "renamed_with_content_change from docs/HASH_LOCKED_DEPLOY_TOOL.md",
+        "similarity": "093"
+      },
+      {
+        "path": "docs/reference/LIVE_HERMES_GATEWAY_DEPLOYMENT.md",
+        "note": "renamed_with_content_change from docs/LIVE_HERMES_GATEWAY_DEPLOYMENT.md",
+        "similarity": "087"
+      },
+      {
+        "path": "docs/reference/METRIC_DICTIONARY.md",
+        "note": "renamed_with_content_change from docs/METRIC_DICTIONARY.md",
+        "similarity": "097"
+      },
+      {
+        "path": "docs/reference/OPERATOR_BOOTSTRAP.md",
+        "note": "renamed_with_content_change from docs/OPERATOR_BOOTSTRAP.md",
+        "similarity": "092"
+      },
+      {
+        "path": "docs/reference/OPERATOR_BOUNDARY_VERIFICATION.md",
+        "note": "renamed_with_content_change from docs/OPERATOR_BOUNDARY_VERIFICATION.md",
+        "similarity": "093"
+      },
+      {
+        "path": "docs/reference/PAR_ENTRY_CHECK.md",
+        "note": "renamed_with_content_change from docs/PAR_ENTRY_CHECK.md",
+        "similarity": "096"
+      },
+      {
+        "path": "docs/reference/PLUGIN_VERIFICATION_MATRIX.md",
+        "note": "renamed_with_content_change from docs/PLUGIN_VERIFICATION_MATRIX.md",
+        "similarity": "093"
+      },
+      {
+        "path": "docs/reference/REAL_CAUSAL_EXPERIMENT_RESULT.md",
+        "note": "renamed_with_content_change from docs/REAL_CAUSAL_EXPERIMENT_RESULT.md",
+        "similarity": "083"
+      },
+      {
+        "path": "docs/reference/REAL_EXPERIMENT_BUDGET.md",
+        "note": "renamed_with_content_change from docs/REAL_EXPERIMENT_BUDGET.md",
+        "similarity": "094"
+      },
+      {
+        "path": "docs/reference/SECURE_OPERATOR_BOUNDARY_RESULT.md",
+        "note": "renamed_with_content_change from docs/SECURE_OPERATOR_BOUNDARY_RESULT.md",
+        "similarity": "073"
+      },
+      {
+        "path": "docs/reports/agent-os/AGENT_OS_ACCEPTANCE_REPORT.md",
+        "note": "renamed_with_content_change from docs/AGENT_OS_ACCEPTANCE_REPORT.md",
+        "similarity": "096"
+      },
+      {
+        "path": "docs/reports/agent-os/AGENT_OS_BASELINE.md",
+        "note": "renamed_with_content_change from docs/AGENT_OS_BASELINE.md",
+        "similarity": "094"
+      },
+      {
+        "path": "docs/reports/pag/PAG1_CAUSAL_EVIDENCE.md",
+        "note": "renamed_with_content_change from docs/PAG1_CAUSAL_EVIDENCE.md",
+        "similarity": "091"
+      },
+      {
+        "path": "docs/reports/pag/PAG1_ENTRY_CHECK.md",
+        "note": "renamed_with_content_change from docs/PAG1_ENTRY_CHECK.md",
+        "similarity": "097"
+      },
+      {
+        "path": "docs/reports/pag/PAG1_REPORT.md",
+        "note": "renamed_with_content_change from PAG1_REPORT.md",
+        "similarity": "094"
+      },
+      {
+        "path": "docs/reports/pag/PAG2_ENTRY_CHECK.md",
+        "note": "renamed_with_content_change from docs/PAG2_ENTRY_CHECK.md",
+        "similarity": "098"
+      },
+      {
+        "path": "docs/reports/pag/PAG2_PROPOSED_PLAN.md",
+        "note": "renamed_with_content_change from docs/PAG2_PROPOSED_PLAN.md",
+        "similarity": "076"
+      },
+      {
+        "path": "docs/reports/pag/PAG2_REPORT.md",
+        "note": "renamed_with_content_change from PAG2_REPORT.md",
+        "similarity": "083"
+      },
+      {
+        "path": "docs/reports/phases/PHASE1_REPORT.md",
+        "note": "renamed_with_content_change from PHASE1_REPORT.md",
+        "similarity": "099"
+      },
+      {
+        "path": "docs/reports/phases/PHASE2_ENTRY_CHECK.md",
+        "note": "renamed_with_content_change from docs/PHASE2_ENTRY_CHECK.md",
+        "similarity": "097"
+      },
+      {
+        "path": "docs/reports/phases/PHASE3_REPORT.md",
+        "note": "renamed_with_content_change from PHASE3_REPORT.md",
+        "similarity": "099"
+      },
+      {
+        "path": "docs/reports/phases/PHASE4_ENTRY_CHECK.md",
+        "note": "renamed_with_content_change from docs/PHASE4_ENTRY_CHECK.md",
+        "similarity": "095"
+      },
+      {
+        "path": "docs/reports/phases/PHASE4_REPORT.md",
+        "note": "renamed_with_content_change from PHASE4_REPORT.md",
+        "similarity": "096"
+      },
+      {
+        "path": "docs/reports/phases/PHASE5_ENTRY_CHECK.md",
+        "note": "renamed_with_content_change from docs/PHASE5_ENTRY_CHECK.md",
+        "similarity": "098"
+      },
+      {
+        "path": "docs/reports/phases/PHASE5_REPORT.md",
+        "note": "renamed_with_content_change from PHASE5_REPORT.md",
+        "similarity": "097"
+      },
+      {
+        "path": "docs/reports/phases/PHASE6_ENTRY_CHECK.md",
+        "note": "renamed_with_content_change from docs/PHASE6_ENTRY_CHECK.md",
+        "similarity": "098"
+      },
+      {
+        "path": "docs/reports/phases/PHASE6_REPORT.md",
+        "note": "renamed_with_content_change from PHASE6_REPORT.md",
+        "similarity": "098"
+      },
+      {
+        "path": "docs/reports/phases/PHASE7_ENTRY_CHECK.md",
+        "note": "renamed_with_content_change from docs/PHASE7_ENTRY_CHECK.md",
+        "similarity": "098"
+      },
+      {
+        "path": "docs/reports/phases/PHASE7_REPORT.md",
+        "note": "renamed_with_content_change from PHASE7_REPORT.md",
+        "similarity": "097"
+      },
+      {
+        "path": "docs/reports/production/PRODUCTION_READINESS_REPORT.md",
+        "note": "renamed_with_content_change from PRODUCTION_READINESS_REPORT.md",
+        "similarity": "098"
+      },
+      {
+        "path": "scripts/adaptation/adapt.sh",
+        "note": "renamed_with_content_change from scripts/adapt.sh",
+        "similarity": "080"
+      },
+      {
+        "path": "scripts/adaptation/adaptation-fail-open-test.sh",
+        "note": "renamed_with_content_change from scripts/adaptation-fail-open-test.sh",
+        "similarity": "095"
+      },
+      {
+        "path": "scripts/adaptation/adaptation-materialize.sh",
+        "note": "renamed_with_content_change from scripts/adaptation-materialize.sh",
+        "similarity": "067"
+      },
+      {
+        "path": "scripts/adaptation/adaptation-privacy-test.sh",
+        "note": "renamed_with_content_change from scripts/adaptation-privacy-test.sh",
+        "similarity": "088"
+      },
+      {
+        "path": "scripts/agent-os/agent-os-create-bundles.sh",
+        "note": "renamed_with_content_change from scripts/agent-os-create-bundles.sh",
+        "similarity": "093"
+      },
+      {
+        "path": "scripts/agent-os/agent-os-hub-ingest.py",
+        "note": "renamed_with_content_change from scripts/agent-os-hub-ingest.py",
+        "similarity": "093"
+      },
+      {
+        "path": "scripts/agent-os/agent-os-install-t2.sh",
+        "note": "renamed_with_content_change from scripts/agent-os-install-t2.sh",
+        "similarity": "092"
+      },
+      {
+        "path": "scripts/agent-os/agent-os-verify.sh",
+        "note": "renamed_with_content_change from scripts/agent-os-verify.sh",
+        "similarity": "087"
+      },
+      {
+        "path": "scripts/agent-os/install-agent-os-plugin.sh",
+        "note": "renamed_with_content_change from scripts/install-agent-os-plugin.sh",
+        "similarity": "083"
+      },
+      {
+        "path": "scripts/analytics/analytics-db-roles.sh",
+        "note": "renamed_with_content_change from scripts/analytics-db-roles.sh",
+        "similarity": "095"
+      },
+      {
+        "path": "scripts/analytics/analytics-explain.sh",
+        "note": "renamed_with_content_change from scripts/analytics-explain.sh",
+        "similarity": "077"
+      },
+      {
+        "path": "scripts/analytics/analytics-fail-open-test.sh",
+        "note": "renamed_with_content_change from scripts/analytics-fail-open-test.sh",
+        "similarity": "093"
+      },
+      {
+        "path": "scripts/analytics/analytics-materialize.sh",
+        "note": "renamed_with_content_change from scripts/analytics-materialize.sh",
+        "similarity": "063"
+      },
+      {
+        "path": "scripts/analytics/analytics-migrate.sh",
+        "note": "renamed_with_content_change from scripts/analytics-migrate.sh",
+        "similarity": "078"
+      },
+      {
+        "path": "scripts/analytics/analytics-privacy-test.sh",
+        "note": "renamed_with_content_change from scripts/analytics-privacy-test.sh",
+        "similarity": "095"
+      },
+      {
+        "path": "scripts/database/control-db-init.sh",
+        "note": "renamed_with_content_change from scripts/control-db-init.sh",
+        "similarity": "093"
+      },
+      {
+        "path": "scripts/database/control-db-migrate.sh",
+        "note": "renamed_with_content_change from scripts/control-db-migrate.sh",
+        "similarity": "079"
+      },
+      {
+        "path": "scripts/database/control-db-roles.sh",
+        "note": "renamed_with_content_change from scripts/control-db-roles.sh",
+        "similarity": "095"
+      },
+      {
+        "path": "scripts/deployment/h1-cutover.sh",
+        "note": "renamed_with_content_change from scripts/h1-cutover.sh",
+        "similarity": "095"
+      },
+      {
+        "path": "scripts/deployment/h1-postcheck.sh",
+        "note": "renamed_with_content_change from scripts/h1-postcheck.sh",
+        "similarity": "095"
+      },
+      {
+        "path": "scripts/deployment/h1-preflight.sh",
+        "note": "renamed_with_content_change from scripts/h1-preflight.sh",
+        "similarity": "089"
+      },
+      {
+        "path": "scripts/deployment/h2-present-budget.sh",
+        "note": "renamed_with_content_change from scripts/h2-present-budget.sh",
+        "similarity": "070"
+      },
+      {
+        "path": "scripts/deployment/h2-write-authorization.sh",
+        "note": "renamed_with_content_change from scripts/h2-write-authorization.sh",
+        "similarity": "078"
+      },
+      {
+        "path": "scripts/deployment/h3-present-deploy.sh",
+        "note": "renamed_with_content_change from scripts/h3-present-deploy.sh",
+        "similarity": "087"
+      },
+      {
+        "path": "scripts/deployment/hermes-eos-deploy-tool.py",
+        "note": "renamed_with_content_change from scripts/hermes-eos-deploy-tool.py",
+        "similarity": "098"
+      },
+      {
+        "path": "scripts/deployment/install-plugin.sh",
+        "note": "renamed_with_content_change from scripts/install-plugin.sh",
+        "similarity": "088"
+      },
+      {
+        "path": "scripts/deployment/pag2-as-runtime.sh",
+        "note": "renamed_with_content_change from scripts/pag2-as-runtime.sh",
+        "similarity": "079"
+      },
+      {
+        "path": "scripts/deployment/pag2-backup.sh",
+        "note": "renamed_with_content_change from scripts/pag2-backup.sh",
+        "similarity": "088"
+      },
+      {
+        "path": "scripts/deployment/pag2-canary.sh",
+        "note": "renamed_with_content_change from scripts/pag2-canary.sh",
+        "similarity": "052"
+      },
+      {
+        "path": "scripts/deployment/pag2-fix-actuator-runtime.sh",
+        "note": "renamed_with_content_change from scripts/pag2-fix-actuator-runtime.sh",
+        "similarity": "092"
+      },
+      {
+        "path": "scripts/deployment/pag2-present-approval-a.sh",
+        "note": "renamed_with_content_change from scripts/pag2-present-approval-a.sh",
+        "similarity": "087"
+      },
+      {
+        "path": "scripts/deployment/pag2-restore-rehearsal.sh",
+        "note": "renamed_with_content_change from scripts/pag2-restore-rehearsal.sh",
+        "similarity": "072"
+      },
+      {
+        "path": "scripts/deployment/pag2-rollback.sh",
+        "note": "renamed_with_content_change from scripts/pag2-rollback.sh",
+        "similarity": "057"
+      },
+      {
+        "path": "scripts/deployment/pag2-shadow.sh",
+        "note": "renamed_with_content_change from scripts/pag2-shadow.sh",
+        "similarity": "049"
+      },
+      {
+        "path": "scripts/deployment/pag2-status.sh",
+        "note": "renamed_with_content_change from scripts/pag2-status.sh",
+        "similarity": "092"
+      },
+      {
+        "path": "scripts/deployment/uninstall-plugin.sh",
+        "note": "renamed_with_content_change from scripts/uninstall-plugin.sh",
+        "similarity": "060"
+      },
+      {
+        "path": "scripts/evaluation/evaluate.sh",
+        "note": "renamed_with_content_change from scripts/evaluate.sh",
+        "similarity": "070"
+      },
+      {
+        "path": "scripts/evaluation/evaluation-canary.sh",
+        "note": "renamed_with_content_change from scripts/evaluation-canary.sh",
+        "similarity": "068"
+      },
+      {
+        "path": "scripts/evaluation/evaluation-fail-open-test.sh",
+        "note": "renamed_with_content_change from scripts/evaluation-fail-open-test.sh",
+        "similarity": "095"
+      },
+      {
+        "path": "scripts/evaluation/evaluation-privacy-test.sh",
+        "note": "renamed_with_content_change from scripts/evaluation-privacy-test.sh",
+        "similarity": "087"
+      },
+      {
+        "path": "scripts/evaluation/evaluation-sandbox-test.sh",
+        "note": "renamed_with_content_change from scripts/evaluation-sandbox-test.sh",
+        "similarity": "089"
+      },
+      {
+        "path": "scripts/experiments/experiment-fail-open-test.sh",
+        "note": "renamed_with_content_change from scripts/experiment-fail-open-test.sh",
+        "similarity": "096"
+      },
+      {
+        "path": "scripts/experiments/experiment-materialize.sh",
+        "note": "renamed_with_content_change from scripts/experiment-materialize.sh",
+        "similarity": "067"
+      },
+      {
+        "path": "scripts/experiments/experiment-privacy-test.sh",
+        "note": "renamed_with_content_change from scripts/experiment-privacy-test.sh",
+        "similarity": "086"
+      },
+      {
+        "path": "scripts/experiments/experiment.sh",
+        "note": "renamed_with_content_change from scripts/experiment.sh",
+        "similarity": "070"
+      },
+      {
+        "path": "scripts/maintenance/capture-h1-baseline.sh",
+        "note": "renamed_with_content_change from scripts/capture-h1-baseline.sh",
+        "similarity": "093"
+      },
+      {
+        "path": "scripts/maintenance/capture-platform-overview.sh",
+        "note": "renamed_with_content_change from scripts/capture-platform-overview.sh",
+        "similarity": "094"
+      },
+      {
+        "path": "scripts/maintenance/check-vendor-provenance.sh",
+        "note": "renamed_with_content_change from scripts/check-vendor-provenance.sh",
+        "similarity": "088"
+      },
+      {
+        "path": "scripts/maintenance/clone-upstreams.sh",
+        "note": "renamed_with_content_change from scripts/clone-upstreams.sh",
+        "similarity": "086"
+      },
+      {
+        "path": "scripts/maintenance/create-fixture-repo.sh",
+        "note": "renamed_with_content_change from scripts/create-fixture-repo.sh",
+        "similarity": "081"
+      },
+      {
+        "path": "scripts/maintenance/rescan-dashboard.sh",
+        "note": "renamed_with_content_change from scripts/rescan-dashboard.sh",
+        "similarity": "041"
+      },
+      {
+        "path": "scripts/observability/observability-db-backup.sh",
+        "note": "renamed_with_content_change from scripts/observability-db-backup.sh",
+        "similarity": "091"
+      },
+      {
+        "path": "scripts/observability/otel-fail-open-test.sh",
+        "note": "renamed_with_content_change from scripts/otel-fail-open-test.sh",
+        "similarity": "091"
+      },
+      {
+        "path": "scripts/observability/otel-privacy-test.sh",
+        "note": "renamed_with_content_change from scripts/otel-privacy-test.sh",
+        "similarity": "092"
+      },
+      {
+        "path": "scripts/observability/otel-smoke-test.sh",
+        "note": "renamed_with_content_change from scripts/otel-smoke-test.sh",
+        "similarity": "088"
+      },
+      {
+        "path": "scripts/observability/performance-fail-open-test.sh",
+        "note": "renamed_with_content_change from scripts/performance-fail-open-test.sh",
+        "similarity": "092"
+      },
+      {
+        "path": "scripts/observability/performance-materialize.sh",
+        "note": "renamed_with_content_change from scripts/performance-materialize.sh",
+        "similarity": "063"
+      },
+      {
+        "path": "scripts/observability/performance-privacy-test.sh",
+        "note": "renamed_with_content_change from scripts/performance-privacy-test.sh",
+        "similarity": "078"
+      },
+      {
+        "path": "scripts/observability/restart-observability.sh",
+        "note": "renamed_with_content_change from scripts/restart-observability.sh",
+        "similarity": "063"
+      },
+      {
+        "path": "scripts/observability/start-observability.sh",
+        "note": "renamed_with_content_change from scripts/start-observability.sh",
+        "similarity": "073"
+      },
+      {
+        "path": "scripts/observability/stop-observability.sh",
+        "note": "renamed_with_content_change from scripts/stop-observability.sh",
+        "similarity": "062"
+      },
+      {
+        "path": "scripts/verification/preflight-plugins.py",
+        "note": "renamed_with_content_change from scripts/preflight-plugins.py",
+        "similarity": "095"
+      },
+      {
+        "path": "scripts/verification/snapshot-boundaries.sh",
+        "note": "renamed_with_content_change from scripts/snapshot-boundaries.sh",
+        "similarity": "093"
+      },
+      {
+        "path": "scripts/verification/verify-adaptation-data.sh",
+        "note": "renamed_with_content_change from scripts/verify-adaptation-data.sh",
+        "similarity": "094"
+      },
+      {
+        "path": "scripts/verification/verify-analytics-data.sh",
+        "note": "renamed_with_content_change from scripts/verify-analytics-data.sh",
+        "similarity": "090"
+      },
+      {
+        "path": "scripts/verification/verify-evaluation-data.sh",
+        "note": "renamed_with_content_change from scripts/verify-evaluation-data.sh",
+        "similarity": "090"
+      },
+      {
+        "path": "scripts/verification/verify-experiment-data.sh",
+        "note": "renamed_with_content_change from scripts/verify-experiment-data.sh",
+        "similarity": "093"
+      },
+      {
+        "path": "scripts/verification/verify-observability.sh",
+        "note": "renamed_with_content_change from scripts/verify-observability.sh",
+        "similarity": "086"
+      },
+      {
+        "path": "scripts/verification/verify-operator-boundary.sh",
+        "note": "renamed_with_content_change from scripts/verify-operator-boundary.sh",
+        "similarity": "097"
+      },
+      {
+        "path": "scripts/verification/verify-pag1-data.sh",
+        "note": "renamed_with_content_change from scripts/verify-pag1-data.sh",
+        "similarity": "097"
+      },
+      {
+        "path": "scripts/verification/verify-pag2-hardening.sh",
+        "note": "renamed_with_content_change from scripts/verify-pag2-hardening.sh",
+        "similarity": "090"
+      },
+      {
+        "path": "scripts/verification/verify-performance-data.sh",
+        "note": "renamed_with_content_change from scripts/verify-performance-data.sh",
+        "similarity": "093"
+      },
+      {
+        "path": "scripts/verification/verify-plugins.sh",
+        "note": "renamed_with_content_change from scripts/verify-plugins.sh",
+        "similarity": "087"
+      },
+      {
+        "path": "scripts/verification/verify.sh",
+        "note": "renamed_with_content_change from scripts/verify.sh",
+        "similarity": "090"
+      }
+    ],
+    "I": [
+      {
+        "path": "deploy/adaptation/hermes-eos-adaptation.service",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "deploy/analytics/hermes-eos-analytics.service",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "deploy/evaluation/hermes-eos-evaluate.service",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "deploy/experiments/hermes-eos-experiments.service",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "deploy/performance/hermes-eos-performance.service",
+        "kind": "MODIFIED"
+      }
+    ],
+    "G": [
+      {
+        "path": "tests/python/test_pag1.py",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "tests/python/test_pag2.py",
+        "kind": "MODIFIED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/layout-check-latest.json",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/verify-latest.json",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/apply-hermes-home/moves.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/hermes-skills-list.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/hermes-home-maxdepth1.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/repo-tree-L2.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/cron.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/git-diff-cached-stat.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/summary.json",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/sqlite-health.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/hooks.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/git-HEAD.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/hermes-home-ls.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/repo-root-ls.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/plugins-skills-profiles.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/git-status.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/hermes-plugins-list.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/processes.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/TIMESTAMP",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/git-diff-stat.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-user-dir.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-system-hermes.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-user-timers.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/hermes-cron-jobs.json",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/env-probe.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-user-units.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/git-log.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/dashboard-health.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/rollback-check.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/skills-count.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/unittest-discover.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/regenerate.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/unittest-discover-rerun.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/systemd-exec.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/stale-plugin-paths.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/memories.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/profiles-count.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/migrate-verify.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/probe-stream.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/dashboard.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/sessions-count.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/layout-check.json",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/stale-script-paths.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/plugin-link.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/agent-os-unittest.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/final-health.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/ACCEPTANCE_SUMMARY.json",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/sqlite.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/final-trees.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/git-and-remaining.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/bundles-count.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/hermes-version.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/unittest-discover-final.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/acceptance-20260903T083009Z/agent-os-verify.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-adaptation.service.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-actuator.show.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-actuator.service.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-gateway.show.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-analytics.service.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-gateway-rp-friend.show.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-gateway.service.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-performance.service.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-performance.show.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-evaluate.show.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-dashboard.show.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-gateway-rp-friend.service.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-dashboard.service.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-adaptation.show.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-experiments.show.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-evaluate.service.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-experiments.service.txt",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "tests/evidence/layout-migration/baseline-20260903T081109Z/systemd-units/hermes-eos-analytics.show.txt",
+        "kind": "NEW_UNTRACKED"
+      }
+    ],
+    "H": [
+      {
+        "path": "agent_os/classify.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/generate.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/ingest_github.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/inventory.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/plugin/plugin.yaml",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/plugin/__init__.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/resolver.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/router.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/schema.py",
+        "kind": "NEW_UNTRACKED"
+      }
+    ],
+    "B": [
+      {
+        "path": "agent_os/core/__init__.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/integrations/__init__.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/integrations/hermes/__init__.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/lifecycle/__init__.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "agent_os/registry/ingest/__init__.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "bin/agent-os-regenerate",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "bin/eos-experiments-materialize",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "bin/hermes-eos-verify",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "bin/eos-analytics-materialize",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "bin/agent-os-status",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "bin/eos-evaluate",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "bin/eos-adaptation-materialize",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "bin/agent-os-verify",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "bin/eos-performance-materialize",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "bin/eos-layout-migrate",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "migration/_build_phase1_inventory.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "migration/path-inventory.json",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "migration/path-dependency-graph.json",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "migration/ARCHITECTURE_FREEZE.json",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "migration/compatibility.yaml",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "migration/path-map.yaml",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "migration/filesystem-normalization.yaml",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "scripts/lib/repo-root.sh",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "scripts/migration/eos-layout-migrate.py",
+        "kind": "NEW_UNTRACKED"
+      },
+      {
+        "path": "scripts/verification/layout-check.py",
+        "kind": "NEW_UNTRACKED"
+      }
+    ],
+    "D": []
+  },
+  "deletion_audit": [],
+  "unexplained_deletions": [],
+  "unexplained_deletion_count": 0
+}

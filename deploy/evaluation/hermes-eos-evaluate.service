@@ -5,6 +5,6 @@ After=hermes-eos-analytics.service
 [Service]
 Type=oneshot
 WorkingDirectory=/opt/hermes-engineering-os
-ExecStart=/opt/hermes-engineering-os/scripts/evaluate.sh --incremental --json
+ExecStart=/opt/hermes-engineering-os/bin/eos-evaluate --incremental --json
 Nice=10
 TimeoutStartSec=300

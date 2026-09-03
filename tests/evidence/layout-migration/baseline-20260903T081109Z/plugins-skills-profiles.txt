@@ -1,0 +1,31 @@
+=== plugins ===
+total 16
+drwxrwxr-x  4 ubuntu ubuntu 4096 Sep  3 14:27 .
+drwx------ 28 ubuntu ubuntu 4096 Sep  3 15:08 ..
+lrwxrwxrwx  1 ubuntu ubuntu   42 Sep  3 14:27 agent-os-router -> /opt/hermes-engineering-os/agent_os/plugin
+lrwxrwxrwx  1 ubuntu ubuntu   26 Aug 27 21:43 engineering-os -> /opt/hermes-engineering-os
+drwxrwxr-x  5 ubuntu ubuntu 4096 Sep  1 13:57 hermes_otel
+drwxrwxr-x 19 ubuntu ubuntu 4096 Aug 18 22:37 superpowers
+=== skill dirs ===
+38
+skill_md_count=104
+bundles=8
+profiles=10
+rp-android
+rp-api-contract
+rp-backend-markets
+rp-friend
+rp-qa-e2e
+rp-recovery-architect
+rp-release-orchestrator
+rp-review-security
+rp-sre-release
+rp-web
+ai-engineering.yaml
+frontend-production.yaml
+monad-contract-build.yaml
+monad-security.yaml
+pitch-preparation.yaml
+product-discovery.yaml
+startup-validation.yaml
+web3-security-audit.yaml

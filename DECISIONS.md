@@ -7,7 +7,7 @@
   read-only and Agent OS remains independently disableable.
 - Registry is an index over native `~/.hermes/skills/` — not a replacement store.
 - Deterministic routing + trust tiers; never `--force`; no Hermes core patch.
-- Full ADR: [docs/ADR-HERMES-AGENT-OS.md](docs/ADR-HERMES-AGENT-OS.md).
+- Full ADR: [docs/architecture/decisions/ADR-HERMES-AGENT-OS.md](docs/architecture/decisions/ADR-HERMES-AGENT-OS.md).
 
 ## Upstream adoption
 
@@ -91,7 +91,7 @@
 ## Production Activation Gate 1 (PAG-1)
 
 - Not Phase 8 and not production enablement. Contract remains `par-v1`.
-- Operator bootstrap stays human-only. `scripts/verify-operator-boundary.sh`
+- Operator bootstrap stays human-only. `scripts/verification/verify-operator-boundary.sh`
   reports `READY_FOR_HUMAN` while ubuntu has passwordless sudo.
 - Current Hermes upstream is pinned in `provenance/HERMES_PAG1_UPSTREAM.yaml`.
   The new spawn transform is `transform_kanban_worker_spawn` on that pin.

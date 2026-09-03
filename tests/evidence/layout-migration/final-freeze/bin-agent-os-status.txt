@@ -1,0 +1,6 @@
+repo=/opt/hermes-engineering-os
+plugin_link=/opt/hermes-engineering-os/agent_os/integrations/hermes/plugin
+3:    "name": "agent-os-router",
+10:    "name": "engineering-os",
+SKILLS.md=present
+skill_md_count=104

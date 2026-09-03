@@ -1,0 +1,16 @@
+# /home/ubuntu/.config/systemd/user/hermes-dashboard.service
+[Unit]
+Description=Hermes Web Dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=HERMES_HOME=/home/ubuntu/.hermes
+WorkingDirectory=/home/ubuntu
+ExecStart=/home/ubuntu/.local/bin/hermes dashboard --host 127.0.0.1 --port 9119 --no-open
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

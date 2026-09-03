@@ -1,0 +1,26 @@
+kanban_tables=25
+otel_config=present
+otel_live_db=present
+active
+dashboard_http=200
+Hermes Agent v0.20.0 (2026.8.3)
+skills=104
+idempotent {'skills_registry_sha256': 'af473c82a791733a958549dba0b3a5d15b34238166034ebde018c4f674f7ea60', 'skills_md_sha256': '0f5a7f570ca71371da362a76ff81a60b4f4519c1f2fe22cd54a03af76c2c9537', 'installed_count': 104, 'total_entries': 477}
+== Plugin present ==
+== Hermes CLI health ==
+== Core untouched ==
+PASS: agent-os-verify
+PASS: hermes_keep_SKILLS.md
+PASS: hermes_backups_config
+PASS: hermes_audit_relocated
+PASS: bin_hermes-eos-verify
+PASS: bin_agent-os-verify
+PASS: bin_eos-analytics-materialize
+PASS: bin_eos-layout-migrate
+PASS: python_imports
+{
+  "ok": true,
+  "failures": []
+}
+PASS: checkpoint branch present
+PASS: rollback-check materials enumerated (full restore uses checkpoint + reverse mv list)

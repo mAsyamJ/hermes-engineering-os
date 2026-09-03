@@ -1,0 +1,32 @@
+{
+  "timestamp": "20260903T081109Z",
+  "checkpoint_branch": "checkpoint/pre-filesystem-normalization",
+  "git_head": "97e59871605e144a62c4016aaead29cbc14c2ab5",
+  "files": [
+    "TIMESTAMP",
+    "cron.txt",
+    "dashboard-health.txt",
+    "env-probe.txt",
+    "git-HEAD.txt",
+    "git-diff-cached-stat.txt",
+    "git-diff-stat.txt",
+    "git-log.txt",
+    "git-status.txt",
+    "hermes-cron-jobs.json",
+    "hermes-home-ls.txt",
+    "hermes-home-maxdepth1.txt",
+    "hermes-plugins-list.txt",
+    "hermes-skills-list.txt",
+    "hooks.txt",
+    "plugins-skills-profiles.txt",
+    "processes.txt",
+    "repo-root-ls.txt",
+    "repo-tree-L2.txt",
+    "sqlite-health.txt",
+    "systemd-system-hermes.txt",
+    "systemd-units",
+    "systemd-user-dir.txt",
+    "systemd-user-timers.txt",
+    "systemd-user-units.txt"
+  ]
+}

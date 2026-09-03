@@ -28,13 +28,13 @@ H1 (human). Production gateways remain ubuntu user units until that gate.
 After H1 the production gateway identity is `hermes-runtime` and the
 hash-locked plugin source is in `/usr/local/lib/hermes-eos/deploy/pag2/`.
 H3 installs that copy into the protected runtime home, not the
-ubuntu `/opt` plugin symlink. Canary bind is `scripts/pag2-bind-canary.sh`
-(hermes-op). Read-only status: `scripts/pag2-status.sh`.
+ubuntu `/opt` plugin symlink. Canary bind is `scripts/deployment/pag2-bind-canary.sh`
+(hermes-op). Read-only status: `scripts/deployment/pag2-status.sh`.
 
 ## Health
 
 ```bash
-./scripts/dashboard-request.py /api/plugins/engineering-os/health
+./scripts/maintenance/dashboard-request.py /api/plugins/engineering-os/health
 systemctl --user status hermes-dashboard.service
 ```
 
@@ -56,9 +56,9 @@ Observability dumps are owner-only `pg_dump` files under
 `/var/backups/hermes-engineering-os/observability-*` (`phoenix.sql`,
 `hermes_engineering.sql`, and `hermes_control.sql` when the control database
 exists). Restore is proven only against an isolated throwaway container via
-`scripts/observability-db-verify.sh`, never onto the live volume. Derived
+`scripts/observability/observability-db-verify.sh`, never onto the live volume. Derived
 analytics can also be rebuilt with
-`scripts/analytics-materialize.sh --backfill --recompute`. Adaptation control
+`scripts/analytics/analytics-materialize.sh --backfill --recompute`. Adaptation control
 state is not derived; restore it from `hermes_control.sql` or re-qualify
 TEST-only policies. Never restore over live.
 

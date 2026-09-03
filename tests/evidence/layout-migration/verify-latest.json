@@ -1,0 +1,95 @@
+{
+  "checks": [
+    {
+      "name": "repo_root_no_phase_reports",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "name": "docs_no_uncategorized_md",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "name": "scripts_no_flat_impl",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "name": "agent_os_core_router",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "agent_os_compat_shim_router",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "plugin_symlink",
+      "status": "PASS",
+      "detail": "/opt/hermes-engineering-os/agent_os/integrations/hermes/plugin"
+    },
+    {
+      "name": "hermes_keep_config.yaml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "hermes_keep_auth.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "hermes_keep_state.db",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "hermes_keep_SOUL.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "hermes_keep_SKILLS.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "hermes_backups_config",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "hermes_audit_relocated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "bin_hermes-eos-verify",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "bin_agent-os-verify",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "bin_eos-analytics-materialize",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "bin_eos-layout-migrate",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "python_imports",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "rc": 0
+}

@@ -1,0 +1,46 @@
+=== layout-check ===
+{
+  "ok": true,
+  "failures": []
+}
+=== eos-layout-migrate --verify ===
+PASS: repo_root_no_phase_reports — []
+PASS: docs_no_uncategorized_md — []
+PASS: scripts_no_flat_impl — []
+PASS: agent_os_core_router
+PASS: agent_os_compat_shim_router
+PASS: plugin_symlink — /opt/hermes-engineering-os/agent_os/integrations/hermes/plugin
+PASS: hermes_keep_config.yaml
+PASS: hermes_keep_auth.json
+PASS: hermes_keep_state.db
+PASS: hermes_keep_SOUL.md
+PASS: hermes_keep_SKILLS.md
+PASS: hermes_backups_config
+PASS: hermes_audit_relocated
+PASS: bin_hermes-eos-verify
+PASS: bin_agent-os-verify
+PASS: bin_eos-analytics-materialize
+PASS: bin_eos-layout-migrate
+PASS: python_imports
+=== eos-layout-migrate --rollback ===
+PASS: checkpoint branch present
+PASS: rollback-check materials enumerated (full restore uses checkpoint + reverse mv list)
+=== hermes version ===
+Hermes Agent v0.20.0 (2026.8.3)
+Install directory: /home/ubuntu/.hermes/hermes-agent
+Python: 3.11.15
+OpenAI SDK: 2.24.0
+Run 'hermes version' for update status.
+=== dashboard ===
+active
+http=200
+=== sqlite ===
+state.db ok
+kanban.db ok
+projects.db ok
+verification_evidence.db ok
+=== skill count ===
+104
+=== plugins ===
+/opt/hermes-engineering-os/agent_os/integrations/hermes/plugin
+/opt/hermes-engineering-os

@@ -1,0 +1,27 @@
+{
+  "frozen_at": "2026-09-03T08:17:35.464925+00:00",
+  "phase": "apply-verified-complete",
+  "moves_executed": true,
+  "inventory_entries": 339,
+  "planned_manifest_rows": 247,
+  "documents": [
+    "docs/architecture/filesystem/root-contract.md",
+    "docs/architecture/filesystem/repository-layout.md",
+    "docs/architecture/filesystem/hermes-home-map.md",
+    "migration/path-inventory.json",
+    "migration/path-dependency-graph.json",
+    "migration/filesystem-normalization.yaml",
+    "migration/path-map.yaml",
+    "migration/compatibility.yaml"
+  ],
+  "gate": "No structural moves until apply phase begins from this freeze.",
+  "apply_started_at": "2026-09-03T08:29:46.603538+00:00",
+  "apply_waves": [
+    "agent_os",
+    "docs",
+    "scripts_bin",
+    "hermes_home_class_b_partial"
+  ],
+  "verified_at": "2026-09-03T09:17:37.281968+00:00",
+  "acceptance": "tests/evidence/layout-migration/acceptance-20260903T083009Z"
+}

@@ -1,0 +1,15 @@
+default.target.wants
+hermes-dashboard.service
+hermes-eos-adaptation.service
+hermes-eos-adaptation.timer
+hermes-eos-analytics.service
+hermes-eos-analytics.timer
+hermes-eos-evaluate.service
+hermes-eos-evaluate.timer
+hermes-eos-experiments.service
+hermes-eos-experiments.timer
+hermes-eos-performance.service
+hermes-eos-performance.timer
+hermes-gateway-rp-friend.service
+hermes-gateway.service
+quarantined-m11-2

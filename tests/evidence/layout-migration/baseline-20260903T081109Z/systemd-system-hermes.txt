@@ -1,0 +1,4 @@
+hermes-eos-actuator.service
+hermes-eos-actuator.socket
+hermes-gateway-rp-friend.service
+hermes-gateway.service

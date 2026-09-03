@@ -1,0 +1,472 @@
+{
+  "counts": {
+    "COMPATIBILITY_EXPECTED": 2,
+    "FALSE_POSITIVE": 30,
+    "ACTIVE_ERROR": 4,
+    "HISTORICAL_ONLY": 6
+  },
+  "active": [
+    {
+      "file": "docs/agent-os/HERMES_AGENT_OS.md",
+      "line": 28,
+      "old": "/opt/hermes-engineering-os/PRODUCTION_READINESS_REPORT.md",
+      "new": "/opt/hermes-engineering-os/docs/reports/production/PRODUCTION_READINESS_REPORT.md",
+      "classification": "ACTIVE_ERROR",
+      "content": "| Dated gate results | `PHASE*_REPORT.md`, `PRODUCTION_READINESS_REPORT.md`, `PAG1_REPORT.md`, `PAG2_REPORT.md` |",
+      "refined_classification": "ACTIVE_ERROR",
+      "reason": "operational doc still lists root report basenames as current locations"
+    },
+    {
+      "file": "docs/agent-os/HERMES_AGENT_OS.md",
+      "line": 483,
+      "old": "/opt/hermes-engineering-os/PHASE1_REPORT.md",
+      "new": "/opt/hermes-engineering-os/docs/reports/phases/PHASE1_REPORT.md",
+      "classification": "ACTIVE_ERROR",
+      "content": "| `PHASE1_REPORT.md` \u2026 `PHASE7_REPORT.md` | Framework at each close | dashboard PIDs, \u201cnot pushed\u201d, GitHub BLOCKED_AUTH |",
+      "refined_classification": "ACTIVE_ERROR",
+      "reason": ""
+    },
+    {
+      "file": "docs/agent-os/HERMES_AGENT_OS.md",
+      "line": 485,
+      "old": "/opt/hermes-engineering-os/PAG1_REPORT.md",
+      "new": "/opt/hermes-engineering-os/docs/reports/pag/PAG1_REPORT.md",
+      "classification": "ACTIVE_ERROR",
+      "content": "| `PAG1_REPORT.md` | PAG-1 EXAMPLE A | \u201cDo not begin PAG-2\u201d; PAG-2 tree exists; PIDs 924 / 2381797 |",
+      "refined_classification": "ACTIVE_ERROR",
+      "reason": ""
+    },
+    {
+      "file": "docs/agent-os/HERMES_AGENT_OS.md",
+      "line": 486,
+      "old": "/opt/hermes-engineering-os/PAG2_REPORT.md",
+      "new": "/opt/hermes-engineering-os/docs/reports/pag/PAG2_REPORT.md",
+      "classification": "ACTIVE_ERROR",
+      "content": "| `PAG2_REPORT.md` | PAG-2 autonomous work | header \u201cnot pushed\u201d; origin is now at `432389f` |",
+      "refined_classification": "ACTIVE_ERROR",
+      "reason": ""
+    }
+  ],
+  "all_refined": [
+    {
+      "file": "scripts/migration/eos-layout-migrate.py",
+      "line": 57,
+      "old": "/opt/hermes-engineering-os/PRODUCTION_READINESS_REPORT.md",
+      "new": "/opt/hermes-engineering-os/docs/reports/production/PRODUCTION_READINESS_REPORT.md",
+      "classification": "ACTIVE_ERROR",
+      "content": "    root_reports += list(REPO.glob(\"PRODUCTION_READINESS_REPORT.md\"))",
+      "refined_classification": "COMPATIBILITY_EXPECTED",
+      "reason": "migration tooling / verify checks"
+    },
+    {
+      "file": "scripts/verification/verify-pag1-data.sh",
+      "line": 163,
+      "old": "/opt/hermes-engineering-os/scripts/verification/verify-pag1-data.sh",
+      "new": "/opt/hermes-engineering-os/scripts/verification/verify-pag1-data.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "  \"$ROOT/provenance\" \"$ROOT/experiments\" \"$ROOT/config\" \"$ROOT/PAG1_REPORT.md\" \\",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/verification/verify-pag2-hardening.sh",
+      "line": 53,
+      "old": "/opt/hermes-engineering-os/scripts/verification/verify-pag2-hardening.sh",
+      "new": "/opt/hermes-engineering-os/scripts/verification/verify-pag2-hardening.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "  \"$ROOT/provenance\" \"$ROOT/experiments\" \"$ROOT/config\" \"$ROOT/PAG1_REPORT.md\" \\",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/verification/verify-pag2-hardening.sh",
+      "line": 54,
+      "old": "/opt/hermes-engineering-os/scripts/verification/verify-pag2-hardening.sh",
+      "new": "/opt/hermes-engineering-os/scripts/verification/verify-pag2-hardening.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "  \"$ROOT/PAG2_REPORT.md\" \\",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "docs/agent-os/HERMES_AGENT_OS.md",
+      "line": 28,
+      "old": "/opt/hermes-engineering-os/PRODUCTION_READINESS_REPORT.md",
+      "new": "/opt/hermes-engineering-os/docs/reports/production/PRODUCTION_READINESS_REPORT.md",
+      "classification": "ACTIVE_ERROR",
+      "content": "| Dated gate results | `PHASE*_REPORT.md`, `PRODUCTION_READINESS_REPORT.md`, `PAG1_REPORT.md`, `PAG2_REPORT.md` |",
+      "refined_classification": "ACTIVE_ERROR",
+      "reason": "operational doc still lists root report basenames as current locations"
+    },
+    {
+      "file": "docs/agent-os/HERMES_AGENT_OS.md",
+      "line": 483,
+      "old": "/opt/hermes-engineering-os/PHASE1_REPORT.md",
+      "new": "/opt/hermes-engineering-os/docs/reports/phases/PHASE1_REPORT.md",
+      "classification": "ACTIVE_ERROR",
+      "content": "| `PHASE1_REPORT.md` \u2026 `PHASE7_REPORT.md` | Framework at each close | dashboard PIDs, \u201cnot pushed\u201d, GitHub BLOCKED_AUTH |",
+      "refined_classification": "ACTIVE_ERROR",
+      "reason": ""
+    },
+    {
+      "file": "docs/agent-os/HERMES_AGENT_OS.md",
+      "line": 484,
+      "old": "/opt/hermes-engineering-os/PRODUCTION_READINESS_REPORT.md",
+      "new": "/opt/hermes-engineering-os/docs/reports/production/PRODUCTION_READINESS_REPORT.md",
+      "classification": "ACTIVE_ERROR",
+      "content": "| `PRODUCTION_READINESS_REPORT.md` | PAR cells | \u201cDo not push\u201d; later commits exist |",
+      "refined_classification": "HISTORICAL_ONLY",
+      "reason": "catalog of historical report names"
+    },
+    {
+      "file": "docs/agent-os/HERMES_AGENT_OS.md",
+      "line": 485,
+      "old": "/opt/hermes-engineering-os/PAG1_REPORT.md",
+      "new": "/opt/hermes-engineering-os/docs/reports/pag/PAG1_REPORT.md",
+      "classification": "ACTIVE_ERROR",
+      "content": "| `PAG1_REPORT.md` | PAG-1 EXAMPLE A | \u201cDo not begin PAG-2\u201d; PAG-2 tree exists; PIDs 924 / 2381797 |",
+      "refined_classification": "ACTIVE_ERROR",
+      "reason": ""
+    },
+    {
+      "file": "docs/agent-os/HERMES_AGENT_OS.md",
+      "line": 486,
+      "old": "/opt/hermes-engineering-os/PAG2_REPORT.md",
+      "new": "/opt/hermes-engineering-os/docs/reports/pag/PAG2_REPORT.md",
+      "classification": "ACTIVE_ERROR",
+      "content": "| `PAG2_REPORT.md` | PAG-2 autonomous work | header \u201cnot pushed\u201d; origin is now at `432389f` |",
+      "refined_classification": "ACTIVE_ERROR",
+      "reason": ""
+    },
+    {
+      "file": "docs/architecture/filesystem/root-contract.md",
+      "line": 124,
+      "old": "/opt/hermes-engineering-os/PRODUCTION_READINESS_REPORT.md",
+      "new": "/opt/hermes-engineering-os/docs/reports/production/PRODUCTION_READINESS_REPORT.md",
+      "classification": "ACTIVE_ERROR",
+      "content": "- `PHASE*_REPORT.md`, `PAG*_REPORT.md`, `PRODUCTION_READINESS_REPORT.md`",
+      "refined_classification": "HISTORICAL_ONLY",
+      "reason": "migration architecture docs describe old\u2192new"
+    },
+    {
+      "file": "scripts/agent-os/install-agent-os-plugin.sh",
+      "line": 8,
+      "old": "/opt/hermes-engineering-os/scripts/agent-os/install-agent-os-plugin.sh",
+      "new": "/opt/hermes-engineering-os/scripts/agent-os/install-agent-os-plugin.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "# Canonical plugin path after filesystem normalization; agent_os/plugin remains a compat shim.",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/migration/eos-layout-migrate.py",
+      "line": 70,
+      "old": "/opt/hermes-engineering-os/agent_os/router.py",
+      "new": "/opt/hermes-engineering-os/agent_os/core/router.py",
+      "classification": "ACTIVE_ERROR",
+      "content": "    check(\"agent_os_compat_shim_router\", (REPO / \"agent_os/router.py\").is_file())",
+      "refined_classification": "COMPATIBILITY_EXPECTED",
+      "reason": "migration tooling / verify checks"
+    },
+    {
+      "file": "docs/operations/migrations/filesystem-normalization-rollback.md",
+      "line": 27,
+      "old": "/opt/hermes-engineering-os/agent_os/plugin",
+      "new": "/opt/hermes-engineering-os/agent_os/integrations/hermes/plugin",
+      "classification": "ACTIVE_ERROR",
+      "content": "   `ln -sfn /opt/hermes-engineering-os/agent_os/plugin /home/ubuntu/.hermes/plugins/agent-os-router`",
+      "refined_classification": "HISTORICAL_ONLY",
+      "reason": "migration architecture docs describe old\u2192new"
+    },
+    {
+      "file": "docs/architecture/filesystem/repository-layout.md",
+      "line": 39,
+      "old": "/opt/hermes-engineering-os/agent_os/schema.py",
+      "new": "/opt/hermes-engineering-os/agent_os/registry/schema.py",
+      "classification": "ACTIVE_ERROR",
+      "content": "\u2502   \u2502   \u251c\u2500\u2500 schema.py           # from agent_os/schema.py",
+      "refined_classification": "HISTORICAL_ONLY",
+      "reason": "migration architecture docs describe old\u2192new"
+    },
+    {
+      "file": "docs/architecture/filesystem/repository-layout.md",
+      "line": 50,
+      "old": "/opt/hermes-engineering-os/agent_os/plugin",
+      "new": "/opt/hermes-engineering-os/agent_os/integrations/hermes/plugin",
+      "classification": "ACTIVE_ERROR",
+      "content": "\u2502   \u2502       \u2514\u2500\u2500 plugin/         # from agent_os/plugin/",
+      "refined_classification": "HISTORICAL_ONLY",
+      "reason": "migration architecture docs describe old\u2192new"
+    },
+    {
+      "file": "docs/architecture/decisions/ADR-HERMES-AGENT-OS.md",
+      "line": 23,
+      "old": "/opt/hermes-engineering-os/agent_os/plugin",
+      "new": "/opt/hermes-engineering-os/agent_os/integrations/hermes/plugin",
+      "classification": "ACTIVE_ERROR",
+      "content": "2. **Separate plugin** `agent-os-router` (symlink to `agent_os/plugin/`) so Engineering OS stays GET-only/hook-free and Agent OS can be disabled independently.",
+      "refined_classification": "HISTORICAL_ONLY",
+      "reason": "ADR historical decision text"
+    },
+    {
+      "file": "scripts/experiments/experiment-privacy-test.sh",
+      "line": 30,
+      "old": "/opt/hermes-engineering-os/scripts/experiments/experiment-privacy-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/experiments/experiment-privacy-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "  ':!docs/EXPERIMENT_SECURITY.md' \\",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/experiments/experiment-privacy-test.sh",
+      "line": 31,
+      "old": "/opt/hermes-engineering-os/scripts/experiments/experiment-privacy-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/experiments/experiment-privacy-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "  ':!docs/EXPERIMENT_CONFIGURATION_IDENTITY.md' \\",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/analytics/analytics-privacy-test.sh",
+      "line": 61,
+      "old": "/opt/hermes-engineering-os/scripts/analytics/analytics-privacy-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/analytics/analytics-privacy-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/analytics/analytics-materialize.sh\" --task t_ce5ca4b3 --json \\",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/deployment/h1-preflight.sh",
+      "line": 45,
+      "old": "/opt/hermes-engineering-os/scripts/deployment/h1-preflight.sh",
+      "new": "/opt/hermes-engineering-os/scripts/deployment/h1-preflight.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "echo \"Do not claim PASS. Cutover: sudo -u from hermes-op only: scripts/deployment/h1-cutover.sh\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/maintenance/capture-platform-overview.sh",
+      "line": 142,
+      "old": "/opt/hermes-engineering-os/scripts/maintenance/capture-platform-overview.sh",
+      "new": "/opt/hermes-engineering-os/scripts/maintenance/capture-platform-overview.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/deployment/pag2-status.sh\" || true",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/deployment/pag2-restore-rehearsal.sh",
+      "line": 12,
+      "old": "/opt/hermes-engineering-os/scripts/deployment/pag2-restore-rehearsal.sh",
+      "new": "/opt/hermes-engineering-os/scripts/deployment/pag2-restore-rehearsal.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "  echo \"NO_BACKUP: run scripts/deployment/pag2-backup.sh first (secret-free summary only)\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/verification/verify-operator-boundary.sh",
+      "line": 13,
+      "old": "/opt/hermes-engineering-os/scripts/verification/verify-operator-boundary.sh",
+      "new": "/opt/hermes-engineering-os/scripts/verification/verify-operator-boundary.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "source \"$ROOT/scripts/deployment/pag2-inspect-ubuntu.sh\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/verification/verify-pag2-hardening.sh",
+      "line": 62,
+      "old": "/opt/hermes-engineering-os/scripts/verification/verify-pag2-hardening.sh",
+      "new": "/opt/hermes-engineering-os/scripts/verification/verify-pag2-hardening.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "status_out=\"$(\"$ROOT/scripts/deployment/pag2-status.sh\")\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/evaluation/evaluation-fail-open-test.sh",
+      "line": 146,
+      "old": "/opt/hermes-engineering-os/scripts/evaluation/evaluation-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/evaluation/evaluation-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/evaluation/evaluate.sh\" --incremental --json >\"$EVIDENCE/g.json\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/evaluation/evaluation-fail-open-test.sh",
+      "line": 182,
+      "old": "/opt/hermes-engineering-os/scripts/evaluation/evaluation-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/evaluation/evaluation-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/evaluation/evaluate.sh\" --incremental --json >\"$EVIDENCE/i.json\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/experiments/experiment-fail-open-test.sh",
+      "line": 71,
+      "old": "/opt/hermes-engineering-os/scripts/experiments/experiment-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/experiments/experiment-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "  \"$ROOT/scripts/experiments/experiment.sh\" \"$@\" >\"$outfile\" || true",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/observability/otel-fail-open-test.sh",
+      "line": 14,
+      "old": "/opt/hermes-engineering-os/scripts/observability/otel-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/observability/otel-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/maintenance/create-fixture-repo.sh\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/adaptation/adaptation-fail-open-test.sh",
+      "line": 13,
+      "old": "/opt/hermes-engineering-os/scripts/adaptation/adaptation-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/adaptation/adaptation-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "DR=\"$ROOT/scripts/maintenance/dashboard-request.py\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/experiments/experiment-fail-open-test.sh",
+      "line": 13,
+      "old": "/opt/hermes-engineering-os/scripts/experiments/experiment-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/experiments/experiment-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "DR=\"$ROOT/scripts/maintenance/dashboard-request.py\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/observability/otel-fail-open-test.sh",
+      "line": 59,
+      "old": "/opt/hermes-engineering-os/scripts/observability/otel-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/observability/otel-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/maintenance/dashboard-request.py\" /api/plugins/engineering-os/observability --quiet \\",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/observability/performance-fail-open-test.sh",
+      "line": 13,
+      "old": "/opt/hermes-engineering-os/scripts/observability/performance-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/observability/performance-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "DR=\"$ROOT/scripts/maintenance/dashboard-request.py\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/observability/performance-fail-open-test.sh",
+      "line": 63,
+      "old": "/opt/hermes-engineering-os/scripts/observability/performance-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/observability/performance-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/observability/performance-materialize.sh\" --json >\"$EVIDENCE/b-locked.json\" || true",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/observability/performance-fail-open-test.sh",
+      "line": 115,
+      "old": "/opt/hermes-engineering-os/scripts/observability/performance-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/observability/performance-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/observability/performance-materialize.sh\" --json >\"$EVIDENCE/g-locked.json\" || true",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/analytics/analytics-fail-open-test.sh",
+      "line": 12,
+      "old": "/opt/hermes-engineering-os/scripts/analytics/analytics-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/analytics/analytics-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "DR=\"$ROOT/scripts/maintenance/dashboard-request.py\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/evaluation/evaluation-fail-open-test.sh",
+      "line": 13,
+      "old": "/opt/hermes-engineering-os/scripts/evaluation/evaluation-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/evaluation/evaluation-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "DR=\"$ROOT/scripts/maintenance/dashboard-request.py\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/observability/performance-fail-open-test.sh",
+      "line": 160,
+      "old": "/opt/hermes-engineering-os/scripts/observability/performance-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/observability/performance-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/verification/verify-performance-data.sh\" | tee \"$EVIDENCE/j-verify.log\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/experiments/experiment-fail-open-test.sh",
+      "line": 151,
+      "old": "/opt/hermes-engineering-os/scripts/experiments/experiment-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/experiments/experiment-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/verification/verify-experiment-data.sh\" | tee \"$EVIDENCE/j-verify.log\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/maintenance/capture-platform-overview.sh",
+      "line": 144,
+      "old": "/opt/hermes-engineering-os/scripts/maintenance/capture-platform-overview.sh",
+      "new": "/opt/hermes-engineering-os/scripts/maintenance/capture-platform-overview.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/verification/verify-operator-boundary.sh\" || true",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/analytics/analytics-fail-open-test.sh",
+      "line": 100,
+      "old": "/opt/hermes-engineering-os/scripts/analytics/analytics-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/analytics/analytics-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/verification/verify-analytics-data.sh\" | tee \"$EVIDENCE/d-quality.out\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/analytics/analytics-fail-open-test.sh",
+      "line": 139,
+      "old": "/opt/hermes-engineering-os/scripts/analytics/analytics-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/analytics/analytics-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/verification/verify-analytics-data.sh\" >\"$EVIDENCE/f-quality-fail.out\" 2>&1",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    },
+    {
+      "file": "scripts/analytics/analytics-fail-open-test.sh",
+      "line": 155,
+      "old": "/opt/hermes-engineering-os/scripts/analytics/analytics-fail-open-test.sh",
+      "new": "/opt/hermes-engineering-os/scripts/analytics/analytics-fail-open-test.sh",
+      "classification": "ACTIVE_ERROR",
+      "content": "\"$ROOT/scripts/verification/verify-analytics-data.sh\" | tee \"$EVIDENCE/f-quality-clean.out\"",
+      "refined_classification": "FALSE_POSITIVE",
+      "reason": "hit is the file path itself"
+    }
+  ]
+}

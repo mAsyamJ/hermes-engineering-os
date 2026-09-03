@@ -1,7 +1,7 @@
 # Architecture
 
-Canonical overview (C4, 5W+1H, live snapshot): [docs/HERMES_AGENT_OS.md](docs/HERMES_AGENT_OS.md).
-Capability control plane (skill registry/router): [docs/CAPABILITY_CONTROL_PLANE.md](docs/CAPABILITY_CONTROL_PLANE.md).
+Canonical overview (C4, 5W+1H, live snapshot): [docs/agent-os/HERMES_AGENT_OS.md](docs/agent-os/HERMES_AGENT_OS.md).
+Capability control plane (skill registry/router): [docs/agent-os/CAPABILITY_CONTROL_PLANE.md](docs/agent-os/CAPABILITY_CONTROL_PLANE.md).
 This page is the short ASCII pipeline.
 
 Hermes Engineering OS is one combined user plugin. Its gateway registration is

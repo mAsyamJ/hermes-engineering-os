@@ -1,0 +1,2 @@
+ .../home/ubuntu/.hermes/SKILLS.md                  | 8831 +++++++++++++-------
+ 1 file changed, 5961 insertions(+), 2870 deletions(-)

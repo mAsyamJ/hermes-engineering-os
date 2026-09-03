@@ -1,0 +1,5 @@
+ExecStart={ path=/opt/hermes-engineering-os/scripts/evaluate.sh ; argv[]=/opt/hermes-engineering-os/scripts/evaluate.sh --incremental --json ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+Environment=
+ActiveState=inactive
+FragmentPath=/home/ubuntu/.config/systemd/user/hermes-eos-evaluate.service
+UnitFileState=static

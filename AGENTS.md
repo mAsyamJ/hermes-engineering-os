@@ -4,7 +4,7 @@
   scheduler, retry engine, or task database.
 - Agent OS (`agent-os-router`) is a capability index/router only — not a
   Kanban owner, worker owner, or second skill database. Disable via
-  `scripts/rollback-agent-os.sh` without wiping Hermes state.
+  `scripts/agent-os/rollback-agent-os.sh` without wiping Hermes state.
 - Hermes Kanban is the only lifecycle authority. This product is read-only.
 - Never conflate `hermes.kanban.task_id` with `hermes.runtime.task_id`.
 - Do not mutate `/opt/retropick`, `/opt/retropick-android`, production
@@ -32,27 +32,27 @@
   change sudoers/SSH, or run production canary.
 - PAG-1 must not execute operator bootstrap, self-authorize LLM budget, push
   Engineering OS or upstream Hermes, or deploy the spawn transform to live
-  Hermes. `scripts/verify-operator-boundary.sh` is read-only.
+  Hermes. `scripts/verification/verify-operator-boundary.sh` is read-only.
 - PAG-2 must not fake H1 PASS, create principals, cut over the live gateway,
   self-authorize LLM budget, deploy spawn-transform, or push. Human gates
-  are H1 → H2 → experiment → H3. `scripts/verify-operator-boundary.sh` is
+  are H1 → H2 → experiment → H3. `scripts/verification/verify-operator-boundary.sh` is
   read-only and currently `READY_FOR_HUMAN`.
-- After H1 PASS, present H2 with `scripts/h2-present-budget.sh`. After the
+- After H1 PASS, present H2 with `scripts/deployment/h2-present-budget.sh`. After the
   exact authorize phrase, `python -m engineering_os.experiments run-real`
   then `analyze-real`. H3 is hash-locked deploy-tool plus
   `deploy/pag2/eos-actuation-plugin/` (not the ubuntu `/opt` symlink).
-  Fail-closed probes: `scripts/pag2-as-runtime.sh pag2-probe` after H1
-  (no confirmatory candidate). Evidence-gated: `scripts/pag2-shadow.sh`,
-  `scripts/pag2-canary.sh`, `scripts/pag2-rollback.sh`. Canary bind:
-  `scripts/pag2-bind-canary.sh` (hermes-op). Machine dashboard:
-  `scripts/pag2-status.sh`.
+  Fail-closed probes: `scripts/deployment/pag2-as-runtime.sh pag2-probe` after H1
+  (no confirmatory candidate). Evidence-gated: `scripts/deployment/pag2-shadow.sh`,
+  `scripts/deployment/pag2-canary.sh`, `scripts/deployment/pag2-rollback.sh`. Canary bind:
+  `scripts/deployment/pag2-bind-canary.sh` (hermes-op). Machine dashboard:
+  `scripts/deployment/pag2-status.sh`.
 - H1 copy-paste: `.runtime/operator-bootstrap/H1_COMMANDS.md`. Mechanical
-  cutover `scripts/h1-cutover.sh` refuses ubuntu. Do not apply the live
+  cutover `scripts/deployment/h1-cutover.sh` refuses ubuntu. Do not apply the live
   spawn-transform until H3.
 - GitHub is read-first. Do not create branches, commits, PRs, checks, comments,
   or Kanban mutations from this plugin.
 - Keep upstream pins, licenses, and every vendored file's provenance current.
-- Use `scripts/uninstall-plugin.sh`; never use the built-in remove command for
+- Use `scripts/deployment/uninstall-plugin.sh`; never use the built-in remove command for
   the external symlink.
-- Run `scripts/verify.sh` before declaring changes complete.
+- Run `bin/hermes-eos-verify` before declaring changes complete.
 

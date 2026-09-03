@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Stable entrypoint for filesystem layout migration tooling.
+set -euo pipefail
+_resolve_root() {
+  local dir
+  dir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd -P)"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -f "$dir/plugin.yaml" && -f "$dir/pyproject.toml" && -d "$dir/agent_os" ]]; then
+      printf '%s\n' "$dir"
+      return 0
+    fi
+    dir="$(dirname "$dir")"
+  done
+  return 1
+}
+ROOT="$(_resolve_root)"
+exec /home/ubuntu/.hermes/hermes-agent/venv/bin/python "$ROOT/scripts/migration/eos-layout-migrate.py" "$@"

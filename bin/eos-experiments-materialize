@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Stable operator entrypoint — implementation lives under scripts/.
+set -euo pipefail
+_resolve_root() {
+  local dir
+  dir="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd -P)"
+  while [[ "$dir" != "/" ]]; do
+    if [[ -f "$dir/plugin.yaml" && -f "$dir/pyproject.toml" && -d "$dir/agent_os" ]]; then
+      printf '%s\n' "$dir"
+      return 0
+    fi
+    dir="$(dirname "$dir")"
+  done
+  echo "could not locate hermes-engineering-os root" >&2
+  return 1
+}
+ROOT="$(_resolve_root)"
+exec "$ROOT/scripts/experiments/experiment-materialize.sh" "$@"

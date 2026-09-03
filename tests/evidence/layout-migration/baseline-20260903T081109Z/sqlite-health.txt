@@ -1,0 +1,18 @@
+== state.db ==
+ok
+wal
+-rw-r--r-- 1 ubuntu ubuntu 19439616 Sep  1 12:59 /home/ubuntu/.hermes/state.db
+== kanban.db ==
+ok
+wal
+-rw-r--r-- 1 ubuntu ubuntu 118784 Sep  1 12:59 /home/ubuntu/.hermes/kanban.db
+-rw-rw-r-- 1 ubuntu ubuntu      0 Aug 11 21:07 /home/ubuntu/.hermes/kanban.db.dispatch.lock
+-rw-rw-r-- 1 ubuntu ubuntu      0 Aug 11 21:07 /home/ubuntu/.hermes/kanban.db.init.lock
+== projects.db ==
+ok
+wal
+-rw-r--r-- 1 ubuntu ubuntu 45056 Sep  1 12:59 /home/ubuntu/.hermes/projects.db
+== verification_evidence.db ==
+ok
+wal
+-rw-r--r-- 1 ubuntu ubuntu 40960 Sep  1 12:59 /home/ubuntu/.hermes/verification_evidence.db

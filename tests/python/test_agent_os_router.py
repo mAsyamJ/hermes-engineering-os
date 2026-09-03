@@ -7,9 +7,9 @@ import unittest
 from pathlib import Path
 
 from agent_os import CONTEXT_BUDGET_CHARS as BUDGET
-from agent_os.generate import regenerate
-from agent_os.resolver import decide_auto_install, resolve_missing_capability
-from agent_os.router import format_routing_context, route_task
+from agent_os.registry.generate import regenerate
+from agent_os.core.resolver import decide_auto_install, resolve_missing_capability
+from agent_os.core.router import format_routing_context, route_task
 
 
 ROOT = Path(__file__).resolve().parents[2]

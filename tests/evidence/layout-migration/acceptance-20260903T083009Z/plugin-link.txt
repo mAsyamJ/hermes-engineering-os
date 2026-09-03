@@ -1,0 +1,2 @@
+/opt/hermes-engineering-os/agent_os/integrations/hermes/plugin
+/opt/hermes-engineering-os

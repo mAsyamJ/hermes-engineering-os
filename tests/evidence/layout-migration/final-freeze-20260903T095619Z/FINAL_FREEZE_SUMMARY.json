@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-09-03T09:56:55.029678+00:00",
+  "branch": "filesystem-normalization",
+  "base_sha": "97e59871605e144a62c4016aaead29cbc14c2ab5",
+  "candidate_commit_parent": "97e59871605e144a62c4016aaead29cbc14c2ab5",
+  "hermes_version": "0.20.0",
+  "python_tests": {
+    "count": 245,
+    "result": "OK"
+  },
+  "agent_os_verification": "PASS",
+  "layout_verification": "PASS",
+  "skill_count": 104,
+  "bundle_count": 8,
+  "dashboard_health": "active/HTTP 200",
+  "db_integrity": "all ok (state, kanban, projects, verification_evidence)",
+  "stale_active_path_count": 0,
+  "broken_symlink_count": 0,
+  "compatibility_artifact_count": 8,
+  "secrets_scan_result": "green (0 findings)",
+  "rollback_status": "valid (checkpoint/pre-filesystem-normalization @ base; eos-layout-migrate --rollback)",
+  "unexplained_deletions": 0,
+  "manifests": {
+    "moves_executed": true,
+    "done": 244,
+    "deferred": 3
+  },
+  "hermes_core": "unmodified for EOS purposes (agent-os-verify ignores package-lock.json only)",
+  "profiles": 10,
+  "sessions_intact": true,
+  "memories_intact": true,
+  "cron_intact": true,
+  "kanban_intact": true,
+  "otel_intact": true,
+  "evidence_dir": "tests/evidence/layout-migration/final-freeze-20260903T095619Z"
+}

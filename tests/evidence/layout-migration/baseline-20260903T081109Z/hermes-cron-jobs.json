@@ -1,0 +1,106 @@
+{
+  "jobs": [
+    {
+      "id": "e21109dc4394",
+      "name": "RetroPick release-state reconcile watch",
+      "prompt": "Read-only release-state drift watcher for RetroPick release factory (silent when healthy)",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": null,
+      "model_snapshot": null,
+      "base_url": null,
+      "script": "retropick-reconcile-watch.sh",
+      "no_agent": true,
+      "monitor_script": null,
+      "monitor_url": null,
+      "monitor_state": null,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 360,
+        "display": "every 360m"
+      },
+      "schedule_display": "every 360m",
+      "repeat": {
+        "times": null,
+        "completed": 71
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-08-11T16:36:53.186645+00:00",
+      "next_run_at": "2026-08-29T22:01:50.835696+00:00",
+      "last_run_at": "2026-08-29T16:01:50.835696+00:00",
+      "last_status": "ok",
+      "last_error": null,
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "7835321644",
+        "chat_name": "Asyam Jay",
+        "thread_id": null,
+        "user_id": "7835321644"
+      },
+      "enabled_toolsets": null,
+      "workdir": null,
+      "fire_claim": null
+    },
+    {
+      "id": "42c5684b142f",
+      "name": "RetroPick wave orchestrator (24/7 loop)",
+      "prompt": "You are the autonomous RetroPick Markets V1 RELEASE ORCHESTRATOR running headless 24/7. Continue from current Git/Kanban/Graphify/runtime truth; never restart completed Wave-1 work.\n\nHARD OVERRIDE: provider/model configuration is OUT OF SCOPE. Preserve each Hermes profile's current provider/model exactly as configured. Never run model/provider/profile reconfiguration commands. Historical provider errors are not current product blockers.\n\nPRIMARY LOOP:\n1) Refresh/read Graphify and current Git, Kanban, worktrees, tests/runtime, CI, staging, and release-state.\n2) Read only relevant .dev/markets-v1, ECC, .agents/skills, .harness, references/polymarket.\n3) Find highest-value executable P0/P1 product gap.\n4) Create dependency-linked Kanban implementation tasks for existing rp-* specialists. Orchestrator never implements specialist product code.\n5) Enforce one task=one branch=one isolated worktree=one writer, no writable overlap, max 2 concurrent, max 1 heavy operation.\n6) Require BUILD->RUN->TEST->DEBUG->FIX->RETEST. Do not weaken tests.\n7) Route QA/E2E and independent security review. REJECT creates remediation owned by implementer; reviewer does not fix.\n8) Integrate only approved work to main using non-destructive merge, stop on conflict, push if authenticated; never force-push/reset/clean user work.\n9) Refresh Graphify and release-state and create next wave. If board is empty, audit actual running product against .dev requirements and create executable product tasks.\n\nCURRENT KNOWN STATE (reverify every run): main around 44aa016e7 with W1 integrated; W2 local staging branch agent/w2-004-staging; W3 backend portfolio/activity t_e749c50b, Web lifecycle t_76599d7b, Android BFF parity t_12cec0d9, parity QA t_bbc74868, security t_75af0fe1. Canonical Android checkout may be dirty from generated outputs: never reset/clean it; use Android-repo isolated worktrees.\n\nSTOP only when backend+Web+Android real trading lifecycle, CI/E2E/staging/hardening and security are proven green and no P0/P1 development blocker remains. Human gates remain for credentials, real funds/orders, production deployment, legal/jurisdiction, Play signing/release authority. Primary response should report concrete actions/evidence/blockers, not plans.",
+      "skills": [],
+      "skill": null,
+      "model": null,
+      "provider": null,
+      "provider_snapshot": "deepseek",
+      "model_snapshot": "deepseek-v4-flash",
+      "base_url": null,
+      "script": "retropick-reconcile-watch.sh",
+      "no_agent": false,
+      "monitor_script": null,
+      "monitor_url": null,
+      "monitor_state": null,
+      "context_from": null,
+      "schedule": {
+        "kind": "interval",
+        "minutes": 120,
+        "display": "every 120m"
+      },
+      "schedule_display": "every 120m",
+      "repeat": {
+        "times": null,
+        "completed": 215
+      },
+      "enabled": true,
+      "state": "scheduled",
+      "paused_at": null,
+      "paused_reason": null,
+      "created_at": "2026-08-11T17:07:56.877278+00:00",
+      "next_run_at": "2026-08-29T20:04:51.947908+00:00",
+      "last_run_at": "2026-08-29T18:04:51.947908+00:00",
+      "last_status": "error",
+      "last_error": "RuntimeError: Skipped to prevent unintended spend: global inference config drifted since this job was created (provider 'deepseek' -> 'openai-codex'; model 'deepseek-v4-flash' -> 'gpt-5.6-sol'), and this job is unpinned. No inference call was made. To run on the new config, pin it explicitly: `cronjob action=update job_id=42c5684b142f provider=<provider> model=<model>` (or pin the original values to keep them). See #44585.",
+      "last_delivery_error": null,
+      "deliver": "origin",
+      "origin": {
+        "platform": "telegram",
+        "chat_id": "7835321644",
+        "chat_name": "Asyam Jay",
+        "thread_id": null,
+        "user_id": "7835321644"
+      },
+      "enabled_toolsets": [
+        "terminal",
+        "file"
+      ],
+      "workdir": "/opt/retropick",
+      "fire_claim": null
+    }
+  ],
+  "updated_at": "2026-08-29T18:04:51.948610+00:00"
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/home/ubuntu/.hermes/state.db",
+    "owner": 1000,
+    "integrity": "ok",
+    "journal_mode": "wal"
+  },
+  {
+    "path": "/home/ubuntu/.hermes/kanban.db",
+    "owner": 1000,
+    "integrity": "ok",
+    "journal_mode": "wal"
+  },
+  {
+    "path": "/home/ubuntu/.hermes/projects.db",
+    "owner": 1000,
+    "integrity": "ok",
+    "journal_mode": "wal"
+  },
+  {
+    "path": "/home/ubuntu/.hermes/verification_evidence.db",
+    "owner": 1000,
+    "integrity": "ok",
+    "journal_mode": "wal"
+  }
+]
+ALL_OK

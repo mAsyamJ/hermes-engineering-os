@@ -1,0 +1,18 @@
+PASS: repo_root_no_phase_reports — []
+PASS: docs_no_uncategorized_md — []
+PASS: scripts_no_flat_impl — []
+PASS: agent_os_core_router
+PASS: agent_os_compat_shim_router
+PASS: plugin_symlink — /opt/hermes-engineering-os/agent_os/integrations/hermes/plugin
+PASS: hermes_keep_config.yaml
+PASS: hermes_keep_auth.json
+PASS: hermes_keep_state.db
+PASS: hermes_keep_SOUL.md
+PASS: hermes_keep_SKILLS.md
+PASS: hermes_backups_config
+PASS: hermes_audit_relocated
+PASS: bin_hermes-eos-verify
+PASS: bin_agent-os-verify
+PASS: bin_eos-analytics-materialize
+PASS: bin_eos-layout-migrate
+PASS: python_imports

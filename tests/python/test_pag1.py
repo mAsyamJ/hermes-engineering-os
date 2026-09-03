@@ -74,7 +74,7 @@ def _request(**overrides):
 class AuthorityTests(unittest.TestCase):
     def test_boundary_verifier_ready_for_human(self) -> None:
         proc = subprocess.run(
-            [str(ROOT / "scripts/verify-operator-boundary.sh")],
+            [str(ROOT / "scripts/verification/verify-operator-boundary.sh")],
             check=False,
             capture_output=True,
             text=True,

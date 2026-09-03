@@ -1,0 +1,5 @@
+/opt/hermes-engineering-os/scripts/deployment/h3-present-deploy.sh:29:  TOOL=/opt/hermes-engineering-os/scripts/deployment/hermes-eos-deploy-tool.py
+/opt/hermes-engineering-os/docs/reference/REAL_EXPERIMENT_BUDGET.md:77:/opt/hermes-engineering-os/scripts/deployment/h2-present-budget.sh
+/opt/hermes-engineering-os/docs/reference/REAL_EXPERIMENT_BUDGET.md:79:/opt/hermes-engineering-os/scripts/deployment/h2-write-authorization.sh \
+/opt/hermes-engineering-os/docs/reference/REAL_EXPERIMENT_BUDGET.md:92:/opt/hermes-engineering-os/scripts/deployment/h2-present-budget.sh
+/opt/hermes-engineering-os/docs/reference/OPERATOR_BOOTSTRAP.md:135:sudo /opt/hermes-engineering-os/scripts/deployment/h1-cutover.sh

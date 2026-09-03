@@ -1,0 +1,4 @@
+/home/ubuntu/.config/systemd/user/hermes-eos-performance.service:ExecStart=/opt/hermes-engineering-os/bin/eos-performance-materialize --json
+/home/ubuntu/.config/systemd/user/hermes-eos-evaluate.service:ExecStart=/opt/hermes-engineering-os/bin/eos-evaluate --incremental --json
+/home/ubuntu/.config/systemd/user/hermes-eos-analytics.service:ExecStart=/opt/hermes-engineering-os/bin/eos-analytics-materialize --json
+/home/ubuntu/.config/systemd/user/hermes-eos-experiments.service:ExecStart=/opt/hermes-engineering-os/bin/eos-experiments-materialize --json

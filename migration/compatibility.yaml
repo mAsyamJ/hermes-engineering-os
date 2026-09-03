@@ -1,0 +1,166 @@
+# Compatibility artifacts after filesystem-normalization apply + final freeze
+version: 1
+moves_executed: true
+verified_at: "2026-09-03T09:50:00+00:00"
+policy: Compatibility is not the default. Prefer consumer updates. Temporary must not become undocumented permanent architecture.
+artifacts:
+  - path: agent_os/classify.py
+    old_api: agent_os.classify
+    canonical_api: agent_os.core.classifier
+    mechanism: reexport_shim
+    owner: AGENT_OS
+    reason: Preserve old import path after package split into core/
+    risk: Callers may never migrate; shim becomes permanent architecture
+    priority: P2
+    status: transitional
+    remove_when:
+      - zero internal imports of agent_os.classify
+      - zero plugin/runtime callers of agent_os.classify
+      - zero operator documentation references requiring old import
+      - compatibility test suite passes with shim deleted
+  - path: agent_os/router.py
+    old_api: agent_os.router
+    canonical_api: agent_os.core.router
+    mechanism: reexport_shim
+    owner: AGENT_OS
+    reason: Preserve old import path after package split into core/
+    risk: Callers may never migrate; shim becomes permanent architecture
+    priority: P2
+    status: transitional
+    remove_when:
+      - zero internal imports of agent_os.router
+      - zero plugin/runtime callers of agent_os.router
+      - zero operator documentation references requiring old import
+      - compatibility test suite passes with shim deleted
+  - path: agent_os/resolver.py
+    old_api: agent_os.resolver
+    canonical_api: agent_os.core.resolver
+    mechanism: reexport_shim
+    owner: AGENT_OS
+    reason: Preserve old import path after package split into core/
+    risk: Callers may never migrate; shim becomes permanent architecture
+    priority: P2
+    status: transitional
+    remove_when:
+      - zero internal imports of agent_os.resolver
+      - zero plugin/runtime callers of agent_os.resolver
+      - zero operator documentation references requiring old import
+      - compatibility test suite passes with shim deleted
+  - path: agent_os/schema.py
+    old_api: agent_os.schema
+    canonical_api: agent_os.registry.schema
+    mechanism: reexport_shim
+    owner: AGENT_OS
+    reason: Preserve old import path after registry split
+    risk: Callers may never migrate
+    priority: P2
+    status: transitional
+    remove_when:
+      - zero internal imports of agent_os.schema
+      - zero plugin/runtime callers
+      - zero operator documentation references requiring old import
+      - compatibility test suite passes with shim deleted
+  - path: agent_os/inventory.py
+    old_api: agent_os.inventory
+    canonical_api: agent_os.registry.inventory
+    mechanism: reexport_shim
+    owner: AGENT_OS
+    reason: Preserve old import path after registry split
+    risk: Callers may never migrate
+    priority: P2
+    status: transitional
+    remove_when:
+      - zero internal imports of agent_os.inventory
+      - zero plugin/runtime callers
+      - zero operator documentation references requiring old import
+      - compatibility test suite passes with shim deleted
+  - path: agent_os/generate.py
+    old_api: agent_os.generate
+    canonical_api: agent_os.registry.generate
+    mechanism: reexport_shim
+    owner: AGENT_OS
+    reason: Preserve old import path after registry split
+    risk: Callers may never migrate
+    priority: P2
+    status: transitional
+    remove_when:
+      - zero internal imports of agent_os.generate
+      - zero plugin/runtime callers
+      - zero operator documentation references requiring old import
+      - compatibility test suite passes with shim deleted
+  - path: agent_os/ingest_github.py
+    old_api: agent_os.ingest_github
+    canonical_api: agent_os.registry.ingest.github
+    mechanism: reexport_shim
+    owner: AGENT_OS
+    reason: Preserve old import path after registry ingest split
+    risk: Callers may never migrate
+    priority: P2
+    status: transitional
+    remove_when:
+      - zero internal imports of agent_os.ingest_github
+      - zero plugin/runtime callers
+      - zero operator documentation references requiring old import
+      - compatibility test suite passes with shim deleted
+  - path: agent_os/plugin/
+    old_api: agent_os.plugin / agent_os/plugin/plugin.yaml
+    canonical_api: agent_os.integrations.hermes.plugin
+    mechanism: reexport_package_plus_plugin_yaml_copy
+    owner: AGENT_OS
+    reason: Residual readers; live Hermes symlink uses integrations/hermes/plugin
+    risk: Dual plugin paths confuse operators if reintroduced
+    priority: P2
+    status: transitional
+    remove_when:
+      - zero residual readers of agent_os/plugin/
+      - zero plugin/runtime references to old path
+      - zero operator documentation requiring old path
+      - compatibility test suite passes with directory removed
+  - path: bin/*
+    old_api: scripts/** implementation paths as public entrypoints
+    canonical_api: /opt/hermes-engineering-os/bin/<command>
+    mechanism: stable_wrapper
+    owner: ENGINEERING_OS
+    reason: Public operator/systemd entrypoints
+    risk: none — permanent stable API
+    priority: P0
+    status: permanent
+    remove_when:
+      - never
+  - path: /home/ubuntu/.hermes/dashboard.log
+    old_api: Hermes-root dashboard.log
+    canonical_api: /home/ubuntu/.hermes/logs/dashboard.log (deferred)
+    mechanism: intentional_keep
+    owner: HERMES
+    reason: Hermes is the writer; nesting deferred pending writer audit
+    risk: Root clutter; not an operational path break
+    priority: P3
+    status: deferred_debt
+    remove_when:
+      - Hermes writer configured to logs/ directory
+      - existing dashboard.log rotated or relocated with writer change
+      - no active tooling hard-codes root path incorrectly
+  - path: /home/ubuntu/.hermes/gateway-starts.log
+    old_api: Hermes-root gateway-starts.log
+    canonical_api: /home/ubuntu/.hermes/logs/gateway-starts.log (deferred)
+    mechanism: intentional_keep
+    owner: HERMES
+    reason: Hermes is the writer; nesting deferred
+    risk: Root clutter
+    priority: P3
+    status: deferred_debt
+    remove_when:
+      - Hermes writer configured to logs/ directory
+      - existing log rotated or relocated with writer change
+  - path: historical report prose referencing old script/docs paths
+    old_api: narrative mentions of pre-normalization paths
+    canonical_api: current docs/ and scripts/ layout
+    mechanism: historical_documentation
+    owner: DOCS
+    reason: Historical reports describe past state; rewriting would falsify history
+    risk: Operators may copy obsolete commands from old reports
+    priority: P3
+    status: accepted_historical
+    remove_when:
+      - optional — only when rewriting historical reports into annotated archives
+      - operational docs (README, runbooks) already use canonical paths

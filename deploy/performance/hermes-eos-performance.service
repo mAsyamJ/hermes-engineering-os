@@ -5,6 +5,6 @@ After=hermes-eos-analytics.service
 [Service]
 Type=oneshot
 WorkingDirectory=/opt/hermes-engineering-os
-ExecStart=/opt/hermes-engineering-os/scripts/performance-materialize.sh --json
+ExecStart=/opt/hermes-engineering-os/bin/eos-performance-materialize --json
 Nice=10
 TimeoutStartSec=300

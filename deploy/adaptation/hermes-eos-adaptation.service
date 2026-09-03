@@ -5,5 +5,5 @@ After=hermes-eos-experiments.service
 [Service]
 Type=oneshot
 WorkingDirectory=/opt/hermes-engineering-os
-ExecStart=/opt/hermes-engineering-os/scripts/adaptation-materialize.sh
+ExecStart=/opt/hermes-engineering-os/bin/eos-adaptation-materialize
 Nice=10
